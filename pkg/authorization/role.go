@@ -14,10 +14,6 @@
 
 package authorization
 
-import (
-	"fmt"
-)
-
 type ResourceKind string
 
 const (
@@ -57,15 +53,9 @@ func init() { //nolint:gochecknoinits // ok
 	allResource[ResourceSubscription] = struct{}{}
 }
 
-func IsRoleExist(role Role) bool {
-	_, exist := allRole[role]
-	return exist
-}
+func IsRoleExist(role Role) bool { _ = "STUB: not implemented"; return false }
 
-func IsResourceKindExist(kind ResourceKind) bool {
-	_, exist := allResource[kind]
-	return exist
-}
+func IsResourceKindExist(kind ResourceKind) bool { _ = "STUB: not implemented"; return false }
 
 type resourceKindRole string
 
@@ -106,26 +96,14 @@ func init() { //nolint:gochecknoinits // ok
 	addActionForRole(SubscriptionGet, namespaceAdmin, namespaceEdit, namespaceView, subscriptionAdmin, subscriptionEdit, subscriptionView) //nolint:lll // ok
 }
 
-func addActionForRole(_action Action, roles ...resourceKindRole) {
-	for _, role := range roles {
-		actions, ok := builtInRole[role]
-		if !ok {
-			actions = map[Action]struct{}{}
-			builtInRole[role] = actions
-		}
-		actions[_action] = struct{}{}
-	}
-}
+func addActionForRole(_action Action, roles ...resourceKindRole) { _ = "STUB: not implemented"; return }
 
 func hasAction(kind ResourceKind, role Role, _action Action) bool {
-	actions, ok := builtInRole[makeResourceKindRole(kind, role)]
-	if !ok {
-		return false
-	}
-	_, ok = actions[_action]
-	return ok
+	_ = "STUB: not implemented"
+	return false
 }
 
 func makeResourceKindRole(kind ResourceKind, role Role) resourceKindRole {
-	return resourceKindRole(fmt.Sprintf("%s-%s", kind, role))
+	_ = "STUB: not implemented"
+	return *new(resourceKindRole)
 }

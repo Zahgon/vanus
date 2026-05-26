@@ -15,29 +15,22 @@
 package rafttest
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
-
-	"github.com/vanus-labs/vanus/pkg/raft/tracker"
 )
 
 func (env *InteractionEnv) handleStatus(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	return env.Status(idx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Status pretty-prints the raft status for the node at the given index to the output
 // buffer.
 func (env *InteractionEnv) Status(idx int) error {
+	_ = "STUB: not implemented"
 	// TODO(tbg): actually print the full status.
-	st := env.Nodes[idx].Status()
-	m := tracker.ProgressMap{}
-	for id, pr := range st.Progress {
-		pr := pr // loop-local copy
-		m[id] = &pr
-	}
-	fmt.Fprint(env.Output, m)
 	return nil
 }
+
+// loop-local copy

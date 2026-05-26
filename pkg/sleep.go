@@ -20,15 +20,6 @@ import (
 )
 
 func SleepWithContext(ctx context.Context, duration time.Duration) bool {
-	if duration == 0 {
-		return true
-	}
-	timer := time.NewTimer(duration)
-	defer timer.Stop()
-	select {
-	case <-timer.C:
-		return true
-	case <-ctx.Done():
-		return false
-	}
+	_ = "STUB: not implemented"
+	return false
 }

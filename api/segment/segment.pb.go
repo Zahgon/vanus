@@ -21,14 +21,14 @@
 package segment
 
 import (
+	sync "sync"
+
 	cloudevents "github.com/vanus-labs/vanus/api/cloudevents"
 	config "github.com/vanus-labs/vanus/api/config"
 	meta "github.com/vanus-labs/vanus/api/meta"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -46,42 +46,25 @@ type StartSegmentServerRequest struct {
 	Config *config.ServerConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
 }
 
-func (x *StartSegmentServerRequest) Reset() {
-	*x = StartSegmentServerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StartSegmentServerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StartSegmentServerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StartSegmentServerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StartSegmentServerRequest) ProtoMessage() {}
+func (*StartSegmentServerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StartSegmentServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StartSegmentServerRequest.ProtoReflect.Descriptor instead.
 func (*StartSegmentServerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *StartSegmentServerRequest) GetConfig() *config.ServerConfig {
-	if x != nil {
-		return x.Config
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -91,36 +74,21 @@ type StartSegmentServerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StartSegmentServerResponse) Reset() {
-	*x = StartSegmentServerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StartSegmentServerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StartSegmentServerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StartSegmentServerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StartSegmentServerResponse) ProtoMessage() {}
+func (*StartSegmentServerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StartSegmentServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StartSegmentServerResponse.ProtoReflect.Descriptor instead.
 func (*StartSegmentServerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type StopSegmentServerRequest struct {
@@ -129,36 +97,21 @@ type StopSegmentServerRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StopSegmentServerRequest) Reset() {
-	*x = StopSegmentServerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StopSegmentServerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StopSegmentServerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StopSegmentServerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StopSegmentServerRequest) ProtoMessage() {}
+func (*StopSegmentServerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StopSegmentServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StopSegmentServerRequest.ProtoReflect.Descriptor instead.
 func (*StopSegmentServerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type StopSegmentServerResponse struct {
@@ -167,36 +120,21 @@ type StopSegmentServerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StopSegmentServerResponse) Reset() {
-	*x = StopSegmentServerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StopSegmentServerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StopSegmentServerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StopSegmentServerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StopSegmentServerResponse) ProtoMessage() {}
+func (*StopSegmentServerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StopSegmentServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StopSegmentServerResponse.ProtoReflect.Descriptor instead.
 func (*StopSegmentServerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type CreateBlockRequest struct {
@@ -208,51 +146,23 @@ type CreateBlockRequest struct {
 	Size int64  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
 }
 
-func (x *CreateBlockRequest) Reset() {
-	*x = CreateBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateBlockRequest) ProtoMessage() {}
+func (*CreateBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateBlockRequest.ProtoReflect.Descriptor instead.
-func (*CreateBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{4}
-}
+func (*CreateBlockRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CreateBlockRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *CreateBlockRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *CreateBlockRequest) GetSize() int64 {
-	if x != nil {
-		return x.Size
-	}
-	return 0
-}
+func (x *CreateBlockRequest) GetSize() int64 { _ = "STUB: not implemented"; return 0 }
 
 type RemoveBlockRequest struct {
 	state         protoimpl.MessageState
@@ -262,44 +172,21 @@ type RemoveBlockRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *RemoveBlockRequest) Reset() {
-	*x = RemoveBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RemoveBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RemoveBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RemoveBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RemoveBlockRequest) ProtoMessage() {}
+func (*RemoveBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RemoveBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RemoveBlockRequest.ProtoReflect.Descriptor instead.
-func (*RemoveBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{5}
-}
+func (*RemoveBlockRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RemoveBlockRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *RemoveBlockRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type DescribeBlockRequest struct {
 	state         protoimpl.MessageState
@@ -309,44 +196,24 @@ type DescribeBlockRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *DescribeBlockRequest) Reset() {
-	*x = DescribeBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DescribeBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DescribeBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DescribeBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DescribeBlockRequest) ProtoMessage() {}
+func (*DescribeBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DescribeBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DescribeBlockRequest.ProtoReflect.Descriptor instead.
 func (*DescribeBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DescribeBlockRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *DescribeBlockRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type DescribeBlockResponse struct {
 	state         protoimpl.MessageState
@@ -356,42 +223,25 @@ type DescribeBlockResponse struct {
 	Info *meta.SegmentHealthInfo `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
 }
 
-func (x *DescribeBlockResponse) Reset() {
-	*x = DescribeBlockResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DescribeBlockResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DescribeBlockResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DescribeBlockResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DescribeBlockResponse) ProtoMessage() {}
+func (*DescribeBlockResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DescribeBlockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DescribeBlockResponse.ProtoReflect.Descriptor instead.
 func (*DescribeBlockResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *DescribeBlockResponse) GetInfo() *meta.SegmentHealthInfo {
-	if x != nil {
-		return x.Info
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -406,56 +256,29 @@ type ActivateSegmentRequest struct {
 	Replicas map[uint64]string `protobuf:"bytes,3,rep,name=replicas,proto3" json:"replicas,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *ActivateSegmentRequest) Reset() {
-	*x = ActivateSegmentRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ActivateSegmentRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ActivateSegmentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ActivateSegmentRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ActivateSegmentRequest) ProtoMessage() {}
+func (*ActivateSegmentRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ActivateSegmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ActivateSegmentRequest.ProtoReflect.Descriptor instead.
 func (*ActivateSegmentRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ActivateSegmentRequest) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *ActivateSegmentRequest) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ActivateSegmentRequest) GetReplicaGroupId() uint64 {
-	if x != nil {
-		return x.ReplicaGroupId
-	}
-	return 0
-}
+func (x *ActivateSegmentRequest) GetReplicaGroupId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *ActivateSegmentRequest) GetReplicas() map[uint64]string {
-	if x != nil {
-		return x.Replicas
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -465,36 +288,21 @@ type ActivateSegmentResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *ActivateSegmentResponse) Reset() {
-	*x = ActivateSegmentResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ActivateSegmentResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ActivateSegmentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ActivateSegmentResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ActivateSegmentResponse) ProtoMessage() {}
+func (*ActivateSegmentResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ActivateSegmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ActivateSegmentResponse.ProtoReflect.Descriptor instead.
 func (*ActivateSegmentResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type InactivateSegmentRequest struct {
@@ -503,36 +311,21 @@ type InactivateSegmentRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *InactivateSegmentRequest) Reset() {
-	*x = InactivateSegmentRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *InactivateSegmentRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InactivateSegmentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InactivateSegmentRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InactivateSegmentRequest) ProtoMessage() {}
+func (*InactivateSegmentRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InactivateSegmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InactivateSegmentRequest.ProtoReflect.Descriptor instead.
 func (*InactivateSegmentRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type InactivateSegmentResponse struct {
@@ -541,36 +334,21 @@ type InactivateSegmentResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *InactivateSegmentResponse) Reset() {
-	*x = InactivateSegmentResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *InactivateSegmentResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InactivateSegmentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InactivateSegmentResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InactivateSegmentResponse) ProtoMessage() {}
+func (*InactivateSegmentResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InactivateSegmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InactivateSegmentResponse.ProtoReflect.Descriptor instead.
 func (*InactivateSegmentResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type AppendToBlockRequest struct {
@@ -582,49 +360,27 @@ type AppendToBlockRequest struct {
 	Events  *cloudevents.CloudEventBatch `protobuf:"bytes,2,opt,name=events,proto3" json:"events,omitempty"`
 }
 
-func (x *AppendToBlockRequest) Reset() {
-	*x = AppendToBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[12]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *AppendToBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AppendToBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AppendToBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AppendToBlockRequest) ProtoMessage() {}
+func (*AppendToBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AppendToBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[12]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AppendToBlockRequest.ProtoReflect.Descriptor instead.
 func (*AppendToBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{12}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AppendToBlockRequest) GetBlockId() uint64 {
-	if x != nil {
-		return x.BlockId
-	}
-	return 0
-}
+func (x *AppendToBlockRequest) GetBlockId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *AppendToBlockRequest) GetEvents() *cloudevents.CloudEventBatch {
-	if x != nil {
-		return x.Events
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -636,44 +392,24 @@ type AppendToBlockResponse struct {
 	Offsets []int64 `protobuf:"varint,1,rep,packed,name=offsets,proto3" json:"offsets,omitempty"`
 }
 
-func (x *AppendToBlockResponse) Reset() {
-	*x = AppendToBlockResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *AppendToBlockResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AppendToBlockResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AppendToBlockResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AppendToBlockResponse) ProtoMessage() {}
+func (*AppendToBlockResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AppendToBlockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AppendToBlockResponse.ProtoReflect.Descriptor instead.
 func (*AppendToBlockResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{13}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AppendToBlockResponse) GetOffsets() []int64 {
-	if x != nil {
-		return x.Offsets
-	}
-	return nil
-}
+func (x *AppendToBlockResponse) GetOffsets() []int64 { _ = "STUB: not implemented"; return nil }
 
 type ReadFromBlockRequest struct {
 	state         protoimpl.MessageState
@@ -687,65 +423,30 @@ type ReadFromBlockRequest struct {
 	PollingTimeout uint32 `protobuf:"varint,4,opt,name=polling_timeout,json=pollingTimeout,proto3" json:"polling_timeout,omitempty"`
 }
 
-func (x *ReadFromBlockRequest) Reset() {
-	*x = ReadFromBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ReadFromBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ReadFromBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ReadFromBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ReadFromBlockRequest) ProtoMessage() {}
+func (*ReadFromBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ReadFromBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ReadFromBlockRequest.ProtoReflect.Descriptor instead.
 func (*ReadFromBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{14}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ReadFromBlockRequest) GetBlockId() uint64 {
-	if x != nil {
-		return x.BlockId
-	}
-	return 0
-}
+func (x *ReadFromBlockRequest) GetBlockId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ReadFromBlockRequest) GetOffset() int64 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *ReadFromBlockRequest) GetOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ReadFromBlockRequest) GetNumber() int64 {
-	if x != nil {
-		return x.Number
-	}
-	return 0
-}
+func (x *ReadFromBlockRequest) GetNumber() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ReadFromBlockRequest) GetPollingTimeout() uint32 {
-	if x != nil {
-		return x.PollingTimeout
-	}
-	return 0
-}
+func (x *ReadFromBlockRequest) GetPollingTimeout() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type ReadFromBlockResponse struct {
 	state         protoimpl.MessageState
@@ -758,51 +459,29 @@ type ReadFromBlockResponse struct {
 	Payload []byte `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
 }
 
-func (x *ReadFromBlockResponse) Reset() {
-	*x = ReadFromBlockResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[15]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ReadFromBlockResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ReadFromBlockResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ReadFromBlockResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ReadFromBlockResponse) ProtoMessage() {}
+func (*ReadFromBlockResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ReadFromBlockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[15]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ReadFromBlockResponse.ProtoReflect.Descriptor instead.
 func (*ReadFromBlockResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{15}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ReadFromBlockResponse) GetEvents() *cloudevents.CloudEventBatch {
-	if x != nil {
-		return x.Events
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *ReadFromBlockResponse) GetPayload() []byte {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
+func (x *ReadFromBlockResponse) GetPayload() []byte { _ = "STUB: not implemented"; return nil }
 
 type LookupOffsetInBlockRequest struct {
 	state         protoimpl.MessageState
@@ -813,51 +492,26 @@ type LookupOffsetInBlockRequest struct {
 	Stime   int64  `protobuf:"varint,2,opt,name=stime,proto3" json:"stime,omitempty"`
 }
 
-func (x *LookupOffsetInBlockRequest) Reset() {
-	*x = LookupOffsetInBlockRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *LookupOffsetInBlockRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *LookupOffsetInBlockRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *LookupOffsetInBlockRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*LookupOffsetInBlockRequest) ProtoMessage() {}
+func (*LookupOffsetInBlockRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *LookupOffsetInBlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use LookupOffsetInBlockRequest.ProtoReflect.Descriptor instead.
 func (*LookupOffsetInBlockRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{16}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *LookupOffsetInBlockRequest) GetBlockId() uint64 {
-	if x != nil {
-		return x.BlockId
-	}
-	return 0
-}
+func (x *LookupOffsetInBlockRequest) GetBlockId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *LookupOffsetInBlockRequest) GetStime() int64 {
-	if x != nil {
-		return x.Stime
-	}
-	return 0
-}
+func (x *LookupOffsetInBlockRequest) GetStime() int64 { _ = "STUB: not implemented"; return 0 }
 
 type LookupOffsetInBlockResponse struct {
 	state         protoimpl.MessageState
@@ -867,44 +521,24 @@ type LookupOffsetInBlockResponse struct {
 	Offset int64 `protobuf:"varint,1,opt,name=offset,proto3" json:"offset,omitempty"`
 }
 
-func (x *LookupOffsetInBlockResponse) Reset() {
-	*x = LookupOffsetInBlockResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *LookupOffsetInBlockResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *LookupOffsetInBlockResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *LookupOffsetInBlockResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*LookupOffsetInBlockResponse) ProtoMessage() {}
+func (*LookupOffsetInBlockResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *LookupOffsetInBlockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use LookupOffsetInBlockResponse.ProtoReflect.Descriptor instead.
 func (*LookupOffsetInBlockResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{17}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *LookupOffsetInBlockResponse) GetOffset() int64 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *LookupOffsetInBlockResponse) GetOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
 type StatusResponse struct {
 	state         protoimpl.MessageState
@@ -914,44 +548,21 @@ type StatusResponse struct {
 	Status string `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 }
 
-func (x *StatusResponse) Reset() {
-	*x = StatusResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_segment_segment_proto_msgTypes[18]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StatusResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StatusResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StatusResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StatusResponse) ProtoMessage() {}
+func (*StatusResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_segment_segment_proto_msgTypes[18]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StatusResponse.ProtoReflect.Descriptor instead.
-func (*StatusResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_segment_segment_proto_rawDescGZIP(), []int{18}
-}
+func (*StatusResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *StatusResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
+func (x *StatusResponse) GetStatus() string { _ = "STUB: not implemented"; return "" }
 
 var File_vanus_core_segment_segment_proto protoreflect.FileDescriptor
 
@@ -1130,10 +741,8 @@ var (
 )
 
 func file_vanus_core_segment_segment_proto_rawDescGZIP() []byte {
-	file_vanus_core_segment_segment_proto_rawDescOnce.Do(func() {
-		file_vanus_core_segment_segment_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_segment_segment_proto_rawDescData)
-	})
-	return file_vanus_core_segment_segment_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_vanus_core_segment_segment_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
@@ -1198,257 +807,5 @@ var file_vanus_core_segment_segment_proto_depIdxs = []int32{
 	0,  // [0:5] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_segment_segment_proto_init() }
-func file_vanus_core_segment_segment_proto_init() {
-	if File_vanus_core_segment_segment_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_segment_segment_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartSegmentServerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartSegmentServerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopSegmentServerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopSegmentServerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribeBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribeBlockResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ActivateSegmentRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ActivateSegmentResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InactivateSegmentRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InactivateSegmentResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AppendToBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AppendToBlockResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadFromBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadFromBlockResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LookupOffsetInBlockRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LookupOffsetInBlockResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_segment_segment_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatusResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_segment_segment_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   20,
-			NumExtensions: 0,
-			NumServices:   1,
-		},
-		GoTypes:           file_vanus_core_segment_segment_proto_goTypes,
-		DependencyIndexes: file_vanus_core_segment_segment_proto_depIdxs,
-		MessageInfos:      file_vanus_core_segment_segment_proto_msgTypes,
-	}.Build()
-	File_vanus_core_segment_segment_proto = out.File
-	file_vanus_core_segment_segment_proto_rawDesc = nil
-	file_vanus_core_segment_segment_proto_goTypes = nil
-	file_vanus_core_segment_segment_proto_depIdxs = nil
-}
+func init()                                       { file_vanus_core_segment_segment_proto_init() }
+func file_vanus_core_segment_segment_proto_init() { _ = "STUB: not implemented"; return }

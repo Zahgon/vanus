@@ -10,8 +10,6 @@
 package reader
 
 import (
-	reflect "reflect"
-
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -27,39 +25,23 @@ type MockReaderMockRecorder struct {
 }
 
 // NewMockReader creates a new mock instance.
-func NewMockReader(ctrl *gomock.Controller) *MockReader {
-	mock := &MockReader{ctrl: ctrl}
-	mock.recorder = &MockReaderMockRecorder{mock}
-	return mock
-}
+func NewMockReader(ctrl *gomock.Controller) *MockReader { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockReader) EXPECT() *MockReaderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Close mocks base method.
+	return nil
 }
 
-// Close mocks base method.
-func (m *MockReader) Close() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Close")
-}
+func (m *MockReader) Close() { _ = "STUB: not implemented"; return }
 
 // Close indicates an expected call of Close.
-func (mr *MockReaderMockRecorder) Close() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockReader)(nil).Close))
-}
+func (mr *MockReaderMockRecorder) Close() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Start mocks base method.
-func (m *MockReader) Start() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockReader) Start() error { _ = "STUB: not implemented"; return nil }
 
 // Start indicates an expected call of Start.
-func (mr *MockReaderMockRecorder) Start() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockReader)(nil).Start))
-}
+func (mr *MockReaderMockRecorder) Start() *gomock.Call { _ = "STUB: not implemented"; return nil }

@@ -26,7 +26,6 @@ import (
 	// this project.
 
 	"github.com/vanus-labs/vanus/server/store/block"
-	"github.com/vanus-labs/vanus/server/store/block/raw"
 	raft "github.com/vanus-labs/vanus/server/store/raft/block"
 )
 
@@ -49,79 +48,42 @@ type replica struct {
 
 var _ Replica = (*replica)(nil)
 
-func (r *replica) ID() vanus.ID {
-	return r.id
-}
+func (r *replica) ID() vanus.ID { _ = "STUB: not implemented"; return *new(vanus.ID) }
 
-func (r *replica) IDStr() string {
-	return r.idStr
-}
+func (r *replica) IDStr() string { _ = "STUB: not implemented"; return "" }
 
 func (r *replica) Bootstrap(ctx context.Context, peers []raft.Peer) error {
-	return r.appender.Bootstrap(ctx, peers)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (r *replica) Close(ctx context.Context) error {
-	r.appender.Stop(ctx)
-	return r.raw.Close(ctx)
-}
+func (r *replica) Close(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (r *replica) Delete(ctx context.Context) error {
-	r.appender.Delete(ctx)
-	return r.raw.Delete(ctx)
-}
+func (r *replica) Delete(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (r *replica) Seek(ctx context.Context, index int64, key block.Entry, flag block.SeekKeyFlag) (int64, error) {
-	return r.raw.Seek(ctx, index, key, flag)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (r *replica) Read(ctx context.Context, seq int64, num int) ([]block.Entry, error) {
-	return r.raw.Read(ctx, seq, num)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *replica) Append(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	r.appender.Append(ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (r *replica) Status() *metapb.SegmentHealthInfo {
-	stat := r.raw.Status()
-	cs := r.appender.Status()
+func (r *replica) Status() *metapb.SegmentHealthInfo { _ = "STUB: not implemented"; return nil }
 
-	// TODO(james.yin): fill EntLogId and SerializationVersion.
-	info := &metapb.SegmentHealthInfo{
-		Id:                 r.id.Uint64(),
-		Capacity:           int64(stat.Capacity),
-		Size:               int64(stat.EntrySize),
-		EventNumber:        int32(stat.EntryNum),
-		IsFull:             stat.Archived,
-		Leader:             cs.Leader.Uint64(),
-		Term:               cs.Term,
-		FirstEventBornTime: stat.FirstEntryStime,
-	}
-	if stat.Archived {
-		info.LastEventBornTime = stat.LastEntryStime
-	}
-	return info
-}
+// TODO(james.yin): fill EntLogId and SerializationVersion.
 
 func (s *server) createBlock(ctx context.Context, id vanus.ID, size int64) (Replica, error) {
+	_ = "STUB: not implemented"
 	// Create block.
-	e, _ := s.rawEngines.Resolve(raw.VSB)
-	r, err := e.Create(ctx, id, size)
-	if err != nil {
-		return nil, err
-	}
-
-	// Create raft appender.
-	a, err := s.raftEngine.NewAppender(ctx, r)
-	if err != nil {
-		return nil, err
-	}
-
-	return &replica{
-		id:       id,
-		idStr:    id.String(),
-		raw:      r,
-		appender: a,
-	}, nil
+	return *new(Replica), nil
 }
+
+// Create raft appender.

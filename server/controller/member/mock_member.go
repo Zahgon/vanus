@@ -11,7 +11,6 @@ package member
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -28,133 +27,86 @@ type MockMemberMockRecorder struct {
 }
 
 // NewMockMember creates a new mock instance.
-func NewMockMember(ctrl *gomock.Controller) *MockMember {
-	mock := &MockMember{ctrl: ctrl}
-	mock.recorder = &MockMemberMockRecorder{mock}
-	return mock
-}
+func NewMockMember(ctrl *gomock.Controller) *MockMember { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockMember) EXPECT() *MockMemberMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// GetLeaderAddr mocks base method.
+	return nil
 }
 
-// GetLeaderAddr mocks base method.
-func (m *MockMember) GetLeaderAddr() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLeaderAddr")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockMember) GetLeaderAddr() string { _ = "STUB: not implemented"; return "" }
 
 // GetLeaderAddr indicates an expected call of GetLeaderAddr.
 func (mr *MockMemberMockRecorder) GetLeaderAddr() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLeaderAddr", reflect.TypeOf((*MockMember)(nil).GetLeaderAddr))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetLeaderID mocks base method.
-func (m *MockMember) GetLeaderID() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLeaderID")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockMember) GetLeaderID() string { _ = "STUB: not implemented"; return "" }
 
 // GetLeaderID indicates an expected call of GetLeaderID.
-func (mr *MockMemberMockRecorder) GetLeaderID() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLeaderID", reflect.TypeOf((*MockMember)(nil).GetLeaderID))
-}
+func (mr *MockMemberMockRecorder) GetLeaderID() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Init mocks base method.
-func (m *MockMember) Init(arg0 context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockMember) Init(arg0 context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockMemberMockRecorder) Init(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockMember)(nil).Init), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IsLeader mocks base method.
-func (m *MockMember) IsLeader() bool {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsLeader")
-	ret0, _ := ret[0].(bool)
-	return ret0
-}
+func (m *MockMember) IsLeader() bool { _ = "STUB: not implemented"; return false }
 
 // IsLeader indicates an expected call of IsLeader.
-func (mr *MockMemberMockRecorder) IsLeader() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsLeader", reflect.TypeOf((*MockMember)(nil).IsLeader))
-}
+func (mr *MockMemberMockRecorder) IsLeader() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // IsReady mocks base method.
-func (m *MockMember) IsReady() bool {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsReady")
-	ret0, _ := ret[0].(bool)
-	return ret0
-}
+func (m *MockMember) IsReady() bool { _ = "STUB: not implemented"; return false }
 
 // IsReady indicates an expected call of IsReady.
-func (mr *MockMemberMockRecorder) IsReady() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsReady", reflect.TypeOf((*MockMember)(nil).IsReady))
-}
+func (mr *MockMemberMockRecorder) IsReady() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // RegisterMembershipChangedProcessor mocks base method.
 func (m *MockMember) RegisterMembershipChangedProcessor(arg0 MembershipEventProcessor) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "RegisterMembershipChangedProcessor", arg0)
+	_ = "STUB: not implemented"
+	return
 }
 
 // RegisterMembershipChangedProcessor indicates an expected call of RegisterMembershipChangedProcessor.
 func (mr *MockMemberMockRecorder) RegisterMembershipChangedProcessor(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RegisterMembershipChangedProcessor", reflect.TypeOf((*MockMember)(nil).RegisterMembershipChangedProcessor), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResignIfLeader mocks base method.
-func (m *MockMember) ResignIfLeader() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "ResignIfLeader")
-}
+func (m *MockMember) ResignIfLeader() { _ = "STUB: not implemented"; return }
 
 // ResignIfLeader indicates an expected call of ResignIfLeader.
 func (mr *MockMemberMockRecorder) ResignIfLeader() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResignIfLeader", reflect.TypeOf((*MockMember)(nil).ResignIfLeader))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
-func (m *MockMember) Start(arg0 context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockMember) Start(arg0 context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Start indicates an expected call of Start.
 func (mr *MockMemberMockRecorder) Start(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockMember)(nil).Start), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
-func (m *MockMember) Stop(arg0 context.Context) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Stop", arg0)
-}
+func (m *MockMember) Stop(arg0 context.Context) { _ = "STUB: not implemented"; return }
 
 // Stop indicates an expected call of Stop.
 func (mr *MockMemberMockRecorder) Stop(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockMember)(nil).Stop), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -28,13 +28,13 @@
 package cloudevents
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -66,100 +66,43 @@ type CloudEvent struct {
 	Data isCloudEvent_Data `protobuf_oneof:"data"`
 }
 
-func (x *CloudEvent) Reset() {
-	*x = CloudEvent{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CloudEvent) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CloudEvent) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CloudEvent) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CloudEvent) ProtoMessage() {}
+func (*CloudEvent) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CloudEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CloudEvent.ProtoReflect.Descriptor instead.
-func (*CloudEvent) Descriptor() ([]byte, []int) {
-	return file_vanus_core_cloudevents_cloudevents_proto_rawDescGZIP(), []int{0}
-}
+func (*CloudEvent) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CloudEvent) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
+func (x *CloudEvent) GetId() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CloudEvent) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
+func (x *CloudEvent) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CloudEvent) GetSpecVersion() string {
-	if x != nil {
-		return x.SpecVersion
-	}
-	return ""
-}
+func (x *CloudEvent) GetSpecVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CloudEvent) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
+func (x *CloudEvent) GetType() string { _ = "STUB: not implemented"; return "" }
 
 func (x *CloudEvent) GetAttributes() map[string]*CloudEvent_CloudEventAttributeValue {
-	if x != nil {
-		return x.Attributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *CloudEvent) GetData() isCloudEvent_Data {
-	if m != nil {
-		return m.Data
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isCloudEvent_Data)
 }
 
-func (x *CloudEvent) GetBinaryData() []byte {
-	if x, ok := x.GetData().(*CloudEvent_BinaryData); ok {
-		return x.BinaryData
-	}
-	return nil
-}
+func (x *CloudEvent) GetBinaryData() []byte { _ = "STUB: not implemented"; return nil }
 
-func (x *CloudEvent) GetTextData() string {
-	if x, ok := x.GetData().(*CloudEvent_TextData); ok {
-		return x.TextData
-	}
-	return ""
-}
+func (x *CloudEvent) GetTextData() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CloudEvent) GetProtoData() *anypb.Any {
-	if x, ok := x.GetData().(*CloudEvent_ProtoData); ok {
-		return x.ProtoData
-	}
-	return nil
-}
+func (x *CloudEvent) GetProtoData() *anypb.Any { _ = "STUB: not implemented"; return nil }
 
 type isCloudEvent_Data interface {
 	isCloudEvent_Data()
@@ -177,11 +120,11 @@ type CloudEvent_ProtoData struct {
 	ProtoData *anypb.Any `protobuf:"bytes,8,opt,name=proto_data,json=protoData,proto3,oneof"`
 }
 
-func (*CloudEvent_BinaryData) isCloudEvent_Data() {}
+func (*CloudEvent_BinaryData) isCloudEvent_Data() { _ = "STUB: not implemented"; return }
 
-func (*CloudEvent_TextData) isCloudEvent_Data() {}
+func (*CloudEvent_TextData) isCloudEvent_Data() { _ = "STUB: not implemented"; return }
 
-func (*CloudEvent_ProtoData) isCloudEvent_Data() {}
+func (*CloudEvent_ProtoData) isCloudEvent_Data() { _ = "STUB: not implemented"; return }
 
 type CloudEventBatch struct {
 	state         protoimpl.MessageState
@@ -191,44 +134,21 @@ type CloudEventBatch struct {
 	Events []*CloudEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
 }
 
-func (x *CloudEventBatch) Reset() {
-	*x = CloudEventBatch{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CloudEventBatch) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CloudEventBatch) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CloudEventBatch) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CloudEventBatch) ProtoMessage() {}
+func (*CloudEventBatch) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CloudEventBatch) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CloudEventBatch.ProtoReflect.Descriptor instead.
-func (*CloudEventBatch) Descriptor() ([]byte, []int) {
-	return file_vanus_core_cloudevents_cloudevents_proto_rawDescGZIP(), []int{1}
-}
+func (*CloudEventBatch) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CloudEventBatch) GetEvents() []*CloudEvent {
-	if x != nil {
-		return x.Events
-	}
-	return nil
-}
+func (x *CloudEventBatch) GetEvents() []*CloudEvent { _ = "STUB: not implemented"; return nil }
 
 type BatchEvent struct {
 	state         protoimpl.MessageState
@@ -239,51 +159,23 @@ type BatchEvent struct {
 	EventbusId uint64           `protobuf:"varint,3,opt,name=eventbus_id,json=eventbusId,proto3" json:"eventbus_id,omitempty"`
 }
 
-func (x *BatchEvent) Reset() {
-	*x = BatchEvent{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *BatchEvent) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BatchEvent) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BatchEvent) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BatchEvent) ProtoMessage() {}
+func (*BatchEvent) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BatchEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BatchEvent.ProtoReflect.Descriptor instead.
-func (*BatchEvent) Descriptor() ([]byte, []int) {
-	return file_vanus_core_cloudevents_cloudevents_proto_rawDescGZIP(), []int{2}
-}
+func (*BatchEvent) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *BatchEvent) GetEvents() *CloudEventBatch {
-	if x != nil {
-		return x.Events
-	}
-	return nil
-}
+func (x *BatchEvent) GetEvents() *CloudEventBatch { _ = "STUB: not implemented"; return nil }
 
-func (x *BatchEvent) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *BatchEvent) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type CloudEvent_CloudEventAttributeValue struct {
 	state         protoimpl.MessageState
@@ -302,91 +194,60 @@ type CloudEvent_CloudEventAttributeValue struct {
 	Attr isCloudEvent_CloudEventAttributeValue_Attr `protobuf_oneof:"attr"`
 }
 
-func (x *CloudEvent_CloudEventAttributeValue) Reset() {
-	*x = CloudEvent_CloudEventAttributeValue{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CloudEvent_CloudEventAttributeValue) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CloudEvent_CloudEventAttributeValue) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CloudEvent_CloudEventAttributeValue) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CloudEvent_CloudEventAttributeValue) ProtoMessage() {}
+func (*CloudEvent_CloudEventAttributeValue) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CloudEvent_CloudEventAttributeValue) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_cloudevents_cloudevents_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CloudEvent_CloudEventAttributeValue.ProtoReflect.Descriptor instead.
 func (*CloudEvent_CloudEventAttributeValue) Descriptor() ([]byte, []int) {
-	return file_vanus_core_cloudevents_cloudevents_proto_rawDescGZIP(), []int{0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *CloudEvent_CloudEventAttributeValue) GetAttr() isCloudEvent_CloudEventAttributeValue_Attr {
-	if m != nil {
-		return m.Attr
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isCloudEvent_CloudEventAttributeValue_Attr)
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeBoolean() bool {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeBoolean); ok {
-		return x.CeBoolean
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeInteger() int32 {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeInteger); ok {
-		return x.CeInteger
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeString() string {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeString); ok {
-		return x.CeString
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeBytes() []byte {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeBytes); ok {
-		return x.CeBytes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeUri() string {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeUri); ok {
-		return x.CeUri
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeUriRef() string {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeUriRef); ok {
-		return x.CeUriRef
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CloudEvent_CloudEventAttributeValue) GetCeTimestamp() *timestamppb.Timestamp {
-	if x, ok := x.GetAttr().(*CloudEvent_CloudEventAttributeValue_CeTimestamp); ok {
-		return x.CeTimestamp
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -422,19 +283,39 @@ type CloudEvent_CloudEventAttributeValue_CeTimestamp struct {
 	CeTimestamp *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=ce_timestamp,json=ceTimestamp,proto3,oneof"`
 }
 
-func (*CloudEvent_CloudEventAttributeValue_CeBoolean) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeBoolean) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*CloudEvent_CloudEventAttributeValue_CeInteger) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeInteger) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*CloudEvent_CloudEventAttributeValue_CeString) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeString) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*CloudEvent_CloudEventAttributeValue_CeBytes) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeBytes) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*CloudEvent_CloudEventAttributeValue_CeUri) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeUri) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*CloudEvent_CloudEventAttributeValue_CeUriRef) isCloudEvent_CloudEventAttributeValue_Attr() {}
+func (*CloudEvent_CloudEventAttributeValue_CeUriRef) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (*CloudEvent_CloudEventAttributeValue_CeTimestamp) isCloudEvent_CloudEventAttributeValue_Attr() {
+	_ = "STUB: not implemented"
+	return
 }
 
 var File_vanus_core_cloudevents_cloudevents_proto protoreflect.FileDescriptor
@@ -532,10 +413,8 @@ var (
 )
 
 func file_vanus_core_cloudevents_cloudevents_proto_rawDescGZIP() []byte {
-	file_vanus_core_cloudevents_cloudevents_proto_rawDescOnce.Do(func() {
-		file_vanus_core_cloudevents_cloudevents_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_cloudevents_cloudevents_proto_rawDescData)
-	})
-	return file_vanus_core_cloudevents_cloudevents_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_vanus_core_cloudevents_cloudevents_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
@@ -565,91 +444,5 @@ var file_vanus_core_cloudevents_cloudevents_proto_depIdxs = []int32{
 	0, // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_cloudevents_cloudevents_proto_init() }
-func file_vanus_core_cloudevents_cloudevents_proto_init() {
-	if File_vanus_core_cloudevents_cloudevents_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_cloudevents_cloudevents_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CloudEvent); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_cloudevents_cloudevents_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CloudEventBatch); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_cloudevents_cloudevents_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatchEvent); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_cloudevents_cloudevents_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CloudEvent_CloudEventAttributeValue); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	file_vanus_core_cloudevents_cloudevents_proto_msgTypes[0].OneofWrappers = []interface{}{
-		(*CloudEvent_BinaryData)(nil),
-		(*CloudEvent_TextData)(nil),
-		(*CloudEvent_ProtoData)(nil),
-	}
-	file_vanus_core_cloudevents_cloudevents_proto_msgTypes[4].OneofWrappers = []interface{}{
-		(*CloudEvent_CloudEventAttributeValue_CeBoolean)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeInteger)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeString)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeBytes)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeUri)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeUriRef)(nil),
-		(*CloudEvent_CloudEventAttributeValue_CeTimestamp)(nil),
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_cloudevents_cloudevents_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   5,
-			NumExtensions: 0,
-			NumServices:   1,
-		},
-		GoTypes:           file_vanus_core_cloudevents_cloudevents_proto_goTypes,
-		DependencyIndexes: file_vanus_core_cloudevents_cloudevents_proto_depIdxs,
-		MessageInfos:      file_vanus_core_cloudevents_cloudevents_proto_msgTypes,
-	}.Build()
-	File_vanus_core_cloudevents_cloudevents_proto = out.File
-	file_vanus_core_cloudevents_cloudevents_proto_rawDesc = nil
-	file_vanus_core_cloudevents_cloudevents_proto_goTypes = nil
-	file_vanus_core_cloudevents_cloudevents_proto_depIdxs = nil
-}
+func init()                                               { file_vanus_core_cloudevents_cloudevents_proto_init() }
+func file_vanus_core_cloudevents_cloudevents_proto_init() { _ = "STUB: not implemented"; return }

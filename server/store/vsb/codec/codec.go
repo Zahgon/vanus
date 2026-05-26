@@ -20,10 +20,8 @@ import (
 	"io"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/observability/tracing"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
@@ -51,32 +49,9 @@ type EntryDecoder interface {
 	UnmarshalReader(r io.ReadSeeker) (int, block.Entry, error)
 }
 
-func NewEncoder() EntryEncoder {
-	return &packetEncoder{
-		pde: &recordEncoder{
-			rde: &entryEncoder{
-				indexEnc: indexEntryEncoder{
-					indexSize: IndexSize,
-				},
-			},
-		},
-		tracer: tracing.NewTracer("store.vsb.codec.packetEncoder", trace.SpanKindInternal),
-	}
-}
+func NewEncoder() EntryEncoder { _ = "STUB: not implemented"; return *new(EntryEncoder) }
 
 func NewDecoder(checkCRC bool, indexSize int) (EntryDecoder, error) {
-	if indexSize < IndexSize {
-		return nil, ErrInvalid
-	}
-	dec := &packetDecoder{
-		pdd: &recordDecoder{
-			rdd: &entryDecoder{
-				indexDec: indexEntryDecoder{
-					indexSize: indexSize,
-				},
-			},
-		},
-		checkCRC: checkCRC,
-	}
-	return dec, nil
+	_ = "STUB: not implemented"
+	return *new(EntryDecoder), nil
 }

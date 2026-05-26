@@ -11,7 +11,6 @@ package worker
 
 import (
 	context "context"
-	reflect "reflect"
 	time "time"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
@@ -32,228 +31,184 @@ type MockTriggerWorkerMockRecorder struct {
 
 // NewMockTriggerWorker creates a new mock instance.
 func NewMockTriggerWorker(ctrl *gomock.Controller) *MockTriggerWorker {
-	mock := &MockTriggerWorker{ctrl: ctrl}
-	mock.recorder = &MockTriggerWorkerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTriggerWorker) EXPECT() *MockTriggerWorkerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AssignSubscription mocks base method.
+	return nil
 }
 
-// AssignSubscription mocks base method.
-func (m *MockTriggerWorker) AssignSubscription(id vsr.ID) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "AssignSubscription", id)
-}
+func (m *MockTriggerWorker) AssignSubscription(id vsr.ID) { _ = "STUB: not implemented"; return }
 
 // AssignSubscription indicates an expected call of AssignSubscription.
 func (mr *MockTriggerWorkerMockRecorder) AssignSubscription(id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AssignSubscription", reflect.TypeOf((*MockTriggerWorker)(nil).AssignSubscription), id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Close mocks base method.
-func (m *MockTriggerWorker) Close() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTriggerWorker) Close() error { _ = "STUB: not implemented"; return nil }
 
 // Close indicates an expected call of Close.
 func (mr *MockTriggerWorkerMockRecorder) Close() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockTriggerWorker)(nil).Close))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAddr mocks base method.
-func (m *MockTriggerWorker) GetAddr() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAddr")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockTriggerWorker) GetAddr() string { _ = "STUB: not implemented"; return "" }
 
 // GetAddr indicates an expected call of GetAddr.
 func (mr *MockTriggerWorkerMockRecorder) GetAddr() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAddr", reflect.TypeOf((*MockTriggerWorker)(nil).GetAddr))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAssignedSubscriptions mocks base method.
 func (m *MockTriggerWorker) GetAssignedSubscriptions() []vsr.ID {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAssignedSubscriptions")
-	ret0, _ := ret[0].([]vsr.ID)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAssignedSubscriptions indicates an expected call of GetAssignedSubscriptions.
 func (mr *MockTriggerWorkerMockRecorder) GetAssignedSubscriptions() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAssignedSubscriptions", reflect.TypeOf((*MockTriggerWorker)(nil).GetAssignedSubscriptions))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetHeartbeatTime mocks base method.
 func (m *MockTriggerWorker) GetHeartbeatTime() time.Time {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetHeartbeatTime")
-	ret0, _ := ret[0].(time.Time)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 // GetHeartbeatTime indicates an expected call of GetHeartbeatTime.
 func (mr *MockTriggerWorkerMockRecorder) GetHeartbeatTime() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetHeartbeatTime", reflect.TypeOf((*MockTriggerWorker)(nil).GetHeartbeatTime))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetInfo mocks base method.
 func (m *MockTriggerWorker) GetInfo() metadata.TriggerWorkerInfo {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetInfo")
-	ret0, _ := ret[0].(metadata.TriggerWorkerInfo)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerInfo)
 }
 
 // GetInfo indicates an expected call of GetInfo.
 func (mr *MockTriggerWorkerMockRecorder) GetInfo() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInfo", reflect.TypeOf((*MockTriggerWorker)(nil).GetInfo))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetPendingTime mocks base method.
 func (m *MockTriggerWorker) GetPendingTime() time.Time {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetPendingTime")
-	ret0, _ := ret[0].(time.Time)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 // GetPendingTime indicates an expected call of GetPendingTime.
 func (mr *MockTriggerWorkerMockRecorder) GetPendingTime() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPendingTime", reflect.TypeOf((*MockTriggerWorker)(nil).GetPendingTime))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetPhase mocks base method.
 func (m *MockTriggerWorker) GetPhase() metadata.TriggerWorkerPhase {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetPhase")
-	ret0, _ := ret[0].(metadata.TriggerWorkerPhase)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerPhase)
 }
 
 // GetPhase indicates an expected call of GetPhase.
 func (mr *MockTriggerWorkerMockRecorder) GetPhase() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPhase", reflect.TypeOf((*MockTriggerWorker)(nil).GetPhase))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IsActive mocks base method.
-func (m *MockTriggerWorker) IsActive() bool {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsActive")
-	ret0, _ := ret[0].(bool)
-	return ret0
-}
+func (m *MockTriggerWorker) IsActive() bool { _ = "STUB: not implemented"; return false }
 
 // IsActive indicates an expected call of IsActive.
 func (mr *MockTriggerWorkerMockRecorder) IsActive() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsActive", reflect.TypeOf((*MockTriggerWorker)(nil).IsActive))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Polish mocks base method.
-func (m *MockTriggerWorker) Polish() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Polish")
-}
+func (m *MockTriggerWorker) Polish() { _ = "STUB: not implemented"; return }
 
 // Polish indicates an expected call of Polish.
 func (mr *MockTriggerWorkerMockRecorder) Polish() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Polish", reflect.TypeOf((*MockTriggerWorker)(nil).Polish))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoteStart mocks base method.
 func (m *MockTriggerWorker) RemoteStart(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RemoteStart", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoteStart indicates an expected call of RemoteStart.
 func (mr *MockTriggerWorkerMockRecorder) RemoteStart(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoteStart", reflect.TypeOf((*MockTriggerWorker)(nil).RemoteStart), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoteStop mocks base method.
 func (m *MockTriggerWorker) RemoteStop(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RemoteStop", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoteStop indicates an expected call of RemoteStop.
 func (mr *MockTriggerWorkerMockRecorder) RemoteStop(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoteStop", reflect.TypeOf((*MockTriggerWorker)(nil).RemoteStop), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Reset mocks base method.
-func (m *MockTriggerWorker) Reset() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Reset")
-}
+func (m *MockTriggerWorker) Reset() { _ = "STUB: not implemented"; return }
 
 // Reset indicates an expected call of Reset.
 func (mr *MockTriggerWorkerMockRecorder) Reset() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reset", reflect.TypeOf((*MockTriggerWorker)(nil).Reset))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetPhase mocks base method.
 func (m *MockTriggerWorker) SetPhase(arg0 metadata.TriggerWorkerPhase) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetPhase", arg0)
+	_ = "STUB: not implemented"
+	return
 }
 
 // SetPhase indicates an expected call of SetPhase.
 func (mr *MockTriggerWorkerMockRecorder) SetPhase(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetPhase", reflect.TypeOf((*MockTriggerWorker)(nil).SetPhase), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
-func (m *MockTriggerWorker) Start(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTriggerWorker) Start(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Start indicates an expected call of Start.
 func (mr *MockTriggerWorkerMockRecorder) Start(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockTriggerWorker)(nil).Start), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnAssignSubscription mocks base method.
 func (m *MockTriggerWorker) UnAssignSubscription(id vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UnAssignSubscription", id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnAssignSubscription indicates an expected call of UnAssignSubscription.
 func (mr *MockTriggerWorkerMockRecorder) UnAssignSubscription(id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UnAssignSubscription", reflect.TypeOf((*MockTriggerWorker)(nil).UnAssignSubscription), id)
+	_ = "STUB: not implemented"
+	return nil
 }

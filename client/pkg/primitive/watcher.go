@@ -21,16 +21,11 @@ import (
 )
 
 func NewWatcher(period time.Duration, lookupFunc func(), cleanFuncs ...func()) *Watcher {
-	w := &Watcher{
-		period:     period,
-		lookupFunc: lookupFunc,
-		cleanFuncs: cleanFuncs,
-		ch:         make(chan interface{}, 1), // TODO: no buffer
-		wg:         nil,
-		mu:         sync.RWMutex{},
-	}
-	return w
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// TODO: no buffer
 
 type Watcher struct {
 	period     time.Duration
@@ -42,85 +37,24 @@ type Watcher struct {
 	mu sync.RWMutex
 }
 
-func (w *Watcher) Close() {
-	close(w.ch)
-}
+func (w *Watcher) Close() { _ = "STUB: not implemented"; return }
 
-func (w *Watcher) Run() {
-	defer func() {
-		for _, closeFunc := range w.cleanFuncs {
-			closeFunc()
-		}
-	}()
+func (w *Watcher) Run() { _ = "STUB: not implemented"; return }
 
-	// do first lookup immediately
-	t := time.NewTimer(0)
-	for {
-		isTimeout := false
-		select {
-		case _, ok := <-w.ch:
-			if !ok {
-				return
-			}
-		case <-t.C:
-			isTimeout = true
-		}
+// do first lookup immediately
 
-		w.lookupFunc()
-
-		// reset timer
-		if !t.Stop() && !isTimeout {
-			<-t.C
-		}
-		t.Reset(w.period)
-	}
-}
+// reset timer
 
 func (w *Watcher) Refresh(ctx context.Context) error {
+	_ = "STUB: not implemented"
 	// batch multi-refresh into a group
-
-	w.mu.RLock()
-	wg := w.wg
-	w.mu.RUnlock()
-
-	isLeader := false
-	if wg == nil {
-		w.mu.Lock()
-		// double check
-		if w.wg == nil {
-			w.wg = &sync.WaitGroup{}
-			w.wg.Add(1)
-			isLeader = true
-		}
-		wg = w.wg
-		w.mu.Unlock()
-	}
-
-	if isLeader {
-		// TODO: non-blocking
-		w.ch <- nil
-	}
-
-	ch := make(chan struct{})
-	go func() {
-		wg.Wait()
-		close(ch)
-	}()
-
-	select {
-	case <-ch:
-		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	}
+	return nil
 }
 
-func (w *Watcher) Wakeup() {
-	w.mu.Lock()
-	defer w.mu.Unlock()
-	if w.wg != nil {
-		w.wg.Done()
-		// clear
-		w.wg = nil
-	}
-}
+// double check
+
+// TODO: non-blocking
+
+func (w *Watcher) Wakeup() { _ = "STUB: not implemented"; return }
+
+// clear

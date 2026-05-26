@@ -17,7 +17,6 @@ package entry
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 const (
@@ -34,44 +33,20 @@ type entryExtWrapper struct {
 // Make sure entryWrapper implements block.Entry.
 var _ block.EntryExt = (*entryExtWrapper)(nil)
 
-func (w *entryExtWrapper) GetUint16(ordinal int) uint16 {
-	if ordinal == ceschema.EntryTypeOrdinal {
-		return w.t
-	}
-	return w.EntryExtWrapper.GetUint16(ordinal)
-}
+func (w *entryExtWrapper) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
-func (w *entryExtWrapper) GetInt64(ordinal int) int64 {
-	switch ordinal {
-	case ceschema.SequenceNumberOrdinal:
-		return w.seq
-	case ceschema.StimeOrdinal:
-		return w.stime
-	}
-	return w.EntryExtWrapper.GetInt64(ordinal)
-}
+func (w *entryExtWrapper) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
 func (w *entryExtWrapper) RangeOptionalAttributes(cb block.OptionalAttributeCallback) {
-	cb.OnInt64(ceschema.SequenceNumberOrdinal, w.seq)
-	cb.OnInt64(ceschema.StimeOrdinal, w.stime)
-	w.EntryExtWrapper.RangeOptionalAttributes(cb)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (w *entryExtWrapper) OptionalAttributeCount() int {
-	return addedOptCount + w.EntryExtWrapper.OptionalAttributeCount()
-}
+func (w *entryExtWrapper) OptionalAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 func Wrap(e block.Entry, t uint16, seq int64, stime int64) block.Entry {
-	if ext, ok := e.(block.EntryExt); ok {
-		return &entryExtWrapper{
-			EntryExtWrapper: block.EntryExtWrapper{
-				E: ext,
-			},
-			t:     t,
-			seq:   seq,
-			stime: stime,
-		}
-	}
-	// TODO(james.yin): entry wrapper
-	return nil
+	_ = "STUB: not implemented"
+	return *new(block.Entry)
 }
+
+// TODO(james.yin): entry wrapper

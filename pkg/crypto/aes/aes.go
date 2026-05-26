@@ -14,72 +14,19 @@
 
 package aes
 
-import (
-	"bytes"
-	"crypto/aes"
-	"crypto/cipher"
-	"crypto/rand"
-	"encoding/hex"
-	"io"
-)
-
 const nonceSize = 12
 
-func Encrypt(value, key string) (string, error) {
-	keyByte := paddingKey(key, aes.BlockSize)
-	// Get the AES block cipher
-	aesBlock, err := aes.NewCipher(keyByte)
-	if err != nil {
-		return "", err
-	}
+func Encrypt(value, key string) (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-	// Get the GCM cipher mode
-	gcm, err := cipher.NewGCM(aesBlock)
-	if err != nil {
-		return "", err
-	}
-	var out bytes.Buffer
-	_, _ = io.CopyN(&out, rand.Reader, nonceSize)
-	nonce := out.Bytes()
-	cryptoByte := gcm.Seal(nil, nonce, []byte(value), nil)
-	out.Write(cryptoByte)
-	return hex.EncodeToString(out.Bytes()), nil
-}
+// Get the AES block cipher
 
-func Decrypt(value, key string) (string, error) {
-	cryptoByte, err := hex.DecodeString(value)
-	if err != nil {
-		return "", err
-	}
-	keyByte := paddingKey(key, aes.BlockSize)
-	// Get the AES block cipher
-	aesBlock, err := aes.NewCipher(keyByte)
-	if err != nil {
-		return "", err
-	}
+// Get the GCM cipher mode
 
-	// Get the GCM cipher mode
-	gcm, err := cipher.NewGCM(aesBlock)
-	if err != nil {
-		return "", err
-	}
-	nonce := cryptoByte[:nonceSize]
-	ciphertext := cryptoByte[nonceSize:]
-	origData, err := gcm.Open(nil, nonce, ciphertext, nil)
-	if err != nil {
-		return "", err
-	}
-	return string(origData), nil
-}
+func Decrypt(value, key string) (string, error) { _ = "STUB: not implemented"; return "", nil }
+
+// Get the AES block cipher
+
+// Get the GCM cipher mode
 
 // paddingKey lt size append 0, gt size will discard.
-func paddingKey(key string, size int) []byte {
-	for len(key) < size {
-		key += "0"
-	}
-	keyByte := []byte(key)
-	if len(keyByte) > size {
-		keyByte = keyByte[:size]
-	}
-	return keyByte
-}
+func paddingKey(key string, size int) []byte { _ = "STUB: not implemented"; return nil }

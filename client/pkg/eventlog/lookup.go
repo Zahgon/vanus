@@ -16,7 +16,7 @@ package eventlog
 
 import (
 	// standard libraries.
-	"context"
+
 	"time"
 
 	// this project.
@@ -34,30 +34,15 @@ type WritableSegmentWatcher struct {
 }
 
 func (w *WritableSegmentWatcher) Chan() <-chan *record.Segment {
-	return w.ch
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (w *WritableSegmentWatcher) Start() {
-	go w.Watcher.Run()
-}
+func (w *WritableSegmentWatcher) Start() { _ = "STUB: not implemented"; return }
 
 func WatchWritableSegment(l *eventlog) *WritableSegmentWatcher {
-	ch := make(chan *record.Segment, 1)
-	w := primitive.NewWatcher(defaultWatchInterval, func() {
-		r, err := l.nameService.LookupWritableSegment(context.Background(), l.cfg.ID)
-		if err != nil {
-			ch <- nil
-		} else {
-			ch <- r
-		}
-	}, func() {
-		close(ch)
-	})
-	watcher := &WritableSegmentWatcher{
-		Watcher: w,
-		ch:      ch,
-	}
-	return watcher
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type ReadableSegmentsWatcher struct {
@@ -66,28 +51,13 @@ type ReadableSegmentsWatcher struct {
 }
 
 func (w *ReadableSegmentsWatcher) Chan() <-chan []*record.Segment {
-	return w.ch
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (w *ReadableSegmentsWatcher) Start() {
-	go w.Watcher.Run()
-}
+func (w *ReadableSegmentsWatcher) Start() { _ = "STUB: not implemented"; return }
 
 func WatchReadableSegments(l *eventlog) *ReadableSegmentsWatcher {
-	ch := make(chan []*record.Segment, 1)
-	w := primitive.NewWatcher(defaultWatchInterval, func() {
-		rs, err := l.nameService.LookupReadableSegments(context.Background(), l.cfg.ID)
-		if err != nil {
-			ch <- nil
-		} else {
-			ch <- rs
-		}
-	}, func() {
-		close(ch)
-	})
-	watcher := &ReadableSegmentsWatcher{
-		Watcher: w,
-		ch:      ch,
-	}
-	return watcher
+	_ = "STUB: not implemented"
+	return nil
 }

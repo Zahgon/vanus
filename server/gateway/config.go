@@ -16,13 +16,12 @@ package gateway
 
 import (
 	// third-party libraries.
-	"google.golang.org/grpc/credentials/insecure"
 
 	// first-party libraries.
 	"github.com/vanus-labs/vanus/pkg/observability"
 
 	// this project.
-	"github.com/vanus-labs/vanus/server/gateway/auth"
+
 	"github.com/vanus-labs/vanus/server/gateway/proxy"
 )
 
@@ -44,32 +43,6 @@ type Auth struct {
 	Disable bool `yaml:"disable"`
 }
 
-func (c Config) GetProxyConfig() proxy.Config {
-	cfg := proxy.Config{
-		Endpoints:              c.ControllerAddr,
-		SinkPort:               c.SinkPort,
-		ProxyPort:              c.Port,
-		CloudEventReceiverPort: c.GetCloudEventReceiverPort(),
-		GRPCReflectionEnable:   c.GRPCReflectionEnable,
-		Credentials:            insecure.NewCredentials(),
-	}
-	if cfg.ProxyPort == 0 {
-		cfg.ProxyPort = defaultProxyPort
-	}
-	if cfg.SinkPort == 0 {
-		cfg.SinkPort = defaultSinkPort
-	}
-	cfg.AuthCfg = auth.Config{
-		Disable:          c.Auth.Disable,
-		OpenSubscription: false,
-		OpenEventbus:     false,
-	}
-	return cfg
-}
+func (c Config) GetProxyConfig() proxy.Config { _ = "STUB: not implemented"; return *new(proxy.Config) }
 
-func (c Config) GetCloudEventReceiverPort() int {
-	if c.Port == 0 {
-		return defaultProxyPort + 1
-	}
-	return c.Port + 1
-}
+func (c Config) GetCloudEventReceiverPort() int { _ = "STUB: not implemented"; return 0 }

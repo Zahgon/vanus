@@ -18,14 +18,6 @@ type exactFilter struct {
 	commonFilter
 }
 
-func NewExactFilter(exact map[string]string) Filter {
-	f := newCommonFilter(exact, func(value, compareValue string) bool {
-		return value == compareValue
-	})
-	if f == nil {
-		return nil
-	}
-	return &exactFilter{commonFilter: *f}
-}
+func NewExactFilter(exact map[string]string) Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
 var _ Filter = (*exactFilter)(nil)

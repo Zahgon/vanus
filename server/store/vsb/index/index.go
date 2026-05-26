@@ -18,7 +18,6 @@ package index
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 type Index interface {
@@ -30,27 +29,13 @@ type Index interface {
 
 type Option func(*index)
 
-func WithEntry(entry block.Entry) Option {
-	return func(i *index) {
-		i.stime = ceschema.Stime(entry)
-	}
-}
+func WithEntry(entry block.Entry) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithStime(stime int64) Option {
-	return func(i *index) {
-		i.stime = stime
-	}
-}
+func WithStime(stime int64) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 func NewIndex(offset int64, length int32, opts ...Option) Index {
-	i := &index{
-		offset: offset,
-		length: length,
-	}
-	for _, opt := range opts {
-		opt(i)
-	}
-	return i
+	_ = "STUB: not implemented"
+	return *new(Index)
 }
 
 type index struct {
@@ -62,18 +47,10 @@ type index struct {
 // Make sure index implements Index.
 var _ Index = (*index)(nil)
 
-func (i *index) StartOffset() int64 {
-	return i.offset
-}
+func (i *index) StartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (i *index) EndOffset() int64 {
-	return i.offset + int64(i.length)
-}
+func (i *index) EndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (i *index) Length() int32 {
-	return i.length
-}
+func (i *index) Length() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (i *index) Stime() int64 {
-	return i.stime
-}
+func (i *index) Stime() int64 { _ = "STUB: not implemented"; return 0 }

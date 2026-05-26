@@ -18,11 +18,8 @@ import (
 	"regexp"
 	"sync"
 
-	"github.com/pkg/errors"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -35,57 +32,20 @@ type replaceWithRegexAction struct {
 
 // NewReplaceWithRegexAction ["replace_with_regex", "key", "pattern", "value"].
 func NewReplaceWithRegexAction() action.Action {
-	return &replaceWithRegexAction{
-		CommonAction: action.CommonAction{
-			ActionName: "REPLACE_WITH_REGEX",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.All, arg.All},
-		},
-	}
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }
 
-func (a *replaceWithRegexAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args
-	a.ArgTypes = []common.Type{common.String, common.String, common.String}
-	return nil
-}
+func (a *replaceWithRegexAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *replaceWithRegexAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	originalValue, _ := args[0].(string)
-	value, _ := args[2].(string)
-	expr, _ := args[1].(string)
-	if expr != a.expr {
-		err = a.setPattern(expr)
-		if err != nil {
-			return err
-		}
-	}
-	newValue := a.getPattern().ReplaceAllString(originalValue, value)
-	return a.TargetArg.SetValue(ceCtx, newValue)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (a *replaceWithRegexAction) setPattern(expr string) error {
-	a.lock.Lock()
-	defer a.lock.Unlock()
-	if expr == a.expr {
-		return nil
-	}
-	p, err := regexp.Compile(expr)
-	if err != nil {
-		a.lock.Unlock()
-		return errors.Wrapf(err, "replace_with_regex arg pattern regex invalid")
-	}
-	a.pattern = p
-	a.expr = expr
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (a *replaceWithRegexAction) getPattern() *regexp.Regexp {
-	a.lock.RLock()
-	defer a.lock.RUnlock()
-	return a.pattern
-}
+func (a *replaceWithRegexAction) getPattern() *regexp.Regexp { _ = "STUB: not implemented"; return nil }

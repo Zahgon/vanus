@@ -22,15 +22,9 @@ const (
 	Index      uint16 = 0x7864 // ASCII of "dx" in little endian
 )
 
-func EntryType(entry block.Entry) uint16 {
-	return entry.GetUint16(EntryTypeOrdinal)
-}
+func EntryType(entry block.Entry) uint16 { _ = "STUB: not implemented"; return 0 }
 
-func SequenceNumber(entry block.Entry) int64 {
-	return entry.GetInt64(SequenceNumberOrdinal)
-}
+func SequenceNumber(entry block.Entry) int64 { _ = "STUB: not implemented"; return 0 }
 
 // Stime returns the value of stime field, which is a millisecond timestamp when the Entry will be written to Block.
-func Stime(entry block.Entry) int64 {
-	return entry.GetInt64(StimeOrdinal)
-}
+func Stime(entry block.Entry) int64 { _ = "STUB: not implemented"; return 0 }

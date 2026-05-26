@@ -52,39 +52,12 @@ type WAL struct {
 }
 
 func newWAL(wal *walog.WAL, stateStore *meta.SyncStore, startCompaction bool) *WAL {
-	w := &WAL{
-		WAL:        wal,
-		stateStore: stateStore,
-		nodes:      make(map[vanus.ID]bool),
-		barrier:    skiplist.New(skiplist.Int64),
-		compactC:   make(chan compactJob, defaultCompactJobBufferSize),
-		closeC:     make(chan struct{}),
-		doneC:      make(chan struct{}),
-	}
-
-	if startCompaction {
-		w.startCompaction()
-	}
-
-	return w
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (w *WAL) startCompaction() {
-	go w.runCompact()
-}
+func (w *WAL) startCompaction() { _ = "STUB: not implemented"; return }
 
-func (w *WAL) Close() {
-	w.WAL.Close()
+func (w *WAL) Close() { _ = "STUB: not implemented"; return }
 
-	go func() {
-		w.WAL.Wait()
-
-		w.closeMu.Lock()
-		close(w.closeC)
-		w.closeMu.Unlock()
-	}()
-}
-
-func (w *WAL) Wait() {
-	<-w.doneC
-}
+func (w *WAL) Wait() { _ = "STUB: not implemented"; return }

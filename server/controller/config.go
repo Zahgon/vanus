@@ -19,7 +19,7 @@ import (
 	"github.com/vanus-labs/vanus/pkg/observability"
 
 	// this project.
-	primitive "github.com/vanus-labs/vanus/pkg"
+
 	"github.com/vanus-labs/vanus/server/controller/eventbus"
 	"github.com/vanus-labs/vanus/server/controller/member"
 	"github.com/vanus-labs/vanus/server/controller/root"
@@ -44,59 +44,32 @@ type Config struct {
 }
 
 func (c *Config) GetClusterConfig() member.Config {
-	c.ClusterConfig.NodeName = c.Name
-	return c.ClusterConfig
+	_ = "STUB: not implemented"
+	return *new(member.Config)
 }
 
 func (c *Config) GetEventbusCtrlConfig() eventbus.Config {
-	return eventbus.Config{
-		IP:               c.IP,
-		Port:             c.Port,
-		KVStoreEndpoints: c.ClusterConfig.EtcdEndpoints,
-		KVKeyPrefix:      c.MetadataConfig.KeyPrefix,
-		Replicas:         c.Replicas,
-		Topology:         c.ClusterConfig.Topology,
-		SegmentCapacity:  c.SegmentCapacity,
-	}
+	_ = "STUB: not implemented"
+	return *new(eventbus.Config)
 }
 
 func (c *Config) GetSnowflakeConfig() root.Config {
-	return root.Config{
-		KVEndpoints: c.ClusterConfig.EtcdEndpoints,
-		KVPrefix:    c.MetadataConfig.KeyPrefix,
-	}
+	_ = "STUB: not implemented"
+	return *new(root.Config)
 }
 
-func (c *Config) GetControllerAddrs() []string {
-	addrs := make([]string, 0)
-	for _, v := range c.ClusterConfig.Topology {
-		addrs = append(addrs, v)
-	}
-	return addrs
-}
+func (c *Config) GetControllerAddrs() []string { _ = "STUB: not implemented"; return nil }
 
 type MetadataConfig struct {
 	KeyPrefix string `yaml:"key_prefix"`
 }
 
 func (c *Config) GetTriggerConfig() trigger.Config {
-	return trigger.Config{
-		Storage: primitive.KvStorageConfig{
-			KeyPrefix:  c.MetadataConfig.KeyPrefix,
-			ServerList: c.ClusterConfig.EtcdEndpoints,
-		},
-		SecretEncryptionSalt: c.SecretEncryptionSalt,
-		ControllerAddr:       c.GetControllerAddrs(),
-	}
+	_ = "STUB: not implemented"
+	return *new(trigger.Config)
 }
 
 func (c *Config) GetTenantConfig() tenant.Config {
-	return tenant.Config{
-		Storage: primitive.KvStorageConfig{
-			KeyPrefix:  c.MetadataConfig.KeyPrefix,
-			ServerList: c.ClusterConfig.EtcdEndpoints,
-		},
-		ControllerAddr:    c.GetControllerAddrs(),
-		NoCreateDefaultNs: c.NoCreateDefaultNs,
-	}
+	_ = "STUB: not implemented"
+	return *new(tenant.Config)
 }

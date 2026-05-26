@@ -17,19 +17,11 @@ package parse
 import (
 	// standard libraries.
 	"io"
-
-	// this project.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
-func IsWhitespace(c byte) bool {
-	switch c {
-	case ' ', '\t', '\n', '\r':
-		return true
-	}
-	return false
-}
+func IsWhitespace(c byte) bool { _ = "STUB: not implemented"; return false }
 
 func SkipWhitespace(r io.ByteReader) (int, byte, error) {
-	return bytes.Skip(r, IsWhitespace)
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }

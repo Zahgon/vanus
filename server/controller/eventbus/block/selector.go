@@ -15,12 +15,9 @@
 package block
 
 import (
-	"fmt"
-	"sort"
 	"sync"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 	"github.com/vanus-labs/vanus/server/controller/eventbus/server"
 )
 
@@ -42,10 +39,8 @@ type VolumeSelector interface {
 // NewVolumeRoundRobin an implementation of round-robin algorithm. Which need a callback function
 // for getting all server.Instance in the current cluster.
 func NewVolumeRoundRobin(f func() []server.Instance) VolumeSelector {
-	return &volumeRoundRobinSelector{
-		count:      0,
-		getVolumes: f,
-	}
+	_ = "STUB: not implemented"
+	return *new(VolumeSelector)
 }
 
 type volumeRoundRobinSelector struct {
@@ -62,50 +57,16 @@ type volumeRoundRobinSelector struct {
 // just does best effort of it. There is another advanced algorithm implementation such as
 // runtime-statistic-based-algorithm in the future.
 func (s *volumeRoundRobinSelector) Select(num int, size int64) []server.Instance {
-	instances := make([]server.Instance, 0)
-	if num == 0 || size == 0 {
-		return instances
-	}
-	s.mutex.Lock()
-	defer s.mutex.Unlock()
-
-	volumes := s.getVolumes()
-	if len(volumes) == 0 {
-		return instances
-	}
-	keys := make([]string, 0)
-	m := make(map[string]server.Instance)
-	for _, v := range volumes {
-		keys = append(keys, v.GetMeta().ID.Key())
-		m[v.GetMeta().ID.Key()] = v
-	}
-	sort.Slice(keys, func(i, j int) bool {
-		return keys[i] < keys[j]
-	})
-	for idx := 0; idx < num; idx++ {
-		instances = append(instances, m[keys[(s.count+int64(idx))%int64(len(keys))]])
-	}
-	log.Info().Str("instances", fmt.Sprintf("%v", instances)).
-		Msg("picked instances")
-	s.count++
-	return instances
-}
-
-func (s *volumeRoundRobinSelector) SelectByID(id vanus.ID) server.Instance {
-	s.mutex.Lock()
-	defer s.mutex.Unlock()
-
-	volumes := s.getVolumes()
-	for idx := range volumes {
-		if volumes[idx].ID() == id {
-			return volumes[idx]
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
+func (s *volumeRoundRobinSelector) SelectByID(id vanus.ID) server.Instance {
+	_ = "STUB: not implemented"
+	return *new(server.Instance)
+}
+
 func (s *volumeRoundRobinSelector) GetAllVolume() []server.Instance {
-	s.mutex.Lock()
-	defer s.mutex.Unlock()
-	return s.getVolumes()
+	_ = "STUB: not implemented"
+	return nil
 }

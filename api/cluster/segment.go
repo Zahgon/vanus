@@ -14,13 +14,16 @@ type segmentService struct {
 }
 
 func newSegmentService(cc *raw_client.Conn) SegmentService {
-	return &segmentService{client: raw_client.NewSegmentClient(cc)}
+	_ = "STUB: not implemented"
+	return *new(SegmentService)
 }
 
 func (es *segmentService) RawClient() ctrlpb.SegmentControllerClient {
-	return es.client
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.SegmentControllerClient)
 }
 
 func (es *segmentService) RegisterHeartbeat(ctx context.Context, interval time.Duration, reqFunc func() interface{}) error {
-	return raw_client.RegisterHeartbeat(ctx, interval, es.client, reqFunc)
+	_ = "STUB: not implemented"
+	return nil
 }

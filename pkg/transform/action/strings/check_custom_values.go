@@ -15,11 +15,8 @@
 package strings
 
 import (
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -30,39 +27,13 @@ type checkCustomValueAction struct {
 // NewCheckCustomValuesAction ["check_custom_values","sourceJsonPath", "customValue",
 // "targetJsonPath", "trueFlagReplacement", "falseFlagReplacement"].
 func NewCheckCustomValuesAction() action.Action {
-	return &checkCustomValueAction{
-		CommonAction: action.CommonAction{
-			ActionName: "CHECK_CUSTOM_VALUES",
-			FixedArgs: []arg.TypeList{
-				arg.EventList,
-				[]arg.Type{arg.Constant},
-				arg.EventList,
-				[]arg.Type{arg.Constant},
-				[]arg.Type{arg.Constant},
-			},
-		},
-	}
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }
 
-func (a *checkCustomValueAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[2]
-	a.Args = args[:2]
-	a.Args = append(a.Args, args[3:]...)
-	a.ArgTypes = []common.Type{common.String, common.String, common.Any, common.Any}
-	return nil
-}
+func (a *checkCustomValueAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *checkCustomValueAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	str, _ := args[0].(string)
-	customValue, _ := args[1].(string)
-	trueFlagReplacement := args[2]
-	falseFlagReplacement := args[3]
-	if strings.Contains(str, customValue) {
-		return a.TargetArg.SetValue(ceCtx, trueFlagReplacement)
-	}
-	return a.TargetArg.SetValue(ceCtx, falseFlagReplacement)
+	_ = "STUB: not implemented"
+	return nil
 }

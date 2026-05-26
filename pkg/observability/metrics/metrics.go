@@ -16,15 +16,8 @@ package metrics
 
 import (
 	"context"
-	"fmt"
-	"net/http"
-	"regexp"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/collectors"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 const (
@@ -32,114 +25,20 @@ const (
 )
 
 func Init(ctx context.Context, cfg Config, getCollectors func() []prometheus.Collector) {
-	if !cfg.Enable {
-		log.Info(ctx).Msg("metrics module has been disabled")
-		return
-	}
-	if getCollectors == nil {
-		log.Info(ctx).Msg("metrics module has been disabled due to empty collectors")
-		return
-	}
-	colls := getCollectors()
-	if len(colls) == 0 {
-		log.Info(ctx).Msg("metrics module has been disabled due to empty collectors")
-		return
-	}
-
-	reg := prometheus.NewRegistry()
-	reg.MustRegister(colls...)
-	http.Handle("/metrics", promhttp.HandlerFor(
-		reg,
-		promhttp.HandlerOpts{
-			EnableOpenMetrics: false,
-		},
-	))
-	go func() {
-		if err := http.ListenAndServe(fmt.Sprintf(":%d", cfg.GetPort()), nil); err != nil {
-			log.Error().Err(err).Msg("Metrics listen and serve failed.")
-		}
-	}()
-	log.Info().Int("port", cfg.GetPort()).Msg("metrics module started")
+	_ = "STUB: not implemented"
+	return
 }
 
-func GetControllerMetrics() []prometheus.Collector {
-	coll := []prometheus.Collector{
-		ControllerLeaderGaugeVec,
-		EventbusGauge,
-		EventbusUpdatedGauge,
-		EventbusDeletedGauge,
-		EventlogGaugeVec,
-		SegmentGaugeVec,
-		SegmentSizeGaugeVec,
-		SegmentCapacityGaugeVec,
-		SegmentEventNumberGaugeVec,
-		SegmentCreatedByCacheMissing,
-		SegmentCreatedByScaleTask,
-		SegmentDeletedCounterVec,
-		SubscriptionGauge,
-		SubscriptionTransformerGauge,
-		CtrlTriggerGauge,
-	}
-	return append(coll, getGoRuntimeMetrics()...)
-}
+func GetControllerMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }
 
-func GetGatewayMetrics() []prometheus.Collector {
-	coll := []prometheus.Collector{
-		GatewayEventReceivedCountVec,
-		// GatewayEventWriteLatencyHistogramVec,
-		GatewayEventWriteLatencySummaryVec,
-	}
-	return append(coll, getGoRuntimeMetrics()...)
-}
+func GetGatewayMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }
 
-func GetTriggerMetrics() []prometheus.Collector {
-	coll := []prometheus.Collector{
-		TriggerGauge,
-		TriggerPullEventCounter,
-		TriggerFilterCostSecond,
-		TriggerTransformCostSecond,
-		TriggerFilterMatchEventCounter,
-		TriggerFilterMatchRetryEventCounter,
-		TriggerRetryEventCounter,
-		TriggerRetryEventAppendSecond,
-		TriggerDeadLetterEventCounter,
-		TriggerDeadLetterEventAppendSecond,
-		TriggerPushEventCounter,
-		TriggerPushEventTime,
-	}
-	return append(coll, getGoRuntimeMetrics()...)
-}
+// GatewayEventWriteLatencyHistogramVec,
 
-func GetTimerMetrics() []prometheus.Collector {
-	coll := []prometheus.Collector{
-		TimingWheelTickGauge,
-		TimingWheelSizeGauge,
-		TimingWheelLayersGauge,
-		TimerPushEventTPSCounterVec,
-		TimerDeliverEventTPSCounterVec,
-		TimerScheduledEventDelayTime,
-		TimerPushEventTime,
-		TimerDeliverEventTime,
-	}
-	return append(coll, getGoRuntimeMetrics()...)
-}
+func GetTriggerMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }
 
-func GetSegmentServerMetrics() []prometheus.Collector {
-	coll := []prometheus.Collector{
-		WriteThroughputCounterVec,
-		WriteTPSCounterVec,
-		ReadTPSCounterVec,
-		ReadThroughputCounterVec,
-	}
-	return append(coll, getGoRuntimeMetrics()...)
-}
+func GetTimerMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }
 
-func getGoRuntimeMetrics() []prometheus.Collector {
-	return []prometheus.Collector{
-		collectors.NewBuildInfoCollector(),
-		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
-		collectors.NewGoCollector(collectors.WithGoCollectorRuntimeMetrics(
-			collectors.GoRuntimeMetricsRule{Matcher: regexp.MustCompile("/.*")},
-		)),
-	}
-}
+func GetSegmentServerMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }
+
+func getGoRuntimeMetrics() []prometheus.Collector { _ = "STUB: not implemented"; return nil }

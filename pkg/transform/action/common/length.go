@@ -16,17 +16,7 @@ package common
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewLengthAction ["length", targetPath, value].
-func NewLengthAction() action.Action {
-	a := &action.FunctionAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "LENGTH",
-		FixedArgs:  []arg.TypeList{arg.EventList, arg.All},
-		Fn:         function.LengthFunction,
-	}
-	return a
-}
+func NewLengthAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

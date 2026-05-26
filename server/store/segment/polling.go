@@ -18,7 +18,6 @@ package segment
 import (
 	"context"
 	"sync"
-	"time"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
@@ -36,69 +35,27 @@ type pollingMgr struct {
 	blockPollingMap sync.Map
 }
 
-func (p *pollingMgr) Destroy() {
-	p.blockPollingMap.Range(func(key, value interface{}) bool {
-		value.(*blockPolling).destroy()
-		p.blockPollingMap.Delete(key)
-		return true
-	})
-}
+func (p *pollingMgr) Destroy() { _ = "STUB: not implemented"; return }
 
 func (p *pollingMgr) Add(ctx context.Context, blockID vanus.ID) <-chan struct{} {
-	v, exist := p.blockPollingMap.Load(blockID)
-	if !exist {
-		bp := newBlockPolling()
-		actual, loaded := p.blockPollingMap.LoadOrStore(blockID, bp)
-		if loaded {
-			bp.destroy()
-		}
-		v = actual
-	}
-	bp, _ := v.(*blockPolling)
-	return bp.add(ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (p *pollingMgr) NewMessageArrived(blockID vanus.ID) {
-	v, exist := p.blockPollingMap.Load(blockID)
-	if !exist {
-		return
-	}
-	v.(*blockPolling).messageArrived()
-}
+func (p *pollingMgr) NewMessageArrived(blockID vanus.ID) { _ = "STUB: not implemented"; return }
 
 type blockPolling struct {
 	mutex sync.RWMutex
 	ch    chan struct{}
 }
 
-func newBlockPolling() *blockPolling {
-	bp := &blockPolling{
-		ch: make(chan struct{}),
-	}
-	return bp
-}
+func newBlockPolling() *blockPolling { _ = "STUB: not implemented"; return nil }
 
 func (bp *blockPolling) add(ctx context.Context) <-chan struct{} {
-	bp.mutex.RLock()
-	defer bp.mutex.RUnlock()
-
-	t, ok := ctx.Deadline()
-	if !ok {
-		return nil
-	}
-	if time.Since(t) >= 0 {
-		return nil
-	}
-	return bp.ch
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (bp *blockPolling) messageArrived() {
-	bp.mutex.Lock()
-	defer bp.mutex.Unlock()
-	close(bp.ch)
-	bp.ch = make(chan struct{})
-}
+func (bp *blockPolling) messageArrived() { _ = "STUB: not implemented"; return }
 
-func (bp *blockPolling) destroy() {
-	close(bp.ch)
-}
+func (bp *blockPolling) destroy() { _ = "STUB: not implemented"; return }

@@ -15,9 +15,6 @@
 package typesystem
 
 import (
-	// standard libraries.
-	"encoding/binary"
-
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
 )
@@ -56,17 +53,11 @@ type literalValue struct {
 // Make sure literalValue implements block.ValueMarshaler.
 var _ block.ValueMarshaler = (*literalValue)(nil)
 
-func (lv *literalValue) Size() int {
-	return len(lv.rawValue)
-}
+func (lv *literalValue) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (lv *literalValue) Value() []byte {
-	return lv.rawValue
-}
+func (lv *literalValue) Value() []byte { _ = "STUB: not implemented"; return nil }
 
-func (lv *literalValue) MarshalTo(buf []byte) int {
-	return copy(buf, lv.rawValue)
-}
+func (lv *literalValue) MarshalTo(buf []byte) int { _ = "STUB: not implemented"; return 0 }
 
 type integerValue struct {
 	value int32
@@ -75,25 +66,13 @@ type integerValue struct {
 // Make sure integerValue implements block.ValueMarshaler.
 var _ block.ValueMarshaler = (*integerValue)(nil)
 
-func newIntegerValue(value int32) *integerValue {
-	return &integerValue{value}
-}
+func newIntegerValue(value int32) *integerValue { _ = "STUB: not implemented"; return nil }
 
-func (iv *integerValue) Size() int {
-	return integerValueSize
-}
+func (iv *integerValue) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (iv *integerValue) Value() []byte {
-	b := make([]byte, integerValueSize)
-	iv.MarshalTo(b)
-	return b
-}
+func (iv *integerValue) Value() []byte { _ = "STUB: not implemented"; return nil }
 
-func (iv *integerValue) MarshalTo(buf []byte) int {
-	binary.LittleEndian.PutUint32(buf, uint32(iv.value))
-	buf[4] = AttrTypeInteger
-	return integerValueSize
-}
+func (iv *integerValue) MarshalTo(buf []byte) int { _ = "STUB: not implemented"; return 0 }
 
 type bytesValue[T string | []byte] struct {
 	value    T
@@ -103,38 +82,19 @@ type bytesValue[T string | []byte] struct {
 // Make sure bytesValue implements block.ValueMarshaler.
 var _ block.ValueMarshaler = (*bytesValue[string])(nil)
 
-func (bv *bytesValue[T]) Size() int {
-	return len(bv.value) + 1
-}
+func (bv *bytesValue[T]) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (bv *bytesValue[T]) Value() []byte {
-	b := make([]byte, len(bv.value)+1)
-	bv.MarshalTo(b)
-	return b
-}
+func (bv *bytesValue[T]) Value() []byte { _ = "STUB: not implemented"; return nil }
 
-func (bv *bytesValue[T]) MarshalTo(buf []byte) int {
-	n := len(bv.value)
-	copy(buf, bv.value)
-	buf[n] = bv.attrType
-	return n + 1
-}
+func (bv *bytesValue[T]) MarshalTo(buf []byte) int { _ = "STUB: not implemented"; return 0 }
 
-func newStringValue(value string) *bytesValue[string] {
-	return &bytesValue[string]{value, AttrTypeString}
-}
+func newStringValue(value string) *bytesValue[string] { _ = "STUB: not implemented"; return nil }
 
-func newBytesValue(value []byte) *bytesValue[[]byte] {
-	return &bytesValue[[]byte]{value, AttrTypeBytes}
-}
+func newBytesValue(value []byte) *bytesValue[[]byte] { _ = "STUB: not implemented"; return nil }
 
-func newURIValue(value string) *bytesValue[string] {
-	return &bytesValue[string]{value, AttrTypeURI}
-}
+func newURIValue(value string) *bytesValue[string] { _ = "STUB: not implemented"; return nil }
 
-func newURIRefValue(value string) *bytesValue[string] {
-	return &bytesValue[string]{value, AttrTypeURIRef}
-}
+func newURIRefValue(value string) *bytesValue[string] { _ = "STUB: not implemented"; return nil }
 
 type timestampValue struct {
 	seconds int64
@@ -142,61 +102,60 @@ type timestampValue struct {
 }
 
 func newTimestampValue(seconds int64, nanos int32) *timestampValue {
-	return &timestampValue{seconds, nanos}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Make sure timestampValue implements block.ValueMarshaler.
 var _ block.ValueMarshaler = (*timestampValue)(nil)
 
-func (tv *timestampValue) Size() int {
-	return timestampValueSize
-}
+func (tv *timestampValue) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (tv *timestampValue) Value() []byte {
-	b := make([]byte, timestampValueSize)
-	tv.MarshalTo(b)
-	return b
-}
+func (tv *timestampValue) Value() []byte { _ = "STUB: not implemented"; return nil }
 
-func (tv *timestampValue) MarshalTo(buf []byte) int {
-	binary.LittleEndian.PutUint64(buf, uint64(tv.seconds))
-	binary.LittleEndian.PutUint32(buf[8:], uint32(tv.nanos))
-	buf[12] = AttrTypeTimestamp
-	return timestampValueSize
-}
+func (tv *timestampValue) MarshalTo(buf []byte) int { _ = "STUB: not implemented"; return 0 }
 
 func NewNoneValue() block.ValueMarshaler {
-	return noneValue
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewFalseValue() block.ValueMarshaler {
-	return falseValue
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewTrueValue() block.ValueMarshaler {
-	return trueValue
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewIntegerValue(integer int32) block.ValueMarshaler {
-	return newIntegerValue(integer)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewStringValue(str string) block.ValueMarshaler {
-	return newStringValue(str)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewBytesValue(bytes []byte) block.ValueMarshaler {
-	return newBytesValue(bytes)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewURIValue(uri string) block.ValueMarshaler {
-	return newURIValue(uri)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewURIRefValue(uriRef string) block.ValueMarshaler {
-	return newURIRefValue(uriRef)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }
 
 func NewTimestampValue(secs int64, nanos int32) block.ValueMarshaler {
-	return newTimestampValue(secs, nanos)
+	_ = "STUB: not implemented"
+	return *new(block.ValueMarshaler)
 }

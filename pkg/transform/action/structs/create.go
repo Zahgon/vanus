@@ -15,11 +15,8 @@
 package structs
 
 import (
-	"fmt"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -28,30 +25,11 @@ type createAction struct {
 }
 
 // NewCreateAction ["create", "path", value].
-func NewCreateAction() action.Action {
-	return &createAction{
-		action.CommonAction{
-			ActionName: "CREATE",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.All},
-		},
-	}
-}
+func NewCreateAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *createAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args[1:]
-	a.ArgTypes = []common.Type{common.Any}
-	return nil
-}
+func (a *createAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *createAction) Execute(ceCtx *context.EventContext) error {
-	v, _ := a.TargetArg.Evaluate(ceCtx)
-	if v != nil {
-		return fmt.Errorf("key %s exist", a.TargetArg.Original())
-	}
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	return a.TargetArg.SetValue(ceCtx, args[0])
+	_ = "STUB: not implemented"
+	return nil
 }

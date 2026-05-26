@@ -15,14 +15,8 @@
 package array
 
 import (
-	"errors"
-	"fmt"
-	"strconv"
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -32,44 +26,11 @@ type unfoldArrayAction struct {
 	targetPathPrefix string
 }
 
-func NewUnfoldArrayAction() action.Action {
-	a := &unfoldArrayAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "UNFOLD_ARRAY",
-		FixedArgs:  []arg.TypeList{[]arg.Type{arg.EventData}, []arg.Type{arg.EventData}},
-	}
-	return a
-}
+func NewUnfoldArrayAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *unfoldArrayAction) Init(args []arg.Arg) error {
-	a.targetPathPrefix = args[1].Original()
-	a.Args = args[:1]
-	a.ArgTypes = []common.Type{common.Array}
-	return nil
-}
+func (a *unfoldArrayAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *unfoldArrayAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	arrayValue, _ := args[0].([]interface{})
-	errs := make([]string, 0, len(arrayValue))
-	for i, v := range arrayValue {
-		argument := a.targetPathPrefix + "-" + strconv.Itoa(i)
-		targetArg, err := arg.NewArg(argument)
-		if err != nil {
-			errs = append(errs, fmt.Sprintf("failed to NewArg, arg: %v, err: %v", argument, err))
-			continue
-		}
-		err = targetArg.SetValue(ceCtx, v)
-		if err != nil {
-			errs = append(errs, fmt.Sprintf("failed to SetValue, v: %v, err: %v", v, err))
-			continue
-		}
-	}
-	if len(errs) > 0 {
-		return errors.New(strings.Join(errs, ";"))
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

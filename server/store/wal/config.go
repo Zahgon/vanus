@@ -42,83 +42,31 @@ type config struct {
 }
 
 func (cfg *config) segmentedFileOptions() []segmentedfile.Option {
-	opts := []segmentedfile.Option{segmentedfile.WithExtension(logFileExt)}
-	if cfg.fileSize != 0 {
-		opts = append(opts, segmentedfile.WithSegmentSize(cfg.fileSize))
-	}
-	return opts
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cfg *config) streamSchedulerOptions() []stream.Option {
-	opts := []stream.Option{stream.WithCallbackParallel(1)}
-	if cfg.blockSize != 0 {
-		opts = append(opts, stream.WithFlushBatchSize(cfg.blockSize))
-	}
-	if cfg.flushDelayTime != 0 {
-		opts = append(opts, stream.WithFlushDelayTime(cfg.flushDelayTime))
-	}
-	return opts
-}
+func (cfg *config) streamSchedulerOptions() []stream.Option { _ = "STUB: not implemented"; return nil }
 
-func defaultConfig() config {
-	cfg := config{
-		blockSize: defaultBlockSize,
-		fileSize:  defaultFileSize,
-	}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	if cfg.engine == nil {
-		cfg.engine = defaultIOEngine()
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
 
-func FromPosition(pos int64) Option {
-	return func(cfg *config) {
-		cfg.pos = pos
-	}
-}
+func FromPosition(pos int64) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 func WithRecoveryCallback(cb OnEntryCallback) Option {
-	return func(cfg *config) {
-		cfg.cb = cb
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
-func WithBlockSize(blockSize int) Option {
-	return func(cfg *config) {
-		cfg.blockSize = blockSize
-	}
-}
+func WithBlockSize(blockSize int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithFileSize(fileSize int64) Option {
-	return func(cfg *config) {
-		cfg.fileSize = fileSize
-	}
-}
+func WithFileSize(fileSize int64) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithFlushDelayTime(d time.Duration) Option {
-	return func(cfg *config) {
-		cfg.flushDelayTime = d
-	}
-}
+func WithFlushDelayTime(d time.Duration) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithIOEngine(engine ioengine.Interface) Option {
-	return func(cfg *config) {
-		cfg.engine = engine
-	}
-}
+func WithIOEngine(engine ioengine.Interface) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithReadOnly() Option {
-	return func(cfg *config) {
-		cfg.readOnly = true
-	}
-}
+func WithReadOnly() Option { _ = "STUB: not implemented"; return *new(Option) }

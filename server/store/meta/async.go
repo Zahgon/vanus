@@ -41,182 +41,51 @@ type AsyncStore struct {
 }
 
 func newAsyncStore(wal *walog.WAL, committed *skiplist.SkipList, version, snapshot int64) *AsyncStore {
-	s := &AsyncStore{
-		store: store{
-			committed: committed,
-			version:   version,
-			wal:       wal,
-			snapshot:  snapshot,
-			marshaler: defaultCodec,
-		},
-		pending: skiplist.New(skiplist.Bytes),
-		commitC: make(chan struct{}, 1),
-		closeC:  make(chan struct{}),
-		doneC:   make(chan struct{}),
-	}
-
-	go s.runCommit()
-
-	return s
-}
-
-func (s *AsyncStore) Close() {
-	s.mu.Lock()
-	close(s.closeC)
-	s.mu.Unlock()
-
-	<-s.doneC
-
-	// Close WAL.
-	s.wal.Close()
-	s.wal.Wait()
-}
-
-func (s *AsyncStore) Load(key []byte) (interface{}, bool) {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	if v, ok := s.pending.GetValue(key); ok {
-		if v == DeletedMark {
-			return nil, false
-		}
-		return v, true
-	}
-	return s.load(key)
-}
-
-func (s *AsyncStore) Store(_ context.Context, key []byte, value interface{}) {
-	_ = s.set(KVRange(key, value))
-}
-
-func (s *AsyncStore) BatchStore(_ context.Context, kvs Ranger) {
-	_ = s.set(kvs)
-}
-
-func (s *AsyncStore) Delete(key []byte) {
-	_ = s.set(KVRange(key, DeletedMark))
-}
-
-func (s *AsyncStore) BatchDelete(keys [][]byte) {
-	_ = s.set(&deleteRange{keys})
-}
-
-func (s *AsyncStore) set(kvs Ranger) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	select {
-	case <-s.closeC:
-		return ErrClosed
-	default:
-	}
-
-	err := kvs.Range(func(key []byte, value interface{}) error {
-		set(s.pending, key, value)
-		return nil
-	})
-	if err != nil {
-		return err
-	}
-
-	s.tryCommit()
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (s *AsyncStore) tryCommit() {
-	if s.needCommit() {
-		select {
-		case s.commitC <- struct{}{}:
-		default:
-		}
-	}
+func (s *AsyncStore) Close() { _ = "STUB: not implemented"; return }
+
+// Close WAL.
+
+func (s *AsyncStore) Load(key []byte) (interface{}, bool) {
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
+func (s *AsyncStore) Store(_ context.Context, key []byte, value interface{}) {
+	_ = "STUB: not implemented"
+	return
+}
+
+func (s *AsyncStore) BatchStore(_ context.Context, kvs Ranger) { _ = "STUB: not implemented"; return }
+
+func (s *AsyncStore) Delete(key []byte) { _ = "STUB: not implemented"; return }
+
+func (s *AsyncStore) BatchDelete(keys [][]byte) { _ = "STUB: not implemented"; return }
+
+func (s *AsyncStore) set(kvs Ranger) error { _ = "STUB: not implemented"; return nil }
+
+func (s *AsyncStore) tryCommit() { _ = "STUB: not implemented"; return }
+
 func (s *AsyncStore) needCommit() bool {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): commit condition
 	return false
 }
 
-func (s *AsyncStore) runCommit() {
-	ticker := time.NewTicker(runCommitInterval)
-	defer func() {
-		ticker.Stop()
-		s.commit()
-		close(s.doneC)
-	}()
+func (s *AsyncStore) runCommit() { _ = "STUB: not implemented"; return }
 
-	for {
-		select {
-		case <-s.closeC:
-			return
-		case <-s.commitC:
-		case <-ticker.C:
-		}
-		s.commit()
-	}
-}
+func (s *AsyncStore) commit() { _ = "STUB: not implemented"; return }
 
-func (s *AsyncStore) commit() {
-	ctx := context.Background()
-	defer s.tryCreateSnapshot()
+// Marshal changed data.
 
-	s.mu.Lock()
+// Update state.
 
-	if s.pending.Len() == 0 {
-		s.mu.Unlock()
-		return
-	}
-
-	// Marshal changed data.
-	data, err := s.marshaler.Marshal(SkiplistRange(s.pending))
-	if err != nil {
-		panic(err)
-	}
-
-	// Update state.
-	merge(s.committed, s.pending)
-	s.pending.Init()
-
-	s.mu.Unlock()
-
-	// Write WAL.
-	r, err := walog.DirectAppendOne(ctx, s.wal, data)
-	if err != nil {
-		panic(err)
-	}
-
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	s.version = r.EO
-}
+// Write WAL.
 
 func RecoverAsyncStore(ctx context.Context, dir string, opts ...walog.Option) (*AsyncStore, error) {
-	committed, snapshot, err := recoverLatestSnapshot(ctx, dir, defaultCodec)
-	if err != nil {
-		return nil, err
-	}
-
-	version := snapshot
-	opts = append([]walog.Option{
-		walog.FromPosition(snapshot),
-		walog.WithRecoveryCallback(func(data []byte, r walog.Range) error {
-			m := skiplist.New(skiplist.Bytes)
-			err2 := defaultCodec.Unmarshal(data, func(key []byte, value interface{}) error {
-				m.Set(key, value)
-				return nil
-			})
-			if err2 != nil {
-				return err2
-			}
-			merge(committed, m)
-			version = r.EO
-			return nil
-		}),
-	}, opts...)
-	wal, err := walog.Open(ctx, dir, opts...)
-	if err != nil {
-		return nil, err
-	}
-
-	return newAsyncStore(wal, committed, version, snapshot), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

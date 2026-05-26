@@ -14,16 +14,10 @@
 
 package text
 
-import (
-	// standard libraries.
-	stdbytes "bytes"
-
+import ( // standard libraries.
 	// third-party libraries.
-	"github.com/ohler55/ojg/jp"
-
 	// this project.
 	"github.com/vanus-labs/vanus/lib/bytes"
-	"github.com/vanus-labs/vanus/pkg/template"
 )
 
 const escapePlan = "" +
@@ -36,77 +30,11 @@ const escapePlan = "" +
 	`................................` + // 0xc0
 	`................................` //  0xe0
 
-func parse(text string) ([]templateSegment, error) {
-	bs := bytes.UnsafeFromString(text)
+func parse(text string) ([]templateSegment, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	var segments []templateSegment
-	var buf stdbytes.Buffer
-	var i, start int
-
-	lazyAppend := func() {
-		if start >= i {
-			return
-		}
-		s := bytes.UnsafeSlice(bs, start, i)
-		buf.Write(s)
-	}
-	packText := func() {
-		lazyAppend()
-		if buf.Len() == 0 {
-			return
-		}
-		segments = append(segments, &textSegment{
-			text: bytes.Clone(buf.Bytes()),
-		})
-		buf.Reset()
-	}
-	advance := func(n int) {
-		i += n
-	}
-	next := func(n int) {
-		advance(n)
-		start = i
-	}
-
-	n := len(bs)
-	for i < n {
-		b := bytes.UnsafeAt(bs, i)
-		switch b {
-		case '\\':
-			lazyAppend()
-			s := stdbytes.NewReader(bytes.UnsafeSlice(bs, i+1, n))
-			err := bytes.ConsumeEscaped(s, &buf, escapePlan)
-			if err != nil {
-				return nil, err
-			}
-			next(n - i - s.Len())
-		case '<':
-			packText()
-			s := bytes.NewMarkScanner(bytes.UnsafeSlice(bs, i+1, n))
-			segment, err := expectVariable(s)
-			if err != nil {
-				return nil, err
-			}
-			segments = append(segments, segment)
-			next(s.Mark(0) + 1)
-		default:
-			advance(1)
-		}
-	}
-
-	i = n // maybe unnecessary?
-	packText()
-
-	return segments, nil
-}
+// maybe unnecessary?
 
 func expectVariable(s *bytes.MarkScanner) (templateSegment, error) {
-	original, path, err := template.ExpectVariable(s)
-	if err != nil {
-		return nil, err
-	}
-	if path != nil {
-		return &jsonPathSegment{path: jp.MustParse(original)}, nil
-	}
-	return &variableSegment{name: string(original)}, nil
+	_ = "STUB: not implemented"
+	return *new(templateSegment), nil
 }

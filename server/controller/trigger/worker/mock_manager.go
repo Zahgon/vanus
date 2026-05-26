@@ -11,7 +11,6 @@ package worker
 
 import (
 	context "context"
-	reflect "reflect"
 
 	metadata "github.com/vanus-labs/vanus/server/controller/trigger/metadata"
 	gomock "go.uber.org/mock/gomock"
@@ -29,119 +28,92 @@ type MockManagerMockRecorder struct {
 }
 
 // NewMockManager creates a new mock instance.
-func NewMockManager(ctrl *gomock.Controller) *MockManager {
-	mock := &MockManager{ctrl: ctrl}
-	mock.recorder = &MockManagerMockRecorder{mock}
-	return mock
-}
+func NewMockManager(ctrl *gomock.Controller) *MockManager { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockManager) EXPECT() *MockManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddTriggerWorker mocks base method.
+	return nil
 }
 
-// AddTriggerWorker mocks base method.
 func (m *MockManager) AddTriggerWorker(ctx context.Context, addr string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddTriggerWorker", ctx, addr)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddTriggerWorker indicates an expected call of AddTriggerWorker.
 func (mr *MockManagerMockRecorder) AddTriggerWorker(ctx, addr any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddTriggerWorker", reflect.TypeOf((*MockManager)(nil).AddTriggerWorker), ctx, addr)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetActiveRunningTriggerWorker mocks base method.
 func (m *MockManager) GetActiveRunningTriggerWorker() []metadata.TriggerWorkerInfo {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetActiveRunningTriggerWorker")
-	ret0, _ := ret[0].([]metadata.TriggerWorkerInfo)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetActiveRunningTriggerWorker indicates an expected call of GetActiveRunningTriggerWorker.
 func (mr *MockManagerMockRecorder) GetActiveRunningTriggerWorker() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetActiveRunningTriggerWorker", reflect.TypeOf((*MockManager)(nil).GetActiveRunningTriggerWorker))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetTriggerWorker mocks base method.
 func (m *MockManager) GetTriggerWorker(addr string) TriggerWorker {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTriggerWorker", addr)
-	ret0, _ := ret[0].(TriggerWorker)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(TriggerWorker)
 }
 
 // GetTriggerWorker indicates an expected call of GetTriggerWorker.
 func (mr *MockManagerMockRecorder) GetTriggerWorker(addr any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTriggerWorker", reflect.TypeOf((*MockManager)(nil).GetTriggerWorker), addr)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
-func (m *MockManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoveTriggerWorker mocks base method.
 func (m *MockManager) RemoveTriggerWorker(ctx context.Context, addr string) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "RemoveTriggerWorker", ctx, addr)
+	_ = "STUB: not implemented"
+	return
 }
 
 // RemoveTriggerWorker indicates an expected call of RemoveTriggerWorker.
 func (mr *MockManagerMockRecorder) RemoveTriggerWorker(ctx, addr any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveTriggerWorker", reflect.TypeOf((*MockManager)(nil).RemoveTriggerWorker), ctx, addr)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
-func (m *MockManager) Start() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Start")
-}
+func (m *MockManager) Start() { _ = "STUB: not implemented"; return }
 
 // Start indicates an expected call of Start.
-func (mr *MockManagerMockRecorder) Start() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockManager)(nil).Start))
-}
+func (mr *MockManagerMockRecorder) Start() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Stop mocks base method.
-func (m *MockManager) Stop() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Stop")
-}
+func (m *MockManager) Stop() { _ = "STUB: not implemented"; return }
 
 // Stop indicates an expected call of Stop.
-func (mr *MockManagerMockRecorder) Stop() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockManager)(nil).Stop))
-}
+func (mr *MockManagerMockRecorder) Stop() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // UpdateTriggerWorkerInfo mocks base method.
 func (m *MockManager) UpdateTriggerWorkerInfo(ctx context.Context, addr string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateTriggerWorkerInfo", ctx, addr)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateTriggerWorkerInfo indicates an expected call of UpdateTriggerWorkerInfo.
 func (mr *MockManagerMockRecorder) UpdateTriggerWorkerInfo(ctx, addr any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateTriggerWorkerInfo", reflect.TypeOf((*MockManager)(nil).UpdateTriggerWorkerInfo), ctx, addr)
+	_ = "STUB: not implemented"
+	return nil
 }

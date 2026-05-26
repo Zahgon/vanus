@@ -11,7 +11,6 @@ package segment
 
 import (
 	context "context"
-	reflect "reflect"
 
 	meta "github.com/vanus-labs/vanus/api/meta"
 	vsr "github.com/vanus-labs/vanus/api/vsr"
@@ -32,139 +31,95 @@ type MockReplicaMockRecorder struct {
 }
 
 // NewMockReplica creates a new mock instance.
-func NewMockReplica(ctrl *gomock.Controller) *MockReplica {
-	mock := &MockReplica{ctrl: ctrl}
-	mock.recorder = &MockReplicaMockRecorder{mock}
-	return mock
-}
+func NewMockReplica(ctrl *gomock.Controller) *MockReplica { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockReplica) EXPECT() *MockReplicaMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Append mocks base method.
+	return nil
 }
 
-// Append mocks base method.
 func (m *MockReplica) Append(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Append", ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // Append indicates an expected call of Append.
 func (mr *MockReplicaMockRecorder) Append(ctx, entries, cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Append", reflect.TypeOf((*MockReplica)(nil).Append), ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Bootstrap mocks base method.
 func (m *MockReplica) Bootstrap(ctx context.Context, blocks []block0.Peer) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Bootstrap", ctx, blocks)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Bootstrap indicates an expected call of Bootstrap.
 func (mr *MockReplicaMockRecorder) Bootstrap(ctx, blocks any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Bootstrap", reflect.TypeOf((*MockReplica)(nil).Bootstrap), ctx, blocks)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Close mocks base method.
-func (m *MockReplica) Close(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockReplica) Close(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Close indicates an expected call of Close.
 func (mr *MockReplicaMockRecorder) Close(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockReplica)(nil).Close), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Delete mocks base method.
-func (m *MockReplica) Delete(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Delete", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockReplica) Delete(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Delete indicates an expected call of Delete.
 func (mr *MockReplicaMockRecorder) Delete(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockReplica)(nil).Delete), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ID mocks base method.
-func (m *MockReplica) ID() vsr.ID {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ID")
-	ret0, _ := ret[0].(vsr.ID)
-	return ret0
-}
+func (m *MockReplica) ID() vsr.ID { _ = "STUB: not implemented"; return *new(vsr.ID) }
 
 // ID indicates an expected call of ID.
-func (mr *MockReplicaMockRecorder) ID() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ID", reflect.TypeOf((*MockReplica)(nil).ID))
-}
+func (mr *MockReplicaMockRecorder) ID() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // IDStr mocks base method.
-func (m *MockReplica) IDStr() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IDStr")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockReplica) IDStr() string { _ = "STUB: not implemented"; return "" }
 
 // IDStr indicates an expected call of IDStr.
-func (mr *MockReplicaMockRecorder) IDStr() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IDStr", reflect.TypeOf((*MockReplica)(nil).IDStr))
-}
+func (mr *MockReplicaMockRecorder) IDStr() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Read mocks base method.
 func (m *MockReplica) Read(ctx context.Context, seq int64, num int) ([]block.Entry, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Read", ctx, seq, num)
-	ret0, _ := ret[0].([]block.Entry)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Read indicates an expected call of Read.
 func (mr *MockReplicaMockRecorder) Read(ctx, seq, num any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Read", reflect.TypeOf((*MockReplica)(nil).Read), ctx, seq, num)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Seek mocks base method.
 func (m *MockReplica) Seek(ctx context.Context, index int64, key block.Entry, flag block.SeekKeyFlag) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Seek", ctx, index, key, flag)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Seek indicates an expected call of Seek.
 func (mr *MockReplicaMockRecorder) Seek(ctx, index, key, flag any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Seek", reflect.TypeOf((*MockReplica)(nil).Seek), ctx, index, key, flag)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Status mocks base method.
-func (m *MockReplica) Status() *meta.SegmentHealthInfo {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Status")
-	ret0, _ := ret[0].(*meta.SegmentHealthInfo)
-	return ret0
-}
+func (m *MockReplica) Status() *meta.SegmentHealthInfo { _ = "STUB: not implemented"; return nil }
 
 // Status indicates an expected call of Status.
-func (mr *MockReplicaMockRecorder) Status() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Status", reflect.TypeOf((*MockReplica)(nil).Status))
-}
+func (mr *MockReplicaMockRecorder) Status() *gomock.Call { _ = "STUB: not implemented"; return nil }

@@ -15,41 +15,18 @@
 package rafttest
 
 import (
-	"fmt"
-	"math"
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
-
-	"github.com/vanus-labs/vanus/pkg/raft"
 )
 
 func (env *InteractionEnv) handleRaftLog(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	return env.RaftLog(idx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RaftLog pretty prints the raft log to the output buffer.
-func (env *InteractionEnv) RaftLog(idx int) error {
-	s := env.Nodes[idx].Storage
-	fi, err := s.FirstIndex()
-	if err != nil {
-		return err
-	}
-	li, err := s.LastIndex()
-	if err != nil {
-		return err
-	}
-	if li < fi {
-		// TODO(tbg): this is what MemoryStorage returns, but unclear if it's
-		// the "correct" thing to do.
-		fmt.Fprintf(env.Output, "log is empty: first index=%d, last index=%d", fi, li)
-		return nil
-	}
-	ents, err := s.Entries(fi, li+1, math.MaxUint64)
-	if err != nil {
-		return err
-	}
-	env.Output.WriteString(raft.DescribeEntries(ents, defaultEntryFormatter))
-	return err
-}
+func (env *InteractionEnv) RaftLog(idx int) error { _ = "STUB: not implemented"; return nil }
+
+// TODO(tbg): this is what MemoryStorage returns, but unclear if it's
+// the "correct" thing to do.

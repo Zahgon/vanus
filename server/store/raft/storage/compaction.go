@@ -17,16 +17,11 @@ package storage
 import (
 	// standard libraries.
 	"context"
-	"encoding/binary"
 	"errors"
-	"fmt"
 	"time"
 
 	// first-party libraries.
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
-	"github.com/vanus-labs/vanus/pkg/raft"
-	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/meta"
@@ -43,87 +38,37 @@ var ErrClosed = errors.New("WAL: closed")
 // Compact discards all log entries prior to compactIndex.
 // It is the application's responsibility to not attempt to compact an index greater than raftLog.applied.
 func (s *Storage) Compact(ctx context.Context, i uint64) error {
-	ci := s.compactedIndex()
-	li := s.lastStableIndex()
-	if i <= ci {
-		log.Warn(ctx).
-			Stringer("node_id", s.nodeID).
-			Uint64("to_compact", i).
-			Uint64("compacted_index", ci).
-			Msg("raft log has been compacted")
-		return raft.ErrCompacted
-	}
-	if i > li {
-		log.Error(ctx).
-			Stringer("node_id", s.nodeID).
-			Uint64("to_compact", i).
-			Uint64("last_index", li).
-			Msg("compactedIndex is out of bound lastIndex")
-		// FIXME(james.yin): error
-		return raft.ErrCompacted
-	}
-
-	sz := i - ci
-	remaining := s.length() - sz
-	sr := s.stableLength() - sz // stable remaining
-
-	ents := make([]raftpb.Entry, 1, 1+remaining)
-	offs := make([]int64, 1, 1+sr)
-
-	// Save compact information to dummy entry.
-	ents[0].Index = s.ents[sz].Index
-	ents[0].Term = s.ents[sz].Term
-
-	// Copy remained entries.
-	if remaining != 0 {
-		ents = append(ents, s.ents[sz+1:]...)
-		// NOTE: `sr` MUST NOT greater than `remaining` (sr <= remaining).
-		if sr != 0 {
-			offs = append(offs, s.offs[sz+1:]...)
-			offs[0] = offs[1]
-		}
-	}
-
-	// Compact WAL.
-	_ = s.wal.tryCompact(ctx, s.nodeID, offs[0], s.offs[0], s.tail, ents[0].Index, ents[0].Term)
-
-	// Reset log entries and offsets.
-	s.mu.Lock()
-	s.ents = ents
-	s.mu.Unlock()
-	s.offs = offs
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
+// FIXME(james.yin): error
+
+// stable remaining
+
+// Save compact information to dummy entry.
+
+// Copy remained entries.
+
+// NOTE: `sr` MUST NOT greater than `remaining` (sr <= remaining).
+
+// Compact WAL.
+
+// Reset log entries and offsets.
+
 func (w *WAL) tryCompact(ctx context.Context, nodeID vanus.ID, offset, last, tail int64, index, term uint64) error {
-	task := compactTask{
-		nodeID: nodeID,
-		offset: offset,
-		last:   last,
-		tail:   tail,
-		info: compactInfo{
-			index: index,
-			term:  term,
-		},
-	}
-	return w.dispatchCompactTask(ctx, task.compact)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (w *WAL) markBarrier(ctx context.Context, nodeID vanus.ID, offset int64) error {
-	task := compactTask{
-		nodeID: nodeID,
-		offset: offset,
-	}
-	return w.dispatchCompactTask(ctx, task.compact)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (w *WAL) removeBarrier(ctx context.Context, nodeID vanus.ID, offset int64) error {
-	task := compactTask{
-		nodeID: nodeID,
-		last:   offset,
-	}
-	return w.dispatchCompactTask(ctx, task.compact)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type compactTask struct {
@@ -133,98 +78,49 @@ type compactTask struct {
 }
 
 func (t *compactTask) compact(w *WAL, cc *compactContext) {
+	_ = "STUB: not implemented"
 	// node is deleted.
-	if !w.nodes[t.nodeID] {
-		return
-	}
-
-	// Discard last barrier.
-	if t.last != 0 {
-		w.barrier.Remove(t.last)
-	}
-	// Set new barrier.
-	if t.offset != 0 {
-		w.barrier.Set(t.offset, t.nodeID)
-	}
-	if t.tail > cc.tail {
-		cc.tail = t.tail
-	}
-	// Set compaction info.
-	if !t.info.empty() {
-		cc.infos[t.nodeID] = t.info
-	}
+	return
 }
+
+// Discard last barrier.
+
+// Set new barrier.
+
+// Set compaction info.
 
 var emptyCompact = make([]byte, 16)
 
 func (w *WAL) addNode(ctx context.Context, nodeID vanus.ID) error {
-	return w.invokeCompactTask(ctx, func(w *WAL, _ *compactContext, ch chan<- error) {
-		w.nodes[nodeID] = true
-
-		key := []byte(CompactKey(nodeID.Uint64()))
-		w.stateStore.Store(context.Background(), key, emptyCompact, func(err error) {
-			if err != nil {
-				ch <- err
-			}
-			close(ch)
-		})
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (w *WAL) removeNode(ctx context.Context, nodeID vanus.ID) error {
-	return w.invokeCompactTask(ctx, func(w *WAL, cc *compactContext, ch chan<- error) {
-		// Prevent compact on node.
-		w.nodes[nodeID] = false
-		delete(cc.infos, nodeID)
-
-		w.stateStore.Delete(context.Background(), []byte(CompactKey(nodeID.Uint64())), func(err error) {
-			if err != nil {
-				// TODO(james.yin): handle error.
-				panic(err)
-			}
-
-			close(ch)
-
-			// Clean node to delete WAL.
-			_ = w.dispatchCompactTask(context.TODO(), func(w *WAL, cc *compactContext) {
-				delete(w.nodes, nodeID)
-			})
-		})
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (w *WAL) recoverNode(nodeID vanus.ID, offset int64) {
-	w.nodes[nodeID] = true
-	if offset != 0 {
-		w.barrier.Set(offset, nodeID)
-	}
-}
+// Prevent compact on node.
+
+// TODO(james.yin): handle error.
+
+// Clean node to delete WAL.
+
+func (w *WAL) recoverNode(nodeID vanus.ID, offset int64) { _ = "STUB: not implemented"; return }
 
 type compactInfo struct {
 	index, term uint64
 }
 
-func (ci *compactInfo) empty() bool {
-	return ci.index == 0
-}
+func (ci *compactInfo) empty() bool { _ = "STUB: not implemented"; return false }
 
 type logCompactInfos map[vanus.ID]compactInfo
 
 // Make sure logCompactInfos implements meta.Ranger.
 var _ meta.Ranger = (logCompactInfos)(nil)
 
-func (i logCompactInfos) Range(cb meta.RangeCallback) error {
-	for id := range i {
-		key := CompactKey(id.Uint64())
-		value := make([]byte, 16)
-		binary.BigEndian.PutUint64(value[0:8], i[id].index)
-		binary.BigEndian.PutUint64(value[8:16], i[id].term)
-		if err := cb([]byte(key), value); err != nil {
-			return err
-		}
-	}
-	return nil
-}
+func (i logCompactInfos) Range(cb meta.RangeCallback) error { _ = "STUB: not implemented"; return nil }
 
 type compactMeta struct {
 	infos  logCompactInfos
@@ -234,17 +130,7 @@ type compactMeta struct {
 // Make sure compactMeta implements meta.Ranger.
 var _ meta.Ranger = (*compactMeta)(nil)
 
-func (m *compactMeta) Range(cb meta.RangeCallback) error {
-	if err := m.infos.Range(cb); err != nil {
-		return err
-	}
-	if m.offset != 0 {
-		if err := cb(walCompactKey, m.offset); err != nil {
-			return err
-		}
-	}
-	return nil
-}
+func (m *compactMeta) Range(cb meta.RangeCallback) error { _ = "STUB: not implemented"; return nil }
 
 type compactContext struct {
 	tail      int64
@@ -254,32 +140,15 @@ type compactContext struct {
 }
 
 func loadCompactContext(stateStore *meta.SyncStore) *compactContext {
-	cCtx := &compactContext{
-		infos: make(logCompactInfos),
-	}
-	if v, ok := stateStore.Load(walCompactKey); ok {
-		cCtx.compacted, _ = v.(int64)
-	}
-	cCtx.toCompact = cCtx.compacted
-	return cCtx
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (c *compactContext) stale() bool {
-	return c.toCompact > c.compacted || len(c.infos) != 0
-}
+func (c *compactContext) stale() bool { _ = "STUB: not implemented"; return false }
 
 func (c *compactContext) sync(ctx context.Context, stateStore *meta.SyncStore) bool {
-	err := meta.BatchStore(ctx, stateStore, &compactMeta{
-		infos:  c.infos,
-		offset: c.toCompact,
-	})
-	if err != nil {
-		log.Warn(ctx).Msg("sync compaction information failed")
-		return false
-	}
-	c.compacted = c.toCompact
-	c.infos = make(logCompactInfos)
-	return true
+	_ = "STUB: not implemented"
+	return false
 }
 
 type compactFunc func(*WAL, *compactContext)
@@ -289,127 +158,46 @@ type compactJob struct {
 }
 
 func (j *compactJob) invoke(w *WAL, cc *compactContext) {
-	j.fn(w, cc)
+	_ = "STUB: not implemented"
+
+	// runCompact processes all compact jobs in a single goroutine.
+	return
 }
 
-// runCompact processes all compact jobs in a single goroutine.
-func (w *WAL) runCompact() {
-	ctx := context.Background()
+func (w *WAL) runCompact() { _ = "STUB: not implemented"; return }
 
-	ticker := time.NewTicker(defaultCompactInterval)
-	defer ticker.Stop()
+func (w *WAL) doCompact(ctx context.Context, cc *compactContext) { _ = "STUB: not implemented"; return }
 
-	cc := loadCompactContext(w.stateStore)
-	for {
-		select {
-		case job := <-w.compactC:
-			job.invoke(w, cc)
-		case <-ticker.C:
-			w.doCompact(ctx, cc)
-		case <-w.closeC:
-			close(w.compactC)
-			for job := range w.compactC {
-				job.invoke(w, cc)
-			}
-			w.doCompact(ctx, cc)
-			close(w.doneC)
-			return
-		}
-	}
-}
+// Store compacted info and offset.
 
-func (w *WAL) doCompact(ctx context.Context, cc *compactContext) {
-	w.reconcileBarrier(cc)
-
-	if cc.stale() {
-		log.Debug(ctx).
-			Int64("offset", cc.toCompact).
-			Msg("compact WAL of raft storage.")
-
-		// Store compacted info and offset.
-		if cc.sync(ctx, w.stateStore) {
-			// Compact underlying WAL.
-			_ = w.WAL.Compact(ctx, cc.compacted)
-		}
-	}
-}
+// Compact underlying WAL.
 
 // reconcileBarrier scans barriers and calculates compactContext.toCompact.
-func (w *WAL) reconcileBarrier(cc *compactContext) {
-	for {
-		front := w.barrier.Front()
+func (w *WAL) reconcileBarrier(cc *compactContext) { _ = "STUB: not implemented"; return }
 
-		//  No log entry in WAL.
-		if front == nil {
-			cc.toCompact = cc.tail
-			return
-		}
+//  No log entry in WAL.
 
-		// Remove barrier if node is deleted.
-		if _, ok := w.nodes[front.Value.(vanus.ID)]; !ok {
-			w.barrier.RemoveElement(front)
-			continue
-		}
-
-		offset, _ := front.Key().(int64)
-		cc.toCompact = offset
-		return
-	}
-}
+// Remove barrier if node is deleted.
 
 // dispatchCompactJob dispatches a compact job to the compact goroutine.
 func (w *WAL) dispatchCompactJob(ctx context.Context, job compactJob) error {
+	_ = "STUB: not implemented"
 	// NOTE: no panic, avoid unlocking with defer.
-	w.closeMu.RLock()
-
-	select {
-	case <-w.closeC:
-		w.closeMu.RUnlock()
-		return ErrClosed
-	default:
-	}
-
-	select {
-	case w.compactC <- job:
-		w.closeMu.RUnlock()
-		return nil
-	case <-ctx.Done():
-		w.closeMu.RUnlock()
-		return ctx.Err()
-	}
+	return nil
 }
 
 // dispatchCompactTask dispatches a compact task to the compact goroutine.
 func (w *WAL) dispatchCompactTask(ctx context.Context, task compactFunc) error {
-	job := compactJob{
-		fn: task,
-	}
-	return w.dispatchCompactJob(ctx, job)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type awaitableCompactFunc func(*WAL, *compactContext, chan<- error)
 
 // invokeCompactTask invokes a compact task and waits for its completion.
 func (w *WAL) invokeCompactTask(ctx context.Context, task awaitableCompactFunc) error {
-	ch := make(chan error)
-	job := compactJob{
-		fn: func(w *WAL, cc *compactContext) {
-			task(w, cc, ch)
-		},
-	}
-
-	if err := w.dispatchCompactJob(ctx, job); err != nil {
-		return err
-	}
-
-	select {
-	case err := <-ch:
-		return err
-	case <-ctx.Done():
-		return ctx.Err()
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func CompactKey(id uint64) string {
-	return fmt.Sprintf("block/%020d/compact", id)
-}
+func CompactKey(id uint64) string { _ = "STUB: not implemented"; return "" }

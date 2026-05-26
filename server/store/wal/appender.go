@@ -24,14 +24,8 @@ import (
 )
 
 func (w *WAL) newAppender(ctx context.Context, entries [][]byte, direct bool, callback AppendCallback) *appender {
-	return &appender{
-		w:        w,
-		entries:  entries,
-		ranges:   make([]Range, len(entries)),
-		ctx:      ctx,
-		direct:   direct,
-		callback: callback,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type appender struct {
@@ -51,59 +45,15 @@ type appender struct {
 // Make sure Data implements io.Reader.
 var _ io.Reader = (*appender)(nil)
 
-func (a *appender) invoke() {
-	a.w.appendWg.Add(1)
+func (a *appender) invoke() { _ = "STUB: not implemented"; return }
 
-	a.w.s.Append(a, a.onAppended)
-	if a.direct {
-		a.w.s.Sync()
-	}
+// metrics.WALEntryWriteCounter.Add(float64(len(entries)))
+// metrics.WALEntryWriteSizeCounter.Add(float64(entrySize))
+// metrics.WALRecordWriteCounter.Add(float64(recordCount))
+// metrics.WALRecordWriteSizeCounter.Add(float64(recordSize))
 
-	// metrics.WALEntryWriteCounter.Add(float64(len(entries)))
-	// metrics.WALEntryWriteSizeCounter.Add(float64(entrySize))
-	// metrics.WALRecordWriteCounter.Add(float64(recordCount))
-	// metrics.WALRecordWriteSizeCounter.Add(float64(recordSize))
-}
+func (a *appender) Read(b []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (a *appender) Read(b []byte) (int, error) {
-	if a.j < len(a.records) {
-		n, err := a.records[a.j].MarshalTo(b)
-		a.j++
-		return n, err
-	}
+// Release memory.
 
-	if a.padding != 0 {
-		n := a.padding
-		a.padding = 0
-		return n, nil
-	}
-
-	if a.i != 0 {
-		a.ranges[a.i-1].EO += a.w.s.WriteOffset()
-	}
-
-	if a.i < len(a.entries) {
-		a.ranges[a.i].SO = a.w.s.WriteOffset()
-		a.records, a.padding = record.Pack(a.entries[a.i], len(b), a.w.blockSize)
-		a.ranges[a.i].EO = -int64(a.padding)
-		a.i++
-		a.j = 1
-		return a.records[0].MarshalTo(b)
-	}
-
-	// Release memory.
-	a.records = nil
-	a.entries = nil
-
-	return 0, io.EOF
-}
-
-func (a *appender) onAppended(_ int, err error) {
-	if err != nil {
-		panic(err)
-	}
-
-	a.callback(a.ranges, nil)
-
-	a.w.appendWg.Done()
-}
+func (a *appender) onAppended(_ int, err error) { _ = "STUB: not implemented"; return }

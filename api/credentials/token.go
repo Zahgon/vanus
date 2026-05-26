@@ -27,23 +27,16 @@ type VanusPerRPCCredentials struct {
 }
 
 func (vc VanusPerRPCCredentials) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
-	token, err := vc.Token()
-	if err != nil {
-		return nil, err
-	}
-	return map[string]string{
-		"authorization": token.Type() + " " + token.AccessToken,
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (vc VanusPerRPCCredentials) RequireTransportSecurity() bool {
+	_ = "STUB: not implemented"
 	return false
 }
 
 func NewVanusPerRPCCredentials(token string) VanusPerRPCCredentials {
-	return VanusPerRPCCredentials{
-		TokenSource: oauth2.StaticTokenSource(&oauth2.Token{
-			AccessToken: token,
-		}),
-	}
+	_ = "STUB: not implemented"
+	return *new(VanusPerRPCCredentials)
 }

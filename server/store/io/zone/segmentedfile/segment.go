@@ -31,38 +31,16 @@ type Segment struct {
 }
 
 func newSegment(path string, so int64, size int64, f *os.File) *Segment {
-	return &Segment{
-		so:   so,
-		eo:   so + size,
-		f:    f,
-		size: size,
-		path: path,
-	}
-}
-
-func (s *Segment) Close() error {
-	if s.f == nil {
-		return nil
-	}
-	if err := s.f.Close(); err != nil {
-		return err
-	}
-	s.f = nil
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (s *Segment) Size() int64 {
-	return s.size
-}
+func (s *Segment) Close() error { _ = "STUB: not implemented"; return nil }
 
-func (s *Segment) SO() int64 {
-	return s.so
-}
+func (s *Segment) Size() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Segment) EO() int64 {
-	return s.eo
-}
+func (s *Segment) SO() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Segment) File() *os.File {
-	return s.f
-}
+func (s *Segment) EO() int64 { _ = "STUB: not implemented"; return 0 }
+
+func (s *Segment) File() *os.File { _ = "STUB: not implemented"; return nil }

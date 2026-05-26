@@ -17,9 +17,6 @@ package block
 import (
 	// standard libraries.
 	"sync"
-
-	// third-party libraries.
-	"github.com/ncw/directio"
 )
 
 type BufferPool struct {
@@ -28,41 +25,14 @@ type BufferPool struct {
 	pool     sync.Pool
 }
 
-func NewBufferPool(size int) *BufferPool {
-	a := &BufferPool{
-		size:     size,
-		emptyBuf: make([]byte, size),
-	}
-	a.pool = sync.Pool{
-		New: func() interface{} {
-			return a.rawAlloc()
-		},
-	}
-	return a
-}
+func NewBufferPool(size int) *BufferPool { _ = "STUB: not implemented"; return nil }
 
-func (a *BufferPool) BufferSize() int {
-	return a.size
-}
+func (a *BufferPool) BufferSize() int { _ = "STUB: not implemented"; return 0 }
 
-func (a *BufferPool) rawAlloc() *Buffer {
-	buf := directio.AlignedBlock(a.size)
-	return &Buffer{
-		buf: buf,
-	}
-}
+func (a *BufferPool) rawAlloc() *Buffer { _ = "STUB: not implemented"; return nil }
 
-func (a *BufferPool) Get(base int64) *Buffer {
-	b, _ := a.pool.Get().(*Buffer)
-	// Reset block.
-	b.base = base
-	copy(b.buf, a.emptyBuf)
-	b.wp = 0
-	b.fp = 0
-	b.cp = 0
-	return b
-}
+func (a *BufferPool) Get(base int64) *Buffer { _ = "STUB: not implemented"; return nil }
 
-func (a *BufferPool) Put(b *Buffer) {
-	a.pool.Put(b)
-}
+// Reset block.
+
+func (a *BufferPool) Put(b *Buffer) { _ = "STUB: not implemented"; return }

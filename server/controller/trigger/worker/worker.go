@@ -26,10 +26,8 @@ import (
 	"github.com/vanus-labs/vanus/api/errors"
 	"github.com/vanus-labs/vanus/api/trigger"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	primitive "github.com/vanus-labs/vanus/pkg"
-	"github.com/vanus-labs/vanus/pkg/convert"
 	"github.com/vanus-labs/vanus/pkg/queue"
 	"github.com/vanus-labs/vanus/server/controller/trigger/metadata"
 	"github.com/vanus-labs/vanus/server/controller/trigger/subscription"
@@ -72,244 +70,72 @@ type triggerWorker struct {
 var newTriggerWorker = NewTriggerWorker
 
 func NewTriggerWorkerByAddr(addr string, subscriptionManager subscription.Manager) TriggerWorker {
-	tw := NewTriggerWorker(metadata.NewTriggerWorkerInfo(addr), subscriptionManager)
-	return tw
+	_ = "STUB: not implemented"
+	return *new(TriggerWorker)
 }
 
 func NewTriggerWorker(twInfo *metadata.TriggerWorkerInfo, subscriptionManager subscription.Manager) TriggerWorker {
-	tw := &triggerWorker{
-		info:                twInfo,
-		subscriptionManager: subscriptionManager,
-		subscriptionQueue:   queue.New(),
-		pendingTime:         time.Now(),
-		stop:                func() {},
-	}
-	return tw
+	_ = "STUB: not implemented"
+	return *new(TriggerWorker)
 }
 
-func (tw *triggerWorker) Start(ctx context.Context) error {
-	tw.ctx, tw.stop = context.WithCancel(context.Background())
-	if err := tw.init(tw.ctx); err != nil {
-		return err
-	}
-	go func() {
-		ctx = tw.ctx
-		for {
-			subscriptionID, stop := tw.subscriptionQueue.Get()
-			if stop {
-				break
-			}
-			log.Info(ctx).
-				Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-				Stringer(log.KeySubscriptionID, subscriptionID).
-				Msg("trigger worker begin hand subscription")
-			err := tw.handler(ctx, subscriptionID)
-			if err == nil {
-				tw.subscriptionQueue.Done(subscriptionID)
-				tw.subscriptionQueue.ClearFailNum(subscriptionID)
-				log.Info(ctx).
-					Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-					Stringer(log.KeySubscriptionID, subscriptionID).
-					Msg("trigger worker handle subscription sucess")
-			} else {
-				tw.subscriptionQueue.ReAdd(subscriptionID)
-				log.Warn(ctx).Err(err).
-					Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-					Stringer(log.KeySubscriptionID, subscriptionID).
-					Msg("trigger worker handle subscription has error")
-			}
-		}
-	}()
-	return nil
-}
+func (tw *triggerWorker) Start(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (tw *triggerWorker) handler(ctx context.Context, subscriptionID vanus.ID) error {
-	_, exist := tw.assignSubscriptionIDs.Load(subscriptionID)
-	if !exist {
-		// no assign to this trigger worker,remove subscription
-		return tw.removeSubscription(ctx, subscriptionID)
-	}
-	sub := tw.subscriptionManager.GetSubscription(ctx, subscriptionID)
-	if sub == nil {
-		return nil
-	}
-	switch sub.Phase {
-	case metadata.SubscriptionPhaseStopping, metadata.SubscriptionPhaseStopped:
-		err := tw.removeSubscription(ctx, subscriptionID)
-		if err != nil {
-			return err
-		}
-		if sub.Phase != metadata.SubscriptionPhaseStopped {
-			// modify phase to stopped.
-			sub.Phase = metadata.SubscriptionPhaseStopped
-			sub.TriggerWorker = ""
-			err = tw.subscriptionManager.UpdateSubscription(ctx, sub)
-			if err != nil {
-				return err
-			}
-		}
-		log.Info().
-			Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-			Stringer(log.KeySubscriptionID, subscriptionID).
-			Msg("trigger worker remove a subscription for disable")
-		tw.assignSubscriptionIDs.Delete(subscriptionID)
-		return nil
-	}
-	offsets, err := tw.subscriptionManager.GetOrSaveOffset(ctx, subscriptionID)
-	if err != nil {
-		return err
-	}
-	filters := append([]*primitive.SubscriptionFilter(nil), sub.Filters...)
-	if sub.Source != "" {
-		filters = append(filters, &primitive.SubscriptionFilter{
-			Exact: map[string]string{"source": sub.Source},
-		})
-	}
-	if len(sub.Types) > 0 {
-		if len(sub.Types) == 1 {
-			filters = append(filters, &primitive.SubscriptionFilter{
-				Exact: map[string]string{"type": sub.Types[0]},
-			})
-		} else {
-			types := make([]*primitive.SubscriptionFilter, len(sub.Types))
-			for i, t := range sub.Types {
-				types[i] = &primitive.SubscriptionFilter{
-					Exact: map[string]string{"type": t},
-				}
-			}
-			filters = append(filters, &primitive.SubscriptionFilter{
-				Any: types,
-			})
-		}
-	}
-	err = tw.addSubscription(ctx, &primitive.Subscription{
-		ID:                   sub.ID,
-		Filters:              filters,
-		Sink:                 sub.Sink,
-		EventbusID:           sub.EventbusID,
-		DeadLetterEventbusID: sub.DeadLetterEventbusID,
-		RetryEventbusID:      sub.RetryEventbusID,
-		TimerEventbusID:      sub.TimerEventbusID,
-		Offsets:              offsets,
-		Transformer:          sub.Transformer,
-		Config:               sub.Config,
-		Protocol:             sub.Protocol,
-		ProtocolSetting:      sub.ProtocolSetting,
-		SinkCredential:       sub.SinkCredential,
-	})
-	if err != nil {
-		return err
-	}
-	// modify subscription to running
-	sub.Phase = metadata.SubscriptionPhaseRunning
-	err = tw.subscriptionManager.UpdateSubscription(ctx, sub)
-	if err != nil {
-		return err
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (tw *triggerWorker) IsActive() bool {
-	tw.lock.RLock()
-	defer tw.lock.RUnlock()
-	if tw.info.Phase != metadata.TriggerWorkerPhaseRunning {
-		return false
-	}
-	if tw.heartbeatTime.IsZero() {
-		return false
-	}
-	return true
-}
+// no assign to this trigger worker,remove subscription
+
+// modify phase to stopped.
+
+// modify subscription to running
+
+func (tw *triggerWorker) IsActive() bool { _ = "STUB: not implemented"; return false }
 
 // Reset when trigger worker restart and re-connect.
-func (tw *triggerWorker) Reset() {
-	tw.lock.Lock()
-	defer tw.lock.Unlock()
-	tw.info.Phase = metadata.TriggerWorkerPhasePending
-	tw.pendingTime = time.Now()
-}
+func (tw *triggerWorker) Reset() { _ = "STUB: not implemented"; return }
 
 func (tw *triggerWorker) GetInfo() metadata.TriggerWorkerInfo {
-	return *tw.info
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerInfo)
 }
 
-func (tw *triggerWorker) GetAddr() string {
-	return tw.info.Addr
-}
+func (tw *triggerWorker) GetAddr() string { _ = "STUB: not implemented"; return "" }
 
 func (tw *triggerWorker) SetPhase(phase metadata.TriggerWorkerPhase) {
-	tw.lock.Lock()
-	defer tw.lock.Unlock()
-	tw.info.Phase = phase
+	_ = "STUB: not implemented"
+	return
 }
 
 func (tw *triggerWorker) GetPhase() metadata.TriggerWorkerPhase {
-	tw.lock.RLock()
-	defer tw.lock.RUnlock()
-	return tw.info.Phase
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerPhase)
 }
 
-func (tw *triggerWorker) Polish() {
-	tw.lock.Lock()
-	defer tw.lock.Unlock()
-	tw.heartbeatTime = time.Now()
-}
+func (tw *triggerWorker) Polish() { _ = "STUB: not implemented"; return }
 
-func (tw *triggerWorker) AssignSubscription(id vanus.ID) {
-	_, exist := tw.assignSubscriptionIDs.Load(id)
-	var msg string
-	if !exist {
-		msg = "trigger worker assign a subscription"
-	} else {
-		msg = "trigger worker reassign a subscription"
-	}
-	log.Info().
-		Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-		Stringer(log.KeySubscriptionID, id).
-		Msg(msg)
-	tw.assignSubscriptionIDs.Store(id, time.Now())
-	tw.subscriptionQueue.Add(id)
-}
+func (tw *triggerWorker) AssignSubscription(id vanus.ID) { _ = "STUB: not implemented"; return }
 
 func (tw *triggerWorker) UnAssignSubscription(id vanus.ID) error {
-	log.Info().
-		Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-		Stringer(log.KeySubscriptionID, id).
-		Msg("trigger worker remove a subscription")
-	tw.assignSubscriptionIDs.Delete(id)
-	if tw.info.Phase == metadata.TriggerWorkerPhaseRunning {
-		err := tw.removeSubscription(tw.ctx, id)
-		if err != nil {
-			log.Warn().Err(err).
-				Str(log.KeyTriggerWorkerAddr, tw.info.Addr).
-				Stringer(log.KeySubscriptionID, id).
-				Msg("trigger worker remove subscription error")
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (tw *triggerWorker) GetAssignedSubscriptions() []vanus.ID {
-	ids := make([]vanus.ID, 0)
-	tw.assignSubscriptionIDs.Range(func(key, value interface{}) bool {
-		id, _ := key.(vanus.ID)
-		ids = append(ids, id)
-		return true
-	})
-	return ids
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (tw *triggerWorker) GetPendingTime() time.Time {
-	tw.lock.RLock()
-	defer tw.lock.RUnlock()
-	return tw.pendingTime
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 func (tw *triggerWorker) GetHeartbeatTime() time.Time {
-	tw.lock.RLock()
-	defer tw.lock.RUnlock()
-	return tw.heartbeatTime
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 func (tw *triggerWorker) init(ctx context.Context) error {
@@ -327,47 +153,24 @@ func (tw *triggerWorker) init(ctx context.Context) error {
 	return nil
 }
 
-func (tw *triggerWorker) Close() error {
-	tw.stop()
-	tw.subscriptionQueue.ShutDown()
-	if tw.cc != nil {
-		tw.lock.Lock()
-		defer tw.lock.Unlock()
-		return tw.cc.Close()
-	}
-	return nil
-}
+func (tw *triggerWorker) Close() error { _ = "STUB: not implemented"; return nil }
 
 func (tw *triggerWorker) RemoteStop(ctx context.Context) error {
-	_, err := tw.client.Stop(ctx, &trigger.StopTriggerWorkerRequest{})
-	if err != nil {
-		return errors.ErrTriggerWorker.WithMessage("stop error").Wrap(err)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (tw *triggerWorker) RemoteStart(ctx context.Context) error {
-	_, err := tw.client.Start(ctx, &trigger.StartTriggerWorkerRequest{})
-	if err != nil {
-		return errors.ErrTriggerWorker.WithMessage("start error").Wrap(err)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (tw *triggerWorker) addSubscription(ctx context.Context, sub *primitive.Subscription) error {
-	request := convert.ToPbAddSubscription(sub)
-	_, err := tw.client.AddSubscription(ctx, request)
-	if err != nil {
-		return errors.ErrTriggerWorker.WithMessage("add subscription error").Wrap(err)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (tw *triggerWorker) removeSubscription(ctx context.Context, id vanus.ID) error {
-	request := &trigger.RemoveSubscriptionRequest{SubscriptionId: uint64(id)}
-	_, err := tw.client.RemoveSubscription(ctx, request)
-	if err != nil {
-		return errors.ErrTriggerWorker.WithMessage("remove subscription error").Wrap(err)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

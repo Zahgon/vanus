@@ -16,7 +16,6 @@ package auth
 
 import (
 	"context"
-	"fmt"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 
@@ -27,12 +26,6 @@ type AuthorizeFunc func(ctx context.Context,
 	req interface{}) (authorization.ResourceKind, vanus.ID, authorization.Action)
 
 func (a *Auth) RegisterAuthorizeFunc(method string, authorizeFunc AuthorizeFunc) {
-	if authorizeFunc == nil {
-		panic(fmt.Sprintf("method %s authorize function is nil", method))
-	}
-	_, exist := a.authorizeFunc[method]
-	if exist {
-		panic(fmt.Sprintf("method %s exist authorize function", method))
-	}
-	a.authorizeFunc[method] = authorizeFunc
+	_ = "STUB: not implemented"
+	return
 }

@@ -28,39 +28,14 @@ type config struct {
 	callbackParallel int
 }
 
-func defaultConfig() config {
-	cfg := config{
-		flushBatchSize:   defaultFlushBatchSize,
-		flushDelayTime:   defaultFlushDelayTime,
-		callbackParallel: defaultCallbackParallel,
-	}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
 
-func WithFlushBatchSize(size int) Option {
-	return func(cfg *config) {
-		cfg.flushBatchSize = size
-	}
-}
+func WithFlushBatchSize(size int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithFlushDelayTime(d time.Duration) Option {
-	return func(cfg *config) {
-		cfg.flushDelayTime = d
-	}
-}
+func WithFlushDelayTime(d time.Duration) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithCallbackParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.callbackParallel = parallel
-	}
-}
+func WithCallbackParallel(parallel int) Option { _ = "STUB: not implemented"; return *new(Option) }

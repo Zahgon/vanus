@@ -18,14 +18,4 @@ import (
 	"sync"
 )
 
-func MapLen(m *sync.Map) int {
-	if m == nil {
-		return 0
-	}
-	c := 0
-	m.Range(func(key, value interface{}) bool {
-		c++
-		return true
-	})
-	return c
-}
+func MapLen(m *sync.Map) int { _ = "STUB: not implemented"; return 0 }

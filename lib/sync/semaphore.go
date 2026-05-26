@@ -23,18 +23,11 @@ type Semaphore struct {
 	handoff bool
 }
 
-func (s *Semaphore) Init(handoff bool) *Semaphore {
-	s.handoff = handoff
-	return s
-}
+func (s *Semaphore) Init(handoff bool) *Semaphore { _ = "STUB: not implemented"; return nil }
 
-func (s *Semaphore) Acquire() {
-	semacquire(&s.sem)
-}
+func (s *Semaphore) Acquire() { _ = "STUB: not implemented"; return }
 
-func (s *Semaphore) Release() {
-	semrelease(&s.sem, s.handoff, 0)
-}
+func (s *Semaphore) Release() { _ = "STUB: not implemented"; return }
 
 //go:linkname semacquire sync.runtime_Semacquire
 func semacquire(addr *uint32)

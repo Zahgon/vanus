@@ -49,29 +49,16 @@ type EngineRegistry struct {
 	engines map[string]Engine
 }
 
-func NewEngineRegistry() *EngineRegistry {
-	return &EngineRegistry{
-		engines: make(map[string]Engine),
-	}
-}
+func NewEngineRegistry() *EngineRegistry { _ = "STUB: not implemented"; return nil }
 
 func (er *EngineRegistry) Register(name string, engine Engine) error {
-	if _, ok := er.engines[name]; ok {
-		return ErrFormatRegistered
-	}
-	er.engines[name] = engine
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (er *EngineRegistry) Resolve(engine string) (Engine, error) {
-	if e, ok := er.engines[engine]; ok {
-		return e, nil
-	}
-	return nil, ErrNotSupported
+	_ = "STUB: not implemented"
+	return *new(Engine), nil
 }
 
-func (er *EngineRegistry) Close() {
-	for _, e := range er.engines {
-		e.Close()
-	}
-}
+func (er *EngineRegistry) Close() { _ = "STUB: not implemented"; return }

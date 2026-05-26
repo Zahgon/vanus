@@ -16,17 +16,7 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewAddSuffixAction ["add_suffix", "key", "value"].
-func NewAddSuffixAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "ADD_SUFFIX",
-		FixedArgs:  []arg.TypeList{arg.EventList, arg.All},
-		Fn:         function.AddSuffixFunction,
-	}
-	return a
-}
+func NewAddSuffixAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

@@ -15,8 +15,6 @@
 package info
 
 import (
-	"encoding/json"
-
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
 
@@ -30,17 +28,8 @@ type OffsetInfo struct {
 	Offset     uint64   `json:"offset"`
 }
 
-func (i *OffsetInfo) String() string {
-	v, _ := json.Marshal(i)
-	return string(v)
-}
+func (i *OffsetInfo) String() string { _ = "STUB: not implemented"; return "" }
 
 type ListOffsetInfo []OffsetInfo
 
-func (o ListOffsetInfo) String() string {
-	if len(o) == 0 {
-		return ""
-	}
-	v, _ := json.Marshal(o)
-	return string(v)
-}
+func (o ListOffsetInfo) String() string { _ = "STUB: not implemented"; return "" }

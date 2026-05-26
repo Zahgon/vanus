@@ -27,21 +27,10 @@ type oneshot struct {
 // Make sure block implements Interface.
 var _ Interface = (*oneshot)(nil)
 
-func Oneshot(base int64, data []byte) Interface {
-	return &oneshot{
-		base: base,
-		buf:  data,
-	}
-}
+func Oneshot(base int64, data []byte) Interface { _ = "STUB: not implemented"; return *new(Interface) }
 
-func (o *oneshot) Base() int64 {
-	return o.base
-}
+func (o *oneshot) Base() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (o *oneshot) Capacity() int {
-	return len(o.buf)
-}
+func (o *oneshot) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (o *oneshot) Flush(writer io.WriterAt, cb FlushCallback) {
-	writer.WriteAt(o.buf, o.base, 0, o.Capacity(), cb)
-}
+func (o *oneshot) Flush(writer io.WriterAt, cb FlushCallback) { _ = "STUB: not implemented"; return }

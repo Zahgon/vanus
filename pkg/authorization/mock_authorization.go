@@ -11,7 +11,6 @@ package authorization
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -29,27 +28,25 @@ type MockAuthorizationMockRecorder struct {
 
 // NewMockAuthorization creates a new mock instance.
 func NewMockAuthorization(ctrl *gomock.Controller) *MockAuthorization {
-	mock := &MockAuthorization{ctrl: ctrl}
-	mock.recorder = &MockAuthorizationMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockAuthorization) EXPECT() *MockAuthorizationMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Authorize mocks base method.
+	return nil
 }
 
-// Authorize mocks base method.
 func (m *MockAuthorization) Authorize(ctx context.Context, user string, attributes Attributes) (bool, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Authorize", ctx, user, attributes)
-	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // Authorize indicates an expected call of Authorize.
 func (mr *MockAuthorizationMockRecorder) Authorize(ctx, user, attributes any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Authorize", reflect.TypeOf((*MockAuthorization)(nil).Authorize), ctx, user, attributes)
+	_ = "STUB: not implemented"
+	return nil
 }

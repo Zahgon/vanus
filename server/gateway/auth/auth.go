@@ -17,13 +17,9 @@ package auth
 import (
 	"context"
 
-	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
-
 	"github.com/vanus-labs/vanus/api/cluster"
-	"github.com/vanus-labs/vanus/api/errors"
 	"github.com/vanus-labs/vanus/pkg/authentication"
 	"github.com/vanus-labs/vanus/pkg/authorization"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 const TokenType = "Bearer"
@@ -43,82 +39,27 @@ type Auth struct {
 	TokenClient    authentication.TokenClient
 }
 
-func NewAuth(config Config, cluster cluster.Cluster) *Auth {
-	tokenClient := authentication.NewBuiltInClient(cluster)
-	roleClient := authorization.NewBuiltInClient(cluster)
-	return &Auth{
-		config:         config,
-		authorizeFunc:  map[string]AuthorizeFunc{},
-		TokenClient:    tokenClient,
-		RoleClient:     roleClient,
-		Authentication: authentication.NewAuthentication(tokenClient),
-		Authorization:  authorization.NewAuthorization(roleClient, cluster),
-	}
-}
+func NewAuth(config Config, cluster cluster.Cluster) *Auth { _ = "STUB: not implemented"; return nil }
 
-func (a *Auth) Disable() bool {
-	return a.config.Disable
-}
+func (a *Auth) Disable() bool { _ = "STUB: not implemented"; return false }
 
-func (a *Auth) OpenEventbus() bool {
-	return a.config.OpenEventbus
-}
+func (a *Auth) OpenEventbus() bool { _ = "STUB: not implemented"; return false }
 
-func (a *Auth) OpenSubscription() bool {
-	return !a.config.OpenSubscription
-}
+func (a *Auth) OpenSubscription() bool { _ = "STUB: not implemented"; return false }
 
 func (a *Auth) GetRoleClient() authorization.RoleClient {
-	return a.RoleClient
+	_ = "STUB: not implemented"
+	return *new(authorization.RoleClient)
 }
 
 func (a *Auth) Authenticate(ctx context.Context) (context.Context, error) {
-	if a.Disable() {
-		return ctx, nil
-	}
-	token, err := grpc_auth.AuthFromMD(ctx, TokenType)
-	if err != nil {
-		log.Info(ctx).Err(err).Msg("get authorization token error")
-		return ctx, errors.ErrInvalidRequest.WithMessage(err.Error())
-	}
-	user, err := a.Authentication.Authenticate(ctx, token)
-	if err != nil {
-		if errors.Is(err, errors.ErrResourceNotFound) {
-			log.Debug(ctx).Str("token", token).Msg("authorization token failed")
-			return ctx, errors.ErrUnauthenticated.WithMessage("token is invalid")
-		}
-		log.Info(ctx).Err(err).Str("token", token).Msg("authorization token error")
-		return ctx, err
-	}
-	newCtx := SetUser(ctx, user)
-	return newCtx, nil
+	_ = "STUB: not implemented"
+	return *new(context.Context), nil
 }
 
 func (a *Auth) Authorize(ctx context.Context, method string, req interface{}) error {
-	if a.Disable() {
-		return nil
-	}
-	user := GetUser(ctx)
-	authorizeFunc, exist := a.authorizeFunc[method]
-	if !exist {
-		return nil
-	}
-	kind, id, action := authorizeFunc(ctx, req)
-	if kind == authorization.ResourceUnknown {
-		// no need authorize
-		return nil
-	}
-	result, err := a.Authorization.Authorize(ctx, user, authorization.NewDefaultAttributes(kind, id, action))
-	if err != nil {
-		return err
-	}
-	if !result {
-		log.Info(ctx).
-			Str("method", method).
-			Str("user", user).
-			Interface("req", req).
-			Msg("method permission denied")
-		return errors.ErrPermissionDenied.WithMessage("no permission")
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// no need authorize

@@ -17,8 +17,6 @@ package strings
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 type splitFromStartAction struct {
@@ -26,19 +24,6 @@ type splitFromStartAction struct {
 }
 
 // NewSplitFromStartAction ["split_from_start", "sourceJsonPath", "position", "targetJsonPath"].
-func NewSplitFromStartAction() action.Action {
-	a := &splitFromStartAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "SPLIT_FROM_START",
-		FixedArgs:  []arg.TypeList{arg.EventList, []arg.Type{arg.Constant}, []arg.Type{arg.EventData}},
-		Fn:         function.SplitFromStart,
-	}
-	return a
-}
+func NewSplitFromStartAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *splitFromStartAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[2]
-	a.Args = args[:2]
-	a.ArgTypes = []common.Type{common.String, common.Int}
-	return nil
-}
+func (a *splitFromStartAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }

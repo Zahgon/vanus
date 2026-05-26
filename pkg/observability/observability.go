@@ -24,8 +24,7 @@ import (
 )
 
 func Initialize(ctx context.Context, cfg Config, getCollectors func() []prometheus.Collector) error {
-	metrics.Init(ctx, cfg.M, getCollectors)
-	tracing.Init(cfg.T)
+	_ = "STUB: not implemented"
 	return nil
 }
 

@@ -19,19 +19,17 @@ import (
 	"context"
 	"sync"
 	"sync/atomic"
-	"time"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
+
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/connectivity"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/api/errors"
+
 	"github.com/vanus-labs/vanus/pkg/observability/tracing"
 
 	// this project.
-	"github.com/vanus-labs/vanus/client/internal/net/connection"
+
 	"github.com/vanus-labs/vanus/client/internal/net/rpc"
 )
 
@@ -40,13 +38,8 @@ const (
 )
 
 func New(endpoint string, creator rpc.ClientCreator) rpc.Client {
-	return &client{
-		endpoint: endpoint,
-		closed:   atomic.Bool{},
-		mu:       sync.RWMutex{},
-		creator:  creator,
-		tracer:   tracing.NewTracer("internal.net.rpc.Client", trace.SpanKindClient),
-	}
+	_ = "STUB: not implemented"
+	return *new(rpc.Client)
 }
 
 // client is a generic client of gRPC.
@@ -64,80 +57,26 @@ type client struct {
 // make sure client implements rpc.Client.
 var _ rpc.Client = (*client)(nil)
 
-func (c *client) Endpoint() string {
-	return c.endpoint
-}
+func (c *client) Endpoint() string { _ = "STUB: not implemented"; return "" }
 
 func (c *client) Get(ctx context.Context) (interface{}, error) {
-	if c.closed.Load() {
-		return nil, errors.ErrClosed
-	}
-	_ctx, span := c.tracer.Start(ctx, "Get")
-	defer span.End()
-
-	if client := c.cachedClient(); client != nil {
-		return client, nil
-	}
-	return c.refreshClient(_ctx, false)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (c *client) cachedClient() interface{} {
-	c.mu.RLock()
-	defer c.mu.RUnlock()
-
-	if !c.Ready() {
-		return nil
-	}
-
-	return c.client
-}
+func (c *client) cachedClient() interface{} { _ = "STUB: not implemented"; return nil }
 
 func (c *client) refreshClient(ctx context.Context, force bool) (interface{}, error) {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-
-	if c.closed.Load() {
-		return nil, errors.ErrClosed
-	}
-
-	if !force && c.Ready() {
-		return c.client, nil
-	}
-
-	// TODO: close previous connection
-	c.doClose()
-
-	// TODO: connect with opts
-	connCtx, cancel := context.WithTimeout(ctx, defaultConnectTimeoutMs*time.Millisecond)
-	defer cancel()
-	conn, err := connection.Connect(connCtx, c.endpoint)
-	if err != nil {
-		return nil, err
-	}
-	client, err := c.creator.Create(conn)
-	if err != nil {
-		return nil, err
-	}
-	c.conn = conn
-	c.client = client
-	return client, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (c *client) Ready() bool {
-	return c.conn != nil && c.conn.GetState() == connectivity.Ready
-}
+// TODO: close previous connection
 
-func (c *client) Close() {
-	if c.closed.CompareAndSwap(false, true) {
-		c.mu.Lock()
-		defer c.mu.Unlock()
-		c.doClose()
-	}
-}
+// TODO: connect with opts
 
-func (c *client) doClose() {
-	if c.conn != nil {
-		c.conn.Close()
-		c.conn = nil
-	}
-}
+func (c *client) Ready() bool { _ = "STUB: not implemented"; return false }
+
+func (c *client) Close() { _ = "STUB: not implemented"; return }
+
+func (c *client) doClose() { _ = "STUB: not implemented"; return }

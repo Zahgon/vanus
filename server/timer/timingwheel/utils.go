@@ -25,12 +25,6 @@ type waitGroup struct {
 }
 
 func exponent(tick time.Duration, m, n int64) time.Duration {
-	result := int64(1)
-	for i := n; i > 0; i >>= 1 {
-		if i&1 != 0 {
-			result *= m
-		}
-		m *= m
-	}
-	return time.Duration(result) * tick
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }

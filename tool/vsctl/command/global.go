@@ -16,23 +16,14 @@ package command
 
 import (
 	// standard libraries.
-	"context"
-	"fmt"
-	"os"
-	"strconv"
-	"strings"
-	"time"
 
 	// third-party libraries.
-	"github.com/fatih/color"
+
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	"google.golang.org/protobuf/types/known/wrapperspb"
 
 	// first-party libraries.
-	ctrlpb "github.com/vanus-labs/vanus/api/controller"
-	"github.com/vanus-labs/vanus/api/credentials"
+
 	proxypb "github.com/vanus-labs/vanus/api/proxy"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
@@ -118,86 +109,29 @@ var (
 	cc     *grpc.ClientConn
 )
 
-func InitGatewayClient(cmd *cobra.Command) {
-	endpoint, err := cmd.Flags().GetString("endpoint")
-	if err != nil {
-		cmdFailedf(cmd, "get gateway endpoint failed: %s", err)
-	}
-	token, err := cmd.Flags().GetString("token")
-	if err != nil {
-		cmdFailedf(cmd, "get token failed: %s", err)
-	}
-	opts := []grpc.DialOption{
-		grpc.WithBlock(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithPerRPCCredentials(credentials.NewVanusPerRPCCredentials(token)),
-	}
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	conn, err := grpc.DialContext(ctx, endpoint, opts...)
-	if err != nil {
-		panic("failed to dial gateway: " + err.Error())
-	}
-	cc = conn
-	client = proxypb.NewControllerProxyClient(conn)
-}
+func InitGatewayClient(cmd *cobra.Command) { _ = "STUB: not implemented"; return }
 
-func DestroyGatewayClient() {
-	if cc != nil {
-		if err := cc.Close(); err != nil {
-			color.Yellow(fmt.Sprintf("close grpc connection error: %s", err.Error()))
-		}
-	}
-}
+func DestroyGatewayClient() { _ = "STUB: not implemented"; return }
 
 func mustGetGatewayCloudEventsEndpoint(cmd *cobra.Command) string {
+	_ = "STUB: not implemented"
 	//res, err := client.ClusterInfo(context.Background(), &emptypb.Empty{})
 	//if err != nil {
 	//	cmdFailedf(cmd, "get cloudevents endpoint failed: %s", err)
 	//}
-	sp := strings.Split(mustGetGatewayEndpoint(cmd), ":")
-	v, _ := strconv.ParseInt(sp[1], 10, 64)
-	return fmt.Sprintf("%s:%d", sp[0], v+1)
+	return ""
 }
 
-func mustGetGatewayEndpoint(cmd *cobra.Command) string {
-	endpoint, err := cmd.Flags().GetString("endpoint")
-	if err != nil {
-		cmdFailedf(cmd, "get gateway endpoint failed: %s", err)
-	}
-	return endpoint
-}
+func mustGetGatewayEndpoint(cmd *cobra.Command) string { _ = "STUB: not implemented"; return "" }
 
-func IsFormatJSON(cmd *cobra.Command) bool {
-	v, err := cmd.Flags().GetString("format")
-	if err != nil {
-		return false
-	}
-	return strings.ToLower(v) == FormatJSON
-}
+func IsFormatJSON(cmd *cobra.Command) bool { _ = "STUB: not implemented"; return false }
 
 func mustGetEventbusID(namespace, name string) vanus.ID {
-	if namespace == "" {
-		namespace = "default"
-		color.Green("the namespace not specified, using [default] namespace")
-	}
-	eb, err := client.GetEventbusWithHumanFriendly(context.Background(),
-		&ctrlpb.GetEventbusWithHumanFriendlyRequest{
-			NamespaceId:  mustGetNamespaceID(namespace).Uint64(),
-			EventbusName: name,
-		})
-	if err != nil {
-		color.Red("failed to query eventbus id: %s", Error(err))
-		os.Exit(1)
-	}
-	return vanus.NewIDFromUint64(eb.Id)
+	_ = "STUB: not implemented"
+	return *new(vanus.ID)
 }
 
 func mustGetNamespaceID(namespace string) vanus.ID {
-	eb, err := client.GetNamespaceWithHumanFriendly(context.Background(), wrapperspb.String(namespace))
-	if err != nil {
-		color.Red("failed to query namespace id: %s", Error(err))
-		os.Exit(1)
-	}
-	return vanus.NewIDFromUint64(eb.Id)
+	_ = "STUB: not implemented"
+	return *new(vanus.ID)
 }

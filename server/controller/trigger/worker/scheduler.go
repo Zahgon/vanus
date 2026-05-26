@@ -16,11 +16,8 @@ package worker
 
 import (
 	"context"
-	"time"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
-	"github.com/vanus-labs/vanus/pkg/observability/metrics"
 
 	"github.com/vanus-labs/vanus/pkg/queue"
 	"github.com/vanus-labs/vanus/server/controller/trigger/subscription"
@@ -43,90 +40,22 @@ type SubscriptionScheduler struct {
 func NewSubscriptionScheduler(workerManager Manager,
 	subscriptionManager subscription.Manager,
 ) *SubscriptionScheduler {
-	s := &SubscriptionScheduler{
-		normalQueue:         queue.New(),
-		maxRetryPrintLog:    defaultRetryPrintLog,
-		policy:              &RoundRobinPolicy{},
-		workerManager:       workerManager,
-		subscriptionManager: subscriptionManager,
-	}
-	s.ctx, s.stop = context.WithCancel(context.Background())
-	return s
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (s *SubscriptionScheduler) EnqueueSubscription(id vanus.ID) {
-	s.normalQueue.Add(id)
-}
+func (s *SubscriptionScheduler) EnqueueSubscription(id vanus.ID) { _ = "STUB: not implemented"; return }
 
 func (s *SubscriptionScheduler) EnqueueNormalSubscription(id vanus.ID) {
-	s.normalQueue.Add(id)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (s *SubscriptionScheduler) Stop() {
-	if s == nil {
-		return
-	}
-	s.stop()
-	s.normalQueue.ShutDown()
-}
+func (s *SubscriptionScheduler) Stop() { _ = "STUB: not implemented"; return }
 
-func (s *SubscriptionScheduler) Run() {
-	go func() {
-		ctx := s.ctx
-		for {
-			subscriptionID, stop := s.normalQueue.Get()
-			if stop {
-				break
-			}
-			err := s.handler(ctx, subscriptionID)
-			if err == nil {
-				s.normalQueue.Done(subscriptionID)
-				s.normalQueue.ClearFailNum(subscriptionID)
-			} else {
-				s.normalQueue.ReAdd(subscriptionID)
-				log.Warn(ctx).Err(err).
-					Stringer(log.KeySubscriptionID, subscriptionID).
-					Msg("scheduler handler subscription has error")
-			}
-		}
-	}()
-}
+func (s *SubscriptionScheduler) Run() { _ = "STUB: not implemented"; return }
 
 func (s *SubscriptionScheduler) handler(ctx context.Context, subscriptionID vanus.ID) error {
-	subscription := s.subscriptionManager.GetSubscription(ctx, subscriptionID)
-	if subscription == nil {
-		return nil
-	}
-	twAddr := subscription.TriggerWorker
-	if twAddr == "" {
-		for {
-			select {
-			case <-ctx.Done():
-				return nil
-			default:
-			}
-			twInfos := s.workerManager.GetActiveRunningTriggerWorker()
-			if len(twInfos) == 0 {
-				time.Sleep(time.Second)
-				continue
-			}
-			twInfo := s.policy.Acquire(ctx, twInfos)
-			twAddr = twInfo.Addr
-			break
-		}
-	}
-	tWorker := s.workerManager.GetTriggerWorker(twAddr)
-	if tWorker == nil {
-		return ErrTriggerWorkerNotFound
-	}
-	if subscription.TriggerWorker == "" {
-		subscription.TriggerWorker = twAddr
-		err := s.subscriptionManager.UpdateSubscription(ctx, subscription)
-		if err != nil {
-			return err
-		}
-		metrics.CtrlTriggerGauge.WithLabelValues(twAddr).Inc()
-	}
-	tWorker.AssignSubscription(subscriptionID)
+	_ = "STUB: not implemented"
 	return nil
 }

@@ -14,60 +14,17 @@
 
 package apply
 
-import (
-	// standard libraries.
-	"encoding/json"
-	"fmt"
-	"strconv"
-
+import ( // standard libraries.
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
 	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/meta"
 )
 
-func GetCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "apply BlockID",
-		Short: "Get Apply of a specific Block.",
-		Run:   get,
-	}
-	cmd.Flags().StringVar(&volumePath, "volume", "", "volume path")
-	return cmd
-}
+func GetCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 type getResult struct {
 	BlockID uint64 `json:"BlockID"`
 	Apply   uint64 `json:"Apply"`
 }
 
-func get(_ *cobra.Command, args []string) {
-	db, err := meta.Open(volumePath, meta.ReadOnly(), meta.SkipMetaStore())
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-
-	for _, arg := range args {
-		id, err := strconv.ParseUint(arg, 0, 0)
-		if err != nil {
-			panic(err)
-		}
-
-		app, err := db.GetApply(id)
-		if err != nil {
-			panic(err)
-		}
-
-		jsonResult, err := json.MarshalIndent(getResult{
-			BlockID: id,
-			Apply:   app,
-		}, "", "  ")
-		if err != nil {
-			panic(err)
-		}
-
-		fmt.Println(string(jsonResult))
-	}
-}
+func get(_ *cobra.Command, args []string) { _ = "STUB: not implemented"; return }

@@ -25,7 +25,6 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
-	reflect "reflect"
 )
 
 const (
@@ -68,26 +67,5 @@ var file_vanus_core_raft_raft_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_raft_raft_proto_init() }
-func file_vanus_core_raft_raft_proto_init() {
-	if File_vanus_core_raft_raft_proto != nil {
-		return
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_raft_raft_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   0,
-			NumExtensions: 0,
-			NumServices:   1,
-		},
-		GoTypes:           file_vanus_core_raft_raft_proto_goTypes,
-		DependencyIndexes: file_vanus_core_raft_raft_proto_depIdxs,
-	}.Build()
-	File_vanus_core_raft_raft_proto = out.File
-	file_vanus_core_raft_raft_proto_rawDesc = nil
-	file_vanus_core_raft_raft_proto_goTypes = nil
-	file_vanus_core_raft_raft_proto_depIdxs = nil
-}
+func init()                                 { file_vanus_core_raft_raft_proto_init() }
+func file_vanus_core_raft_raft_proto_init() { _ = "STUB: not implemented"; return }

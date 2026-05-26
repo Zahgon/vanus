@@ -16,7 +16,7 @@ package stream
 
 import (
 	// standard library.
-	"sync/atomic"
+
 	"time"
 
 	// this project.
@@ -35,9 +35,7 @@ type pendingNode struct {
 	state    int32
 }
 
-func (pn *pendingNode) onTimeout() {
-	pn.task.OnTimeout(pn)
-}
+func (pn *pendingNode) onTimeout() { _ = "STUB: not implemented"; return }
 
 type pendingQueue struct {
 	q     blocking.Queue[*pendingNode]
@@ -53,53 +51,21 @@ func (pq *pendingQueue) init(delay time.Duration) *pendingQueue {
 	return pq
 }
 
-func (pq *pendingQueue) Close() {
-	pq.q.Close()
-}
+func (pq *pendingQueue) Close() { _ = "STUB: not implemented"; return }
 
-func (pq *pendingQueue) run() {
-	now := time.Now()
-	for {
-		node, ok := pq.q.UniquePop()
-		if !ok {
-			return
-		}
+func (pq *pendingQueue) run() { _ = "STUB: not implemented"; return }
 
-		// Shortcut if task is canceled.
-		if atomic.LoadInt32(&node.state) != 0 {
-			continue
-		}
+// Shortcut if task is canceled.
 
-		if now.Before(node.deadline) {
-			// refresh time
-			now = time.Now()
-			if now.Before(node.deadline) {
-				time.Sleep(node.deadline.Sub(now))
+// refresh time
 
-				// refresh time
-				now = time.Now()
+// refresh time
 
-				// recheck node state
-				if atomic.LoadInt32(&node.state) != 0 {
-					continue
-				}
-			}
-		}
-
-		node.onTimeout()
-	}
-}
+// recheck node state
 
 func (pq *pendingQueue) Push(t PendingTask) PendingID {
-	node := &pendingNode{
-		task:     t,
-		deadline: time.Now().Add(pq.delay),
-	}
-	pq.q.Push(node)
-	return node
+	_ = "STUB: not implemented"
+	return *new(PendingID)
 }
 
-func (pq *pendingQueue) Cancel(pid PendingID) {
-	node, _ := pid.(*pendingNode)
-	atomic.StoreInt32(&node.state, 1)
-}
+func (pq *pendingQueue) Cancel(pid PendingID) { _ = "STUB: not implemented"; return }

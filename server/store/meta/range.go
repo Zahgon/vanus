@@ -28,24 +28,9 @@ type skiplistRange struct {
 
 var _ Ranger = (*skiplistRange)(nil)
 
-func SkiplistRange(l *skiplist.SkipList) Ranger {
-	return &skiplistRange{
-		l: l,
-	}
-}
+func SkiplistRange(l *skiplist.SkipList) Ranger { _ = "STUB: not implemented"; return *new(Ranger) }
 
-func (r *skiplistRange) Range(cb RangeCallback) error {
-	for el := r.l.Front(); el != nil; el = el.Next() {
-		key, ok := el.Key().([]byte)
-		if !ok {
-			panic("codec: key is not []byte")
-		}
-		if err := cb(key, el.Value); err != nil {
-			return err
-		}
-	}
-	return nil
-}
+func (r *skiplistRange) Range(cb RangeCallback) error { _ = "STUB: not implemented"; return nil }
 
 type kvRange struct {
 	key   []byte
@@ -54,16 +39,9 @@ type kvRange struct {
 
 var _ Ranger = (*kvRange)(nil)
 
-func KVRange(key []byte, value interface{}) Ranger {
-	return &kvRange{
-		key:   key,
-		value: value,
-	}
-}
+func KVRange(key []byte, value interface{}) Ranger { _ = "STUB: not implemented"; return *new(Ranger) }
 
-func (r *kvRange) Range(cb RangeCallback) error {
-	return cb(r.key, r.value)
-}
+func (r *kvRange) Range(cb RangeCallback) error { _ = "STUB: not implemented"; return nil }
 
 type deleteRange struct {
 	keys [][]byte
@@ -71,11 +49,4 @@ type deleteRange struct {
 
 var _ Ranger = (*deleteRange)(nil)
 
-func (r *deleteRange) Range(cb RangeCallback) error {
-	for _, key := range r.keys {
-		if err := cb(key, DeletedMark); err != nil {
-			return err
-		}
-	}
-	return nil
-}
+func (r *deleteRange) Range(cb RangeCallback) error { _ = "STUB: not implemented"; return nil }

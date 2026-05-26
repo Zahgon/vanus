@@ -15,25 +15,17 @@
 package generate
 
 import (
-	// standard libraries.
-	"strconv"
-
 	// third-party libraries.
 	"golang.org/x/exp/constraints"
 )
 
-func AppendInt[T constraints.Signed](dst []byte, i T) []byte {
-	return strconv.AppendInt(dst, int64(i), 10)
-}
+func AppendInt[T constraints.Signed](dst []byte, i T) []byte { _ = "STUB: not implemented"; return nil }
 
 func AppendUint[T constraints.Unsigned](dst []byte, i T) []byte {
-	return strconv.AppendUint(dst, uint64(i), 10)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func AppendFloat32(dst []byte, f float32) []byte {
-	return strconv.AppendFloat(dst, float64(f), 'g', -1, 32)
-}
+func AppendFloat32(dst []byte, f float32) []byte { _ = "STUB: not implemented"; return nil }
 
-func AppendFloat64(dst []byte, f float64) []byte {
-	return strconv.AppendFloat(dst, f, 'g', -1, 64)
-}
+func AppendFloat64(dst []byte, f float64) []byte { _ = "STUB: not implemented"; return nil }

@@ -34,7 +34,8 @@ type textSegment struct {
 var _ templateSegment = (*textSegment)(nil)
 
 func (s *textSegment) RenderTo(w io.Writer, _ any, _ map[string]any) error {
-	return ignoreCount(w.Write(s.text))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type variableSegment struct {
@@ -45,12 +46,9 @@ type variableSegment struct {
 var _ templateSegment = (*variableSegment)(nil)
 
 func (s *variableSegment) RenderTo(w io.Writer, _ any, variables map[string]any) error {
+	_ = "STUB: not implemented"
 	// Variables MUST be defined. But to prevent corner cases, keep it empty.
-	v, ok := variables[s.name]
-	if !ok {
-		return nil
-	}
-	return write(w, v)
+	return nil
 }
 
 type jsonPathSegment struct {
@@ -61,12 +59,6 @@ type jsonPathSegment struct {
 var _ templateSegment = (*jsonPathSegment)(nil)
 
 func (s *jsonPathSegment) RenderTo(w io.Writer, model any, _ map[string]any) error {
-	results := s.path.Get(model)
-	if len(results) == 0 {
-		return nil
-	}
-	if len(results) == 1 {
-		return write(w, results[0])
-	}
-	return write(w, results)
+	_ = "STUB: not implemented"
+	return nil
 }

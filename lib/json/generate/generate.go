@@ -14,13 +14,6 @@
 
 package generate
 
-func AppendNull(dst []byte) []byte {
-	return append(dst, "null"...)
-}
+func AppendNull(dst []byte) []byte { _ = "STUB: not implemented"; return nil }
 
-func AppendBool(dst []byte, b bool) []byte {
-	if b {
-		return append(dst, "true"...)
-	}
-	return append(dst, "false"...)
-}
+func AppendBool(dst []byte, b bool) []byte { _ = "STUB: not implemented"; return nil }

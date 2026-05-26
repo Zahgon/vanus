@@ -11,7 +11,6 @@ package manager
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	metadata "github.com/vanus-labs/vanus/server/controller/tenant/metadata"
@@ -31,96 +30,85 @@ type MockNamespaceManagerMockRecorder struct {
 
 // NewMockNamespaceManager creates a new mock instance.
 func NewMockNamespaceManager(ctrl *gomock.Controller) *MockNamespaceManager {
-	mock := &MockNamespaceManager{ctrl: ctrl}
-	mock.recorder = &MockNamespaceManagerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockNamespaceManager) EXPECT() *MockNamespaceManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddNamespace mocks base method.
+	return nil
 }
 
-// AddNamespace mocks base method.
 func (m *MockNamespaceManager) AddNamespace(ctx context.Context, ns *metadata.Namespace) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddNamespace", ctx, ns)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddNamespace indicates an expected call of AddNamespace.
 func (mr *MockNamespaceManagerMockRecorder) AddNamespace(ctx, ns any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddNamespace", reflect.TypeOf((*MockNamespaceManager)(nil).AddNamespace), ctx, ns)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteNamespace mocks base method.
 func (m *MockNamespaceManager) DeleteNamespace(ctx context.Context, id vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteNamespace", ctx, id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteNamespace indicates an expected call of DeleteNamespace.
 func (mr *MockNamespaceManagerMockRecorder) DeleteNamespace(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteNamespace", reflect.TypeOf((*MockNamespaceManager)(nil).DeleteNamespace), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespace mocks base method.
 func (m *MockNamespaceManager) GetNamespace(ctx context.Context, id vsr.ID) *metadata.Namespace {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetNamespace", ctx, id)
-	ret0, _ := ret[0].(*metadata.Namespace)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespace indicates an expected call of GetNamespace.
 func (mr *MockNamespaceManagerMockRecorder) GetNamespace(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespace", reflect.TypeOf((*MockNamespaceManager)(nil).GetNamespace), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespaceByName mocks base method.
 func (m *MockNamespaceManager) GetNamespaceByName(ctx context.Context, name string) *metadata.Namespace {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetNamespaceByName", ctx, name)
-	ret0, _ := ret[0].(*metadata.Namespace)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespaceByName indicates an expected call of GetNamespaceByName.
 func (mr *MockNamespaceManagerMockRecorder) GetNamespaceByName(ctx, name any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespaceByName", reflect.TypeOf((*MockNamespaceManager)(nil).GetNamespaceByName), ctx, name)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
 func (m *MockNamespaceManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init indicates an expected call of Init.
 func (mr *MockNamespaceManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockNamespaceManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListNamespace mocks base method.
 func (m *MockNamespaceManager) ListNamespace(ctx context.Context) []*metadata.Namespace {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListNamespace", ctx)
-	ret0, _ := ret[0].([]*metadata.Namespace)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListNamespace indicates an expected call of ListNamespace.
 func (mr *MockNamespaceManagerMockRecorder) ListNamespace(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNamespace", reflect.TypeOf((*MockNamespaceManager)(nil).ListNamespace), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }

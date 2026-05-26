@@ -16,22 +16,9 @@ package tracing
 
 import (
 	"context"
-	"fmt"
-	"strings"
-	"time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/sdk/resource"
 	"go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.12.0"
 	oteltrace "go.opentelemetry.io/otel/trace"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 const (
@@ -48,45 +35,16 @@ type Config struct {
 
 var tp *tracerProvider
 
-func Init(cfg Config) {
-	if cfg.ServerName == "" {
-		log.Info().Msg("tracing name is empty, ignored")
-		return
-	}
-	p := &tracerProvider{
-		serverName: cfg.ServerName,
-	}
-	if cfg.Enable {
-		if cfg.OtelCollector != "" {
-			provider, err := newTracerProvider(p.serverName, cfg.OtelCollector)
-			if err != nil {
-				panic("init tracer error: " + err.Error())
-			}
-			p.p = provider
-			log.Info().Str("otel_collector", cfg.OtelCollector).
-				Msg("tracing module started, OpenTelemetry is enable")
-		} else {
-			// if otel_collector is empty, switch to noop tracer
-			log.Warn().Str("otel_collector", cfg.OtelCollector).Msg("tracing module is enabled," +
-				" but otel_collector is empty, switch to noop tracer")
-			p.p = oteltrace.NewNoopTracerProvider()
-		}
-	} else {
-		p.p = oteltrace.NewNoopTracerProvider()
-	}
-	tp = p
-}
+func Init(cfg Config) { _ = "STUB: not implemented"; return }
+
+// if otel_collector is empty, switch to noop tracer
 
 // Test input two num, return sum.
-func Test() {
-}
+func Test() { _ = "STUB: not implemented"; return }
 
 func Start(ctx context.Context, pkgName, methodName string) (context.Context, oteltrace.Span) {
-	if tp == nil {
-		return ctx, emptySpan("test")
-	}
-	return tp.p.Tracer(pkgName).Start(ctx, strings.Join([]string{pkgName, methodName}, "/"),
-		oteltrace.WithSpanKind(oteltrace.SpanKindServer))
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(oteltrace.Span)
 }
 
 type tracerProvider struct {
@@ -101,79 +59,21 @@ type Tracer struct {
 }
 
 func (t *Tracer) Start(ctx context.Context, methodName string, opts ...oteltrace.SpanStartOption) (context.Context, oteltrace.Span) {
-	if t == nil {
-		return ctx, emptySpan("test")
-	}
-	return t.tracer.Start(ctx, strings.Join([]string{t.moduleName, methodName}, "/"),
-		append(opts, oteltrace.WithSpanKind(t.kind))...)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(oteltrace.Span)
 }
 
 func NewTracer(moduleName string, kind oteltrace.SpanKind) *Tracer {
-	if tp == nil {
-		return &Tracer{
-			tracer:     oteltrace.NewNoopTracerProvider().Tracer(moduleName),
-			kind:       kind,
-			moduleName: moduleName,
-		}
-	}
-
-	return &Tracer{
-		tracer:     tp.p.Tracer(moduleName),
-		kind:       kind,
-		moduleName: moduleName,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func newTracerProvider(serviceName string, collectorEndpoint string) (*trace.TracerProvider, error) {
-	ctx := context.Background()
-	res, err := resource.New(ctx, resource.WithContainer())
-	if err != nil {
-		return nil, fmt.Errorf("failed to create resource: %w", err)
-	}
-	res, err = resource.Merge(resource.Default(), res)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create resource: %w", err)
-	}
-	res, err = resource.Merge(
-		res,
-		resource.NewWithAttributes(
-			semconv.SchemaURL,
-			semconv.ServiceNameKey.String(serviceName),
-			semconv.ServiceVersionKey.String(vanusVersion),
-			attribute.String(environmentKey, environmentValue),
-		),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create resource: %w", err)
-	}
-
-	ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
-	defer cancel()
-	conn, err := grpc.DialContext(ctx, collectorEndpoint,
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithBlock())
-	if err != nil {
-		return nil, fmt.Errorf("failed to create gRPC connection to collector[ %s ]: %w",
-			collectorEndpoint, err)
-	}
-
-	// Set up a trace exporter
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
-	if err != nil {
-		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
-	}
-
-	// Register the trace exporter with a TracerProvider, using a batch
-	// span processor to aggregate spans before export.
-	bsp := trace.NewBatchSpanProcessor(traceExporter)
-	tracerProvider := trace.NewTracerProvider(
-		trace.WithSampler(trace.AlwaysSample()),
-		trace.WithResource(res),
-		trace.WithSpanProcessor(bsp),
-	)
-
-	otel.SetTracerProvider(tracerProvider)
-	otel.SetTextMapPropagator(propagation.TraceContext{})
-
-	return tracerProvider, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// Set up a trace exporter
+
+// Register the trace exporter with a TracerProvider, using a batch
+// span processor to aggregate spans before export.

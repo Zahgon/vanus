@@ -16,15 +16,11 @@ package codec
 
 import (
 	// standard libraries.
-	"bytes"
-	"encoding/binary"
-	"math/bits"
-	"sort"
+
 	"time"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 const (
@@ -56,156 +52,54 @@ type entry struct {
 // Make sure entry implements block.Entry.
 var _ block.Entry = (*entry)(nil)
 
-func (e *entry) Get(_ int) interface{} {
-	return nil
-}
+func (e *entry) Get(_ int) interface{} { _ = "STUB: not implemented"; return nil }
 
-func (e *entry) GetBytes(ordinal int) []byte {
-	idx := e.valueIndex(ordinal)
-	if idx < 0 {
-		return nil
-	}
-	vo := valueOffset(idx)
-	return e.deref(vo)
-}
+func (e *entry) GetBytes(ordinal int) []byte { _ = "STUB: not implemented"; return nil }
 
-func (e *entry) GetString(ordinal int) string {
-	idx := e.valueIndex(ordinal)
-	if idx < 0 {
-		return ""
-	}
-	vo := valueOffset(idx)
-	return string(e.deref(vo))
-}
+func (e *entry) GetString(ordinal int) string { _ = "STUB: not implemented"; return "" }
 
-func (e *entry) GetUint16(ordinal int) uint16 {
-	if ordinal == ceschema.EntryTypeOrdinal {
-		return e.t
-	}
+func (e *entry) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
-	idx := e.valueIndex(ordinal)
-	if idx < 0 {
-		return 0
-	}
-	vo := valueOffset(idx)
-	return binary.LittleEndian.Uint16(e.data[vo:])
-}
+func (e *entry) GetUint64(ordinal int) uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) GetUint64(ordinal int) uint64 {
-	idx := e.valueIndex(ordinal)
-	if idx < 0 {
-		return 0
-	}
-	vo := valueOffset(idx)
-	return binary.LittleEndian.Uint64(e.data[vo:])
-}
+func (e *entry) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) GetInt64(ordinal int) int64 {
-	return int64(e.GetUint64(ordinal))
-}
+func (e *entry) GetTime(ordinal int) time.Time { _ = "STUB: not implemented"; return *new(time.Time) }
 
-func (e *entry) GetTime(ordinal int) time.Time {
-	idx := e.valueIndex(ordinal)
-	if idx < 0 {
-		return time.Time{}
-	}
-	vo := valueOffset(idx)
-	off, nano := offsetAndLength(e.data[vo:])
-	sec := binary.LittleEndian.Uint64(e.data[off:])
-	return time.Unix(int64(sec), int64(nano))
-}
+func (e *entry) ExtensionAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) ExtensionAttributeCount() int {
-	return e.extCount()
-}
-
-func (e *entry) GetExtensionAttribute(attr []byte) []byte {
-	sz := e.extCount()
-	if sz == 0 {
-		return nil
-	}
-	base := e.extVecBase()
-	idx := sort.Search(sz, func(i int) bool {
-		return bytes.Compare(attr, e.deref(attrKeyOffset(base, i))) <= 0
-	})
-	if idx < sz && bytes.Equal(attr, e.deref(attrKeyOffset(base, idx))) {
-		return e.deref(attrValueOffset(base, idx))
-	}
-	return nil
-}
+func (e *entry) GetExtensionAttribute(attr []byte) []byte { _ = "STUB: not implemented"; return nil }
 
 func (e *entry) RangeExtensionAttributes(cb block.ExtensionAttributeCallback) {
-	sz := e.extCount()
-	if sz == 0 {
-		return
-	}
-
-	base := e.extVecBase()
-	for i := 0; i < sz; i++ {
-		attr := e.deref(attrKeyOffset(base, i))
-		val := e.deref(attrValueOffset(base, i))
-		cb.OnAttribute(attr, block.BytesValue(val))
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func (e *entry) bitmap() uint64 {
-	return binary.LittleEndian.Uint64(e.data) >> bitmapOffset
-}
+func (e *entry) bitmap() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) valueCount() int {
-	return bits.OnesCount64(e.bitmap())
-}
+func (e *entry) valueCount() int { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) valueIndex(ordinal int) int {
-	return valueIndex(e.bitmap(), uint64(1)<<ordinal)
-}
+func (e *entry) valueIndex(ordinal int) int { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) extCount() int {
-	return int(binary.LittleEndian.Uint16(e.data))
-}
+func (e *entry) extCount() int { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) extVecBase() int {
-	return valueOffset(e.valueCount())
-}
+func (e *entry) extVecBase() int { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) deref(base int) []byte {
-	off, sz := offsetAndLength(e.data[base:])
-	return e.data[off : off+sz]
-}
+func (e *entry) deref(base int) []byte { _ = "STUB: not implemented"; return nil }
 
-func makeRef(offset, length int) uint64 {
-	return uint64(offset)<<32 | uint64(length)
-}
+func makeRef(offset, length int) uint64 { _ = "STUB: not implemented"; return 0 }
 
-func offsetAndLength(data []byte) (uint32, uint32) {
-	offsetAndSize := binary.LittleEndian.Uint64(data)
-	off := offsetAndSize >> offsetOffset
-	sz := offsetAndSize & sizeMask
-	return uint32(off), uint32(sz)
-}
+func offsetAndLength(data []byte) (uint32, uint32) { _ = "STUB: not implemented"; return 0, 0 }
 
-func valueIndex(bitmap uint64, mask uint64) int {
-	if bitmap&mask == 0 {
-		return -1
-	}
-	return doValueIndex(bitmap, mask)
-}
+func valueIndex(bitmap uint64, mask uint64) int { _ = "STUB: not implemented"; return 0 }
 
-func doValueIndex(bitmap uint64, mask uint64) int {
-	return bits.OnesCount64(bitmap &^ (^mask + 1))
-}
+func doValueIndex(bitmap uint64, mask uint64) int { _ = "STUB: not implemented"; return 0 }
 
-func valueOffset(idx int) int {
-	return entryHeaderSize + idx*optAttrSize
-}
+func valueOffset(idx int) int { _ = "STUB: not implemented"; return 0 }
 
-func attrKeyOffset(base int, idx int) int {
-	return base + idx*extAttrPairSize + extAttrKeyOffset
-}
+func attrKeyOffset(base int, idx int) int { _ = "STUB: not implemented"; return 0 }
 
-func attrValueOffset(base int, idx int) int {
-	return base + idx*extAttrPairSize + extAttrValueOffset
-}
+func attrValueOffset(base int, idx int) int { _ = "STUB: not implemented"; return 0 }
 
 type entryEncoder struct {
 	ceEnc    ceEntryEncoder
@@ -216,28 +110,11 @@ type entryEncoder struct {
 // Make sure entryEncoder implements RecordDataEncoder.
 var _ RecordDataEncoder = (*entryEncoder)(nil)
 
-func (e *entryEncoder) Size(entry block.Entry) int {
-	switch ceschema.EntryType(entry) {
-	case ceschema.CloudEvent:
-		return e.ceEnc.Size(entry)
-	case ceschema.End:
-		return e.endEnc.Size(entry)
-	case ceschema.Index:
-		return e.indexEnc.Size(entry)
-	}
-	return -1
-}
+func (e *entryEncoder) Size(entry block.Entry) int { _ = "STUB: not implemented"; return 0 }
 
 func (e *entryEncoder) MarshalTo(entry block.Entry, buf []byte) (int, int, error) {
-	switch ceschema.EntryType(entry) {
-	case ceschema.CloudEvent:
-		return e.ceEnc.MarshalTo(entry, buf)
-	case ceschema.End:
-		return e.endEnc.MarshalTo(entry, buf)
-	case ceschema.Index:
-		return e.indexEnc.MarshalTo(entry, buf)
-	}
-	return 0, 0, ErrUnknownRecord
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }
 
 type entryDecoder struct {
@@ -248,11 +125,6 @@ type entryDecoder struct {
 var _ RecordDataDecoder = (*entryDecoder)(nil)
 
 func (d *entryDecoder) Unmarshal(t uint16, offset int, data []byte) (block.Entry, error) {
-	switch t {
-	case ceschema.CloudEvent, ceschema.End:
-		return &entry{t: t, data: data[offset:]}, nil
-	case ceschema.Index:
-		return d.indexDec.Unmarshal(t, offset, data)
-	}
-	return nil, ErrUnknownRecord
+	_ = "STUB: not implemented"
+	return *new(block.Entry), nil
 }

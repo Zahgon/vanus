@@ -22,25 +22,10 @@ type config struct {
 	parallel int
 }
 
-func defaultConfig() config {
-	cfg := config{
-		parallel: defaultParallel,
-	}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
 
-func WithParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.parallel = parallel
-	}
-}
+func WithParallel(parallel int) Option { _ = "STUB: not implemented"; return *new(Option) }

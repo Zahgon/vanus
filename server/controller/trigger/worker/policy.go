@@ -16,9 +16,6 @@ package worker
 
 import (
 	"context"
-	"math/rand"
-	"sync/atomic"
-	"time"
 
 	"github.com/vanus-labs/vanus/server/controller/trigger/metadata"
 )
@@ -33,14 +30,14 @@ type RoundRobinPolicy struct {
 
 func (rr *RoundRobinPolicy) Acquire(_ context.Context,
 	workers []metadata.TriggerWorkerInfo) metadata.TriggerWorkerInfo {
-	length := uint64(len(workers))
-	idx := atomic.AddUint64(&rr.idx, 1) - 1
-	return workers[idx%length]
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerInfo)
 }
 
 type RandomPolicy struct {
 }
 
 func (r *RandomPolicy) Acquire(_ context.Context, workers []metadata.TriggerWorkerInfo) metadata.TriggerWorkerInfo {
-	return workers[rand.New(rand.NewSource(time.Now().Unix())).Intn(len(workers))]
+	_ = "STUB: not implemented"
+	return *new(metadata.TriggerWorkerInfo)
 }

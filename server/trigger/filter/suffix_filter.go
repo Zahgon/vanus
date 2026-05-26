@@ -14,20 +14,13 @@
 
 package filter
 
-import (
-	"strings"
-)
-
 type suffixFilter struct {
 	commonFilter
 }
 
 func NewSuffixFilter(suffix map[string]string) Filter {
-	f := newCommonFilter(suffix, strings.HasSuffix)
-	if f == nil {
-		return nil
-	}
-	return &suffixFilter{commonFilter: *f}
+	_ = "STUB: not implemented"
+	return *new(Filter)
 }
 
 var _ Filter = (*suffixFilter)(nil)

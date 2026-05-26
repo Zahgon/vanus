@@ -19,7 +19,6 @@ import (
 	"context"
 	"os"
 	"sync"
-	"sync/atomic"
 
 	// this project.
 
@@ -73,66 +72,26 @@ type vsBlock struct {
 // Make sure vsBlock implements block.Raw.
 var _ block.Raw = (*vsBlock)(nil)
 
-func (b *vsBlock) ID() vanus.ID {
-	return b.id
-}
+func (b *vsBlock) ID() vanus.ID { _ = "STUB: not implemented"; return *new(vanus.ID) }
 
-func (b *vsBlock) Close(ctx context.Context) error {
-	b.wg.Wait()
+func (b *vsBlock) Close(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	m, indexes := b.makeSnapshot()
-
-	if b.indexOffset != m.writeOffset {
-		ch := make(chan error)
-		b.appendIndexEntry(ctx, indexes, func(n int, err error) {
-			if err != nil {
-				ch <- err
-			}
-			b.indexOffset = m.writeOffset
-			b.indexLength = n
-			close(ch)
-		})
-		if err := <-ch; err != nil {
-			return err
-		}
-	}
-
-	// Flush metadata.
-	if b.fm.archived != m.archived || b.fm.entryLength != m.entryLength {
-		if err := b.persistHeader(ctx, m); err != nil {
-			return err
-		}
-	}
-
-	return b.f.Close()
-}
+// Flush metadata.
 
 func (b *vsBlock) Delete(context.Context) error {
+	_ = "STUB: not implemented"
 	// FIXME(james.yin): make sure block is closed.
-	return os.Remove(b.path)
+	return nil
 }
 
 func (b *vsBlock) Status() block.Statistics {
-	return b.stat(b.makeSnapshot())
+	_ = "STUB: not implemented"
+	return *new(block.Statistics)
 }
 
 func (b *vsBlock) stat(m meta, indexes []index.Index) block.Statistics {
-	s := block.Statistics{
-		ID:              b.id,
-		Capacity:        uint64(b.capacity),
-		Archived:        m.archived,
-		EntryNum:        uint32(m.entryNum),
-		EntrySize:       uint64(m.entryLength),
-		FirstEntryStime: -1,
-		LastEntryStime:  -1,
-	}
-	if sz := len(indexes); sz != 0 {
-		s.FirstEntryStime = indexes[0].Stime()
-		s.LastEntryStime = indexes[sz-1].Stime()
-	}
-	return s
+	_ = "STUB: not implemented"
+	return *new(block.Statistics)
 }
 
-func (b *vsBlock) full() bool {
-	return atomic.LoadUint32(&b.actx.archived) != 0
-}
+func (b *vsBlock) full() bool { _ = "STUB: not implemented"; return false }

@@ -22,7 +22,6 @@ import (
 	"github.com/iceber/iouring-go"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/io"
@@ -42,47 +41,13 @@ type uRing struct {
 // Make sure uRing implements engine.Interface.
 var _ engine.Interface = (*uRing)(nil)
 
-func New() engine.Interface {
-	ring, err := iouring.New(defaultResultBufferSize)
-	if err != nil {
-		log.Error().Err(err).Msg("Create iouring failed")
-		panic(err)
-	}
+func New() engine.Interface { _ = "STUB: not implemented"; return *new(engine.Interface) }
 
-	e := &uRing{
-		ring:    ring,
-		resultC: make(chan iouring.Result, defaultResultBufferSize),
-	}
+func (e *uRing) Close() { _ = "STUB: not implemented"; return }
 
-	go e.runCallback()
+func (e *uRing) runCallback() { _ = "STUB: not implemented"; return }
 
-	return e
-}
-
-func (e *uRing) Close() {
-	if err := e.ring.Close(); err != nil {
-		log.Error().Err(err).Msg("Encounter error when close iouring")
-	}
-	close(e.resultC)
-}
-
-func (e *uRing) runCallback() {
-	for result := range e.resultC {
-		_ = result.Callback()
-	}
-}
-
-func (e *uRing) WriteAt(z zone.Interface, b []byte, off int64, so, eo int, cb io.WriteCallback) { //nolint:revive // ok
-	f, offset := z.Raw(off)
-	pr := iouring.Pwrite(int(f.Fd()), b, uint64(offset)).
-		WithCallback(func(result iouring.Result) error {
-			cb(result.ReturnInt())
-			return nil
-		})
-
-	_, err := e.ring.SubmitRequest(pr, e.resultC)
-	if err != nil {
-		cb(0, err)
-		return
-	}
+func (e *uRing) WriteAt(z zone.Interface, b []byte, off int64, so, eo int, cb io.WriteCallback) {
+	_ = "STUB: not implemented" //nolint:revive // ok
+	return
 }

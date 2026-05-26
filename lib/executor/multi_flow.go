@@ -16,7 +16,6 @@ package executor
 
 import (
 	// standard libraries.
-	"sync/atomic"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/container/conque/blocking"
@@ -34,38 +33,11 @@ type flow struct {
 // Make sure flow implements ExecuteCloser.
 var _ ExecuteCloser = (*flow)(nil)
 
-func (f *flow) Execute(t Task) bool {
-	if atomic.LoadInt32(&f.state) != 0 {
-		return false
-	}
+func (f *flow) Execute(t Task) bool { _ = "STUB: not implemented"; return false }
 
-	if f.q.Push(t) {
-		return f.mf.q.Push(f)
-	}
-	return true
-}
+func (f *flow) Close() { _ = "STUB: not implemented"; return }
 
-func (f *flow) Close() {
-	atomic.StoreInt32(&f.state, 1)
-}
-
-func (f *flow) invokeTasks(batch int) bool {
-	if atomic.LoadInt32(&f.state) != 0 {
-		return false
-	}
-
-	for i := 0; i < batch; i++ {
-		t, _ := f.q.Peek()
-
-		t()
-
-		_, empty, _ := f.q.UniquePop()
-		if empty {
-			return false
-		}
-	}
-	return true
-}
+func (f *flow) invokeTasks(batch int) bool { _ = "STUB: not implemented"; return false }
 
 type MultiFlow struct {
 	q        blocking.Queue[*flow]
@@ -73,44 +45,19 @@ type MultiFlow struct {
 }
 
 func NewMultiFlow(parallel int, handoff, startImmediately bool) *MultiFlow {
-	return new(MultiFlow).Init(parallel, handoff, startImmediately)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (mf *MultiFlow) Init(parallel int, handoff, startImmediately bool) *MultiFlow {
-	mf.parallel = parallel
-	mf.q.Init(handoff)
-	if startImmediately {
-		mf.Start()
-	}
-	return mf
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (mf *MultiFlow) Start() {
-	for i := 0; i < mf.parallel; i++ {
-		go mf.run()
-	}
-}
+func (mf *MultiFlow) Start() { _ = "STUB: not implemented"; return }
 
-func (mf *MultiFlow) Close() {
-	mf.q.Close()
-}
+func (mf *MultiFlow) Close() { _ = "STUB: not implemented"; return }
 
-func (mf *MultiFlow) NewFlow() ExecuteCloser {
-	f := &flow{
-		mf: mf,
-	}
-	return f
-}
+func (mf *MultiFlow) NewFlow() ExecuteCloser { _ = "STUB: not implemented"; return *new(ExecuteCloser) }
 
-func (mf *MultiFlow) run() {
-	for {
-		f, ok := mf.q.SharedPop()
-		if !ok {
-			return
-		}
-
-		if f.invokeTasks(defaultInvokeBatchSize) {
-			mf.q.Push(f)
-		}
-	}
-}
+func (mf *MultiFlow) run() { _ = "STUB: not implemented"; return }

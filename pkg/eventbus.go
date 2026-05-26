@@ -16,6 +16,4 @@ package pkg
 
 import vanus "github.com/vanus-labs/vanus/api/vsr"
 
-func GetDeadLetterEventbusName(eventbusID vanus.ID) string {
-	return SystemEventbusNamePrefix + "dl_" + eventbusID.Key()
-}
+func GetDeadLetterEventbusName(eventbusID vanus.ID) string { _ = "STUB: not implemented"; return "" }

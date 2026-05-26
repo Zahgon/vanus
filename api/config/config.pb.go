@@ -21,10 +21,10 @@
 package config
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -42,44 +42,21 @@ type ServerConfig struct {
 	Configs map[string]string `protobuf:"bytes,1,rep,name=configs,proto3" json:"configs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *ServerConfig) Reset() {
-	*x = ServerConfig{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_config_config_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ServerConfig) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerConfig) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerConfig) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerConfig) ProtoMessage() {}
+func (*ServerConfig) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_config_config_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerConfig.ProtoReflect.Descriptor instead.
-func (*ServerConfig) Descriptor() ([]byte, []int) {
-	return file_vanus_core_config_config_proto_rawDescGZIP(), []int{0}
-}
+func (*ServerConfig) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ServerConfig) GetConfigs() map[string]string {
-	if x != nil {
-		return x.Configs
-	}
-	return nil
-}
+func (x *ServerConfig) GetConfigs() map[string]string { _ = "STUB: not implemented"; return nil }
 
 var File_vanus_core_config_config_proto protoreflect.FileDescriptor
 
@@ -108,10 +85,8 @@ var (
 )
 
 func file_vanus_core_config_config_proto_rawDescGZIP() []byte {
-	file_vanus_core_config_config_proto_rawDescOnce.Do(func() {
-		file_vanus_core_config_config_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_config_config_proto_rawDescData)
-	})
-	return file_vanus_core_config_config_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_vanus_core_config_config_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
@@ -128,41 +103,5 @@ var file_vanus_core_config_config_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_config_config_proto_init() }
-func file_vanus_core_config_config_proto_init() {
-	if File_vanus_core_config_config_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_config_config_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ServerConfig); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_config_config_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   2,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_vanus_core_config_config_proto_goTypes,
-		DependencyIndexes: file_vanus_core_config_config_proto_depIdxs,
-		MessageInfos:      file_vanus_core_config_config_proto_msgTypes,
-	}.Build()
-	File_vanus_core_config_config_proto = out.File
-	file_vanus_core_config_config_proto_rawDesc = nil
-	file_vanus_core_config_config_proto_goTypes = nil
-	file_vanus_core_config_config_proto_depIdxs = nil
-}
+func init()                                     { file_vanus_core_config_config_proto_init() }
+func file_vanus_core_config_config_proto_init() { _ = "STUB: not implemented"; return }

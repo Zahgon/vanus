@@ -15,55 +15,18 @@
 package record
 
 func Pack(entry []byte, firstSize, otherSize int) ([]Record, int) {
-	num := calPacketNum(entry, firstSize, otherSize)
-	if num == 1 {
-		packet := makePacket(Full, entry)
-		padding := firstSize - packet.Size()
-		if padding >= HeaderSize {
-			padding = 0
-		}
-		return []Record{packet}, padding
-	}
-
-	packets := make([]Record, 0, num)
-
-	// first packet
-	packets = append(packets, makePacket(First, entry[:firstSize-HeaderSize]))
-
-	// middle packet(s)
-	fo := firstSize - HeaderSize
-	for i := 0; i < num-2; i++ {
-		eo := fo + otherSize - HeaderSize
-		packets = append(packets, makePacket(Middle, entry[fo:eo]))
-		fo = eo
-	}
-
-	// last packet
-	last := makePacket(Last, entry[fo:])
-	packets = append(packets, last)
-
-	padding := otherSize - last.Size()
-	if padding >= HeaderSize {
-		padding = 0
-	}
-
-	return packets, padding
+	_ = "STUB: not implemented"
+	return nil, 0
 }
 
-func calPacketNum(entry []byte, firstSize, otherSize int) int {
-	payload := len(entry)
-	if payload <= firstSize-HeaderSize {
-		return 1
-	}
-	// 1 + ((payload-(firstSize-HeaderSize))+((otherSize-HeaderSize)-1))/(otherSize-HeaderSize)
-	return 1 + (payload-firstSize+otherSize-1)/(otherSize-HeaderSize)
-}
+// first packet
 
-func makePacket(t Type, payload []byte) Record {
-	return Record{
-		CRC:    0,
-		Length: uint16(len(payload)),
-		Type:   t,
-		Data:   payload,
-	}
-}
+// middle packet(s)
+
+// last packet
+
+func calPacketNum(entry []byte, firstSize, otherSize int) int { _ = "STUB: not implemented"; return 0 }
+
+// 1 + ((payload-(firstSize-HeaderSize))+((otherSize-HeaderSize)-1))/(otherSize-HeaderSize)
+
+func makePacket(t Type, payload []byte) Record { _ = "STUB: not implemented"; return *new(Record) }

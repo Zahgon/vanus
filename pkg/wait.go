@@ -25,43 +25,29 @@ type Group struct {
 }
 
 func (g *Group) Wait() {
-	g.wg.Wait()
+	_ = "STUB: not implemented"
+
+	// StartWithChannel starts f in a new goroutine in the group.
+	// stopCh is passed to f as an argument. f should stop when stopCh is available.
+	return
 }
 
-// StartWithChannel starts f in a new goroutine in the group.
-// stopCh is passed to f as an argument. f should stop when stopCh is available.
 func (g *Group) StartWithChannel(stopCh <-chan struct{}, f func(stopCh <-chan struct{})) {
-	g.Start(func() {
-		f(stopCh)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // StartWithContext starts f in a new goroutine in the group.
 // ctx is passed to f as an argument. f should stop when ctx.Done() is available.
 func (g *Group) StartWithContext(ctx context.Context, f func(context.Context)) {
-	g.Start(func() {
-		f(ctx)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // Start starts f in a new goroutine in the group.
-func (g *Group) Start(f func()) {
-	g.wg.Add(1)
-	go func() {
-		defer g.wg.Done()
-		f()
-	}()
-}
+func (g *Group) Start(f func()) { _ = "STUB: not implemented"; return }
 
 func UntilWithContext(ctx context.Context, f func(context.Context), period time.Duration) {
-	tk := time.NewTicker(period)
-	defer tk.Stop()
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case <-tk.C:
-			f(ctx)
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }

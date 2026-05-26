@@ -18,13 +18,10 @@ import (
 	// standard libraries.
 	"io"
 	"sync"
-	"time"
 
 	// third-party libraries.
 	"github.com/ohler55/ojg/oj"
-
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
 var writerPool = sync.Pool{
@@ -33,25 +30,8 @@ var writerPool = sync.Pool{
 	},
 }
 
-func writeJSON(w io.Writer, v any) error {
-	writer, _ := writerPool.Get().(*oj.Writer)
-	defer writerPool.Put(writer)
-	return oj.Write(w, v, writer)
-}
+func writeJSON(w io.Writer, v any) error { _ = "STUB: not implemented"; return nil }
 
-func write(w io.Writer, v any) error {
-	switch val := v.(type) {
-	case bool, int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64:
-		return writeJSON(w, v)
-	case string:
-		return ignoreCount(w.Write(bytes.UnsafeFromString(val)))
-	case time.Time:
-		return ignoreCount(w.Write(bytes.UnsafeFromString(val.Format(time.RFC3339))))
-	default:
-		return writeJSON(w, v)
-	}
-}
+func write(w io.Writer, v any) error { _ = "STUB: not implemented"; return nil }
 
-func ignoreCount(_ int, err error) error {
-	return err
-}
+func ignoreCount(_ int, err error) error { _ = "STUB: not implemented"; return nil }

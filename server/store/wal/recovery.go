@@ -20,10 +20,9 @@ import (
 	"errors"
 
 	// third-party project.
-	"github.com/ncw/directio"
 
 	// this project.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
+
 	"github.com/vanus-labs/vanus/server/store/io/zone/segmentedfile"
 	"github.com/vanus-labs/vanus/server/store/wal/record"
 )
@@ -36,59 +35,16 @@ var (
 )
 
 func scanLogEntries(sf *segmentedfile.SegmentedFile, blockSize int, from int64, cb OnEntryCallback) (int64, error) {
-	s := sf.SelectSegment(from, false)
-	if s == nil {
-		if from == 0 {
-			return 0, nil
-		}
-		return -1, ErrOutOfRange
-	}
-
-	if cb == nil {
-		cb = noopOnEntry
-	}
-
-	sc := scanner{
-		blockSize: int64(blockSize),
-		buf:       directio.AlignedBlock(blockSize),
-		buffer:    bytes.NewBuffer(nil),
-		last:      record.Zero,
-		eo:        from,
-		from:      from,
-		cb:        cb,
-	}
-
-	for {
-		err := sc.scanSegmentFile(s)
-		if err == nil {
-			s = sf.SelectSegment(s.EO(), false)
-			if s == nil {
-				break
-			}
-			continue
-		}
-
-		if errors.Is(err, errEndOfLog) {
-			// TODO(james.yin): has empty log file(s).
-			// if i != len(s.stream)-1 {
-			// 	panic("has empty log file")
-			// }
-
-			// TODO(james.yin): Has incomplete entry, truncate it.
-			if sc.last.IsNonTerminal() {
-				log.Info().
-					Interface("last_type", sc.last).
-					Msg("Found incomplete entry, truncate it.")
-			}
-
-			return sc.eo, nil
-		}
-
-		return -1, err
-	}
-
+	_ = "STUB: not implemented"
 	return 0, nil
 }
+
+// TODO(james.yin): has empty log file(s).
+// if i != len(s.stream)-1 {
+// 	panic("has empty log file")
+// }
+
+// TODO(james.yin): Has incomplete entry, truncate it.
 
 type scanner struct {
 	blockSize int64
@@ -101,107 +57,34 @@ type scanner struct {
 }
 
 func (sc *scanner) scanSegmentFile(s *segmentedfile.Segment) (err error) {
-	f := s.File()
-	for at := sc.firstBlockOffset(s); at < s.Size(); at += sc.blockSize {
-		if _, err = f.ReadAt(sc.buf, at); err != nil {
-			return err
-		}
-
-		bso := s.SO() + at
-		for so := sc.firstRecordOffset(bso); so <= sc.blockSize-record.HeaderSize; {
-			r, err2 := record.Unmarshal(sc.buf[so:])
-			if err2 != nil {
-				// TODO(james.yin): handle parse error
-				err = err2
-				return
-			}
-
-			// no new record
-			if r.Type == record.Zero {
-				err = errEndOfLog
-				return
-			}
-
-			// TODO(james.yin): check crc
-
-			sz := int64(r.Size())
-			reo := bso + so + sz
-			if err = onRecord(sc, r, reo); err != nil {
-				return err
-			}
-			so += sz
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// TODO(james.yin): handle parse error
+
+// no new record
+
+// TODO(james.yin): check crc
 
 func (sc *scanner) firstBlockOffset(s *segmentedfile.Segment) int64 {
-	if s.SO() < sc.from {
-		if s.EO() <= sc.from {
-			panic("WAL: so is out of range.")
-		}
-		off := sc.from - s.SO()
-		off -= off % sc.blockSize
-		return off
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
-func (sc *scanner) firstRecordOffset(so int64) int64 {
-	if so < sc.from {
-		if sc.from-so >= sc.blockSize {
-			panic("WAL: so is out of range.")
-		}
-		return sc.from % sc.blockSize
-	}
-	return 0
-}
+func (sc *scanner) firstRecordOffset(so int64) int64 { _ = "STUB: not implemented"; return 0 }
 
-func onRecord(ctx *scanner, r record.Record, eo int64) error {
-	switch r.Type {
-	case record.Full:
-		if !ctx.last.IsTerminal() && ctx.last != record.Zero {
-			// TODO(james.yin): unexpected state
-			panic("WAL: unexpected state")
-		}
-		if err := ctx.cb(r.Data, Range{SO: ctx.eo, EO: eo}); err != nil {
-			return err
-		}
-	case record.First:
-		if !ctx.last.IsTerminal() && ctx.last != record.Zero {
-			// TODO(james.yin): unexpected state
-			panic("WAL: unexpected state")
-		}
-		ctx.buffer.Write(r.Data)
-	case record.Middle:
-		if !ctx.last.IsNonTerminal() {
-			// TODO(james.yin): unexpected state
-			panic("WAL: unexpected state")
-		}
-		ctx.buffer.Write(r.Data)
-	case record.Last:
-		if !ctx.last.IsNonTerminal() {
-			// TODO(james.yin): unexpected state
-			panic("WAL: unexpected state")
-		}
-		ctx.buffer.Write(r.Data)
-		if err := ctx.cb(ctx.buffer.Bytes(), Range{SO: ctx.eo, EO: eo}); err != nil {
-			return err
-		}
-		ctx.buffer.Reset()
-	case record.Zero:
-		panic("WAL: unexpected state")
-	}
+func onRecord(ctx *scanner, r record.Record, eo int64) error { _ = "STUB: not implemented"; return nil }
 
-	ctx.last = r.Type
-	if ctx.last.IsTerminal() {
-		ctx.eo = eo
-	}
+// TODO(james.yin): unexpected state
 
-	return nil
-}
+// TODO(james.yin): unexpected state
 
-func noopOnEntry(_ []byte, r Range) error { //nolint:revive // ok
+// TODO(james.yin): unexpected state
+
+// TODO(james.yin): unexpected state
+
+func noopOnEntry(_ []byte, r Range) error {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return nil
 }

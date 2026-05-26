@@ -15,8 +15,6 @@
 package filter
 
 import (
-	"fmt"
-
 	ce "github.com/cloudevents/sdk-go/v2"
 )
 
@@ -24,25 +22,13 @@ type notFilter struct {
 	filter Filter
 }
 
-func NewNotFilter(f Filter) Filter {
-	if f == nil {
-		return nil
-	}
-	return &notFilter{filter: f}
-}
+func NewNotFilter(f Filter) Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
 func (filter *notFilter) Filter(event ce.Event) Result {
-	switch filter.filter.Filter(event) {
-	case FailFilter:
-		return PassFilter
-	case PassFilter:
-		return FailFilter
-	}
-	return PassFilter
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
-func (filter *notFilter) String() string {
-	return fmt.Sprintf("%s", filter.filter)
-}
+func (filter *notFilter) String() string { _ = "STUB: not implemented"; return "" }
 
 var _ Filter = (*notFilter)(nil)

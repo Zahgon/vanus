@@ -14,17 +14,6 @@
 
 package parse
 
-import "unicode/utf8"
+func ExceptNameFirst(r rune) bool { _ = "STUB: not implemented"; return false }
 
-func ExceptNameFirst(r rune) bool {
-	return r == '_' ||
-		r >= 'A' && r <= 'Z' || r >= 'a' && r <= 'z' ||
-		r >= 0x80 && r <= utf8.MaxRune
-}
-
-func ExceptNameChar(r rune) bool {
-	return r == '_' ||
-		r >= '0' && r <= '9' ||
-		r >= 'A' && r <= 'Z' || r >= 'a' && r <= 'z' ||
-		r >= 0x80 && r <= utf8.MaxRune
-}
+func ExceptNameChar(r rune) bool { _ = "STUB: not implemented"; return false }

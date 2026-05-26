@@ -14,33 +14,20 @@
 
 package bytes
 
-import (
-	// standard libraries.
-	"reflect"
-	"unsafe"
-)
-
-func UnsafeFromString(s string) []byte {
-	hdr := (*reflect.StringHeader)(unsafe.Pointer(&s))
-	return unsafe.Slice((*byte)(unsafe.Pointer(hdr.Data)), hdr.Len)
-}
+func UnsafeFromString(s string) []byte { _ = "STUB: not implemented"; return nil }
 
 func UnsafeToString(b []byte) string {
+	_ = "STUB: not implemented"
 	// hdr := (*reflect.StringHeader)(unsafe.Pointer(&b))
 	// return *(*string)(unsafe.Pointer(hdr))
-	return *(*string)(unsafe.Pointer(&b))
+	return ""
 }
 
 // UnsafeSlice implements the same functionality as `s[lo:hi]`, but without bounds check.
 func UnsafeSlice[T []byte | string](s T, lo int, hi int) []byte {
-	hdr := (*reflect.StringHeader)(unsafe.Pointer(&s))
-	p := unsafe.Add(unsafe.Pointer(hdr.Data), lo)
-	return unsafe.Slice((*byte)(p), hi-lo)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnsafeAt implements the same functionality as `s[pos]`, but without bounds check.
-func UnsafeAt[T []byte | string](s T, pos int) byte {
-	hdr := (*reflect.StringHeader)(unsafe.Pointer(&s))
-	p := unsafe.Add(unsafe.Pointer(hdr.Data), pos)
-	return *(*byte)(p)
-}
+func UnsafeAt[T []byte | string](s T, pos int) byte { _ = "STUB: not implemented"; return 0 }

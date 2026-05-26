@@ -11,7 +11,6 @@ package manager
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	metadata "github.com/vanus-labs/vanus/server/controller/tenant/metadata"
@@ -31,98 +30,85 @@ type MockUserRoleManagerMockRecorder struct {
 
 // NewMockUserRoleManager creates a new mock instance.
 func NewMockUserRoleManager(ctrl *gomock.Controller) *MockUserRoleManager {
-	mock := &MockUserRoleManager{ctrl: ctrl}
-	mock.recorder = &MockUserRoleManagerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockUserRoleManager) EXPECT() *MockUserRoleManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddUserRole mocks base method.
+	return nil
 }
 
-// AddUserRole mocks base method.
 func (m *MockUserRoleManager) AddUserRole(ctx context.Context, role *metadata.UserRole) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddUserRole", ctx, role)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddUserRole indicates an expected call of AddUserRole.
 func (mr *MockUserRoleManagerMockRecorder) AddUserRole(ctx, role any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddUserRole", reflect.TypeOf((*MockUserRoleManager)(nil).AddUserRole), ctx, role)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUserRole mocks base method.
 func (m *MockUserRoleManager) DeleteUserRole(ctx context.Context, role *metadata.UserRole) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteUserRole", ctx, role)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUserRole indicates an expected call of DeleteUserRole.
 func (mr *MockUserRoleManagerMockRecorder) DeleteUserRole(ctx, role any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUserRole", reflect.TypeOf((*MockUserRoleManager)(nil).DeleteUserRole), ctx, role)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserRoleByResourceID mocks base method.
 func (m *MockUserRoleManager) GetUserRoleByResourceID(ctx context.Context, resourceID vsr.ID) ([]*metadata.UserRole, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserRoleByResourceID", ctx, resourceID)
-	ret0, _ := ret[0].([]*metadata.UserRole)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserRoleByResourceID indicates an expected call of GetUserRoleByResourceID.
 func (mr *MockUserRoleManagerMockRecorder) GetUserRoleByResourceID(ctx, resourceID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserRoleByResourceID", reflect.TypeOf((*MockUserRoleManager)(nil).GetUserRoleByResourceID), ctx, resourceID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserRoleByUser mocks base method.
 func (m *MockUserRoleManager) GetUserRoleByUser(ctx context.Context, userIdentifier string) ([]*metadata.UserRole, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserRoleByUser", ctx, userIdentifier)
-	ret0, _ := ret[0].([]*metadata.UserRole)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserRoleByUser indicates an expected call of GetUserRoleByUser.
 func (mr *MockUserRoleManagerMockRecorder) GetUserRoleByUser(ctx, userIdentifier any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserRoleByUser", reflect.TypeOf((*MockUserRoleManager)(nil).GetUserRoleByUser), ctx, userIdentifier)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
 func (m *MockUserRoleManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init indicates an expected call of Init.
 func (mr *MockUserRoleManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockUserRoleManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IsUserRoleExist mocks base method.
 func (m *MockUserRoleManager) IsUserRoleExist(ctx context.Context, role *metadata.UserRole) bool {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsUserRoleExist", ctx, role)
-	ret0, _ := ret[0].(bool)
-	return ret0
+	_ = "STUB: not implemented"
+	return false
 }
 
 // IsUserRoleExist indicates an expected call of IsUserRoleExist.
 func (mr *MockUserRoleManagerMockRecorder) IsUserRoleExist(ctx, role any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsUserRoleExist", reflect.TypeOf((*MockUserRoleManager)(nil).IsUserRoleExist), ctx, role)
+	_ = "STUB: not implemented"
+	return nil
 }

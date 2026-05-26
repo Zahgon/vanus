@@ -23,64 +23,34 @@ import (
 	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 )
 
-func (a *appender) step(msg *raftpb.Message) {
-	a.raftExecutor.Execute(func() {
-		_ = a.node.Step(*msg)
-	})
-}
+func (a *appender) step(msg *raftpb.Message) { _ = "STUB: not implemented"; return }
 
-func (a *appender) propose(pds ...raft.ProposeData) {
-	a.raftExecutor.Execute(func() {
-		a.node.Propose(pds...)
-	})
-}
+func (a *appender) propose(pds ...raft.ProposeData) { _ = "STUB: not implemented"; return }
 
 func (a *appender) reportStateStatus(_ context.Context, term, vote uint64) {
-	a.raftExecutor.Execute(func() {
-		_ = a.node.ReportStateStatus(term, vote)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 func (a *appender) reportLogStatus(_ context.Context, index, term uint64) {
-	a.raftExecutor.Execute(func() {
-		_ = a.node.ReportLogStatus(index, term)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 func (a *appender) reportApplyStatus(_ context.Context, index uint64) {
-	a.raftExecutor.Execute(func() {
-		_ = a.node.ReportApplyStatus(index)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
-func (a *appender) reportUnreachable(id uint64) {
-	a.raftExecutor.Execute(func() {
-		a.node.ReportUnreachable(id)
-	})
-}
+func (a *appender) reportUnreachable(id uint64) { _ = "STUB: not implemented"; return }
 
-func (a *appender) tick() bool {
-	return a.raftExecutor.Execute(func() {
-		a.node.Tick()
-	})
-}
+func (a *appender) tick() bool { _ = "STUB: not implemented"; return false }
 
-func (a *appender) bootstrap(peers []raft.Peer) error {
-	ch := make(chan error, 1)
-	ok := a.raftExecutor.Execute(func() {
-		ch <- a.node.Bootstrap(peers)
-	})
-	if !ok {
-		return raft.ErrStopped
-	}
-	// FIXME(james.yin): appender is stopped when bootstrap.
-	return <-ch
-}
+func (a *appender) bootstrap(peers []raft.Peer) error { _ = "STUB: not implemented"; return nil }
+
+// FIXME(james.yin): appender is stopped when bootstrap.
 
 func (a *appender) applyConfChange(cc raftpb.ConfChangeI) *raftpb.ConfState {
-	ch := make(chan *raftpb.ConfState, 1)
-	a.raftExecutor.Execute(func() {
-		ch <- a.node.ApplyConfChange(cc)
-	})
-	return <-ch
+	_ = "STUB: not implemented"
+	return nil
 }

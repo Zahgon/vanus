@@ -55,11 +55,4 @@ const (
 
 type List []Action
 
-func (list List) Contains(action Action) bool {
-	for _, a := range list {
-		if a == action {
-			return true
-		}
-	}
-	return false
-}
+func (list List) Contains(action Action) bool { _ = "STUB: not implemented"; return false }

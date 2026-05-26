@@ -15,11 +15,8 @@
 package strings
 
 import (
-	"fmt"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -29,52 +26,22 @@ type splitWithIntervalsAction struct {
 
 // NewSplitWithIntervalsAction["sourceJSONPath", "startPosition", "splitInterval", "targetJsonPath"].
 func NewSplitWithIntervalsAction() action.Action {
-	return &splitWithIntervalsAction{
-		CommonAction: action.CommonAction{
-			ActionName: "SPLIT_WITH_INTERVALS",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.All, arg.All, []arg.Type{arg.EventData}},
-		},
-	}
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }
 
 func (a *splitWithIntervalsAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[3]
-	a.Args = args[:3]
-	a.ArgTypes = []common.Type{common.String, common.Int, common.Int}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (a *splitWithIntervalsAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-
-	v, _ := a.TargetArg.Evaluate(ceCtx)
-	if v != nil {
-		return fmt.Errorf("key %s exists", a.TargetArg.Original())
-	}
-
-	sourceJSONPath, _ := args[0].(string)
-	startPosition, _ := args[1].(int)
-	splitInterval, _ := args[2].(int)
-
-	// split string
-	var substrings []string
-	if startPosition > len(sourceJSONPath) {
-		// if startPosition is beyond the end of the string, return an error
-		return a.TargetArg.SetValue(ceCtx, []string{sourceJSONPath})
-	}
-
-	// split the string according to the specified interval
-	substrings = []string{sourceJSONPath[:startPosition]}
-	for i := startPosition; i < len(sourceJSONPath); i += splitInterval {
-		end := i + splitInterval
-		if end > len(sourceJSONPath) {
-			end = len(sourceJSONPath)
-		}
-		substrings = append(substrings, sourceJSONPath[i:end])
-	}
-
-	return a.TargetArg.SetValue(ceCtx, substrings)
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// split string
+
+// if startPosition is beyond the end of the string, return an error
+
+// split the string according to the specified interval

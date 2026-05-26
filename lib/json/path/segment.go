@@ -25,4 +25,4 @@ type bracketedSelection struct {
 // Make sure bracketedSelection implements Segment.
 var _ Segment = (*bracketedSelection)(nil)
 
-func (bs *bracketedSelection) Apply() {}
+func (bs *bracketedSelection) Apply() { _ = "STUB: not implemented"; return }

@@ -16,7 +16,6 @@ package vsb
 
 import (
 	// standard libraries.
-	"os"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
@@ -38,26 +37,18 @@ type engine struct {
 var _ raw.Engine = (*engine)(nil)
 
 func (e *engine) Close() {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): check me
-	e.s.Close()
+	return
 }
 
 func NewEngine(dir string, opts ...Option) (raw.Engine, error) {
-	cfg := makeConfig(opts...)
-	return newEngine(dir, cfg)
+	_ = "STUB: not implemented"
+	return *new(raw.Engine), nil
 }
 
 func newEngine(dir string, cfg config) (raw.Engine, error) {
+	_ = "STUB: not implemented"
 	// Make sure the block directory exists.
-	if err := os.MkdirAll(dir, defaultDirPerm); err != nil {
-		return nil, err
-	}
-
-	s := stream.NewScheduler(cfg.engine, cfg.streamSchedulerOptions()...)
-
-	return &engine{
-		dir: dir,
-		s:   s,
-		lis: cfg.lis,
-	}, nil
+	return *new(raw.Engine), nil
 }

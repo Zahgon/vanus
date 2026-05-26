@@ -24,18 +24,4 @@ import (
 
 const waitFinishInitSpinInterval = 50 * time.Millisecond
 
-func NewID() (vanus.ID, error) {
-	if fake {
-		return NewTestID(), nil
-	}
-
-	for !initialized.Load() {
-		time.Sleep(waitFinishInitSpinInterval)
-	}
-
-	id, err := generator.snow.NextID()
-	if err != nil {
-		return vanus.EmptyID(), err
-	}
-	return vanus.ID(id), nil
-}
+func NewID() (vanus.ID, error) { _ = "STUB: not implemented"; return *new(vanus.ID), nil }

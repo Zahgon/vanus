@@ -17,8 +17,6 @@ package strings
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 type splitWithDelimiterAction struct {
@@ -27,18 +25,11 @@ type splitWithDelimiterAction struct {
 
 // NewSplitWithDelimiterAction ["split_with_delimiter","sourceJsonPath", "delimiter", "targetJsonPath"].
 func NewSplitWithDelimiterAction() action.Action {
-	a := &splitWithDelimiterAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "SPLIT_WITH_DELIMITER",
-		FixedArgs:  []arg.TypeList{arg.EventList, []arg.Type{arg.Constant}, []arg.Type{arg.EventData}},
-		Fn:         function.SplitWithSepFunction,
-	}
-	return a
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }
 
 func (a *splitWithDelimiterAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[2]
-	a.Args = args[:2]
-	a.ArgTypes = []common.Type{common.String, common.String}
+	_ = "STUB: not implemented"
 	return nil
 }

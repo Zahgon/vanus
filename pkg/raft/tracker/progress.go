@@ -14,12 +14,6 @@
 
 package tracker
 
-import (
-	"fmt"
-	"sort"
-	"strings"
-)
-
 // Progress represents a follower’s progress in the view of the leader. Leader
 // maintains progresses of all followers, and sends entries to the follower
 // based on its progress.
@@ -81,116 +75,72 @@ type Progress struct {
 
 // ResetState moves the Progress into the specified State, resetting ProbeSent,
 // PendingSnapshot, and Inflights.
-func (pr *Progress) ResetState(state StateType) {
-	pr.ProbeSent = false
-	pr.PendingSnapshot = 0
-	pr.State = state
-	pr.Inflights.reset()
-}
+func (pr *Progress) ResetState(state StateType) { _ = "STUB: not implemented"; return }
 
-func max(a, b uint64) uint64 {
-	if a > b {
-		return a
-	}
-	return b
-}
+func max(a, b uint64) uint64 { _ = "STUB: not implemented"; return 0 }
 
-func min(a, b uint64) uint64 {
-	if a > b {
-		return b
-	}
-	return a
-}
+func min(a, b uint64) uint64 { _ = "STUB: not implemented"; return 0 }
 
 // ProbeAcked is called when this peer has accepted an append. It resets
 // ProbeSent to signal that additional append messages should be sent without
 // further delay.
-func (pr *Progress) ProbeAcked() {
-	pr.ProbeSent = false
-}
+func (pr *Progress) ProbeAcked() { _ = "STUB: not implemented"; return }
 
 // BecomeProbe transitions into StateProbe. Next is reset to Match+1 or,
 // optionally and if larger, the index of the pending snapshot.
 func (pr *Progress) BecomeProbe() {
+	_ = "STUB: not implemented"
 	// If the original state is StateSnapshot, progress knows that
 	// the pending snapshot has been sent to this peer successfully, then
 	// probes from pendingSnapshot + 1.
-	if pr.State == StateSnapshot {
-		pendingSnapshot := pr.PendingSnapshot
-		pr.ResetState(StateProbe)
-		pr.Next = max(pr.Match+1, pendingSnapshot+1)
-	} else {
-		pr.ResetState(StateProbe)
-		pr.Next = pr.Match + 1
-	}
+	return
 }
 
 // BecomeReplicate transitions into StateReplicate, resetting Next to Match+1.
-func (pr *Progress) BecomeReplicate() {
-	pr.ResetState(StateReplicate)
-	pr.Next = pr.Match + 1
-}
+func (pr *Progress) BecomeReplicate() { _ = "STUB: not implemented"; return }
 
 // BecomeSnapshot moves the Progress to StateSnapshot with the specified pending
 // snapshot index.
-func (pr *Progress) BecomeSnapshot(snapshoti uint64) {
-	pr.ResetState(StateSnapshot)
-	pr.PendingSnapshot = snapshoti
-}
+func (pr *Progress) BecomeSnapshot(snapshoti uint64) { _ = "STUB: not implemented"; return }
 
 // MaybeUpdate is called when an MsgAppResp arrives from the follower, with the
 // index acked by it. The method returns false if the given n index comes from
 // an outdated message. Otherwise it updates the progress and returns true.
-func (pr *Progress) MaybeUpdate(n uint64) bool {
-	var updated bool
-	if pr.Match < n {
-		pr.Match = n
-		updated = true
-		pr.ProbeAcked()
-	}
-	pr.Next = max(pr.Next, n+1)
-	return updated
-}
+func (pr *Progress) MaybeUpdate(n uint64) bool { _ = "STUB: not implemented"; return false }
 
 // OptimisticUpdate signals that appends all the way up to and including index n
 // are in-flight. As a result, Next is increased to n+1.
-func (pr *Progress) OptimisticUpdate(n uint64) { pr.Next = n + 1 }
+func (pr *Progress) OptimisticUpdate(n uint64) {
+	_ = "STUB: not implemented"
 
-// MaybeDecrTo adjusts the Progress to the receipt of a MsgApp rejection. The
-// arguments are the index of the append message rejected by the follower, and
-// the hint that we want to decrease to.
-//
-// Rejections can happen spuriously as messages are sent out of order or
-// duplicated. In such cases, the rejection pertains to an index that the
-// Progress already knows were previously acknowledged, and false is returned
-// without changing the Progress.
-//
-// If the rejection is genuine, Next is lowered sensibly, and the Progress is
-// cleared for sending log entries.
-func (pr *Progress) MaybeDecrTo(rejected, matchHint uint64) bool {
-	if pr.State == StateReplicate {
-		// The rejection must be stale if the progress has matched and "rejected"
-		// is smaller than "match".
-		if rejected <= pr.Match {
-			return false
-		}
-		// Directly decrease next to match + 1.
-		//
-		// TODO(tbg): why not use matchHint if it's larger?
-		pr.Next = pr.Match + 1
-		return true
-	}
-
-	// The rejection must be stale if "rejected" does not match next - 1. This
-	// is because non-replicating followers are probed one entry at a time.
-	if pr.Next-1 != rejected {
-		return false
-	}
-
-	pr.Next = max(min(rejected, matchHint+1), 1)
-	pr.ProbeSent = false
-	return true
+	// MaybeDecrTo adjusts the Progress to the receipt of a MsgApp rejection. The
+	// arguments are the index of the append message rejected by the follower, and
+	// the hint that we want to decrease to.
+	//
+	// Rejections can happen spuriously as messages are sent out of order or
+	// duplicated. In such cases, the rejection pertains to an index that the
+	// Progress already knows were previously acknowledged, and false is returned
+	// without changing the Progress.
+	//
+	// If the rejection is genuine, Next is lowered sensibly, and the Progress is
+	// cleared for sending log entries.
+	return
 }
+
+func (pr *Progress) MaybeDecrTo(rejected, matchHint uint64) bool {
+	_ = "STUB: not implemented"
+	return false
+}
+
+// The rejection must be stale if the progress has matched and "rejected"
+// is smaller than "match".
+
+// Directly decrease next to match + 1.
+//
+// TODO(tbg): why not use matchHint if it's larger?
+
+// The rejection must be stale if "rejected" does not match next - 1. This
+// is because non-replicating followers are probed one entry at a time.
 
 // IsPaused returns whether sending log entries to this node has been throttled.
 // This is done when a node has rejected recent MsgApps, is currently waiting
@@ -198,58 +148,12 @@ func (pr *Progress) MaybeDecrTo(rejected, matchHint uint64) bool {
 // operation, this is false. A throttled node will be contacted less frequently
 // until it has reached a state in which it's able to accept a steady stream of
 // log entries again.
-func (pr *Progress) IsPaused() bool {
-	switch pr.State {
-	case StateProbe:
-		return pr.ProbeSent
-	case StateReplicate:
-		return pr.Inflights.Full()
-	case StateSnapshot:
-		return true
-	default:
-		panic("unexpected state")
-	}
-}
+func (pr *Progress) IsPaused() bool { _ = "STUB: not implemented"; return false }
 
-func (pr *Progress) String() string {
-	var buf strings.Builder
-	fmt.Fprintf(&buf, "%s match=%d next=%d", pr.State, pr.Match, pr.Next)
-	if pr.IsLearner {
-		fmt.Fprint(&buf, " learner")
-	}
-	if pr.IsPaused() {
-		fmt.Fprint(&buf, " paused")
-	}
-	if pr.PendingSnapshot > 0 {
-		fmt.Fprintf(&buf, " pendingSnap=%d", pr.PendingSnapshot)
-	}
-	if !pr.RecentActive {
-		fmt.Fprintf(&buf, " inactive")
-	}
-	if n := pr.Inflights.Count(); n > 0 {
-		fmt.Fprintf(&buf, " inflight=%d", n)
-		if pr.Inflights.Full() {
-			fmt.Fprint(&buf, "[full]")
-		}
-	}
-	return buf.String()
-}
+func (pr *Progress) String() string { _ = "STUB: not implemented"; return "" }
 
 // ProgressMap is a map of *Progress.
 type ProgressMap map[uint64]*Progress
 
 // String prints the ProgressMap in sorted key order, one Progress per line.
-func (m ProgressMap) String() string {
-	ids := make([]uint64, 0, len(m))
-	for k := range m {
-		ids = append(ids, k)
-	}
-	sort.Slice(ids, func(i, j int) bool {
-		return ids[i] < ids[j]
-	})
-	var buf strings.Builder
-	for _, id := range ids {
-		fmt.Fprintf(&buf, "%d: %s\n", id, m[id])
-	}
-	return buf.String()
-}
+func (m ProgressMap) String() string { _ = "STUB: not implemented"; return "" }

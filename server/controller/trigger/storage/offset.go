@@ -17,9 +17,6 @@ package storage
 
 import (
 	"context"
-	"path"
-	"path/filepath"
-	"strconv"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 
@@ -44,62 +41,53 @@ type offsetStorage struct {
 }
 
 func NewOffsetStorage(client kv.Client) OffsetStorage {
-	return &offsetStorage{
-		client: client,
-	}
+	_ = "STUB: not implemented"
+	return *new(OffsetStorage)
 }
 
 func (s *offsetStorage) getKey(subscriptionID, eventlogID vanus.ID) string {
-	return path.Join(kv.MetadataOffset, subscriptionID.Key(), eventlogID.Key())
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (s *offsetStorage) getSubKey(subscriptionID vanus.ID) string {
-	return path.Join(kv.MetadataOffset, subscriptionID.Key())
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (s *offsetStorage) int64ToByteArr(v uint64) []byte {
+	_ = "STUB: not implemented"
 	/*
 		b := make([]byte, 8)
 		binary.LittleEndian.PutUint64(b, vanus.ID(v))
 		return b
-	*/
-	str := strconv.FormatUint(v, base)
-	return []byte(str)
+	*/return nil
 }
 
 func (s *offsetStorage) byteArrToUint64(b []byte) uint64 {
+	_ = "STUB: not implemented"
 	/*
 		v := binary.LittleEndian.vanus.ID(b)
 		return int64(v)
-	*/
-	v, _ := strconv.ParseUint(string(b), base, bitSize)
-	return v
+	*/return 0
 }
 
 func (s *offsetStorage) CreateOffset(ctx context.Context, subscriptionID vanus.ID, info info.OffsetInfo) error {
-	return s.client.Create(ctx, s.getKey(subscriptionID, info.EventlogID), s.int64ToByteArr(info.Offset))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *offsetStorage) UpdateOffset(ctx context.Context, subscriptionID vanus.ID, info info.OffsetInfo) error {
-	return s.client.Update(ctx, s.getKey(subscriptionID, info.EventlogID), s.int64ToByteArr(info.Offset))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *offsetStorage) GetOffsets(ctx context.Context, subscriptionID vanus.ID) (info.ListOffsetInfo, error) {
-	l, err := s.client.List(ctx, s.getSubKey(subscriptionID))
-	if err != nil {
-		return nil, err
-	}
-	var infos info.ListOffsetInfo
-	for _, v := range l {
-		id, err := vanus.NewIDFromString(filepath.Base(v.Key))
-		if err != nil {
-			return nil, err
-		}
-		infos = append(infos, info.OffsetInfo{EventlogID: id, Offset: s.byteArrToUint64(v.Value)})
-	}
-	return infos, nil
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo), nil
 }
 
 func (s *offsetStorage) DeleteOffset(ctx context.Context, subscriptionID vanus.ID) error {
-	return s.client.DeleteDir(ctx, s.getSubKey(subscriptionID))
+	_ = "STUB: not implemented"
+	return nil
 }

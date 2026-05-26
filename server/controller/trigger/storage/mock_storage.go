@@ -23,14 +23,6 @@ type MockStorage struct {
 }
 
 // NewMockStorage creates a new mock instance.
-func NewMockStorage(ctrl *gomock.Controller) *MockStorage {
-	mock := &MockStorage{
-		MockOffsetStorage:        NewMockOffsetStorage(ctrl),
-		MockSubscriptionStorage:  NewMockSubscriptionStorage(ctrl),
-		MockTriggerWorkerStorage: NewMockTriggerWorkerStorage(ctrl),
-	}
-	return mock
-}
+func NewMockStorage(ctrl *gomock.Controller) *MockStorage { _ = "STUB: not implemented"; return nil }
 
-func (m *MockStorage) Close() {
-}
+func (m *MockStorage) Close() { _ = "STUB: not implemented"; return }

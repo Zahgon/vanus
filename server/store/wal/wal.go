@@ -21,14 +21,12 @@ import (
 	"sync"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/container/conque/blocking"
 	"github.com/vanus-labs/vanus/server/store/io/engine"
 	"github.com/vanus-labs/vanus/server/store/io/stream"
 	"github.com/vanus-labs/vanus/server/store/io/zone/segmentedfile"
-	"github.com/vanus-labs/vanus/server/store/wal/record"
 )
 
 var (
@@ -64,137 +62,51 @@ type WAL struct {
 }
 
 func Open(ctx context.Context, dir string, opts ...Option) (*WAL, error) {
-	cfg := makeConfig(opts...)
-	return open(ctx, dir, cfg)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func open(ctx context.Context, dir string, cfg config) (*WAL, error) {
-	log.Info(ctx).
-		Str("dir", dir).
-		Int64("pos", cfg.pos).
-		Msg("Open wal.")
-
-	sf, err := segmentedfile.Open(dir, cfg.segmentedFileOptions()...)
-	if err != nil {
-		return nil, err
-	}
-
-	// Check wal entries from pos.
-	off, err := scanLogEntries(sf, cfg.blockSize, cfg.pos, cfg.cb)
-	if err != nil {
-		return nil, err
-	}
-
-	// Skip padding.
-	if padding := int64(cfg.blockSize) - off%int64(cfg.blockSize); padding < record.HeaderSize {
-		off += padding
-	}
-
-	log.Info(ctx).
-		Str("dir", dir).
-		Int64("off", off).
-		Msg("Checking wal is done.")
-
-	scheduler := stream.NewScheduler(cfg.engine, cfg.streamSchedulerOptions()...)
-	s := scheduler.Register(sf, off, true)
-
-	w := &WAL{
-		sf: sf,
-		s:  s,
-
-		engine:    cfg.engine,
-		scheduler: scheduler,
-		blockSize: cfg.blockSize,
-
-		doneC: make(chan struct{}),
-	}
-
-	if !cfg.readOnly {
-		w.appendQ.Init(false)
-		go w.runAppend()
-	} else {
-		close(w.doneC)
-	}
-
-	return w, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (w *WAL) Dir() string {
-	return w.sf.Dir()
-}
+// Check wal entries from pos.
 
-func (w *WAL) Close() {
-	w.appendQ.Close()
-}
+// Skip padding.
 
-func (w *WAL) doClose() {
-	w.engine.Close()
-	w.sf.Close()
-	close(w.doneC)
-}
+func (w *WAL) Dir() string { _ = "STUB: not implemented"; return "" }
 
-func (w *WAL) Wait() {
-	<-w.doneC
-}
+func (w *WAL) Close() { _ = "STUB: not implemented"; return }
+
+func (w *WAL) doClose() { _ = "STUB: not implemented"; return }
+
+func (w *WAL) Wait() { _ = "STUB: not implemented"; return }
 
 func (w *WAL) AppendOne(ctx context.Context, entry []byte, cb AppendOneCallback) {
-	w.append(ctx, [][]byte{entry}, false, func(rs []Range, err error) {
-		if err != nil {
-			cb(Range{}, err)
-			return
-		}
-
-		cb(rs[0], nil)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // Append appends entries to WAL.
 func (w *WAL) Append(ctx context.Context, entries [][]byte, cb AppendCallback) {
-	w.append(ctx, entries, false, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (w *WAL) append(ctx context.Context, entries [][]byte, direct bool, cb AppendCallback) {
+	_ = "STUB: not implemented"
 	// Check entries.
-	if len(entries) == 0 {
-		cb(nil, nil)
-	}
-
-	if !w.appendQ.Push(w.newAppender(ctx, entries, direct, cb)) {
-		// TODO(james.yin): invoke callback in another goroutine.
-		cb(nil, ErrClosed)
-	}
+	return
 }
 
-func (w *WAL) runAppend() {
-	for {
-		task, ok := w.appendQ.UniquePop()
-		if !ok {
-			break
-		}
+// TODO(james.yin): invoke callback in another goroutine.
 
-		task.invoke()
-	}
+func (w *WAL) runAppend() { _ = "STUB: not implemented"; return }
 
-	w.appendQ.Wait()
+// Invoke remained tasks in w.appendQ.
 
-	// Invoke remained tasks in w.appendQ.
-	for {
-		task, ok := w.appendQ.RawPop()
-		if !ok {
-			break
-		}
-
-		task.invoke()
-	}
-
-	w.appendWg.Wait()
-
-	w.doClose()
-}
-
-func (w *WAL) Compact(_ context.Context, off int64) error {
-	return w.sf.Compact(off)
-}
+func (w *WAL) Compact(_ context.Context, off int64) error { _ = "STUB: not implemented"; return nil }
 
 type appendResult struct {
 	ranges []Range
@@ -203,50 +115,28 @@ type appendResult struct {
 
 type appendFuture chan appendResult
 
-func newAppendFuture() appendFuture {
-	return make(appendFuture, 1)
-}
+func newAppendFuture() appendFuture { _ = "STUB: not implemented"; return *new(appendFuture) }
 
-func (af appendFuture) onAppended(ranges []Range, err error) {
-	af <- appendResult{
-		ranges: ranges,
-		err:    err,
-	}
-}
+func (af appendFuture) onAppended(ranges []Range, err error) { _ = "STUB: not implemented"; return }
 
-func (af appendFuture) wait() ([]Range, error) {
-	re := <-af
-	return re.ranges, re.err
-}
+func (af appendFuture) wait() ([]Range, error) { _ = "STUB: not implemented"; return nil, nil }
 
 func Append(ctx context.Context, w *WAL, entries [][]byte) ([]Range, error) {
-	future := newAppendFuture()
-	w.append(ctx, entries, false, future.onAppended)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func DirectAppend(ctx context.Context, w *WAL, entries [][]byte) ([]Range, error) {
-	future := newAppendFuture()
-	w.append(ctx, entries, true, future.onAppended)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func AppendOne(ctx context.Context, w *WAL, entry []byte) (Range, error) {
-	future := newAppendFuture()
-	w.append(ctx, [][]byte{entry}, false, future.onAppended)
-	rs, err := future.wait()
-	if err != nil {
-		return Range{}, err
-	}
-	return rs[0], nil
+	_ = "STUB: not implemented"
+	return *new(Range), nil
 }
 
 func DirectAppendOne(ctx context.Context, w *WAL, entry []byte) (Range, error) {
-	future := newAppendFuture()
-	w.append(ctx, [][]byte{entry}, true, future.onAppended)
-	rs, err := future.wait()
-	if err != nil {
-		return Range{}, err
-	}
-	return rs[0], nil
+	_ = "STUB: not implemented"
+	return *new(Range), nil
 }

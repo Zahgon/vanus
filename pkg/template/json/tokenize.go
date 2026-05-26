@@ -21,7 +21,6 @@ import (
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/bytes"
-	"github.com/vanus-labs/vanus/lib/json/parse"
 )
 
 var (
@@ -49,65 +48,22 @@ const dynamicStringPlan = "" +
 	`................................` + // 0xc0
 	`................................` //  0xe0
 
-func skipWhitespace(r io.ByteReader) (byte, error) {
-	return bytes.IgnoreCount(parse.SkipWhitespace(r))
-}
+func skipWhitespace(r io.ByteReader) (byte, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func consumeDynamicString(r io.ByteReader, w io.ByteWriter) (bool, error) {
-	for {
-		c, err := r.ReadByte()
-		if err != nil {
-			return false, errInvalidDynamicString
-		}
-
-		switch c {
-		case '"': // quotation mark, end of string
-			return false, nil
-		case '<': // open angled bracket, begin of variable
-			return true, nil
-		case '\\': // reverse solidus
-			err = bytes.ConsumeEscaped(r, w, dynamicStringPlan)
-			if err != nil {
-				return false, errInvalidDynamicString
-			}
-		default:
-			if c <= hicc { // control characters
-				return false, errInvalidDynamicString
-			}
-			if err = w.WriteByte(c); err != nil {
-				return false, errInvalidDynamicString
-			}
-		}
-	}
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func unescapeBracket(bs []byte) []byte {
-	buf := bytes.CopyOnDiffWriter{Buf: bs}
-	for i := 0; i < len(bs); i++ {
-		if bs[i] != '\\' {
-			_ = buf.WriteByte(bs[i])
-			continue
-		}
+// quotation mark, end of string
 
-		i++
-		switch bs[i] {
-		case '<', '>':
-			_ = buf.WriteByte(bs[i])
-		case 'u':
-			_ = buf.WriteByte('\\')
-			_ = buf.WriteByte('u')
-			_ = buf.WriteByte(bs[i+1])
-			_ = buf.WriteByte(bs[i+2])
-			_ = buf.WriteByte(bs[i+3])
-			_ = buf.WriteByte(bs[i+4])
-			i += 4
-		default:
-			_ = buf.WriteByte('\\')
-			_ = buf.WriteByte(bs[i])
-		}
-	}
-	return buf.Bytes()
-}
+// open angled bracket, begin of variable
+
+// reverse solidus
+
+// control characters
+
+func unescapeBracket(bs []byte) []byte { _ = "STUB: not implemented"; return nil }
 
 type number struct {
 	negative, negExp            bool
@@ -115,121 +71,23 @@ type number struct {
 }
 
 func expectNumberExt(c byte, s *bytes.MarkScanner) (number, error) {
-	var num number
-	var err error
-	var n int
-
-	if c == '-' {
-		num.negative = true
-		// at least one digit
-		if c, err = s.ReadByte(); err != nil {
-			return num, errInvalidNumber
-		}
-	}
-
-	if !parse.IsDigit(c) {
-		return num, errInvalidNumber
-	}
-
-	m := s.Mark(-1)
-	_, eof, c, err := consumeDigits(s, bytes.DummyWriter)
-	if err != nil {
-		return num, errInvalidNumber
-	}
-	num.integer = bytes.ScannedBytes(s, m, eof)
-
-	// fraction
-	if c == '.' {
-		m = s.Mark(0)
-		n, eof, c, err = consumeDigits(s, bytes.DummyWriter)
-		if err != nil || n == 0 {
-			return num, errInvalidNumber
-		}
-		num.fraction = bytes.ScannedBytes(s, m, eof)
-	}
-
-	// exponent
-	if c == 'E' || c == 'e' {
-		m = s.Mark(0)
-		n, eof, c, err = consumeDigits(s, bytes.DummyWriter)
-		if err != nil {
-			return num, errInvalidNumber
-		}
-		if n == 0 {
-			switch c {
-			case '+':
-			case '-':
-				num.negExp = true
-			default:
-				return num, errInvalidNumber
-			}
-			m = s.Mark(0)
-			n, eof, c, err = consumeDigits(s, bytes.DummyWriter)
-			if err != nil || n == 0 {
-				return num, errInvalidNumber
-			}
-		}
-		num.exponent = bytes.ScannedBytes(s, m, eof)
-	}
-
-	if c != 0 {
-		err = s.UnreadByte()
-	}
-	return num, err
+	_ = "STUB: not implemented"
+	return *new(number), nil
 }
+
+// at least one digit
+
+// fraction
+
+// exponent
 
 func consumeDigits(r io.ByteReader, w io.ByteWriter) (int, bool, byte, error) {
-	return bytes.AcceptEOF(parse.ConsumeDigits(r, w))
+	_ = "STUB: not implemented"
+	return 0, false, 0, nil
 }
 
-func exceptNullExt(r io.ByteReader) error {
-	c, err := r.ReadByte()
-	if err != nil || c != 'u' {
-		return errInvalidNull
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'l' {
-		return errInvalidNull
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'l' {
-		return errInvalidNull
-	}
-	return nil
-}
+func exceptNullExt(r io.ByteReader) error { _ = "STUB: not implemented"; return nil }
 
-func exceptTrueExt(r io.ByteReader) error {
-	c, err := r.ReadByte()
-	if err != nil || c != 'r' {
-		return errInvalidTrue
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'u' {
-		return errInvalidTrue
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'e' {
-		return errInvalidTrue
-	}
-	return nil
-}
+func exceptTrueExt(r io.ByteReader) error { _ = "STUB: not implemented"; return nil }
 
-func exceptFalseExt(r io.ByteReader) error {
-	c, err := r.ReadByte()
-	if err != nil || c != 'a' {
-		return errInvalidFalse
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'l' {
-		return errInvalidFalse
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 's' {
-		return errInvalidFalse
-	}
-	c, err = r.ReadByte()
-	if err != nil || c != 'e' {
-		return errInvalidFalse
-	}
-	return nil
-}
+func exceptFalseExt(r io.ByteReader) error { _ = "STUB: not implemented"; return nil }

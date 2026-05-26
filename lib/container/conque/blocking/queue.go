@@ -17,7 +17,6 @@ package blocking
 import (
 	// standard libraries.
 	stdsync "sync"
-	"sync/atomic"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/container/conque/unbounded"
@@ -31,84 +30,41 @@ type Queue[T any] struct {
 	state int32
 }
 
-func New[T any](handoff bool) *Queue[T] {
-	return new(Queue[T]).Init(handoff)
-}
+func New[T any](handoff bool) *Queue[T] { _ = "STUB: not implemented"; return nil }
 
-func (q *Queue[T]) Init(handoff bool) *Queue[T] {
-	q.sem.Init(handoff)
-	return q
-}
+func (q *Queue[T]) Init(handoff bool) *Queue[T] { _ = "STUB: not implemented"; return nil }
 
-func (q *Queue[T]) Close() {
-	atomic.StoreInt32(&q.state, 1)
-	q.sem.Release()
-}
+func (q *Queue[T]) Close() { _ = "STUB: not implemented"; return }
 
 // Wait ensures that all incoming Pushes observe that the queue is closed.
 func (q *Queue[T]) Wait() {
+	_ = "STUB: not implemented"
 	// Make sure no inflight Push.
-	q.mu.Lock()
-
-	// no op
-	_ = 1
-
-	q.mu.Unlock()
+	return
 }
+
+// no op
 
 func (q *Queue[T]) Push(v T) bool {
+	_ = "STUB: not implemented"
 	// NOTE: no panic, avoid unlocking with defer.
-	q.mu.RLock()
-
-	// TODO: maybe atomic is unnecessary.
-	if atomic.LoadInt32(&q.state) != 0 {
-		q.mu.RUnlock()
-		return false
-	}
-
-	_ = q.q.Push(v)
-	q.sem.Release()
-	q.mu.RUnlock()
-	return true
+	return false
 }
 
+// TODO: maybe atomic is unnecessary.
+
 func (q *Queue[T]) SharedPop() (T, bool) {
-	q.sem.Acquire()
+	_ = "STUB: not implemented"
 
 	// Check close.
-	if atomic.LoadInt32(&q.state) != 0 {
-		q.sem.Release()
-		var v T
-		return v, false
-	}
-
-	for {
-		v, ok := q.q.SharedPop()
-		if ok {
-			return v, true
-		}
-	}
+	return *new(T), false
 }
 
 func (q *Queue[T]) UniquePop() (T, bool) {
-	q.sem.Acquire()
+	_ = "STUB: not implemented"
 
 	// Check close.
-	if atomic.LoadInt32(&q.state) != 0 {
-		q.sem.Release()
-		var v T
-		return v, false
-	}
-
-	for {
-		v, _, ok := q.q.UniquePop()
-		if ok {
-			return v, true
-		}
-	}
+	return *new(T), false
 }
 
-func (q *Queue[T]) RawPop() (T, bool) {
-	v, _, ok := q.q.UniquePop()
-	return v, ok
-}
+func (q *Queue[T]) RawPop() (T, bool) { _ = "STUB: not implemented"; return *new(T), false }

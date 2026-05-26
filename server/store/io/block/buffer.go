@@ -19,7 +19,6 @@ import (
 	"errors"
 	stdio "io"
 	"os"
-	"sync/atomic"
 	"unsafe"
 
 	// this project.
@@ -55,170 +54,62 @@ type Buffer struct {
 // Make sure Buffer implements Interface.
 var _ Interface = (*Buffer)(nil)
 
-func (b *Buffer) Base() int64 {
-	return b.base
-}
+func (b *Buffer) Base() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) Capacity() int {
-	return len(b.buf)
-}
+func (b *Buffer) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) Size() int {
-	return b.wp
-}
+func (b *Buffer) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) Committed() int {
-	return b.cp
-}
+func (b *Buffer) Committed() int { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) Remaining() int {
-	return b.remaining(b.Size())
-}
+func (b *Buffer) Remaining() int { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) remaining(offset int) int {
-	return b.Capacity() - offset
-}
+func (b *Buffer) remaining(offset int) int { _ = "STUB: not implemented"; return 0 }
 
-func (b *Buffer) Full() bool {
-	return b.Remaining() == 0
-}
+func (b *Buffer) Full() bool { _ = "STUB: not implemented"; return false }
 
-func (b *Buffer) Empty() bool {
-	return b.Size() == 0
-}
+func (b *Buffer) Empty() bool { _ = "STUB: not implemented"; return false }
 
-func (b *Buffer) Append(r stdio.Reader) (int, error) {
-	n, err := r.Read(b.buf[b.wp:])
-	if err != nil && err != stdio.EOF { //nolint:errorlint // compare to EOF is ok.
-		return 0, err
-	}
-	b.wp += n
-	return b.wp, err
-}
+func (b *Buffer) Append(r stdio.Reader) (int, error) { _ = "STUB: not implemented"; return 0, nil }
+
+//nolint:errorlint // compare to EOF is ok.
 
 // Flush flushes data in the buffer to storage by writer.
 // Invoking callbacks for multiple flushes on the same Buffer is sequence.
 func (b *Buffer) Flush(writer io.WriterAt, cb FlushCallback) {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): Synchronization in concurrency.
-
-	eo := b.wp
-
-	// Already flush, skip.
-	if b.fp >= eo {
-		cb(b.fp, ErrAlreadyFlushed)
-		return
-	}
-
-	so := b.fp
-	b.fp = eo
-
-	p := atomic.LoadPointer(&b.nf)
-
-	// Shortcut if it is final flush.
-	if eo == b.Capacity() && p == nil {
-		writer.WriteAt(b.buf, b.base, so, eo, func(_ int, err error) {
-			if err == nil {
-				b.cp = eo
-			}
-			cb(eo, err)
-		})
-		return
-	}
-
-	task := &flushTask{
-		b:      b,
-		writer: writer,
-		off:    eo,
-		cb:     cb,
-		next:   (*flushTask)(p),
-	}
-
-	for !atomic.CompareAndSwapPointer(&b.nf, p, unsafe.Pointer(task)) {
-		p = atomic.LoadPointer(&b.nf)
-		task.next = (*flushTask)(p)
-	}
-
-	if p != nil {
-		return
-	}
-
-	// partial flush
-	task.invoke(so)
+	return
 }
 
-func (ft *flushTask) invoke(so int) {
-	b := ft.b
-	ft.writer.WriteAt(b.buf, b.base, so, ft.off, ft.onWrite)
-}
+// Already flush, skip.
 
-func (ft *flushTask) onWrite(_ int, err error) {
-	b := ft.b
-	offset := ft.off
+// Shortcut if it is final flush.
 
-	if err == nil {
-		b.cp = offset
-	}
+// partial flush
 
-	p, last := b.relocateFlushTask(ft)
+func (ft *flushTask) invoke(so int) { _ = "STUB: not implemented"; return }
 
-	// NOTE: If it is final flush, DO NOT use b after invoke callback.
-	ft.invokeCallback(err)
+func (ft *flushTask) onWrite(_ int, err error) { _ = "STUB: not implemented"; return }
 
-	if last == nil {
-		if atomic.CompareAndSwapPointer(&b.nf, p, nil) {
-			return
-		}
+// NOTE: If it is final flush, DO NOT use b after invoke callback.
 
-		// reload
-		p, last = b.relocateFlushTask(ft)
-	}
+// reload
 
-	// truncate task list
-	last.next = nil
+// truncate task list
 
-	// TODO(james.yin): optimize goroutine
-	go (*flushTask)(p).invoke(offset)
-}
+// TODO(james.yin): optimize goroutine
 
 func (b *Buffer) relocateFlushTask(ft *flushTask) (unsafe.Pointer, *flushTask) {
-	p := atomic.LoadPointer(&b.nf)
-
-	var last *flushTask
-	if t := (*flushTask)(p); t != ft {
-		last = t
-		for last.next != ft {
-			last = last.next
-		}
-	}
-
-	return p, last
+	_ = "STUB: not implemented"
+	return *new(unsafe.Pointer), nil
 }
 
-func (ft *flushTask) invokeCallback(err error) {
-	if ft.next != nil {
-		ft.next.invokeCallback(err)
-	}
-	ft.cb(ft.off, err)
-}
+func (ft *flushTask) invokeCallback(err error) { _ = "STUB: not implemented"; return }
 
 func (b *Buffer) RecoverFromFile(f *os.File, at int64, committed int, direct bool) error {
-	if direct {
-		if _, err := f.ReadAt(b.buf, at); err != nil {
-			return err
-		}
-
-		// Fill zero.
-		if committed < len(b.buf) {
-			copy(b.buf[committed:], make([]byte, len(b.buf)-committed))
-		}
-	} else {
-		if _, err := f.ReadAt(b.buf[:committed], at); err != nil {
-			return err
-		}
-	}
-
-	b.wp = committed
-	b.fp = committed
-	b.cp = committed
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// Fill zero.

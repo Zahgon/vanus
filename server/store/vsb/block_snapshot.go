@@ -17,12 +17,9 @@ package vsb
 import (
 	// standard libraries.
 	"context"
-	"encoding/binary"
-	"sync/atomic"
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 	"github.com/vanus-labs/vanus/server/store/vsb/index"
 )
 
@@ -30,79 +27,23 @@ import (
 var _ block.Snapshoter = (*vsBlock)(nil)
 
 func (b *vsBlock) makeSnapshot() (meta, []index.Index) {
-	b.mu.RLock()
-	defer b.mu.RUnlock()
-	return makeSnapshot(b.actx, b.indexes)
+	_ = "STUB: not implemented"
+	return *new(meta), nil
 }
 
 func makeSnapshot(actx appendContext, indexes []index.Index) (meta, []index.Index) {
-	m := meta{
-		writeOffset: actx.offset,
-		archived:    actx.Archived(),
-	}
-	if sz := len(indexes); sz != 0 {
-		m.entryLength = indexes[sz-1].EndOffset() - indexes[0].StartOffset()
-		m.entryNum = int64(sz)
-	}
-	return m, indexes
+	_ = "STUB: not implemented"
+	return *new(meta), nil
 }
 
 func (b *vsBlock) Snapshot(_ context.Context) (block.Fragment, error) {
-	m, _ := b.makeSnapshot()
-
-	if m.writeOffset == b.dataOffset {
-		buf := make([]byte, 8)
-		binary.LittleEndian.PutUint64(buf, uint64(b.dataOffset))
-		return block.NewFragment(buf), nil
-	}
-
-	data := make([]byte, m.writeOffset-b.dataOffset+8)
-	binary.LittleEndian.PutUint64(data, uint64(b.dataOffset))
-
-	if _, err := b.f.ReadAt(data[8:], b.dataOffset); err != nil {
-		return nil, err
-	}
-
-	return block.NewFragment(data), nil
+	_ = "STUB: not implemented"
+	return *new(block.Fragment), nil
 }
 
 func (b *vsBlock) ApplySnapshot(_ context.Context, snap block.Fragment) error {
-	b.mu.Lock()
-	defer b.mu.Unlock()
-
-	cur := b.actx.offset
-	so := snap.StartOffset()
-	if so > cur {
-		return block.ErrSnapshotOutOfOrder
-	}
-
-	eo := snap.EndOffset()
-	if eo <= cur {
-		return nil
-	}
-
-	payload := snap.Payload()
-	if _, err := b.f.WriteAt(payload[cur-snap.StartOffset():], cur); err != nil {
-		return err
-	}
-
-	// Build indexes from data.
-	for off := cur; off < eo; {
-		n, entry, _ := b.dec.Unmarshal(payload[off-headerBlockSize:])
-
-		if ceschema.EntryType(entry) == ceschema.End {
-			atomic.StoreUint32(&b.actx.archived, 1)
-			break
-		}
-
-		idx := index.NewIndex(off, int32(n), index.WithEntry(entry))
-		b.indexes = append(b.indexes, idx)
-
-		off += int64(n)
-	}
-
-	b.actx.seq = int64(len(b.indexes))
-	b.actx.offset = eo
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// Build indexes from data.

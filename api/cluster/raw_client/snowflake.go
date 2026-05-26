@@ -26,48 +26,33 @@ import (
 )
 
 func NewSnowflakeController(cc *Conn) ctrlpb.SnowflakeControllerClient {
-	return &snowflakeClient{
-		cc: cc,
-	}
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.SnowflakeControllerClient)
 }
 
 type snowflakeClient struct {
 	cc *Conn
 }
 
-func (sfc *snowflakeClient) Close() error {
-	return sfc.cc.close()
-}
+func (sfc *snowflakeClient) Close() error { _ = "STUB: not implemented"; return nil }
 
 func (sfc *snowflakeClient) GetClusterStartTime(
 	ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption,
 ) (*timestamppb.Timestamp, error) {
-	out := &timestamppb.Timestamp{}
-	err := sfc.cc.invoke(ctx, "/vanus.core.controller.SnowflakeController/GetClusterStartTime", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (sfc *snowflakeClient) RegisterNode(
 	ctx context.Context, in *wrapperspb.UInt32Value, opts ...grpc.CallOption,
 ) (*emptypb.Empty, error) {
-	out := &emptypb.Empty{}
-	err := sfc.cc.invoke(ctx, "/vanus.core.controller.SnowflakeController/RegisterNode", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (sfc *snowflakeClient) UnregisterNode(
 	ctx context.Context, in *wrapperspb.UInt32Value, opts ...grpc.CallOption,
 ) (*emptypb.Empty, error) {
-	out := &emptypb.Empty{}
-	err := sfc.cc.invoke(ctx, "/vanus.core.controller.SnowflakeController/UnregisterNode", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

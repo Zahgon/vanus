@@ -17,16 +17,6 @@ package command
 import (
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
-	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/event"
 )
 
-func CreateCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "create SUB-COMMAND",
-		Short: "create resources",
-	}
-	cmd.AddCommand(event.CreateCommand())
-	return cmd
-}
+func CreateCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }

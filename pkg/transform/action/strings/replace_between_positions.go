@@ -16,17 +16,10 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewReplaceBetweenPositionsAction ["path","startPosition","endPosition","targetValue"].
 func NewReplaceBetweenPositionsAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "REPLACE_BETWEEN_POSITIONS",
-		FixedArgs:  []arg.TypeList{arg.EventList, arg.All, arg.All, arg.All},
-		Fn:         function.ReplaceBetweenPositionsFunction,
-	}
-	return a
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }

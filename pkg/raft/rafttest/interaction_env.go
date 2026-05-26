@@ -15,11 +15,6 @@
 package rafttest
 
 import (
-	"bufio"
-	"fmt"
-	"math"
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/raft"
 	pb "github.com/vanus-labs/vanus/pkg/raft/raftpb"
 )
@@ -50,28 +45,11 @@ type InteractionEnv struct {
 
 // NewInteractionEnv initializes an InteractionEnv. opts may be nil.
 func NewInteractionEnv(opts *InteractionOpts) *InteractionEnv {
-	if opts == nil {
-		opts = &InteractionOpts{}
-	}
-	return &InteractionEnv{
-		Options: opts,
-		Output: &RedirectLogger{
-			Builder: &strings.Builder{},
-		},
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (env *InteractionEnv) withIndent(f func()) {
-	orig := env.Output.Builder
-	env.Output.Builder = &strings.Builder{}
-	f()
-
-	scanner := bufio.NewScanner(strings.NewReader(env.Output.Builder.String()))
-	for scanner.Scan() {
-		orig.WriteString("  " + scanner.Text() + "\n")
-	}
-	env.Output.Builder = orig
-}
+func (env *InteractionEnv) withIndent(f func()) { _ = "STUB: not implemented"; return }
 
 // Storage is the interface used by InteractionEnv. It is comprised of raft's
 // Storage interface plus access to operations that maintain the log and drive
@@ -87,17 +65,8 @@ type Storage interface {
 // defaultRaftConfig sets up a *raft.Config with reasonable testing defaults.
 // In particular, no limits are set.
 func defaultRaftConfig(id uint64, applied uint64, s raft.Storage) *raft.Config {
-	return &raft.Config{
-		ID:              id,
-		Applied:         applied,
-		ElectionTick:    3,
-		HeartbeatTick:   1,
-		Storage:         s,
-		MaxSizePerMsg:   math.MaxUint64,
-		MaxInflightMsgs: math.MaxInt32,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func defaultEntryFormatter(b []byte) string {
-	return fmt.Sprintf("%q", b)
-}
+func defaultEntryFormatter(b []byte) string { _ = "STUB: not implemented"; return "" }

@@ -21,12 +21,8 @@ import (
 type noFilter struct {
 }
 
-func NewNoFilter() Filter {
-	return &noFilter{}
-}
+func NewNoFilter() Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
-func (filter *noFilter) Filter(_ ce.Event) Result {
-	return PassFilter
-}
+func (filter *noFilter) Filter(_ ce.Event) Result { _ = "STUB: not implemented"; return *new(Result) }
 
 var _ Filter = (*noFilter)(nil)

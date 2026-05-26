@@ -40,9 +40,7 @@ type store struct {
 	marshaler Marshaler
 }
 
-func (s *store) load(key []byte) (interface{}, bool) {
-	return s.committed.GetValue(key)
-}
+func (s *store) load(key []byte) (interface{}, bool) { _ = "STUB: not implemented"; return nil, false }
 
 // func (s *store) store(key []byte, value interface{}) {
 // 	set(s.committed, key, value)

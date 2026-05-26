@@ -16,13 +16,7 @@
 
 package generate
 
-import (
-	// standard libraries.
-	"unicode/utf8"
-
-	// this project.
-	"github.com/vanus-labs/vanus/lib/bytes"
-)
+// standard libraries.
 
 const (
 	hex = "0123456789abcdef"
@@ -53,77 +47,15 @@ const htmlSafePlan = "" + //nolint:unused // reserved for future use.
 	`88888888888888888888888888888888` //  0xe0
 
 // AppendString appends a JSON encoding of a string to the provided byte slice.
-func AppendString(dst []byte, s string) []byte {
-	dst = append(dst, '"')
-	dst = AppendRawString(dst, s)
-	return append(dst, '"')
-}
+func AppendString(dst []byte, s string) []byte { _ = "STUB: not implemented"; return nil }
 
-func AppendRawString(dst []byte, s string) []byte {
-	return appendRawString(dst, bytes.UnsafeFromString(s), basicPlan)
-}
+func AppendRawString(dst []byte, s string) []byte { _ = "STUB: not implemented"; return nil }
 
 func appendRawString(dst []byte, bs []byte, plan string) []byte {
-	var i, start int
-
-	lazyAppend := func() {
-		if start >= i {
-			return
-		}
-		s := bytes.UnsafeSlice(bs, start, i)
-		dst = append(dst, s...)
-	}
-	advance := func(n int) {
-		i += n
-	}
-	next := func(n int) {
-		advance(n)
-		start = i
-	}
-
-	n := len(bs)
-	for i < n {
-		c := bytes.UnsafeAt(bs, i)
-		p := bytes.UnsafeAt(plan, int(c))
-		switch p {
-		case 'o':
-			advance(1)
-		case '.':
-			lazyAppend()
-			dst = AppendByteAsUnicode(dst, c)
-			next(1)
-		case '8':
-			s := bytes.UnsafeSlice(bs, i, n)
-			r, cnt := utf8.DecodeRune(s)
-			switch r {
-			case '\u2028':
-				lazyAppend()
-				dst = append(dst, `\u2028`...)
-				next(cnt)
-			case '\u2029':
-				lazyAppend()
-				dst = append(dst, `\u2029`...)
-				next(cnt)
-			case utf8.RuneError:
-				lazyAppend()
-				dst = append(dst, `\ufffd`...)
-				next(cnt)
-			default:
-				advance(cnt)
-			}
-		default:
-			lazyAppend()
-			dst = append(dst, '\\', p)
-			next(1)
-		}
-	}
-
-	i = n // maybe unnecessary?
-	lazyAppend()
-
-	return dst
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func AppendByteAsUnicode(dst []byte, b byte) []byte {
-	return append(dst, '\\', 'u', '0', '0', hex[(b>>hioff)&lomask], hex[b&lomask])
-}
+// maybe unnecessary?
+
+func AppendByteAsUnicode(dst []byte, b byte) []byte { _ = "STUB: not implemented"; return nil }

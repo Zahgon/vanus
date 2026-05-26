@@ -18,17 +18,11 @@ import (
 	// standard libraries.
 	"context"
 	stderr "errors"
-	stdio "io"
-	"math"
-	"os"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/api/errors"
 
 	// this project.
-	"github.com/vanus-labs/vanus/server/store/block"
-	"github.com/vanus-labs/vanus/server/store/io"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
+
 	"github.com/vanus-labs/vanus/server/store/vsb/codec"
 	"github.com/vanus-labs/vanus/server/store/vsb/index"
 )
@@ -38,28 +32,9 @@ var (
 	errIncomplete = stderr.New("incomplete vsb")
 )
 
-func (b *vsBlock) Open(ctx context.Context) error {
-	if b.f != nil {
-		return nil
-	}
+func (b *vsBlock) Open(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	// TODO(james.yin): use direct IO
-	f, err := io.OpenFile(b.path, os.O_RDWR, true, false)
-	if err != nil {
-		return err
-	}
-	b.f = f
-
-	if err = b.init(ctx); err != nil {
-		if err2 := f.Close(); err2 != nil {
-			return errors.Chain(err, err2)
-		}
-		b.f = nil
-		return err
-	}
-
-	return nil
-}
+// TODO(james.yin): use direct IO
 
 func (b *vsBlock) init(ctx context.Context) error {
 	if err := b.loadHeader(ctx); err != nil {
@@ -80,125 +55,17 @@ func (b *vsBlock) init(ctx context.Context) error {
 	return b.validate(ctx)
 }
 
-func (b *vsBlock) repairMeta() error {
-	off := b.dataOffset + b.fm.entryLength
-	seq := b.fm.entryNum
-	full := b.fm.archived
+func (b *vsBlock) repairMeta() error { _ = "STUB: not implemented"; return nil }
 
-	var entry block.Entry
-	var err error
-	var n, en int
+// Scan entries.
 
-	// Scan entries.
-	indexes := make([]index.Index, 0)
-	// Note: use math.MaxInt64-off to avoid overflow.
-	r := stdio.NewSectionReader(b.f, off, math.MaxInt64-off)
-	if full {
-		n, entry, err = b.dec.UnmarshalReader(r)
-		if err != nil || ceschema.EntryType(entry) != ceschema.End {
-			return errCorrupted
-		}
-		goto FOUND_END
-	}
-	for {
-		n, entry, err = b.dec.UnmarshalReader(r)
-		if err != nil {
-			if err = b.rebuildIndexes(int(seq), indexes); err != nil {
-				return err
-			}
-			goto SET_META
-		}
-
-		switch ceschema.EntryType(entry) {
-		case ceschema.End:
-			goto FOUND_END
-		case ceschema.Index:
-			goto FOUND_INDEX
-		}
-
-		idx := index.NewIndex(off, int32(n), index.WithEntry(entry))
-		indexes = append(indexes, idx)
-
-		off += int64(n)
-		seq++
-	}
-
-FOUND_END:
-	if ceschema.SequenceNumber(entry) != seq {
-		return errCorrupted
-	}
-
-	en = n
-	off += int64(n)
-	seq++
-	full = true
-
-	n, entry, err = b.dec.UnmarshalReader(r)
-	if err != nil {
-		if err = b.rebuildIndexes(int(seq)-1, indexes); err != nil {
-			return err
-		}
-		goto SET_META
-	}
-	if ceschema.EntryType(entry) != ceschema.Index {
-		return errCorrupted
-	}
-
-FOUND_INDEX:
-	b.indexes, _ = entry.Get(ceschema.IndexesOrdinal).([]index.Index)
-	if sz := len(b.indexes); sz > 0 && b.indexes[sz-1].EndOffset() != off-int64(en) {
-		return errCorrupted
-	}
-	b.indexOffset = off
-	b.indexLength = n
-
-SET_META:
-	b.fm.writeOffset = off
-
-	b.actx.seq = seq
-	b.actx.offset = off
-	if full {
-		b.actx.archived = 1
-	}
-
-	return nil
-}
+// Note: use math.MaxInt64-off to avoid overflow.
 
 func (b *vsBlock) rebuildIndexes(num int, tail []index.Index) error {
-	indexes := make([]index.Index, 0, num)
-
-	// Scan entries.
-	off := b.dataOffset
-	r := stdio.NewSectionReader(b.f, off, b.fm.entryLength)
-	for {
-		n, entry, err := b.dec.UnmarshalReader(r)
-		if err != nil {
-			if stderr.Is(err, codec.ErrIncompletePacket) {
-				break
-			}
-			return errors.Chain(errCorrupted, err)
-		}
-
-		if ceschema.EntryType(entry) != ceschema.CloudEvent {
-			return errCorrupted
-		}
-
-		idx := index.NewIndex(off, int32(n), index.WithEntry(entry))
-		indexes = append(indexes, idx)
-	}
-
-	if len(indexes)+len(tail) != num {
-		return errCorrupted
-	}
-
-	indexes = append(indexes, tail...)
-	b.indexes = indexes
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (b *vsBlock) validate(_ context.Context) error {
-	if len(b.indexes) < int(b.fm.entryNum) {
-		return errCorrupted
-	}
-	return nil
-}
+// Scan entries.
+
+func (b *vsBlock) validate(_ context.Context) error { _ = "STUB: not implemented"; return nil }

@@ -18,21 +18,17 @@ package client
 import (
 	// standard libraries.
 	"context"
-	"errors"
 	"sync"
 
 	// third-party libraries.
-	"google.golang.org/grpc/credentials/insecure"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/api/cluster"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
+
 	"github.com/vanus-labs/vanus/pkg/observability/tracing"
 
 	// this project.
-	eb "github.com/vanus-labs/vanus/client/internal/eventbus"
+
 	"github.com/vanus-labs/vanus/client/pkg/api"
-	"github.com/vanus-labs/vanus/client/pkg/eventbus"
 )
 
 type Client interface {
@@ -50,83 +46,20 @@ type client struct {
 }
 
 func (c *client) Eventbus(ctx context.Context, opts ...api.EventbusOption) api.Eventbus {
-	_, span := c.tracer.Start(ctx, "EventbusService")
-	defer span.End()
-
-	defaultOpts := api.DefaultEventbusOptions()
-	for _, apply := range opts {
-		apply(defaultOpts)
-	}
-
-	err := GetEventbusIDIfNotSet(ctx, c.Endpoints, defaultOpts)
-	if err != nil {
-		log.Error(ctx).Err(err).
-			Str("eventbus_name", defaultOpts.Name).
-			Uint64("eventbus_id", defaultOpts.ID).
-			Msg("get eventbus id failed")
-		return nil
-	}
-
-	bus := func() api.Eventbus {
-		c.mu.RLock()
-		defer c.mu.RUnlock()
-		if value, ok := c.eventbusCache.Load(defaultOpts.ID); ok {
-			return value.(api.Eventbus)
-		} else {
-			return nil
-		}
-	}()
-
-	if bus == nil {
-		c.mu.Lock()
-		defer c.mu.Unlock()
-		if value, ok := c.eventbusCache.Load(defaultOpts.ID); ok { // double check
-			return value.(api.Eventbus)
-		} else {
-			cfg := &eb.Config{
-				Endpoints: c.Endpoints,
-				ID:        defaultOpts.ID,
-			}
-			newEventbus := eventbus.NewEventbus(cfg)
-			c.eventbusCache.Store(defaultOpts.ID, newEventbus)
-			return newEventbus
-		}
-	}
-	return bus
+	_ = "STUB: not implemented"
+	return *new(api.Eventbus)
 }
 
-func (c *client) Disconnect(ctx context.Context) {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	c.eventbusCache.Range(func(key, value interface{}) bool {
-		value.(api.Eventbus).Close(ctx)
-		c.eventbusCache.Delete(key)
-		return true
-	})
-}
+// double check
 
-func Connect(endpoints []string) Client {
-	if len(endpoints) == 0 {
-		return nil
-	}
-	return &client{
-		Endpoints: endpoints,
-	}
-}
+func (c *client) Disconnect(ctx context.Context) { _ = "STUB: not implemented"; return }
+
+func Connect(endpoints []string) Client { _ = "STUB: not implemented"; return *new(Client) }
 
 func GetEventbusIDIfNotSet(ctx context.Context, endpoints []string, opts *api.EventbusOptions) error {
+	_ = "STUB: not implemented"
 	// the eventbus id does not exist, get the eventbus id first
-	if opts.ID == uint64(0) {
-		if opts.Name == "" {
-			return errors.New("either eventbus name or id must be set")
-		}
-		// get eventbus id from name
-		s := cluster.NewClusterController(endpoints, insecure.NewCredentials()).EventbusService()
-		metaEventbus, err := s.GetSystemEventbusByName(ctx, opts.Name)
-		if err != nil {
-			return err
-		}
-		opts.ID = metaEventbus.Id
-	}
 	return nil
 }
+
+// get eventbus id from name

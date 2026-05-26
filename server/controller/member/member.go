@@ -17,7 +17,6 @@ package member
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"sync"
 	"time"
@@ -25,9 +24,6 @@ import (
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/concurrency"
 	"go.uber.org/atomic"
-
-	"github.com/vanus-labs/vanus/pkg/kv"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 var (
@@ -50,11 +46,7 @@ type Member interface {
 
 var _ Member = &member{}
 
-func New(cfg Config) Member {
-	return &member{
-		cfg: cfg,
-	}
-}
+func New(cfg Config) Member { _ = "STUB: not implemented"; return *new(Member) }
 
 type LeaderInfo struct {
 	LeaderID   string
@@ -96,275 +88,64 @@ const (
 	acquireLockDuration  = 5 * time.Second
 )
 
-func (m *member) Init(ctx context.Context) error {
-	m.resourceLockKey = kv.DistributedLockKey(m.cfg.ComponentName)
-	m.exit = make(chan struct{})
-
-	err := m.waitForEtcdReady(ctx, m.cfg.EtcdEndpoints)
-	if err != nil {
-		log.Error(ctx).Msg("etcd is not ready")
-		return err
-	}
-
-	log.Info(ctx).Msg("try to create session")
-	start := time.Now()
-	m.session, err = concurrency.NewSession(m.client, concurrency.WithTTL(m.cfg.LeaseDurationInSecond))
-	if err != nil {
-		log.Error(ctx).Err(err).Msg("new session failed")
-		panic("new session failed")
-	}
-	log.Info(ctx).
-		Dur("duration", time.Since(start)).
-		Msg("create session is finished")
-
-	m.mutex = concurrency.NewMutex(m.session, m.resourceLockKey)
-	log.Info(ctx).
-		Str("name", m.cfg.NodeName).
-		Str("key", m.resourceLockKey).
-		Int("lease_duration", m.cfg.LeaseDurationInSecond).
-		Msg("new leaderelection manager")
-	return nil
-}
+func (m *member) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (m *member) waitForEtcdReady(ctx context.Context, endpoints []string) error {
-	start := time.Now()
-	log.Info().Msg("wait for etcd is ready")
-	t := time.NewTicker(defaultEtcdStartTimeout)
-	defer t.Stop()
-	for !m.ready(ctx, endpoints) {
-		select {
-		case <-t.C:
-			return errors.New("etcd isn't ready")
-		default:
-			time.Sleep(time.Second)
-		}
-	}
-
-	log.Info().Dur("waiting_time", time.Since(start)).Msg("etcd is ready")
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *member) ready(ctx context.Context, endpoints []string) bool {
-	client, err := clientv3.New(clientv3.Config{
-		Endpoints:            endpoints,
-		DialTimeout:          dialTimeout,
-		DialKeepAliveTime:    dialKeepAliveTime,
-		DialKeepAliveTimeout: dialKeepAliveTimeout,
-	})
-	if err != nil {
-		log.Warn(ctx).Err(err).Msg("new etcd v3client failed")
-		return false
-	}
-	m.client = client
-	return true
+	_ = "STUB: not implemented"
+	return false
 }
 
-func (m *member) Start(_ context.Context) error {
-	m.leaderElection()
-	return nil
-}
+func (m *member) Start(_ context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (m *member) leaderElection() {
-	ctx := context.Background()
-	m.wg.Add(1)
-	go func() {
-		ticker := time.NewTicker(acquireLockDuration)
-		defer func() {
-			ticker.Stop()
-			m.wg.Done()
-		}()
-		_ = m.tryLock(ctx) // execute after server start
-		for {
-		RUN:
-			select {
-			case <-m.exit:
-				log.Info(ctx).Msg("leaderelection has stopped")
-				return
-			case <-m.session.Done():
-				log.Warn(ctx).Msg("lost lock")
-				m.isLeader.Store(false)
-				m.isReady.Store(false)
-				_ = m.execHandlers(ctx, MembershipChangedEvent{
-					Type: EventBecomeFollower,
-				})
-				// refresh session until success
-				t := time.NewTicker(time.Second)
-				for {
-					select {
-					case <-m.exit:
-						goto RUN
-					case <-t.C:
-						if m.refresh(ctx) {
-							t.Stop()
-							goto RUN
-						}
-					}
-				}
-			case <-ticker.C:
-				_ = m.tryLock(ctx)
-			}
-		}
-	}()
-	log.Info(ctx).Msg("leaderelection has started")
-}
+func (m *member) leaderElection() { _ = "STUB: not implemented"; return }
 
-func (m *member) tryLock(ctx context.Context) error {
-	if m.isLeader.Load() {
-		return nil
-	}
-	err := m.mutex.TryLock(ctx)
-	if err != nil {
-		if errors.Is(err, concurrency.ErrLocked) {
-			m.isReady.Store(true)
-			log.Debug(ctx).
-				Str("identity", m.cfg.NodeName).
-				Str("resource_lock", m.resourceLockKey).
-				Msg("try acquire lock, already locked in another session")
-			return err
-		}
-		log.Error(ctx).Err(err).Msg("acquire lock failed")
-		return err
-	}
+// execute after server start
 
-	log.Info(ctx).
-		Str("identity", m.cfg.NodeName).
-		Str("resource_lock", m.resourceLockKey).
-		Msg("success to acquire distributed lock")
+// refresh session until success
 
-	err = m.setLeader(ctx)
-	if err != nil {
-		log.Error(ctx).Err(err).
-			Str("identity", m.cfg.NodeName).
-			Str("leader_addr", m.cfg.Topology[m.cfg.NodeName]).
-			Msg("failed to set leader info")
-		_ = m.mutex.Unlock(ctx)
-		return err
-	}
+func (m *member) tryLock(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	m.isLeader.Store(true)
-	log.Info(ctx).Msg("controller become leader")
-	_ = m.execHandlers(ctx, MembershipChangedEvent{
-		Type: EventBecomeLeader,
-	})
-	m.isReady.Store(true)
-	return nil
-}
+func (m *member) setLeader(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (m *member) setLeader(ctx context.Context) error {
-	data, _ := json.Marshal(&LeaderInfo{
-		LeaderID:   m.cfg.NodeName,
-		LeaderAddr: m.cfg.Topology[m.cfg.NodeName],
-	})
-	_, err := m.client.Put(ctx, kv.ComponentLeaderKey(m.cfg.ComponentName), string(data))
-	return err
-}
+func (m *member) refresh(ctx context.Context) bool { _ = "STUB: not implemented"; return false }
 
-func (m *member) refresh(ctx context.Context) bool {
-	var err error
-	m.sessionMu.Lock()
-	defer m.sessionMu.Unlock()
-	_ = m.session.Close()
-	m.session, err = concurrency.NewSession(m.client, concurrency.WithTTL(m.cfg.LeaseDurationInSecond))
-	if err != nil {
-		log.Error(ctx).Err(err).Msg("refresh session failed")
-		return false
-	}
-	m.mutex = concurrency.NewMutex(m.session, m.resourceLockKey)
-	return true
-}
+func (m *member) Stop(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-func (m *member) Stop(ctx context.Context) {
-	log.Info(ctx).Msg("stop leaderelection")
-	close(m.exit)
-	m.wg.Wait()
-	err := m.release(ctx)
-	if err != nil {
-		log.Error(ctx).Err(err).Msg("release lock failed")
-		return
-	}
-}
-
-func (m *member) release(ctx context.Context) error {
-	m.sessionMu.Lock()
-	defer m.sessionMu.Unlock()
-	err := m.mutex.Unlock(ctx)
-	if err != nil {
-		log.Error(ctx).Err(err).Msg("unlock error")
-		return err
-	}
-	err = m.session.Close()
-	if err != nil {
-		log.Error(ctx).Err(err).Msg("session close error")
-		return err
-	}
-	log.Info(ctx).Msg("released lock")
-	return nil
-}
+func (m *member) release(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (m *member) execHandlers(ctx context.Context, event MembershipChangedEvent) error {
-	m.handlerMu.RLock()
-	defer m.handlerMu.RUnlock()
-	start := time.Now()
-	log.Debug(ctx).Interface("event", event).Msg("start to call handlers")
-	for _, handler := range m.handlers {
-		err := handler(ctx, event)
-		if err != nil {
-			log.Error(ctx).
-				Err(err).
-				Msg("exec handler failed and exit")
-			panic("exec handler failed")
-		}
-	}
-	log.Debug(ctx).Interface("event", event).
-		Dur("duration", time.Since(start)).
-		Msg("finish call handlers")
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *member) RegisterMembershipChangedProcessor(handler MembershipEventProcessor) {
-	m.handlerMu.Lock()
-	defer m.handlerMu.Unlock()
-	m.handlers = append(m.handlers, handler)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (m *member) ResignIfLeader() {
+	_ = "STUB: not implemented"
 	// TODO(jiangkai)
+	return
 }
 
-func (m *member) IsLeader() bool {
-	return m.isLeader.Load()
-}
+func (m *member) IsLeader() bool { _ = "STUB: not implemented"; return false }
 
 func (m *member) GetLeaderID() string {
+	_ = "STUB: not implemented"
 	// TODO(jiangkai): maybe lookup etcd per call has low performance.
-	resp, err := m.client.Get(context.Background(), kv.ComponentLeaderKey(m.cfg.ComponentName))
-	if err != nil {
-		log.Warn().Err(err).Msg("get leader info failed")
-		return ""
-	}
-	if len(resp.Kvs) == 0 {
-		return ""
-	}
-	leader := &LeaderInfo{}
-	_ = json.Unmarshal(resp.Kvs[0].Value, leader)
-	return leader.LeaderID
+	return ""
 }
 
 func (m *member) GetLeaderAddr() string {
+	_ = "STUB: not implemented"
 	// TODO(jiangkai): maybe lookup etcd per call has low performance.
-	resp, err := m.client.Get(context.Background(), kv.ComponentLeaderKey(m.cfg.ComponentName))
-	if err != nil {
-		log.Warn().Err(err).Msg("get leader info failed")
-		return ""
-	}
-	if len(resp.Kvs) == 0 {
-		return ""
-	}
-	leader := &LeaderInfo{}
-	_ = json.Unmarshal(resp.Kvs[0].Value, leader)
-	return leader.LeaderAddr
+	return ""
 }
 
-func (m *member) IsReady() bool {
-	return m.isReady.Load()
-}
+func (m *member) IsReady() bool { _ = "STUB: not implemented"; return false }

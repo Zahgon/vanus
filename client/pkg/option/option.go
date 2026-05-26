@@ -21,47 +21,27 @@ import (
 )
 
 func WithWritePolicy(policy api.WritePolicy) api.WriteOption {
-	return func(options *api.WriteOptions) {
-		options.Policy = policy
-	}
+	_ = "STUB: not implemented"
+	return *new(api.WriteOption)
 }
 
-func WithOneway() api.WriteOption {
-	return func(options *api.WriteOptions) {
-		options.Oneway = true
-	}
-}
+func WithOneway() api.WriteOption { _ = "STUB: not implemented"; return *new(api.WriteOption) }
 
-func WithBatchSize(size int) api.ReadOption {
-	return func(options *api.ReadOptions) {
-		options.BatchSize = size
-	}
-}
+func WithBatchSize(size int) api.ReadOption { _ = "STUB: not implemented"; return *new(api.ReadOption) }
 
 func WithPollingTimeout(d time.Duration) api.ReadOption {
-	return func(options *api.ReadOptions) {
-		if d <= 0 {
-			options.PollingTimeout = 0
-		} else {
-			options.PollingTimeout = d.Milliseconds()
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(api.ReadOption)
 }
 
-func WithDisablePolling() api.ReadOption {
-	return func(options *api.ReadOptions) {
-		options.PollingTimeout = 0
-	}
-}
+func WithDisablePolling() api.ReadOption { _ = "STUB: not implemented"; return *new(api.ReadOption) }
 
 func WithReadPolicy(policy api.ReadPolicy) api.ReadOption {
-	return func(options *api.ReadOptions) {
-		options.Policy = policy
-	}
+	_ = "STUB: not implemented"
+	return *new(api.ReadOption)
 }
 
 func WithLogPolicy(policy api.LogPolicy) api.LogOption {
-	return func(options *api.LogOptions) {
-		options.Policy = policy
-	}
+	_ = "STUB: not implemented"
+	return *new(api.LogOption)
 }

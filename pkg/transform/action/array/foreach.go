@@ -15,11 +15,8 @@
 package array
 
 import (
-	"github.com/pkg/errors"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -28,38 +25,11 @@ type arrayForeachAction struct {
 	action.NestActionImpl
 }
 
-func NewArrayForeachAction() action.Action {
-	a := &arrayForeachAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "ARRAY_FOREACH",
-		FixedArgs:  []arg.TypeList{[]arg.Type{arg.EventData}},
-	}
-	return a
-}
+func NewArrayForeachAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *arrayForeachAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args
-	a.ArgTypes = []common.Type{common.Array}
-	return nil
-}
+func (a *arrayForeachAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *arrayForeachAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	arrayValue, _ := args[0].([]interface{})
-	for i := range arrayValue {
-		newCtx := &context.EventContext{
-			Data: arrayValue[i],
-		}
-		for i := range a.Actions {
-			err = a.Actions[i].Execute(newCtx)
-			if err != nil {
-				return errors.Wrapf(err, "action %dst execute error", i+1)
-			}
-		}
-	}
-	return a.TargetArg.SetValue(ceCtx, arrayValue)
+	_ = "STUB: not implemented"
+	return nil
 }

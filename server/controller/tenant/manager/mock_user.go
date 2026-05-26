@@ -11,7 +11,6 @@ package manager
 
 import (
 	context "context"
-	reflect "reflect"
 
 	metadata "github.com/vanus-labs/vanus/server/controller/tenant/metadata"
 	gomock "go.uber.org/mock/gomock"
@@ -30,82 +29,70 @@ type MockUserManagerMockRecorder struct {
 
 // NewMockUserManager creates a new mock instance.
 func NewMockUserManager(ctrl *gomock.Controller) *MockUserManager {
-	mock := &MockUserManager{ctrl: ctrl}
-	mock.recorder = &MockUserManagerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockUserManager) EXPECT() *MockUserManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddUser mocks base method.
+	return nil
 }
 
-// AddUser mocks base method.
 func (m *MockUserManager) AddUser(ctx context.Context, user *metadata.User) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddUser", ctx, user)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddUser indicates an expected call of AddUser.
 func (mr *MockUserManagerMockRecorder) AddUser(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddUser", reflect.TypeOf((*MockUserManager)(nil).AddUser), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUser mocks base method.
 func (m *MockUserManager) DeleteUser(ctx context.Context, identifier string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteUser", ctx, identifier)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUser indicates an expected call of DeleteUser.
 func (mr *MockUserManagerMockRecorder) DeleteUser(ctx, identifier any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUser", reflect.TypeOf((*MockUserManager)(nil).DeleteUser), ctx, identifier)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUser mocks base method.
 func (m *MockUserManager) GetUser(ctx context.Context, identifier string) *metadata.User {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUser", ctx, identifier)
-	ret0, _ := ret[0].(*metadata.User)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUser indicates an expected call of GetUser.
 func (mr *MockUserManagerMockRecorder) GetUser(ctx, identifier any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockUserManager)(nil).GetUser), ctx, identifier)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
-func (m *MockUserManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockUserManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockUserManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockUserManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListUser mocks base method.
 func (m *MockUserManager) ListUser(ctx context.Context) []*metadata.User {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListUser", ctx)
-	ret0, _ := ret[0].([]*metadata.User)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListUser indicates an expected call of ListUser.
 func (mr *MockUserManagerMockRecorder) ListUser(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUser", reflect.TypeOf((*MockUserManager)(nil).ListUser), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }

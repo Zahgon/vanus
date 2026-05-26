@@ -17,13 +17,6 @@ type stimeKey struct {
 	stime int64
 }
 
-func (e *stimeKey) GetInt64(ordinal int) int64 {
-	if ordinal == StimeOrdinal {
-		return e.stime
-	}
-	return e.EmptyEntry.GetInt64(ordinal)
-}
+func (e *stimeKey) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
-func StimeKey(stime int64) block.Entry {
-	return &stimeKey{stime: stime}
-}
+func StimeKey(stime int64) block.Entry { _ = "STUB: not implemented"; return *new(block.Entry) }

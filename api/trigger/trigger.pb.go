@@ -21,12 +21,12 @@
 package trigger
 
 import (
+	sync "sync"
+
 	config "github.com/vanus-labs/vanus/api/config"
 	meta "github.com/vanus-labs/vanus/api/meta"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -44,42 +44,25 @@ type StartTriggerWorkerRequest struct {
 	Config *config.ServerConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
 }
 
-func (x *StartTriggerWorkerRequest) Reset() {
-	*x = StartTriggerWorkerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StartTriggerWorkerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StartTriggerWorkerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StartTriggerWorkerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StartTriggerWorkerRequest) ProtoMessage() {}
+func (*StartTriggerWorkerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StartTriggerWorkerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StartTriggerWorkerRequest.ProtoReflect.Descriptor instead.
 func (*StartTriggerWorkerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *StartTriggerWorkerRequest) GetConfig() *config.ServerConfig {
-	if x != nil {
-		return x.Config
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -89,36 +72,21 @@ type StartTriggerWorkerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StartTriggerWorkerResponse) Reset() {
-	*x = StartTriggerWorkerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StartTriggerWorkerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StartTriggerWorkerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StartTriggerWorkerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StartTriggerWorkerResponse) ProtoMessage() {}
+func (*StartTriggerWorkerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StartTriggerWorkerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StartTriggerWorkerResponse.ProtoReflect.Descriptor instead.
 func (*StartTriggerWorkerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type StopTriggerWorkerRequest struct {
@@ -127,36 +95,21 @@ type StopTriggerWorkerRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StopTriggerWorkerRequest) Reset() {
-	*x = StopTriggerWorkerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StopTriggerWorkerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StopTriggerWorkerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StopTriggerWorkerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StopTriggerWorkerRequest) ProtoMessage() {}
+func (*StopTriggerWorkerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StopTriggerWorkerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StopTriggerWorkerRequest.ProtoReflect.Descriptor instead.
 func (*StopTriggerWorkerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type StopTriggerWorkerResponse struct {
@@ -165,36 +118,21 @@ type StopTriggerWorkerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *StopTriggerWorkerResponse) Reset() {
-	*x = StopTriggerWorkerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *StopTriggerWorkerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StopTriggerWorkerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StopTriggerWorkerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StopTriggerWorkerResponse) ProtoMessage() {}
+func (*StopTriggerWorkerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StopTriggerWorkerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StopTriggerWorkerResponse.ProtoReflect.Descriptor instead.
 func (*StopTriggerWorkerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type AddSubscriptionRequest struct {
@@ -217,128 +155,69 @@ type AddSubscriptionRequest struct {
 	TimerEventbusId      uint64                   `protobuf:"varint,14,opt,name=timer_eventbus_id,json=timerEventbusId,proto3" json:"timer_eventbus_id,omitempty"`
 }
 
-func (x *AddSubscriptionRequest) Reset() {
-	*x = AddSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *AddSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AddSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AddSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AddSubscriptionRequest) ProtoMessage() {}
+func (*AddSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AddSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AddSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*AddSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AddSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *AddSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *AddSubscriptionRequest) GetConfig() *meta.SubscriptionConfig {
-	if x != nil {
-		return x.Config
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *AddSubscriptionRequest) GetFilters() []*meta.Filter {
-	if x != nil {
-		return x.Filters
-	}
-	return nil
-}
+func (x *AddSubscriptionRequest) GetFilters() []*meta.Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *AddSubscriptionRequest) GetSink() string {
-	if x != nil {
-		return x.Sink
-	}
-	return ""
-}
+func (x *AddSubscriptionRequest) GetSink() string { _ = "STUB: not implemented"; return "" }
 
 func (x *AddSubscriptionRequest) GetSinkCredential() *meta.SinkCredential {
-	if x != nil {
-		return x.SinkCredential
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AddSubscriptionRequest) GetProtocol() meta.Protocol {
-	if x != nil {
-		return x.Protocol
-	}
-	return meta.Protocol(0)
+	_ = "STUB: not implemented"
+	return *new(meta.Protocol)
 }
 
 func (x *AddSubscriptionRequest) GetProtocolSettings() *meta.ProtocolSetting {
-	if x != nil {
-		return x.ProtocolSettings
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AddSubscriptionRequest) GetTransformer() *meta.Transformer {
-	if x != nil {
-		return x.Transformer
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AddSubscriptionRequest) GetOffsets() []*meta.OffsetInfo {
-	if x != nil {
-		return x.Offsets
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *AddSubscriptionRequest) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *AddSubscriptionRequest) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *AddSubscriptionRequest) GetDeadLetterEventbusId() uint64 {
-	if x != nil {
-		return x.DeadLetterEventbusId
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
-func (x *AddSubscriptionRequest) GetRetryEventbusId() uint64 {
-	if x != nil {
-		return x.RetryEventbusId
-	}
-	return 0
-}
+func (x *AddSubscriptionRequest) GetRetryEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *AddSubscriptionRequest) GetTimerEventbusId() uint64 {
-	if x != nil {
-		return x.TimerEventbusId
-	}
-	return 0
-}
+func (x *AddSubscriptionRequest) GetTimerEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type AddSubscriptionResponse struct {
 	state         protoimpl.MessageState
@@ -346,36 +225,21 @@ type AddSubscriptionResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *AddSubscriptionResponse) Reset() {
-	*x = AddSubscriptionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *AddSubscriptionResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AddSubscriptionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AddSubscriptionResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AddSubscriptionResponse) ProtoMessage() {}
+func (*AddSubscriptionResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AddSubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AddSubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*AddSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type RemoveSubscriptionRequest struct {
@@ -386,44 +250,24 @@ type RemoveSubscriptionRequest struct {
 	SubscriptionId uint64 `protobuf:"varint,1,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
 }
 
-func (x *RemoveSubscriptionRequest) Reset() {
-	*x = RemoveSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RemoveSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RemoveSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RemoveSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RemoveSubscriptionRequest) ProtoMessage() {}
+func (*RemoveSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RemoveSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RemoveSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*RemoveSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RemoveSubscriptionRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
-	return 0
-}
+func (x *RemoveSubscriptionRequest) GetSubscriptionId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type RemoveSubscriptionResponse struct {
 	state         protoimpl.MessageState
@@ -431,36 +275,21 @@ type RemoveSubscriptionResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *RemoveSubscriptionResponse) Reset() {
-	*x = RemoveSubscriptionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RemoveSubscriptionResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RemoveSubscriptionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RemoveSubscriptionResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RemoveSubscriptionResponse) ProtoMessage() {}
+func (*RemoveSubscriptionResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RemoveSubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RemoveSubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*RemoveSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type PauseSubscriptionRequest struct {
@@ -471,44 +300,24 @@ type PauseSubscriptionRequest struct {
 	SubscriptionId uint64 `protobuf:"varint,1,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
 }
 
-func (x *PauseSubscriptionRequest) Reset() {
-	*x = PauseSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *PauseSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PauseSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PauseSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PauseSubscriptionRequest) ProtoMessage() {}
+func (*PauseSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PauseSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PauseSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*PauseSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PauseSubscriptionRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
-	return 0
-}
+func (x *PauseSubscriptionRequest) GetSubscriptionId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type PauseSubscriptionResponse struct {
 	state         protoimpl.MessageState
@@ -516,36 +325,21 @@ type PauseSubscriptionResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *PauseSubscriptionResponse) Reset() {
-	*x = PauseSubscriptionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *PauseSubscriptionResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PauseSubscriptionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PauseSubscriptionResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PauseSubscriptionResponse) ProtoMessage() {}
+func (*PauseSubscriptionResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PauseSubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PauseSubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*PauseSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type ResumeSubscriptionRequest struct {
@@ -556,44 +350,24 @@ type ResumeSubscriptionRequest struct {
 	SubscriptionId uint64 `protobuf:"varint,1,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
 }
 
-func (x *ResumeSubscriptionRequest) Reset() {
-	*x = ResumeSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResumeSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResumeSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResumeSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResumeSubscriptionRequest) ProtoMessage() {}
+func (*ResumeSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResumeSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResumeSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*ResumeSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ResumeSubscriptionRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
-	return 0
-}
+func (x *ResumeSubscriptionRequest) GetSubscriptionId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ResumeSubscriptionResponse struct {
 	state         protoimpl.MessageState
@@ -601,36 +375,21 @@ type ResumeSubscriptionResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *ResumeSubscriptionResponse) Reset() {
-	*x = ResumeSubscriptionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_trigger_trigger_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResumeSubscriptionResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResumeSubscriptionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResumeSubscriptionResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResumeSubscriptionResponse) ProtoMessage() {}
+func (*ResumeSubscriptionResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResumeSubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_trigger_trigger_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResumeSubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*ResumeSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_trigger_trigger_proto_rawDescGZIP(), []int{11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var File_vanus_core_trigger_trigger_proto protoreflect.FileDescriptor
@@ -771,10 +530,8 @@ var (
 )
 
 func file_vanus_core_trigger_trigger_proto_rawDescGZIP() []byte {
-	file_vanus_core_trigger_trigger_proto_rawDescOnce.Do(func() {
-		file_vanus_core_trigger_trigger_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_trigger_trigger_proto_rawDescData)
-	})
-	return file_vanus_core_trigger_trigger_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_vanus_core_trigger_trigger_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
@@ -828,173 +585,5 @@ var file_vanus_core_trigger_trigger_proto_depIdxs = []int32{
 	0,  // [0:8] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_trigger_trigger_proto_init() }
-func file_vanus_core_trigger_trigger_proto_init() {
-	if File_vanus_core_trigger_trigger_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_trigger_trigger_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartTriggerWorkerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartTriggerWorkerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopTriggerWorkerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopTriggerWorkerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddSubscriptionResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveSubscriptionResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PauseSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PauseSubscriptionResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResumeSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_trigger_trigger_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResumeSubscriptionResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_trigger_trigger_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   12,
-			NumExtensions: 0,
-			NumServices:   1,
-		},
-		GoTypes:           file_vanus_core_trigger_trigger_proto_goTypes,
-		DependencyIndexes: file_vanus_core_trigger_trigger_proto_depIdxs,
-		MessageInfos:      file_vanus_core_trigger_trigger_proto_msgTypes,
-	}.Build()
-	File_vanus_core_trigger_trigger_proto = out.File
-	file_vanus_core_trigger_trigger_proto_rawDesc = nil
-	file_vanus_core_trigger_trigger_proto_goTypes = nil
-	file_vanus_core_trigger_trigger_proto_depIdxs = nil
-}
+func init()                                       { file_vanus_core_trigger_trigger_proto_init() }
+func file_vanus_core_trigger_trigger_proto_init() { _ = "STUB: not implemented"; return }

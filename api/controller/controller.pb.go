@@ -21,14 +21,14 @@
 package controller
 
 import (
+	sync "sync"
+
 	meta "github.com/vanus-labs/vanus/api/meta"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -48,58 +48,25 @@ type PingResponse struct {
 	IsEventbusReady bool   `protobuf:"varint,3,opt,name=is_eventbus_ready,json=isEventbusReady,proto3" json:"is_eventbus_ready,omitempty"`
 }
 
-func (x *PingResponse) Reset() {
-	*x = PingResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *PingResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PingResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PingResponse) ProtoMessage() {}
+func (*PingResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PingResponse.ProtoReflect.Descriptor instead.
-func (*PingResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{0}
-}
+func (*PingResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *PingResponse) GetLeaderAddr() string {
-	if x != nil {
-		return x.LeaderAddr
-	}
-	return ""
-}
+func (x *PingResponse) GetLeaderAddr() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PingResponse) GetGatewayAddr() string {
-	if x != nil {
-		return x.GatewayAddr
-	}
-	return ""
-}
+func (x *PingResponse) GetGatewayAddr() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PingResponse) GetIsEventbusReady() bool {
-	if x != nil {
-		return x.IsEventbusReady
-	}
-	return false
-}
+func (x *PingResponse) GetIsEventbusReady() bool { _ = "STUB: not implemented"; return false }
 
 type CreateNamespaceRequest struct {
 	state         protoimpl.MessageState
@@ -111,58 +78,28 @@ type CreateNamespaceRequest struct {
 	Id          uint64 `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *CreateNamespaceRequest) Reset() {
-	*x = CreateNamespaceRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateNamespaceRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateNamespaceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateNamespaceRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateNamespaceRequest) ProtoMessage() {}
+func (*CreateNamespaceRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateNamespaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateNamespaceRequest.ProtoReflect.Descriptor instead.
 func (*CreateNamespaceRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CreateNamespaceRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *CreateNamespaceRequest) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateNamespaceRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *CreateNamespaceRequest) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateNamespaceRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *CreateNamespaceRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ListNamespaceResponse struct {
 	state         protoimpl.MessageState
@@ -172,42 +109,25 @@ type ListNamespaceResponse struct {
 	Namespace []*meta.Namespace `protobuf:"bytes,1,rep,name=namespace,proto3" json:"namespace,omitempty"`
 }
 
-func (x *ListNamespaceResponse) Reset() {
-	*x = ListNamespaceResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListNamespaceResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListNamespaceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListNamespaceResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListNamespaceResponse) ProtoMessage() {}
+func (*ListNamespaceResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListNamespaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListNamespaceResponse.ProtoReflect.Descriptor instead.
 func (*ListNamespaceResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ListNamespaceResponse) GetNamespace() []*meta.Namespace {
-	if x != nil {
-		return x.Namespace
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -219,44 +139,24 @@ type GetNamespaceRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *GetNamespaceRequest) Reset() {
-	*x = GetNamespaceRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetNamespaceRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetNamespaceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetNamespaceRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetNamespaceRequest) ProtoMessage() {}
+func (*GetNamespaceRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetNamespaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetNamespaceRequest.ProtoReflect.Descriptor instead.
 func (*GetNamespaceRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetNamespaceRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *GetNamespaceRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type DeleteNamespaceRequest struct {
 	state         protoimpl.MessageState
@@ -266,44 +166,24 @@ type DeleteNamespaceRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *DeleteNamespaceRequest) Reset() {
-	*x = DeleteNamespaceRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DeleteNamespaceRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeleteNamespaceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeleteNamespaceRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeleteNamespaceRequest) ProtoMessage() {}
+func (*DeleteNamespaceRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeleteNamespaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeleteNamespaceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteNamespaceRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DeleteNamespaceRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *DeleteNamespaceRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type CreateEventbusRequest struct {
 	state         protoimpl.MessageState
@@ -317,72 +197,32 @@ type CreateEventbusRequest struct {
 	Id          uint64 `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *CreateEventbusRequest) Reset() {
-	*x = CreateEventbusRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateEventbusRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateEventbusRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateEventbusRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateEventbusRequest) ProtoMessage() {}
+func (*CreateEventbusRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateEventbusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateEventbusRequest.ProtoReflect.Descriptor instead.
 func (*CreateEventbusRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CreateEventbusRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *CreateEventbusRequest) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateEventbusRequest) GetLogNumber() int32 {
-	if x != nil {
-		return x.LogNumber
-	}
-	return 0
-}
+func (x *CreateEventbusRequest) GetLogNumber() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *CreateEventbusRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *CreateEventbusRequest) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateEventbusRequest) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *CreateEventbusRequest) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *CreateEventbusRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *CreateEventbusRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ListEventbusRequest struct {
 	state         protoimpl.MessageState
@@ -392,44 +232,24 @@ type ListEventbusRequest struct {
 	NamespaceId uint64 `protobuf:"varint,1,opt,name=namespace_id,json=namespaceId,proto3" json:"namespace_id,omitempty"`
 }
 
-func (x *ListEventbusRequest) Reset() {
-	*x = ListEventbusRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListEventbusRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListEventbusRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListEventbusRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListEventbusRequest) ProtoMessage() {}
+func (*ListEventbusRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListEventbusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListEventbusRequest.ProtoReflect.Descriptor instead.
 func (*ListEventbusRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ListEventbusRequest) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *ListEventbusRequest) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ListEventbusResponse struct {
 	state         protoimpl.MessageState
@@ -439,42 +259,25 @@ type ListEventbusResponse struct {
 	Eventbus []*meta.Eventbus `protobuf:"bytes,1,rep,name=eventbus,proto3" json:"eventbus,omitempty"`
 }
 
-func (x *ListEventbusResponse) Reset() {
-	*x = ListEventbusResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListEventbusResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListEventbusResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListEventbusResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListEventbusResponse) ProtoMessage() {}
+func (*ListEventbusResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListEventbusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListEventbusResponse.ProtoReflect.Descriptor instead.
 func (*ListEventbusResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ListEventbusResponse) GetEventbus() []*meta.Eventbus {
-	if x != nil {
-		return x.Eventbus
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -487,49 +290,30 @@ type GetEventbusWithHumanFriendlyRequest struct {
 	EventbusName string `protobuf:"bytes,2,opt,name=eventbus_name,json=eventbusName,proto3" json:"eventbus_name,omitempty"`
 }
 
-func (x *GetEventbusWithHumanFriendlyRequest) Reset() {
-	*x = GetEventbusWithHumanFriendlyRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetEventbusWithHumanFriendlyRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetEventbusWithHumanFriendlyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetEventbusWithHumanFriendlyRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetEventbusWithHumanFriendlyRequest) ProtoMessage() {}
+func (*GetEventbusWithHumanFriendlyRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetEventbusWithHumanFriendlyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetEventbusWithHumanFriendlyRequest.ProtoReflect.Descriptor instead.
 func (*GetEventbusWithHumanFriendlyRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *GetEventbusWithHumanFriendlyRequest) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
 func (x *GetEventbusWithHumanFriendlyRequest) GetEventbusName() string {
-	if x != nil {
-		return x.EventbusName
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -539,36 +323,21 @@ type UpdateEventbusRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *UpdateEventbusRequest) Reset() {
-	*x = UpdateEventbusRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UpdateEventbusRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UpdateEventbusRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UpdateEventbusRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UpdateEventbusRequest) ProtoMessage() {}
+func (*UpdateEventbusRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UpdateEventbusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UpdateEventbusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateEventbusRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type QuerySegmentRouteInfoRequest struct {
@@ -577,36 +346,21 @@ type QuerySegmentRouteInfoRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *QuerySegmentRouteInfoRequest) Reset() {
-	*x = QuerySegmentRouteInfoRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *QuerySegmentRouteInfoRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *QuerySegmentRouteInfoRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *QuerySegmentRouteInfoRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*QuerySegmentRouteInfoRequest) ProtoMessage() {}
+func (*QuerySegmentRouteInfoRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *QuerySegmentRouteInfoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use QuerySegmentRouteInfoRequest.ProtoReflect.Descriptor instead.
 func (*QuerySegmentRouteInfoRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type QuerySegmentRouteInfoResponse struct {
@@ -615,36 +369,21 @@ type QuerySegmentRouteInfoResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *QuerySegmentRouteInfoResponse) Reset() {
-	*x = QuerySegmentRouteInfoResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *QuerySegmentRouteInfoResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *QuerySegmentRouteInfoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *QuerySegmentRouteInfoResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*QuerySegmentRouteInfoResponse) ProtoMessage() {}
+func (*QuerySegmentRouteInfoResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *QuerySegmentRouteInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use QuerySegmentRouteInfoResponse.ProtoReflect.Descriptor instead.
 func (*QuerySegmentRouteInfoResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type SegmentHeartbeatRequest struct {
@@ -658,65 +397,33 @@ type SegmentHeartbeatRequest struct {
 	ServerAddr string                    `protobuf:"bytes,5,opt,name=server_addr,json=serverAddr,proto3" json:"server_addr,omitempty"`
 }
 
-func (x *SegmentHeartbeatRequest) Reset() {
-	*x = SegmentHeartbeatRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[12]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SegmentHeartbeatRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SegmentHeartbeatRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SegmentHeartbeatRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SegmentHeartbeatRequest) ProtoMessage() {}
+func (*SegmentHeartbeatRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SegmentHeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[12]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SegmentHeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*SegmentHeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{12}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *SegmentHeartbeatRequest) GetVolumeId() uint64 {
-	if x != nil {
-		return x.VolumeId
-	}
-	return 0
-}
+func (x *SegmentHeartbeatRequest) GetVolumeId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *SegmentHeartbeatRequest) GetHealthInfo() []*meta.SegmentHealthInfo {
-	if x != nil {
-		return x.HealthInfo
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *SegmentHeartbeatRequest) GetReportTime() string {
-	if x != nil {
-		return x.ReportTime
-	}
-	return ""
-}
+func (x *SegmentHeartbeatRequest) GetReportTime() string { _ = "STUB: not implemented"; return "" }
 
-func (x *SegmentHeartbeatRequest) GetServerAddr() string {
-	if x != nil {
-		return x.ServerAddr
-	}
-	return ""
-}
+func (x *SegmentHeartbeatRequest) GetServerAddr() string { _ = "STUB: not implemented"; return "" }
 
 type SegmentHeartbeatResponse struct {
 	state         protoimpl.MessageState
@@ -724,36 +431,21 @@ type SegmentHeartbeatResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *SegmentHeartbeatResponse) Reset() {
-	*x = SegmentHeartbeatResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SegmentHeartbeatResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SegmentHeartbeatResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SegmentHeartbeatResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SegmentHeartbeatResponse) ProtoMessage() {}
+func (*SegmentHeartbeatResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SegmentHeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SegmentHeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*SegmentHeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{13}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type RegisterSegmentServerRequest struct {
@@ -766,58 +458,28 @@ type RegisterSegmentServerRequest struct {
 	Capacity uint64 `protobuf:"varint,3,opt,name=capacity,proto3" json:"capacity,omitempty"`
 }
 
-func (x *RegisterSegmentServerRequest) Reset() {
-	*x = RegisterSegmentServerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RegisterSegmentServerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RegisterSegmentServerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RegisterSegmentServerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RegisterSegmentServerRequest) ProtoMessage() {}
+func (*RegisterSegmentServerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RegisterSegmentServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RegisterSegmentServerRequest.ProtoReflect.Descriptor instead.
 func (*RegisterSegmentServerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{14}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RegisterSegmentServerRequest) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
+func (x *RegisterSegmentServerRequest) GetAddress() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RegisterSegmentServerRequest) GetVolumeId() uint64 {
-	if x != nil {
-		return x.VolumeId
-	}
-	return 0
-}
+func (x *RegisterSegmentServerRequest) GetVolumeId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *RegisterSegmentServerRequest) GetCapacity() uint64 {
-	if x != nil {
-		return x.Capacity
-	}
-	return 0
-}
+func (x *RegisterSegmentServerRequest) GetCapacity() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type RegisterSegmentServerResponse struct {
 	state         protoimpl.MessageState
@@ -828,51 +490,29 @@ type RegisterSegmentServerResponse struct {
 	VolumeId uint64                   `protobuf:"varint,3,opt,name=volume_id,json=volumeId,proto3" json:"volume_id,omitempty"`
 }
 
-func (x *RegisterSegmentServerResponse) Reset() {
-	*x = RegisterSegmentServerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[15]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RegisterSegmentServerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RegisterSegmentServerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RegisterSegmentServerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RegisterSegmentServerResponse) ProtoMessage() {}
+func (*RegisterSegmentServerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RegisterSegmentServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[15]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RegisterSegmentServerResponse.ProtoReflect.Descriptor instead.
 func (*RegisterSegmentServerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{15}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RegisterSegmentServerResponse) GetSegments() map[uint64]*meta.Segment {
-	if x != nil {
-		return x.Segments
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RegisterSegmentServerResponse) GetVolumeId() uint64 {
-	if x != nil {
-		return x.VolumeId
-	}
-	return 0
-}
+func (x *RegisterSegmentServerResponse) GetVolumeId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type UnregisterSegmentServerRequest struct {
 	state         protoimpl.MessageState
@@ -883,51 +523,26 @@ type UnregisterSegmentServerRequest struct {
 	VolumeId uint64 `protobuf:"varint,3,opt,name=volume_id,json=volumeId,proto3" json:"volume_id,omitempty"`
 }
 
-func (x *UnregisterSegmentServerRequest) Reset() {
-	*x = UnregisterSegmentServerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UnregisterSegmentServerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UnregisterSegmentServerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UnregisterSegmentServerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UnregisterSegmentServerRequest) ProtoMessage() {}
+func (*UnregisterSegmentServerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UnregisterSegmentServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UnregisterSegmentServerRequest.ProtoReflect.Descriptor instead.
 func (*UnregisterSegmentServerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{16}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *UnregisterSegmentServerRequest) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
+func (x *UnregisterSegmentServerRequest) GetAddress() string { _ = "STUB: not implemented"; return "" }
 
-func (x *UnregisterSegmentServerRequest) GetVolumeId() uint64 {
-	if x != nil {
-		return x.VolumeId
-	}
-	return 0
-}
+func (x *UnregisterSegmentServerRequest) GetVolumeId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type UnregisterSegmentServerResponse struct {
 	state         protoimpl.MessageState
@@ -935,36 +550,21 @@ type UnregisterSegmentServerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *UnregisterSegmentServerResponse) Reset() {
-	*x = UnregisterSegmentServerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UnregisterSegmentServerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UnregisterSegmentServerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UnregisterSegmentServerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UnregisterSegmentServerResponse) ProtoMessage() {}
+func (*UnregisterSegmentServerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UnregisterSegmentServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UnregisterSegmentServerResponse.ProtoReflect.Descriptor instead.
 func (*UnregisterSegmentServerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{17}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type ReportSegmentLeaderRequest struct {
@@ -977,58 +577,28 @@ type ReportSegmentLeaderRequest struct {
 	Term      uint64 `protobuf:"varint,2,opt,name=term,proto3" json:"term,omitempty"`
 }
 
-func (x *ReportSegmentLeaderRequest) Reset() {
-	*x = ReportSegmentLeaderRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[18]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ReportSegmentLeaderRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ReportSegmentLeaderRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ReportSegmentLeaderRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ReportSegmentLeaderRequest) ProtoMessage() {}
+func (*ReportSegmentLeaderRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ReportSegmentLeaderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[18]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ReportSegmentLeaderRequest.ProtoReflect.Descriptor instead.
 func (*ReportSegmentLeaderRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{18}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ReportSegmentLeaderRequest) GetSegmentId() uint64 {
-	if x != nil {
-		return x.SegmentId
-	}
-	return 0
-}
+func (x *ReportSegmentLeaderRequest) GetSegmentId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ReportSegmentLeaderRequest) GetLeaderId() uint64 {
-	if x != nil {
-		return x.LeaderId
-	}
-	return 0
-}
+func (x *ReportSegmentLeaderRequest) GetLeaderId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ReportSegmentLeaderRequest) GetTerm() uint64 {
-	if x != nil {
-		return x.Term
-	}
-	return 0
-}
+func (x *ReportSegmentLeaderRequest) GetTerm() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type SubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1051,135 +621,65 @@ type SubscriptionRequest struct {
 	NamespaceId      uint64                   `protobuf:"varint,15,opt,name=namespace_id,json=namespaceId,proto3" json:"namespace_id,omitempty"`
 }
 
-func (x *SubscriptionRequest) Reset() {
-	*x = SubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[19]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SubscriptionRequest) ProtoMessage() {}
+func (*SubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[19]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*SubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{19}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *SubscriptionRequest) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
+func (x *SubscriptionRequest) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *SubscriptionRequest) GetTypes() []string {
-	if x != nil {
-		return x.Types
-	}
-	return nil
-}
+func (x *SubscriptionRequest) GetTypes() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *SubscriptionRequest) GetConfig() *meta.SubscriptionConfig {
-	if x != nil {
-		return x.Config
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *SubscriptionRequest) GetFilters() []*meta.Filter {
-	if x != nil {
-		return x.Filters
-	}
-	return nil
-}
+func (x *SubscriptionRequest) GetFilters() []*meta.Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *SubscriptionRequest) GetSink() string {
-	if x != nil {
-		return x.Sink
-	}
-	return ""
-}
+func (x *SubscriptionRequest) GetSink() string { _ = "STUB: not implemented"; return "" }
 
 func (x *SubscriptionRequest) GetSinkCredential() *meta.SinkCredential {
-	if x != nil {
-		return x.SinkCredential
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *SubscriptionRequest) GetProtocol() meta.Protocol {
-	if x != nil {
-		return x.Protocol
-	}
-	return meta.Protocol(0)
+	_ = "STUB: not implemented"
+	return *new(meta.Protocol)
 }
 
 func (x *SubscriptionRequest) GetProtocolSettings() *meta.ProtocolSetting {
-	if x != nil {
-		return x.ProtocolSettings
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *SubscriptionRequest) GetTransformer() *meta.Transformer {
-	if x != nil {
-		return x.Transformer
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *SubscriptionRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *SubscriptionRequest) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *SubscriptionRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *SubscriptionRequest) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *SubscriptionRequest) GetDisable() bool {
-	if x != nil {
-		return x.Disable
-	}
-	return false
-}
+func (x *SubscriptionRequest) GetDisable() bool { _ = "STUB: not implemented"; return false }
 
-func (x *SubscriptionRequest) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *SubscriptionRequest) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SubscriptionRequest) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *SubscriptionRequest) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type CreateSubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1190,51 +690,29 @@ type CreateSubscriptionRequest struct {
 	Id           uint64               `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *CreateSubscriptionRequest) Reset() {
-	*x = CreateSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[20]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateSubscriptionRequest) ProtoMessage() {}
+func (*CreateSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[20]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*CreateSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{20}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CreateSubscriptionRequest) GetSubscription() *SubscriptionRequest {
-	if x != nil {
-		return x.Subscription
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *CreateSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *CreateSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type UpdateSubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1245,49 +723,27 @@ type UpdateSubscriptionRequest struct {
 	Subscription *SubscriptionRequest `protobuf:"bytes,2,opt,name=subscription,proto3" json:"subscription,omitempty"`
 }
 
-func (x *UpdateSubscriptionRequest) Reset() {
-	*x = UpdateSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[21]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UpdateSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UpdateSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UpdateSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UpdateSubscriptionRequest) ProtoMessage() {}
+func (*UpdateSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UpdateSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[21]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UpdateSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{21}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *UpdateSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *UpdateSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *UpdateSubscriptionRequest) GetSubscription() *SubscriptionRequest {
-	if x != nil {
-		return x.Subscription
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1299,44 +755,24 @@ type GetSubscriptionRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *GetSubscriptionRequest) Reset() {
-	*x = GetSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[22]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetSubscriptionRequest) ProtoMessage() {}
+func (*GetSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[22]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*GetSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{22}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *GetSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type DeleteSubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1346,44 +782,24 @@ type DeleteSubscriptionRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *DeleteSubscriptionRequest) Reset() {
-	*x = DeleteSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[23]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DeleteSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeleteSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeleteSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeleteSubscriptionRequest) ProtoMessage() {}
+func (*DeleteSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeleteSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[23]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeleteSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{23}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DeleteSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *DeleteSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type DisableSubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1394,49 +810,27 @@ type DisableSubscriptionRequest struct {
 	Declaratively bool   `protobuf:"varint,2,opt,name=declaratively,proto3" json:"declaratively,omitempty"`
 }
 
-func (x *DisableSubscriptionRequest) Reset() {
-	*x = DisableSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[24]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DisableSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DisableSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DisableSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DisableSubscriptionRequest) ProtoMessage() {}
+func (*DisableSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DisableSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[24]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DisableSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*DisableSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{24}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DisableSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *DisableSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (x *DisableSubscriptionRequest) GetDeclaratively() bool {
-	if x != nil {
-		return x.Declaratively
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
@@ -1448,44 +842,24 @@ type ResumeSubscriptionRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *ResumeSubscriptionRequest) Reset() {
-	*x = ResumeSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[25]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResumeSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResumeSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResumeSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResumeSubscriptionRequest) ProtoMessage() {}
+func (*ResumeSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResumeSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[25]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResumeSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*ResumeSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{25}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ResumeSubscriptionRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *ResumeSubscriptionRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ListSubscriptionRequest struct {
 	state         protoimpl.MessageState
@@ -1497,58 +871,28 @@ type ListSubscriptionRequest struct {
 	NamespaceId uint64 `protobuf:"varint,4,opt,name=namespace_id,json=namespaceId,proto3" json:"namespace_id,omitempty"`
 }
 
-func (x *ListSubscriptionRequest) Reset() {
-	*x = ListSubscriptionRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[26]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListSubscriptionRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListSubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListSubscriptionRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListSubscriptionRequest) ProtoMessage() {}
+func (*ListSubscriptionRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListSubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[26]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListSubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*ListSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{26}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ListSubscriptionRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *ListSubscriptionRequest) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ListSubscriptionRequest) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *ListSubscriptionRequest) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ListSubscriptionRequest) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *ListSubscriptionRequest) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ListSubscriptionResponse struct {
 	state         protoimpl.MessageState
@@ -1558,42 +902,25 @@ type ListSubscriptionResponse struct {
 	Subscription []*meta.Subscription `protobuf:"bytes,1,rep,name=subscription,proto3" json:"subscription,omitempty"`
 }
 
-func (x *ListSubscriptionResponse) Reset() {
-	*x = ListSubscriptionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[27]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListSubscriptionResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListSubscriptionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListSubscriptionResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListSubscriptionResponse) ProtoMessage() {}
+func (*ListSubscriptionResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListSubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[27]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListSubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*ListSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{27}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ListSubscriptionResponse) GetSubscription() []*meta.Subscription {
-	if x != nil {
-		return x.Subscription
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1606,51 +933,29 @@ type SetDeadLetterEventOffsetRequest struct {
 	Offset         uint64 `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
 }
 
-func (x *SetDeadLetterEventOffsetRequest) Reset() {
-	*x = SetDeadLetterEventOffsetRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[28]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SetDeadLetterEventOffsetRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SetDeadLetterEventOffsetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SetDeadLetterEventOffsetRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SetDeadLetterEventOffsetRequest) ProtoMessage() {}
+func (*SetDeadLetterEventOffsetRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SetDeadLetterEventOffsetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[28]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SetDeadLetterEventOffsetRequest.ProtoReflect.Descriptor instead.
 func (*SetDeadLetterEventOffsetRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{28}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *SetDeadLetterEventOffsetRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
-func (x *SetDeadLetterEventOffsetRequest) GetOffset() uint64 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *SetDeadLetterEventOffsetRequest) GetOffset() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type GetDeadLetterEventOffsetRequest struct {
 	state         protoimpl.MessageState
@@ -1660,42 +965,25 @@ type GetDeadLetterEventOffsetRequest struct {
 	SubscriptionId uint64 `protobuf:"varint,1,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`
 }
 
-func (x *GetDeadLetterEventOffsetRequest) Reset() {
-	*x = GetDeadLetterEventOffsetRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[29]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetDeadLetterEventOffsetRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetDeadLetterEventOffsetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetDeadLetterEventOffsetRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetDeadLetterEventOffsetRequest) ProtoMessage() {}
+func (*GetDeadLetterEventOffsetRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetDeadLetterEventOffsetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[29]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetDeadLetterEventOffsetRequest.ProtoReflect.Descriptor instead.
 func (*GetDeadLetterEventOffsetRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{29}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *GetDeadLetterEventOffsetRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
@@ -1707,44 +995,24 @@ type GetDeadLetterEventOffsetResponse struct {
 	Offset uint64 `protobuf:"varint,1,opt,name=offset,proto3" json:"offset,omitempty"`
 }
 
-func (x *GetDeadLetterEventOffsetResponse) Reset() {
-	*x = GetDeadLetterEventOffsetResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[30]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetDeadLetterEventOffsetResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetDeadLetterEventOffsetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetDeadLetterEventOffsetResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetDeadLetterEventOffsetResponse) ProtoMessage() {}
+func (*GetDeadLetterEventOffsetResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetDeadLetterEventOffsetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[30]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetDeadLetterEventOffsetResponse.ProtoReflect.Descriptor instead.
 func (*GetDeadLetterEventOffsetResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{30}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetDeadLetterEventOffsetResponse) GetOffset() uint64 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *GetDeadLetterEventOffsetResponse) GetOffset() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type RegisterTriggerWorkerRequest struct {
 	state         protoimpl.MessageState
@@ -1754,44 +1022,24 @@ type RegisterTriggerWorkerRequest struct {
 	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 }
 
-func (x *RegisterTriggerWorkerRequest) Reset() {
-	*x = RegisterTriggerWorkerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[31]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RegisterTriggerWorkerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RegisterTriggerWorkerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RegisterTriggerWorkerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RegisterTriggerWorkerRequest) ProtoMessage() {}
+func (*RegisterTriggerWorkerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RegisterTriggerWorkerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[31]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RegisterTriggerWorkerRequest.ProtoReflect.Descriptor instead.
 func (*RegisterTriggerWorkerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{31}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RegisterTriggerWorkerRequest) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
+func (x *RegisterTriggerWorkerRequest) GetAddress() string { _ = "STUB: not implemented"; return "" }
 
 type RegisterTriggerWorkerResponse struct {
 	state         protoimpl.MessageState
@@ -1799,36 +1047,21 @@ type RegisterTriggerWorkerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *RegisterTriggerWorkerResponse) Reset() {
-	*x = RegisterTriggerWorkerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[32]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RegisterTriggerWorkerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RegisterTriggerWorkerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RegisterTriggerWorkerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RegisterTriggerWorkerResponse) ProtoMessage() {}
+func (*RegisterTriggerWorkerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RegisterTriggerWorkerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[32]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RegisterTriggerWorkerResponse.ProtoReflect.Descriptor instead.
 func (*RegisterTriggerWorkerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{32}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type UnregisterTriggerWorkerRequest struct {
@@ -1839,44 +1072,24 @@ type UnregisterTriggerWorkerRequest struct {
 	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 }
 
-func (x *UnregisterTriggerWorkerRequest) Reset() {
-	*x = UnregisterTriggerWorkerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[33]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UnregisterTriggerWorkerRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UnregisterTriggerWorkerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UnregisterTriggerWorkerRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UnregisterTriggerWorkerRequest) ProtoMessage() {}
+func (*UnregisterTriggerWorkerRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UnregisterTriggerWorkerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[33]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UnregisterTriggerWorkerRequest.ProtoReflect.Descriptor instead.
 func (*UnregisterTriggerWorkerRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{33}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *UnregisterTriggerWorkerRequest) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
+func (x *UnregisterTriggerWorkerRequest) GetAddress() string { _ = "STUB: not implemented"; return "" }
 
 type UnregisterTriggerWorkerResponse struct {
 	state         protoimpl.MessageState
@@ -1884,36 +1097,21 @@ type UnregisterTriggerWorkerResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *UnregisterTriggerWorkerResponse) Reset() {
-	*x = UnregisterTriggerWorkerResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[34]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UnregisterTriggerWorkerResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UnregisterTriggerWorkerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UnregisterTriggerWorkerResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UnregisterTriggerWorkerResponse) ProtoMessage() {}
+func (*UnregisterTriggerWorkerResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UnregisterTriggerWorkerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[34]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UnregisterTriggerWorkerResponse.ProtoReflect.Descriptor instead.
 func (*UnregisterTriggerWorkerResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{34}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type TriggerWorkerHeartbeatRequest struct {
@@ -1926,56 +1124,29 @@ type TriggerWorkerHeartbeatRequest struct {
 	SubscriptionInfo []*meta.SubscriptionInfo `protobuf:"bytes,3,rep,name=subscription_info,json=subscriptionInfo,proto3" json:"subscription_info,omitempty"`
 }
 
-func (x *TriggerWorkerHeartbeatRequest) Reset() {
-	*x = TriggerWorkerHeartbeatRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[35]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *TriggerWorkerHeartbeatRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *TriggerWorkerHeartbeatRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *TriggerWorkerHeartbeatRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*TriggerWorkerHeartbeatRequest) ProtoMessage() {}
+func (*TriggerWorkerHeartbeatRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *TriggerWorkerHeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[35]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use TriggerWorkerHeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*TriggerWorkerHeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{35}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *TriggerWorkerHeartbeatRequest) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
+func (x *TriggerWorkerHeartbeatRequest) GetAddress() string { _ = "STUB: not implemented"; return "" }
 
-func (x *TriggerWorkerHeartbeatRequest) GetStarted() bool {
-	if x != nil {
-		return x.Started
-	}
-	return false
-}
+func (x *TriggerWorkerHeartbeatRequest) GetStarted() bool { _ = "STUB: not implemented"; return false }
 
 func (x *TriggerWorkerHeartbeatRequest) GetSubscriptionInfo() []*meta.SubscriptionInfo {
-	if x != nil {
-		return x.SubscriptionInfo
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1985,36 +1156,21 @@ type TriggerWorkerHeartbeatResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *TriggerWorkerHeartbeatResponse) Reset() {
-	*x = TriggerWorkerHeartbeatResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[36]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *TriggerWorkerHeartbeatResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *TriggerWorkerHeartbeatResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *TriggerWorkerHeartbeatResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*TriggerWorkerHeartbeatResponse) ProtoMessage() {}
+func (*TriggerWorkerHeartbeatResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *TriggerWorkerHeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[36]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use TriggerWorkerHeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*TriggerWorkerHeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{36}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type ResetOffsetToTimestampRequest struct {
@@ -2027,51 +1183,29 @@ type ResetOffsetToTimestampRequest struct {
 	Timestamp uint64 `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 }
 
-func (x *ResetOffsetToTimestampRequest) Reset() {
-	*x = ResetOffsetToTimestampRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[37]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResetOffsetToTimestampRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResetOffsetToTimestampRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResetOffsetToTimestampRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResetOffsetToTimestampRequest) ProtoMessage() {}
+func (*ResetOffsetToTimestampRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResetOffsetToTimestampRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[37]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResetOffsetToTimestampRequest.ProtoReflect.Descriptor instead.
 func (*ResetOffsetToTimestampRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{37}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ResetOffsetToTimestampRequest) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
-func (x *ResetOffsetToTimestampRequest) GetTimestamp() uint64 {
-	if x != nil {
-		return x.Timestamp
-	}
-	return 0
-}
+func (x *ResetOffsetToTimestampRequest) GetTimestamp() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type ResetOffsetToTimestampResponse struct {
 	state         protoimpl.MessageState
@@ -2081,42 +1215,25 @@ type ResetOffsetToTimestampResponse struct {
 	Offsets []*meta.OffsetInfo `protobuf:"bytes,1,rep,name=offsets,proto3" json:"offsets,omitempty"`
 }
 
-func (x *ResetOffsetToTimestampResponse) Reset() {
-	*x = ResetOffsetToTimestampResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[38]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResetOffsetToTimestampResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResetOffsetToTimestampResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResetOffsetToTimestampResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResetOffsetToTimestampResponse) ProtoMessage() {}
+func (*ResetOffsetToTimestampResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResetOffsetToTimestampResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[38]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResetOffsetToTimestampResponse.ProtoReflect.Descriptor instead.
 func (*ResetOffsetToTimestampResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{38}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ResetOffsetToTimestampResponse) GetOffsets() []*meta.OffsetInfo {
-	if x != nil {
-		return x.Offsets
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2129,51 +1246,29 @@ type CommitOffsetRequest struct {
 	ForceCommit      bool                     `protobuf:"varint,2,opt,name=force_commit,json=forceCommit,proto3" json:"force_commit,omitempty"`
 }
 
-func (x *CommitOffsetRequest) Reset() {
-	*x = CommitOffsetRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[39]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CommitOffsetRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CommitOffsetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CommitOffsetRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CommitOffsetRequest) ProtoMessage() {}
+func (*CommitOffsetRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CommitOffsetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[39]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CommitOffsetRequest.ProtoReflect.Descriptor instead.
 func (*CommitOffsetRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{39}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CommitOffsetRequest) GetSubscriptionInfo() []*meta.SubscriptionInfo {
-	if x != nil {
-		return x.SubscriptionInfo
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *CommitOffsetRequest) GetForceCommit() bool {
-	if x != nil {
-		return x.ForceCommit
-	}
-	return false
-}
+func (x *CommitOffsetRequest) GetForceCommit() bool { _ = "STUB: not implemented"; return false }
 
 type CommitOffsetResponse struct {
 	state         protoimpl.MessageState
@@ -2183,42 +1278,25 @@ type CommitOffsetResponse struct {
 	FailSubscriptionId []uint64 `protobuf:"varint,1,rep,packed,name=fail_subscription_id,json=failSubscriptionId,proto3" json:"fail_subscription_id,omitempty"`
 }
 
-func (x *CommitOffsetResponse) Reset() {
-	*x = CommitOffsetResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[40]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CommitOffsetResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CommitOffsetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CommitOffsetResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CommitOffsetResponse) ProtoMessage() {}
+func (*CommitOffsetResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CommitOffsetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[40]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CommitOffsetResponse.ProtoReflect.Descriptor instead.
 func (*CommitOffsetResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{40}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CommitOffsetResponse) GetFailSubscriptionId() []uint64 {
-	if x != nil {
-		return x.FailSubscriptionId
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2239,72 +1317,29 @@ type ListSegmentRequest struct {
 	Limited int32 `protobuf:"varint,5,opt,name=limited,proto3" json:"limited,omitempty"`
 }
 
-func (x *ListSegmentRequest) Reset() {
-	*x = ListSegmentRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[41]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListSegmentRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListSegmentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListSegmentRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListSegmentRequest) ProtoMessage() {}
+func (*ListSegmentRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListSegmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[41]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListSegmentRequest.ProtoReflect.Descriptor instead.
-func (*ListSegmentRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{41}
-}
+func (*ListSegmentRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ListSegmentRequest) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *ListSegmentRequest) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ListSegmentRequest) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *ListSegmentRequest) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ListSegmentRequest) GetStartOffset() int64 {
-	if x != nil {
-		return x.StartOffset
-	}
-	return 0
-}
+func (x *ListSegmentRequest) GetStartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ListSegmentRequest) GetEndOffset() int64 {
-	if x != nil {
-		return x.EndOffset
-	}
-	return 0
-}
+func (x *ListSegmentRequest) GetEndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ListSegmentRequest) GetLimited() int32 {
-	if x != nil {
-		return x.Limited
-	}
-	return 0
-}
+func (x *ListSegmentRequest) GetLimited() int32 { _ = "STUB: not implemented"; return 0 }
 
 type ListSegmentResponse struct {
 	state         protoimpl.MessageState
@@ -2314,44 +1349,24 @@ type ListSegmentResponse struct {
 	Segments []*meta.Segment `protobuf:"bytes,1,rep,name=segments,proto3" json:"segments,omitempty"`
 }
 
-func (x *ListSegmentResponse) Reset() {
-	*x = ListSegmentResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[42]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListSegmentResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListSegmentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListSegmentResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListSegmentResponse) ProtoMessage() {}
+func (*ListSegmentResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListSegmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[42]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListSegmentResponse.ProtoReflect.Descriptor instead.
 func (*ListSegmentResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{42}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ListSegmentResponse) GetSegments() []*meta.Segment {
-	if x != nil {
-		return x.Segments
-	}
-	return nil
-}
+func (x *ListSegmentResponse) GetSegments() []*meta.Segment { _ = "STUB: not implemented"; return nil }
 
 type GetAppendableSegmentRequest struct {
 	state         protoimpl.MessageState
@@ -2364,58 +1379,28 @@ type GetAppendableSegmentRequest struct {
 	Limited int32 `protobuf:"varint,3,opt,name=limited,proto3" json:"limited,omitempty"`
 }
 
-func (x *GetAppendableSegmentRequest) Reset() {
-	*x = GetAppendableSegmentRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[43]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetAppendableSegmentRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetAppendableSegmentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetAppendableSegmentRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetAppendableSegmentRequest) ProtoMessage() {}
+func (*GetAppendableSegmentRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetAppendableSegmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[43]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetAppendableSegmentRequest.ProtoReflect.Descriptor instead.
 func (*GetAppendableSegmentRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{43}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetAppendableSegmentRequest) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *GetAppendableSegmentRequest) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *GetAppendableSegmentRequest) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *GetAppendableSegmentRequest) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *GetAppendableSegmentRequest) GetLimited() int32 {
-	if x != nil {
-		return x.Limited
-	}
-	return 0
-}
+func (x *GetAppendableSegmentRequest) GetLimited() int32 { _ = "STUB: not implemented"; return 0 }
 
 type GetAppendableSegmentResponse struct {
 	state         protoimpl.MessageState
@@ -2425,42 +1410,25 @@ type GetAppendableSegmentResponse struct {
 	Segments []*meta.Segment `protobuf:"bytes,3,rep,name=segments,proto3" json:"segments,omitempty"`
 }
 
-func (x *GetAppendableSegmentResponse) Reset() {
-	*x = GetAppendableSegmentResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[44]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetAppendableSegmentResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetAppendableSegmentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetAppendableSegmentResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetAppendableSegmentResponse) ProtoMessage() {}
+func (*GetAppendableSegmentResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetAppendableSegmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[44]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetAppendableSegmentResponse.ProtoReflect.Descriptor instead.
 func (*GetAppendableSegmentResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{44}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *GetAppendableSegmentResponse) GetSegments() []*meta.Segment {
-	if x != nil {
-		return x.Segments
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2473,51 +1441,23 @@ type CreateUserRequest struct {
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 }
 
-func (x *CreateUserRequest) Reset() {
-	*x = CreateUserRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[45]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateUserRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateUserRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateUserRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateUserRequest) ProtoMessage() {}
+func (*CreateUserRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[45]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
-func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{45}
-}
+func (*CreateUserRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CreateUserRequest) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
-	}
-	return ""
-}
+func (x *CreateUserRequest) GetIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateUserRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *CreateUserRequest) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
 type DeleteUserResponse struct {
 	state         protoimpl.MessageState
@@ -2527,44 +1467,21 @@ type DeleteUserResponse struct {
 	Identifier string `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
 }
 
-func (x *DeleteUserResponse) Reset() {
-	*x = DeleteUserResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[46]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DeleteUserResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeleteUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeleteUserResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeleteUserResponse) ProtoMessage() {}
+func (*DeleteUserResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[46]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
-func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{46}
-}
+func (*DeleteUserResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *DeleteUserResponse) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
-	}
-	return ""
-}
+func (x *DeleteUserResponse) GetIdentifier() string { _ = "STUB: not implemented"; return "" }
 
 type ListUserResponse struct {
 	state         protoimpl.MessageState
@@ -2574,44 +1491,21 @@ type ListUserResponse struct {
 	Users []*meta.User `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 }
 
-func (x *ListUserResponse) Reset() {
-	*x = ListUserResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[47]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListUserResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListUserResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListUserResponse) ProtoMessage() {}
+func (*ListUserResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[47]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListUserResponse.ProtoReflect.Descriptor instead.
-func (*ListUserResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{47}
-}
+func (*ListUserResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ListUserResponse) GetUsers() []*meta.User {
-	if x != nil {
-		return x.Users
-	}
-	return nil
-}
+func (x *ListUserResponse) GetUsers() []*meta.User { _ = "STUB: not implemented"; return nil }
 
 type CreateTokenRequest struct {
 	state         protoimpl.MessageState
@@ -2622,51 +1516,23 @@ type CreateTokenRequest struct {
 	Description    string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 }
 
-func (x *CreateTokenRequest) Reset() {
-	*x = CreateTokenRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[48]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *CreateTokenRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CreateTokenRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CreateTokenRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CreateTokenRequest) ProtoMessage() {}
+func (*CreateTokenRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CreateTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[48]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CreateTokenRequest.ProtoReflect.Descriptor instead.
-func (*CreateTokenRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{48}
-}
+func (*CreateTokenRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CreateTokenRequest) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *CreateTokenRequest) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CreateTokenRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *CreateTokenRequest) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
 type DeleteTokenRequest struct {
 	state         protoimpl.MessageState
@@ -2676,44 +1542,21 @@ type DeleteTokenRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *DeleteTokenRequest) Reset() {
-	*x = DeleteTokenRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[49]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *DeleteTokenRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeleteTokenRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeleteTokenRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeleteTokenRequest) ProtoMessage() {}
+func (*DeleteTokenRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeleteTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[49]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeleteTokenRequest.ProtoReflect.Descriptor instead.
-func (*DeleteTokenRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{49}
-}
+func (*DeleteTokenRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *DeleteTokenRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *DeleteTokenRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type GetTokenResponse struct {
 	state         protoimpl.MessageState
@@ -2723,44 +1566,21 @@ type GetTokenResponse struct {
 	Token []*meta.Token `protobuf:"bytes,1,rep,name=token,proto3" json:"token,omitempty"`
 }
 
-func (x *GetTokenResponse) Reset() {
-	*x = GetTokenResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[50]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetTokenResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetTokenResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetTokenResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetTokenResponse) ProtoMessage() {}
+func (*GetTokenResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[50]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetTokenResponse.ProtoReflect.Descriptor instead.
-func (*GetTokenResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{50}
-}
+func (*GetTokenResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *GetTokenResponse) GetToken() []*meta.Token {
-	if x != nil {
-		return x.Token
-	}
-	return nil
-}
+func (x *GetTokenResponse) GetToken() []*meta.Token { _ = "STUB: not implemented"; return nil }
 
 type ListTokenResponse struct {
 	state         protoimpl.MessageState
@@ -2770,44 +1590,21 @@ type ListTokenResponse struct {
 	Token []*meta.Token `protobuf:"bytes,1,rep,name=token,proto3" json:"token,omitempty"`
 }
 
-func (x *ListTokenResponse) Reset() {
-	*x = ListTokenResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[51]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ListTokenResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListTokenResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListTokenResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListTokenResponse) ProtoMessage() {}
+func (*ListTokenResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[51]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListTokenResponse.ProtoReflect.Descriptor instead.
-func (*ListTokenResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{51}
-}
+func (*ListTokenResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ListTokenResponse) GetToken() []*meta.Token {
-	if x != nil {
-		return x.Token
-	}
-	return nil
-}
+func (x *ListTokenResponse) GetToken() []*meta.Token { _ = "STUB: not implemented"; return nil }
 
 type RoleRequest struct {
 	state         protoimpl.MessageState
@@ -2823,72 +1620,29 @@ type RoleRequest struct {
 	ResourceKind string `protobuf:"bytes,5,opt,name=resource_kind,json=resourceKind,proto3" json:"resource_kind,omitempty"`
 }
 
-func (x *RoleRequest) Reset() {
-	*x = RoleRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[52]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *RoleRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RoleRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RoleRequest) ProtoMessage() {}
+func (*RoleRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[52]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RoleRequest.ProtoReflect.Descriptor instead.
-func (*RoleRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{52}
-}
+func (*RoleRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RoleRequest) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *RoleRequest) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RoleRequest) GetRoleId() string {
-	if x != nil {
-		return x.RoleId
-	}
-	return ""
-}
+func (x *RoleRequest) GetRoleId() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RoleRequest) GetRoleName() string {
-	if x != nil {
-		return x.RoleName
-	}
-	return ""
-}
+func (x *RoleRequest) GetRoleName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RoleRequest) GetResourceId() uint64 {
-	if x != nil {
-		return x.ResourceId
-	}
-	return 0
-}
+func (x *RoleRequest) GetResourceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *RoleRequest) GetResourceKind() string {
-	if x != nil {
-		return x.ResourceKind
-	}
-	return ""
-}
+func (x *RoleRequest) GetResourceKind() string { _ = "STUB: not implemented"; return "" }
 
 type GetUserRoleRequest struct {
 	state         protoimpl.MessageState
@@ -2898,44 +1652,21 @@ type GetUserRoleRequest struct {
 	UserIdentifier string `protobuf:"bytes,1,opt,name=user_identifier,json=userIdentifier,proto3" json:"user_identifier,omitempty"`
 }
 
-func (x *GetUserRoleRequest) Reset() {
-	*x = GetUserRoleRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[53]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetUserRoleRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetUserRoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetUserRoleRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetUserRoleRequest) ProtoMessage() {}
+func (*GetUserRoleRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetUserRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[53]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetUserRoleRequest.ProtoReflect.Descriptor instead.
-func (*GetUserRoleRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{53}
-}
+func (*GetUserRoleRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *GetUserRoleRequest) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *GetUserRoleRequest) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
 type GetUserRoleResponse struct {
 	state         protoimpl.MessageState
@@ -2945,44 +1676,24 @@ type GetUserRoleResponse struct {
 	UserRole []*meta.UserRole `protobuf:"bytes,1,rep,name=user_role,json=userRole,proto3" json:"user_role,omitempty"`
 }
 
-func (x *GetUserRoleResponse) Reset() {
-	*x = GetUserRoleResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[54]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetUserRoleResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetUserRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetUserRoleResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetUserRoleResponse) ProtoMessage() {}
+func (*GetUserRoleResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetUserRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[54]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetUserRoleResponse.ProtoReflect.Descriptor instead.
 func (*GetUserRoleResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{54}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetUserRoleResponse) GetUserRole() []*meta.UserRole {
-	if x != nil {
-		return x.UserRole
-	}
-	return nil
-}
+func (x *GetUserRoleResponse) GetUserRole() []*meta.UserRole { _ = "STUB: not implemented"; return nil }
 
 type GetResourceRoleRequest struct {
 	state         protoimpl.MessageState
@@ -2993,51 +1704,26 @@ type GetResourceRoleRequest struct {
 	Kind string `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
 }
 
-func (x *GetResourceRoleRequest) Reset() {
-	*x = GetResourceRoleRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[55]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetResourceRoleRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetResourceRoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetResourceRoleRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetResourceRoleRequest) ProtoMessage() {}
+func (*GetResourceRoleRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetResourceRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[55]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetResourceRoleRequest.ProtoReflect.Descriptor instead.
 func (*GetResourceRoleRequest) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{55}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *GetResourceRoleRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *GetResourceRoleRequest) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *GetResourceRoleRequest) GetKind() string {
-	if x != nil {
-		return x.Kind
-	}
-	return ""
-}
+func (x *GetResourceRoleRequest) GetKind() string { _ = "STUB: not implemented"; return "" }
 
 type GetResourceRoleResponse struct {
 	state         protoimpl.MessageState
@@ -3047,42 +1733,25 @@ type GetResourceRoleResponse struct {
 	ResourceRole []*meta.ResourceRole `protobuf:"bytes,1,rep,name=resource_role,json=resourceRole,proto3" json:"resource_role,omitempty"`
 }
 
-func (x *GetResourceRoleResponse) Reset() {
-	*x = GetResourceRoleResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_controller_controller_proto_msgTypes[56]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GetResourceRoleResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetResourceRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetResourceRoleResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetResourceRoleResponse) ProtoMessage() {}
+func (*GetResourceRoleResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetResourceRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_controller_controller_proto_msgTypes[56]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetResourceRoleResponse.ProtoReflect.Descriptor instead.
 func (*GetResourceRoleResponse) Descriptor() ([]byte, []int) {
-	return file_vanus_core_controller_controller_proto_rawDescGZIP(), []int{56}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *GetResourceRoleResponse) GetResourceRole() []*meta.ResourceRole {
-	if x != nil {
-		return x.ResourceRole
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3783,10 +2452,8 @@ var (
 )
 
 func file_vanus_core_controller_controller_proto_rawDescGZIP() []byte {
-	file_vanus_core_controller_controller_proto_rawDescOnce.Do(func() {
-		file_vanus_core_controller_controller_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_controller_controller_proto_rawDescData)
-	})
-	return file_vanus_core_controller_controller_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_vanus_core_controller_controller_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
@@ -4008,713 +2675,5 @@ var file_vanus_core_controller_controller_proto_depIdxs = []int32{
 	0,  // [0:24] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_controller_controller_proto_init() }
-func file_vanus_core_controller_controller_proto_init() {
-	if File_vanus_core_controller_controller_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_controller_controller_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PingResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateNamespaceRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListNamespaceResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetNamespaceRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteNamespaceRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateEventbusRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListEventbusRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListEventbusResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetEventbusWithHumanFriendlyRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateEventbusRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QuerySegmentRouteInfoRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QuerySegmentRouteInfoResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SegmentHeartbeatRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SegmentHeartbeatResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterSegmentServerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterSegmentServerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnregisterSegmentServerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnregisterSegmentServerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReportSegmentLeaderRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DisableSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResumeSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListSubscriptionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListSubscriptionResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetDeadLetterEventOffsetRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetDeadLetterEventOffsetRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetDeadLetterEventOffsetResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterTriggerWorkerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterTriggerWorkerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnregisterTriggerWorkerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnregisterTriggerWorkerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TriggerWorkerHeartbeatRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TriggerWorkerHeartbeatResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResetOffsetToTimestampRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResetOffsetToTimestampResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CommitOffsetRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CommitOffsetResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListSegmentRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListSegmentResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetAppendableSegmentRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetAppendableSegmentResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateUserRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteUserResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListUserResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateTokenRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteTokenRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetTokenResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListTokenResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoleRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserRoleRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserRoleResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetResourceRoleRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_controller_controller_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetResourceRoleResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_controller_controller_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   58,
-			NumExtensions: 0,
-			NumServices:   8,
-		},
-		GoTypes:           file_vanus_core_controller_controller_proto_goTypes,
-		DependencyIndexes: file_vanus_core_controller_controller_proto_depIdxs,
-		MessageInfos:      file_vanus_core_controller_controller_proto_msgTypes,
-	}.Build()
-	File_vanus_core_controller_controller_proto = out.File
-	file_vanus_core_controller_controller_proto_rawDesc = nil
-	file_vanus_core_controller_controller_proto_goTypes = nil
-	file_vanus_core_controller_controller_proto_depIdxs = nil
-}
+func init()                                             { file_vanus_core_controller_controller_proto_init() }
+func file_vanus_core_controller_controller_proto_init() { _ = "STUB: not implemented"; return }

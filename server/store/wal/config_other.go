@@ -20,9 +20,6 @@ package wal
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/io/engine"
-	"github.com/vanus-labs/vanus/server/store/io/engine/psync"
 )
 
-func defaultIOEngine() engine.Interface {
-	return psync.New()
-}
+func defaultIOEngine() engine.Interface { _ = "STUB: not implemented"; return *new(engine.Interface) }

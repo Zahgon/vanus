@@ -14,15 +14,8 @@
 
 package transport
 
-import (
-	// standard libraries.
-	"context"
-	"errors"
-	"io"
-
+import ( // standard libraries.
 	// third-party libraries.
-	"google.golang.org/protobuf/types/known/emptypb"
-
 	// first-party libraries.
 	raftpb "github.com/vanus-labs/vanus/api/raft"
 )
@@ -35,43 +28,21 @@ type server struct {
 var _ raftpb.RaftServerServer = (*server)(nil)
 
 func NewServer(dmx Demultiplexer) raftpb.RaftServerServer {
-	return &server{
-		dmx: dmx,
-	}
+	_ = "STUB: not implemented"
+	return *new(raftpb.RaftServerServer)
 }
 
 // SendMessage implements raftpb.RaftServerServer.
 func (s *server) SendMessage(stream raftpb.RaftServer_SendMessageServer) error {
-	preface, err := stream.Recv()
-	if err != nil {
-		return err
-	}
-
-	callback := string(preface.Context)
-
-	ctx := stream.Context()
-	for {
-		msg, err2 := stream.Recv()
-		if err2 != nil {
-			// close by client
-			if errors.Is(err2, io.EOF) {
-				return s.closeStream(stream)
-			}
-			return err2
-		}
-
-		err2 = s.dmx.Receive(ctx, msg, callback)
-		if err2 != nil {
-			// server is closed
-			if errors.Is(err2, context.Canceled) {
-				return s.closeStream(stream)
-			}
-			return err2
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
+// close by client
+
+// server is closed
+
 func (s *server) closeStream(stream raftpb.RaftServer_SendMessageServer) error {
-	empty := &emptypb.Empty{}
-	return stream.SendAndClose(empty)
+	_ = "STUB: not implemented"
+	return nil
 }

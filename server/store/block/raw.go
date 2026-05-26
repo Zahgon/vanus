@@ -79,6 +79,4 @@ type ArchivedCallback func(stat Statistics)
 // Make sure OnArchivedFunc implements ArchivedListener.
 var _ ArchivedListener = (ArchivedCallback)(nil)
 
-func (f ArchivedCallback) OnArchived(stat Statistics) {
-	f(stat)
-}
+func (f ArchivedCallback) OnArchived(stat Statistics) { _ = "STUB: not implemented"; return }

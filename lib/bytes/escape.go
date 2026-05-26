@@ -18,7 +18,6 @@ import (
 	// standard libraries.
 	"errors"
 	"io"
-	"unicode/utf8"
 )
 
 var (
@@ -64,117 +63,39 @@ func init() { //nolint:gochecknoinits // init constant table
 }
 
 func ConsumeEscaped(r io.ByteReader, w io.ByteWriter, plan string) error {
-	c, err := r.ReadByte()
-	if err != nil {
-		return errInvalidEscapeChar
-	}
-	return consumeEscapedExt(c, r, w, plan)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func consumeEscapedExt(c byte, r io.ByteReader, w io.ByteWriter, plan string) error {
-	p := UnsafeAt(plan, int(c))
-	switch p {
-	case '.':
-		return errInvalidEscapeChar
-	case 's': // Self
-		return w.WriteByte(c)
-	case 'u': // \uNNNN
-		ru, err := ExpectUnicodeChar(r)
-		if err != nil {
-			return err
-		}
-		return WriteRune(w, ru)
-	case 'x': // \xNN
-		cc, err := ExpectHexChar(r)
-		if err != nil {
-			return err
-		}
-		return w.WriteByte(cc)
-	case 'o': // \NNN
-		cc, err := ExpectOctCharExt(c, r)
-		if err != nil {
-			return err
-		}
-		return w.WriteByte(cc)
-	default:
-		return w.WriteByte(p)
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func ExpectUnicodeChar(r io.ByteReader) (rune, error) {
-	hi, err := expectUnicodeSurrogate(r)
-	if err != nil {
-		return utf8.RuneError, errInvalidUnicodeChar
-	}
+// Self
 
-	// non-surrogate
-	if hi < highSurrogateMin || hi > lowSurrogateMax {
-		return hi, nil
-	}
+// \uNNNN
 
-	// error of high-surrogate
-	if hi > highSurrogateMax {
-		return utf8.RuneError, errInvalidUnicodeChar
-	}
+// \xNN
 
-	if ExpectChar(r, '\\') != nil || ExpectChar(r, 'u') != nil {
-		return utf8.RuneError, errInvalidUnicodeChar
-	}
+// \NNN
 
-	lo, err := expectUnicodeSurrogate(r)
-	if err != nil {
-		return utf8.RuneError, errInvalidUnicodeChar
-	}
+func ExpectUnicodeChar(r io.ByteReader) (rune, error) { _ = "STUB: not implemented"; return 0, nil }
 
-	// error of low-surrogate
-	if lowSurrogateMin < 0xDC00 || lo > lowSurrogateMax {
-		return utf8.RuneError, errInvalidUnicodeChar
-	}
+// non-surrogate
 
-	return 0x10000 + (hi-highSurrogateMin)<<10 + (lo - lowSurrogateMin), nil
-}
+// error of high-surrogate
+
+// error of low-surrogate
 
 func expectUnicodeSurrogate(r io.ByteReader) (rune, error) {
-	b0, err := r.ReadByte()
-	if err != nil || !hexBitmap[b0] {
-		return 0, errInvalidUnicodeChar
-	}
-	b1, err := r.ReadByte()
-	if err != nil || !hexBitmap[b1] {
-		return 0, errInvalidUnicodeChar
-	}
-	b2, err := r.ReadByte()
-	if err != nil || !hexBitmap[b2] {
-		return 0, errInvalidUnicodeChar
-	}
-	b3, err := r.ReadByte()
-	if err != nil || !hexBitmap[b3] {
-		return 0, errInvalidUnicodeChar
-	}
-	ru := hexToRune[b0]*0x1000 + hexToRune[b1]*0x100 + hexToRune[b2]*0x10 + hexToRune[b3]
-	return ru, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func ExpectHexChar(r io.ByteReader) (byte, error) {
-	b0, err := r.ReadByte()
-	if err != nil || !hexBitmap[b0] {
-		return 0, errInvalidHexChar
-	}
-	b1, err := r.ReadByte()
-	if err != nil || !hexBitmap[b1] {
-		return 0, errInvalidHexChar
-	}
-	return hexToByte[b0]*0x10 + hexToByte[b1], nil
-}
+func ExpectHexChar(r io.ByteReader) (byte, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func ExpectOctCharExt(b0 byte, r io.ByteReader) (byte, error) {
-	b1, err := r.ReadByte()
-	if err != nil || !octBitmap[b1] {
-		return 0, errInvalidOctChar
-	}
-	b2, err := r.ReadByte()
-	if err != nil || !octBitmap[b2] {
-		return 0, errInvalidOctChar
-	}
-	return (b0-'0')*0o100 + (b1-'0')*0o10 + (b2-'0')*0o1, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }

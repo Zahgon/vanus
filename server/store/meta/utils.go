@@ -17,41 +17,17 @@ package meta
 import (
 	// third-party libraries.
 	"github.com/huandu/skiplist"
-
-	// first-party libraries.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
-func update(m *skiplist.SkipList, key []byte, value interface{}) {
-	if value == DeletedMark {
-		m.Remove(key)
-		return
-	}
+func update(m *skiplist.SkipList, key []byte, value interface{}) { _ = "STUB: not implemented"; return }
 
-	set(m, key, value)
-}
+func set(m *skiplist.SkipList, key []byte, value interface{}) { _ = "STUB: not implemented"; return }
 
-func set(m *skiplist.SkipList, key []byte, value interface{}) {
-	switch val := value.(type) {
-	case []byte:
-		// Make a copy to avoid modifying value outside.
-		bs := bytes.Clone(val)
-		m.Set(key, bs)
-	default:
-		m.Set(key, value)
-	}
-}
+// Make a copy to avoid modifying value outside.
 
 func rawUpdate(m *skiplist.SkipList, key []byte, value interface{}) {
-	if value == DeletedMark {
-		m.Remove(key)
-	} else {
-		m.Set(key, value)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func merge(dst, src *skiplist.SkipList) {
-	for el := src.Front(); el != nil; el = el.Next() {
-		rawUpdate(dst, el.Key().([]byte), el.Value)
-	}
-}
+func merge(dst, src *skiplist.SkipList) { _ = "STUB: not implemented"; return }

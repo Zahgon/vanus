@@ -33,21 +33,18 @@ type defaultAttributes struct {
 }
 
 func NewDefaultAttributes(resourceKind ResourceKind, resourceID vanus.ID, action Action) Attributes {
-	return &defaultAttributes{
-		resourceKind: resourceKind,
-		resourceID:   resourceID,
-		action:       action,
-	}
+	_ = "STUB: not implemented"
+	return *new(Attributes)
 }
 
 func (d *defaultAttributes) GetResourceKind() ResourceKind {
-	return d.resourceKind
+	_ = "STUB: not implemented"
+	return *new(ResourceKind)
 }
 
 func (d *defaultAttributes) GetResourceID() vanus.ID {
-	return d.resourceID
+	_ = "STUB: not implemented"
+	return *new(vanus.ID)
 }
 
-func (d *defaultAttributes) GetAction() Action {
-	return d.action
-}
+func (d *defaultAttributes) GetAction() Action { _ = "STUB: not implemented"; return *new(Action) }

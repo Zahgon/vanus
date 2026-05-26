@@ -15,7 +15,6 @@
 package pkg
 
 import (
-	"math"
 	"time"
 )
 
@@ -24,26 +23,16 @@ const (
 	vanusTimeLayout = "2006-01-02T15:04:05Z07:00"
 )
 
-func GetTimeLayout() string {
-	return vanusTimeLayout
-}
+func GetTimeLayout() string { _ = "STUB: not implemented"; return "" }
 
-func FormatTime(t time.Time) string {
-	return t.Format(vanusTimeLayout)
-}
+func FormatTime(t time.Time) string { _ = "STUB: not implemented"; return "" }
 
 func ParseTime(str string) (time.Time, error) {
-	return time.Parse(vanusTimeLayout, str)
+	_ = "STUB: not implemented"
+	return *new(time.Time), nil
 }
 
 func Backoff(attempt int, max time.Duration) time.Duration {
-	if attempt == 0 {
-		return 0
-	}
-	backoff := float64(100*time.Millisecond) * math.Pow(2, float64(attempt))
-	d := time.Duration(backoff)
-	if d > max {
-		d = max
-	}
-	return d
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }

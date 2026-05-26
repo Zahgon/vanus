@@ -22,9 +22,8 @@ package trigger
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -58,61 +57,38 @@ type triggerWorkerClient struct {
 }
 
 func NewTriggerWorkerClient(cc grpc.ClientConnInterface) TriggerWorkerClient {
-	return &triggerWorkerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(TriggerWorkerClient)
 }
 
 func (c *triggerWorkerClient) Start(ctx context.Context, in *StartTriggerWorkerRequest, opts ...grpc.CallOption) (*StartTriggerWorkerResponse, error) {
-	out := new(StartTriggerWorkerResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_Start_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerWorkerClient) Stop(ctx context.Context, in *StopTriggerWorkerRequest, opts ...grpc.CallOption) (*StopTriggerWorkerResponse, error) {
-	out := new(StopTriggerWorkerResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_Stop_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerWorkerClient) AddSubscription(ctx context.Context, in *AddSubscriptionRequest, opts ...grpc.CallOption) (*AddSubscriptionResponse, error) {
-	out := new(AddSubscriptionResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_AddSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerWorkerClient) RemoveSubscription(ctx context.Context, in *RemoveSubscriptionRequest, opts ...grpc.CallOption) (*RemoveSubscriptionResponse, error) {
-	out := new(RemoveSubscriptionResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_RemoveSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerWorkerClient) PauseSubscription(ctx context.Context, in *PauseSubscriptionRequest, opts ...grpc.CallOption) (*PauseSubscriptionResponse, error) {
-	out := new(PauseSubscriptionResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_PauseSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerWorkerClient) ResumeSubscription(ctx context.Context, in *ResumeSubscriptionRequest, opts ...grpc.CallOption) (*ResumeSubscriptionResponse, error) {
-	out := new(ResumeSubscriptionResponse)
-	err := c.cc.Invoke(ctx, TriggerWorker_ResumeSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // TriggerWorkerServer is the server API for TriggerWorker service.
@@ -132,22 +108,33 @@ type UnimplementedTriggerWorkerServer struct {
 }
 
 func (UnimplementedTriggerWorkerServer) Start(context.Context, *StartTriggerWorkerRequest) (*StartTriggerWorkerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Start not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerWorkerServer) Stop(context.Context, *StopTriggerWorkerRequest) (*StopTriggerWorkerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerWorkerServer) AddSubscription(context.Context, *AddSubscriptionRequest) (*AddSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerWorkerServer) RemoveSubscription(context.Context, *RemoveSubscriptionRequest) (*RemoveSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerWorkerServer) PauseSubscription(context.Context, *PauseSubscriptionRequest) (*PauseSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PauseSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerWorkerServer) ResumeSubscription(context.Context, *ResumeSubscriptionRequest) (*ResumeSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResumeSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeTriggerWorkerServer may be embedded to opt out of forward compatibility for this service.
@@ -158,115 +145,38 @@ type UnsafeTriggerWorkerServer interface {
 }
 
 func RegisterTriggerWorkerServer(s grpc.ServiceRegistrar, srv TriggerWorkerServer) {
-	s.RegisterService(&TriggerWorker_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _TriggerWorker_Start_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartTriggerWorkerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).Start(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_Start_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).Start(ctx, req.(*StartTriggerWorkerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerWorker_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StopTriggerWorkerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).Stop(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_Stop_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).Stop(ctx, req.(*StopTriggerWorkerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerWorker_AddSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).AddSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_AddSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).AddSubscription(ctx, req.(*AddSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerWorker_RemoveSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).RemoveSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_RemoveSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).RemoveSubscription(ctx, req.(*RemoveSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerWorker_PauseSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PauseSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).PauseSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_PauseSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).PauseSubscription(ctx, req.(*PauseSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerWorker_ResumeSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResumeSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerWorkerServer).ResumeSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerWorker_ResumeSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerWorkerServer).ResumeSubscription(ctx, req.(*ResumeSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // TriggerWorker_ServiceDesc is the grpc.ServiceDesc for TriggerWorker service.

@@ -18,8 +18,6 @@ package block
 import (
 	// standard libraries.
 	"context"
-	"errors"
-	"sort"
 	"time"
 
 	// first-party libraries.
@@ -29,7 +27,6 @@ import (
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/executor"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 	"github.com/vanus-labs/vanus/server/store/block"
 	"github.com/vanus-labs/vanus/server/store/raft/storage"
 	"github.com/vanus-labs/vanus/server/store/raft/transport"
@@ -94,315 +91,120 @@ type appender struct {
 // Make sure appender implements Appender.
 var _ Appender = (*appender)(nil)
 
-func (a *appender) ID() vanus.ID {
-	return a.raw.ID()
-}
+func (a *appender) ID() vanus.ID { _ = "STUB: not implemented"; return *new(vanus.ID) }
 
 func (a *appender) Stop(ctx context.Context) {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): waiting for acknowledgments from executors is unnecessary?
-	a.transportExecutor.Close()
-	a.raftExecutor.Close()
-	a.applyExecutor.Close()
-	a.persistExecutor.Close()
-	a.commitExecutor.Close()
-
-	log.Info(ctx).
-		Stringer("node_id", a.ID()).
-		Stringer("leader_id", a.leaderID).
-		Msg("raft appender is stopped.")
+	return
 }
 
-func (a *appender) Delete(ctx context.Context) {
-	a.Stop(ctx)
-	a.storage.Delete(ctx)
+func (a *appender) Delete(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-	// FIXME(james.yin): wakeup inflight append calls?
-
-	log.Info(ctx).
-		Stringer("node_id", a.ID()).
-		Msg("raft appender is deleted.")
-}
+// FIXME(james.yin): wakeup inflight append calls?
 
 func (a *appender) Bootstrap(_ context.Context, blocks []Peer) error {
-	peers := make([]raft.Peer, 0, len(blocks))
-	for _, ep := range blocks {
-		peers = append(peers, raft.Peer{
-			ID:      ep.ID.Uint64(),
-			Context: []byte(ep.Endpoint),
-		})
-	}
-	// sort peers
-	sort.Slice(peers, func(a, b int) bool {
-		return peers[a].ID < peers[b].ID
-	})
-	return a.bootstrap(peers)
+	_ = "STUB: not implemented"
+	return nil
 }
 
+// sort peers
+
 func (a *appender) persistHardState(ctx context.Context, hs raftpb.HardState) {
-	a.storage.SetHardState(ctx, hs, func(err error) {
-		if err != nil {
-			panic(err)
-		}
-		a.reportStateStatus(ctx, hs.Term, hs.Vote)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 func (a *appender) persistEntries(ctx context.Context, entries []raftpb.Entry) {
+	_ = "STUB: not implemented"
 	// log.Debug(ctx).Msg("Append entries to raft log.")
 	// 	"node_id":        a.ID(),
 	// 	"appended_index": entries[0].Index,
 	// 	"entries_num":    len(entries),
 	// })
-
-	a.storage.Append(ctx, entries, func(re storage.AppendResult, err error) {
-		if err != nil {
-			if errors.Is(err, storage.ErrCompacted) || errors.Is(err, storage.ErrTruncated) {
-				// FIXME(james.yin): report to raft?
-				return
-			}
-			panic(err)
-		}
-
-		// Report entries has been persisted.
-		a.reportLogStatus(ctx, re.Index, re.Term)
-	})
+	return
 }
 
-func (a *appender) compactLog(ctx context.Context, index uint64) {
-	// log.Debug(ctx).Msg("Compact raft log.")
-	// 	"node_id": a.ID(),
-	// 	"index":   index,
-	// })
+// FIXME(james.yin): report to raft?
 
-	_ = a.storage.Compact(ctx, index)
+// Report entries has been persisted.
+
+func (a *appender) compactLog(ctx context.Context, index uint64) {
+	_ = "STUB: not implemented"
+	// log.Debug(ctx).Msg("Compact raft log.")
+	//
+	//		"node_id": a.ID(),
+	//		"index":   index,
+	//	})
+	return
 }
 
 func (a *appender) applyEntries(ctx context.Context, committedEntries []raftpb.Entry) {
-	for i := 0; i < len(committedEntries); i++ {
-		pbEntry := &committedEntries[i]
-
-		// Change membership.
-		if pbEntry.Type != raftpb.EntryNormal {
-			a.changeMembership(ctx, pbEntry)
-			continue
-		}
-
-		var frag block.Fragment
-		if len(pbEntry.Data) != 0 {
-			frag = block.NewFragment(pbEntry.Data)
-		}
-
-		index := pbEntry.Index
-		// FIXME(james.yin): do not pass frag with nil value?
-		a.raw.CommitAppend(ctx, frag, func() {
-			// log.Debug(ctx).Msg("Store applied offset.")
-			// 	"node_id":        a.ID(),
-			// 	"applied_offset": index,
-			// })
-			a.onAppend(ctx, index)
-
-			if frag != nil && a.appendLis != nil {
-				a.appendLis(a.ID())
-			}
-		})
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func (a *appender) onAppend(ctx context.Context, index uint64) {
-	a.storage.SetApplied(ctx, index)
-	a.reportApplyStatus(ctx, index)
-}
+// Change membership.
+
+// FIXME(james.yin): do not pass frag with nil value?
+
+// log.Debug(ctx).Msg("Store applied offset.")
+// 	"node_id":        a.ID(),
+// 	"applied_offset": index,
+// })
+
+func (a *appender) onAppend(ctx context.Context, index uint64) { _ = "STUB: not implemented"; return }
 
 func (a *appender) changeMembership(ctx context.Context, pbEntry *raftpb.Entry) {
-	cs := a.changeConf(ctx, pbEntry)
-
-	ch := make(chan struct{})
-	a.storage.SetConfState(ctx, *cs, func(err error) {
-		if err != nil {
-			panic(err)
-		}
-		close(ch)
-	})
-
-	index := pbEntry.Index
-	// FIXME(james.yin): do not pass frag with nil value?
-	a.raw.CommitAppend(ctx, nil, func() {
-		<-ch
-		log.Debug(ctx).
-			Stringer("node_id", a.ID()).
-			Uint64("applied_offset", index).
-			Msg("Store applied offset for conf change.")
-		a.onAppend(ctx, index)
-	})
+	_ = "STUB: not implemented"
+	return
 }
+
+// FIXME(james.yin): do not pass frag with nil value?
 
 func (a *appender) changeConf(_ context.Context, pbEntry *raftpb.Entry) *raftpb.ConfState {
-	if pbEntry.Type == raftpb.EntryNormal {
-		// TODO(james.yin): return error
-		return nil
-	}
-
-	var cci raftpb.ConfChangeI
-	if pbEntry.Type == raftpb.EntryConfChange {
-		var cc raftpb.ConfChange
-		if err := cc.Unmarshal(pbEntry.Data); err != nil {
-			panic(err)
-		}
-		a.transportExecutor.Execute(func() {
-			if cc.Type == raftpb.ConfChangeRemoveNode {
-				delete(a.hint, cc.NodeID)
-			} else {
-				a.hint[cc.NodeID] = string(cc.Context)
-			}
-		})
-		cci = cc
-	} else {
-		var cc raftpb.ConfChangeV2
-		if err := cc.Unmarshal(pbEntry.Data); err != nil {
-			panic(err)
-		}
-		changes := cc.Changes
-		a.transportExecutor.Execute(func() {
-			// FIXME(james.yin): check it.
-			for _, ccs := range changes {
-				if ccs.Type == raftpb.ConfChangeRemoveNode {
-					delete(a.hint, ccs.NodeID)
-				} else {
-					a.hint[ccs.NodeID] = string(cc.Context)
-				}
-			}
-		})
-		cci = cc
-	}
-	return a.applyConfChange(cci)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (a *appender) becomeLeader(ctx context.Context) {
-	log.Info(ctx).Stringer("node_id", a.ID()).Msg("Block become leader.")
+// TODO(james.yin): return error
 
-	// Reset append context when become leader.
-	a.resetAppendContext()
+// FIXME(james.yin): check it.
 
-	a.onLeaderChanged()
-}
+func (a *appender) becomeLeader(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-func (a *appender) onLeaderChanged() {
-	if a.leaderLis == nil {
-		return
-	}
+// Reset append context when become leader.
 
-	leader, term := a.leaderInfo()
-	a.leaderLis(a.ID(), leader, term)
-}
+func (a *appender) onLeaderChanged() { _ = "STUB: not implemented"; return }
 
-func (a *appender) resetAppendContext() {
-	ch := make(chan struct{})
-	a.appendExecutor.Execute(func() {
-		a.doReset()
-		close(ch)
-	})
-	<-ch
-}
+func (a *appender) resetAppendContext() { _ = "STUB: not implemented"; return }
 
-func (a *appender) doReset() {
-	off, err := a.storage.LastIndex()
-	if err != nil {
-		off = a.storage.Commit() // unreachable
-	}
+func (a *appender) doReset() { _ = "STUB: not implemented"; return }
 
-	for off > 0 {
-		pbEntries, err2 := a.storage.Entries(off, off+1, 0)
+// unreachable
 
-		// Entry has been compacted.
-		if err2 != nil {
-			a.actx = a.raw.NewAppendContext(nil)
-			break
-		}
+// Entry has been compacted.
 
-		pbEntry := pbEntries[0]
-		if pbEntry.Type == raftpb.EntryNormal && len(pbEntry.Data) > 0 {
-			frag := block.NewFragment(pbEntry.Data)
-			a.actx = a.raw.NewAppendContext(frag)
-			break
-		}
-
-		off--
-	}
-
-	// no normal entry
-	if off == 0 {
-		a.actx = a.raw.NewAppendContext(nil)
-	}
-}
+// no normal entry
 
 // Append implements block.Appender.
 func (a *appender) Append(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	a.appendExecutor.Execute(func() {
-		a.doAppend(ctx, entries, cb)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 func (a *appender) doAppend(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	if !a.isLeader() {
-		cb(nil, block.ErrNotLeader)
-		return
-	}
-
-	if a.actx.Archived() {
-		cb(nil, block.ErrFull)
-		return
-	}
-
-	seqs, frag, enough, err := a.raw.PrepareAppend(ctx, a.actx, entries...)
-	if err != nil {
-		cb(nil, err)
-		return
-	}
-
-	data, _ := block.MarshalFragment(frag)
-
-	var pds []raft.ProposeData
-	if enough {
-		if frag, err := a.raw.PrepareArchive(ctx, a.actx); err == nil {
-			archivedData, _ := block.MarshalFragment(frag)
-			pds = make([]raft.ProposeData, 2)
-			// FIXME(james.yin): revert archived if propose failed.
-			pds[1] = raft.ProposeData{
-				Data: archivedData,
-			}
-		} else {
-			pds = make([]raft.ProposeData, 1)
-		}
-	} else {
-		pds = make([]raft.ProposeData, 1)
-	}
-
-	pds[0] = raft.ProposeData{
-		Data: data,
-		Callback: func(err error) {
-			if err != nil {
-				cb(nil, err)
-			} else {
-				cb(seqs, nil)
-			}
-		},
-	}
-
-	a.propose(pds...)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (a *appender) Status() ClusterStatus {
-	leader, term := a.leaderInfo()
-	return ClusterStatus{
-		Leader: leader,
-		Term:   term,
-	}
-}
+// FIXME(james.yin): revert archived if propose failed.
+
+func (a *appender) Status() ClusterStatus { _ = "STUB: not implemented"; return *new(ClusterStatus) }
 
 func (a *appender) leaderInfo() (vanus.ID, uint64) {
-	return a.leaderID, a.storage.HardState().Term
+	_ = "STUB: not implemented"
+	return *new(vanus.ID), 0
 }
 
-func (a *appender) isLeader() bool {
-	return a.leaderID == a.ID()
-}
+func (a *appender) isLeader() bool { _ = "STUB: not implemented"; return false }

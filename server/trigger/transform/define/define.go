@@ -15,9 +15,6 @@
 package define
 
 import (
-	"fmt"
-
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
@@ -26,38 +23,11 @@ type Define struct {
 	args map[string]arg.Arg
 }
 
-func NewDefine() *Define {
-	return &Define{
-		args: map[string]arg.Arg{},
-	}
-}
+func NewDefine() *Define { _ = "STUB: not implemented"; return nil }
 
-func (d *Define) Parse(define map[string]string) {
-	if len(define) == 0 {
-		return
-	}
-	for key, value := range define {
-		_arg, err := arg.NewArg(value)
-		if err != nil {
-			log.Warn().Err(err).
-				Str("argName", value).Msg("arg is invalid")
-			continue
-		}
-		d.args[key] = _arg
-	}
-}
+func (d *Define) Parse(define map[string]string) { _ = "STUB: not implemented"; return }
 
 func (d *Define) EvaluateValue(ceCtx *context.EventContext) (map[string]interface{}, error) {
-	maps := make(map[string]interface{}, len(d.args))
-	for k, v := range d.args {
-		value, err := v.Evaluate(ceCtx)
-		if err != nil {
-			log.Warn().Err(err).
-				Str("name", v.Original()).
-				Str("type", fmt.Sprintf("%v", v.Type())).
-				Msg("define var evaluate error")
-		}
-		maps[k] = value
-	}
-	return maps, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

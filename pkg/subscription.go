@@ -16,8 +16,6 @@ package pkg
 
 import (
 	// standard libraries.
-	"encoding/json"
-	"fmt"
 
 	// first-party libraries.
 	vanus "github.com/vanus-labs/vanus/api/vsr"
@@ -44,11 +42,7 @@ type Subscription struct {
 	SinkCredential       SinkCredential         `json:"sink_credential,omitempty"`
 }
 
-func (sub *Subscription) String() string {
-	return fmt.Sprintf("VolumeID=%d, sink=%s, eventbus=%s, filters=%s, offsets=%s, transformer=%s, config=%s, protocol=%v",
-		sub.ID, sub.Sink, sub.EventbusID, sub.Filters.String(), sub.Offsets.String(),
-		sub.Transformer.String(), sub.Config.String(), sub.Protocol)
-}
+func (sub *Subscription) String() string { _ = "STUB: not implemented"; return "" }
 
 type Protocol string
 
@@ -84,20 +78,9 @@ type SubscriptionConfig struct {
 }
 
 // GetMaxRetryAttempts return MaxRetryAttempts if nil return -1.
-func (c *SubscriptionConfig) GetMaxRetryAttempts() int32 {
-	if c != nil && c.MaxRetryAttempts != nil {
-		return int32(*c.MaxRetryAttempts)
-	}
-	return -1
-}
+func (c *SubscriptionConfig) GetMaxRetryAttempts() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (c *SubscriptionConfig) String() string {
-	if c == nil {
-		return ""
-	}
-	b, _ := json.Marshal(c)
-	return string(b)
-}
+func (c *SubscriptionConfig) String() string { _ = "STUB: not implemented"; return "" }
 
 type SubscriptionFilter struct {
 	Exact  map[string]string      `json:"exact,omitempty"`
@@ -112,13 +95,7 @@ type SubscriptionFilter struct {
 
 type SubscriptionFilterList []*SubscriptionFilter
 
-func (l SubscriptionFilterList) String() string {
-	if len(l) == 0 {
-		return ""
-	}
-	b, _ := json.Marshal(l)
-	return string(b)
-}
+func (l SubscriptionFilterList) String() string { _ = "STUB: not implemented"; return "" }
 
 type TemplateType string
 
@@ -135,24 +112,13 @@ type TemplateConfig struct {
 }
 
 func (tc *TemplateConfig) RecognizeTemplateType() (TemplateType, bool) {
-	switch tc.Type {
-	case TemplateTypeUnspecified:
-		// Compatible with v0.8.0 and below.
-		if tc.Template == "" {
-			return TemplateTypeNone, true
-		}
-		switch tc.Template[0] {
-		case '{', '[', '"':
-			return TemplateTypeJSON, true
-		default:
-			return TemplateTypeText, true
-		}
-	case TemplateTypeNone, TemplateTypeText, TemplateTypeJSON:
-		return tc.Type, true
-	default:
-		return TemplateTypeText, false // unreachable
-	}
+	_ = "STUB: not implemented"
+	return *new(TemplateType), false
 }
+
+// Compatible with v0.8.0 and below.
+
+// unreachable
 
 type Transformer struct {
 	Define   map[string]string `json:"define,omitempty"`
@@ -160,24 +126,9 @@ type Transformer struct {
 	Template TemplateConfig    `json:",inline"`
 }
 
-func (t *Transformer) String() string {
-	if t == nil {
-		return ""
-	}
-	b, _ := json.Marshal(t)
-	return string(b)
-}
+func (t *Transformer) String() string { _ = "STUB: not implemented"; return "" }
 
-func (t *Transformer) Exist() bool {
-	if t == nil {
-		return false
-	}
-	tt, _ := t.Template.RecognizeTemplateType()
-	if tt == TemplateTypeNone && len(t.Pipeline) == 0 {
-		return false
-	}
-	return true
-}
+func (t *Transformer) Exist() bool { _ = "STUB: not implemented"; return false }
 
 type Action struct {
 	Command []interface{} `json:"command"`

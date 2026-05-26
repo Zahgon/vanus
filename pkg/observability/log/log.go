@@ -43,26 +43,14 @@ func init() {
 	lg = zerolog.New(zerolog.NewConsoleWriter()).With().Timestamp().Caller().Logger().Level(lvl)
 }
 
-func SetOutput(w io.Writer) {
-	lg = lg.Output(w)
-}
+func SetOutput(w io.Writer) { _ = "STUB: not implemented"; return }
 
-func With() zerolog.Context {
-	return lg.With()
-}
+func With() zerolog.Context { _ = "STUB: not implemented"; return *new(zerolog.Context) }
 
-func Debug(_ ...context.Context) *zerolog.Event {
-	return lg.Debug()
-}
+func Debug(_ ...context.Context) *zerolog.Event { _ = "STUB: not implemented"; return nil }
 
-func Info(_ ...context.Context) *zerolog.Event {
-	return lg.Info()
-}
+func Info(_ ...context.Context) *zerolog.Event { _ = "STUB: not implemented"; return nil }
 
-func Warn(_ ...context.Context) *zerolog.Event {
-	return lg.Warn()
-}
+func Warn(_ ...context.Context) *zerolog.Event { _ = "STUB: not implemented"; return nil }
 
-func Error(_ ...context.Context) *zerolog.Event {
-	return lg.Error()
-}
+func Error(_ ...context.Context) *zerolog.Event { _ = "STUB: not implemented"; return nil }

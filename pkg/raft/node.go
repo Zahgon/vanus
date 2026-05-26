@@ -20,7 +20,6 @@ import (
 	"errors"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
 
 	// this project.
 	pb "github.com/vanus-labs/vanus/pkg/raft/raftpb"
@@ -47,9 +46,7 @@ type SoftState struct {
 	RaftState StateType
 }
 
-func (a *SoftState) equal(b *SoftState) bool {
-	return a.Lead == b.Lead && a.RaftState == b.RaftState
-}
+func (a *SoftState) equal(b *SoftState) bool { _ = "STUB: not implemented"; return false }
 
 // Ready encapsulates the entries and messages that are ready to read,
 // be saved to stable storage, committed or sent to other peers.
@@ -96,38 +93,20 @@ type Ready struct {
 	Compact uint64
 }
 
-func isHardStateEqual(a, b pb.HardState) bool {
-	return a.Term == b.Term && a.Vote == b.Vote && a.Commit == b.Commit
-}
+func isHardStateEqual(a, b pb.HardState) bool { _ = "STUB: not implemented"; return false }
 
 // IsEmptyHardState returns true if the given HardState is empty.
-func IsEmptyHardState(st pb.HardState) bool {
-	return isHardStateEqual(st, emptyState)
-}
+func IsEmptyHardState(st pb.HardState) bool { _ = "STUB: not implemented"; return false }
 
 // IsEmptySnap returns true if the given Snapshot is empty.
-func IsEmptySnap(sp pb.Snapshot) bool {
-	return sp.Metadata.Index == 0
-}
+func IsEmptySnap(sp pb.Snapshot) bool { _ = "STUB: not implemented"; return false }
 
-func (rd Ready) containsUpdates() bool {
-	return rd.SoftState != nil || !IsEmptyHardState(rd.HardState) ||
-		!IsEmptySnap(rd.Snapshot) || len(rd.Entries) > 0 ||
-		len(rd.CommittedEntries) > 0 || len(rd.Messages) > 0 || len(rd.ReadStates) != 0
-}
+func (rd Ready) containsUpdates() bool { _ = "STUB: not implemented"; return false }
 
 // appliedCursor extracts from the Ready the highest index the client has
 // applied (once the Ready is confirmed via Advance). If no information is
 // contained in the Ready, returns zero.
-func (rd Ready) appliedCursor() uint64 {
-	if n := len(rd.CommittedEntries); n != 0 {
-		return rd.CommittedEntries[n-1].Index
-	}
-	if index := rd.Snapshot.Metadata.Index; index > 0 {
-		return index
-	}
-	return 0
-}
+func (rd Ready) appliedCursor() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // Node represents a node in a raft cluster.
 type Node interface {
@@ -209,38 +188,13 @@ type Peer struct {
 // It appends a ConfChangeAddNode entry for each given peer to the initial log.
 //
 // Peers must not be zero length; call RestartNode in that case.
-func StartNode(c *Config, peers []Peer) Node {
-	if len(peers) == 0 {
-		panic("no peers given; use RestartNode instead")
-	}
-	rn, err := NewRawNode(c)
-	if err != nil {
-		panic(err)
-	}
-	err = rn.Bootstrap(peers)
-	if err != nil {
-		c.Logger.Warningf("error occurred during starting a new node: %v", err)
-	}
-
-	n := newNode(rn)
-
-	go n.run()
-	return &n
-}
+func StartNode(c *Config, peers []Peer) Node { _ = "STUB: not implemented"; return *new(Node) }
 
 // RestartNode is similar to StartNode but does not take a list of peers.
 // The current membership of the cluster will be restored from the Storage.
 // If the caller has an existing state machine, pass in the last log index that
 // has been applied to it; otherwise use zero.
-func RestartNode(c *Config) Node {
-	rn, err := NewRawNode(c)
-	if err != nil {
-		panic(err)
-	}
-	n := newNode(rn)
-	go n.run()
-	return &n
-}
+func RestartNode(c *Config) Node { _ = "STUB: not implemented"; return *new(Node) }
 
 type peersWithResult struct {
 	peers  []Peer
@@ -262,290 +216,109 @@ type node struct {
 	rn *RawNode
 }
 
-func newNode(rn *RawNode) node {
-	return node{
-		propc:      make(chan []ProposeData),
-		recvc:      make(chan pb.Message),
-		confc:      make(chan pb.ConfChangeV2),
-		confstatec: make(chan pb.ConfState),
-		bootstrapc: make(chan peersWithResult),
-		// make tickc a buffered chan, so raft node can buffer some ticks when the node
-		// is busy processing raft messages. Raft node will resume process buffered
-		// ticks when it becomes idle.
-		tickc:  make(chan struct{}, 128),
-		done:   make(chan struct{}),
-		stop:   make(chan struct{}),
-		status: make(chan chan Status),
-		rn:     rn,
-	}
-}
+func newNode(rn *RawNode) node { _ = "STUB: not implemented"; return *new(node) }
 
-func (n *node) Stop() {
-	select {
-	case n.stop <- struct{}{}:
-		// Not already stopped, so trigger it
-	case <-n.done:
-		// Node has already been stopped - no need to do anything
-		return
-	}
-	// Block until the stop has been acknowledged by run()
-	<-n.done
-}
+// make tickc a buffered chan, so raft node can buffer some ticks when the node
+// is busy processing raft messages. Raft node will resume process buffered
+// ticks when it becomes idle.
+
+func (n *node) Stop() { _ = "STUB: not implemented"; return }
+
+// Not already stopped, so trigger it
+
+// Node has already been stopped - no need to do anything
+
+// Block until the stop has been acknowledged by run()
 
 func (n *node) Bootstrap(peers []Peer) error {
+	_ = "STUB: not implemented"
 	// TODO
-	ch := n.bootstrapc
-	bp := peersWithResult{
-		peers:  peers,
-		result: make(chan error, 1),
-	}
-	select {
-	case ch <- bp:
-	case <-n.done:
-		return ErrStopped
-	}
-	select {
-	case err := <-bp.result:
-		if err != nil {
-			return err
-		}
-	case <-n.done:
-		return ErrStopped
-	}
 	return nil
 }
 
-func (n *node) run() { //nolint:funlen // ok
-	var propc chan []ProposeData
-
-	r := n.rn.raft
-
-	lead := None
-
-	for {
-		if lead != r.lead {
-			if r.hasLeader() {
-				if lead == None {
-					r.logger.Infof("raft.node: %x elected leader %x at term %d", r.id, r.lead, r.Term)
-				} else {
-					r.logger.Infof("raft.node: %x changed leader from %x to %x at term %d", r.id, lead, r.lead, r.Term)
-				}
-				propc = n.propc
-			} else {
-				r.logger.Infof("raft.node: %x lost leader %x at term %d", r.id, lead, r.Term)
-				propc = nil
-			}
-			lead = r.lead
-		}
-
-		select {
-		// TODO: maybe buffer the config propose if there exists one (the way
-		// described in raft dissertation)
-		// Currently it is dropped in Step silently.
-		case pds := <-propc:
-			r.Propose(pds...)
-		case m := <-n.recvc:
-			if IsResponseMsg(m.Type) && r.prs.Progress[m.From] == nil {
-				// Filter out response message from unknown From.
-				break
-			}
-			r.Step(m)
-		case cc := <-n.confc:
-			_, okBefore := r.prs.Progress[r.id]
-			cs := r.applyConfChange(cc)
-			// If the node was removed, block incoming proposals. Note that we
-			// only do this if the node was in the config before. Nodes may be
-			// a member of the group without knowing this (when they're catching
-			// up on the log and don't have the latest config) and we don't want
-			// to block the proposal channel in that case.
-			//
-			// NB: propc is reset when the leader changes, which, if we learn
-			// about it, sort of implies that we got readded, maybe? This isn't
-			// very sound and likely has bugs.
-			if _, okAfter := r.prs.Progress[r.id]; okBefore && !okAfter {
-				var found bool
-				for _, sl := range [][]uint64{cs.Voters, cs.VotersOutgoing} {
-					for _, id := range sl {
-						if id == r.id {
-							found = true
-							break
-						}
-					}
-					if found {
-						break
-					}
-				}
-				if !found {
-					propc = nil
-				}
-			}
-			select {
-			case n.confstatec <- cs:
-			case <-n.done:
-			}
-		case bp := <-n.bootstrapc:
-			bp.result <- n.rn.Bootstrap(bp.peers)
-			close(bp.result)
-		case <-n.tickc:
-			n.rn.Tick()
-		case c := <-n.status:
-			c <- getStatus(r)
-		case <-n.stop:
-			close(n.done)
-			return
-		}
-	}
+func (n *node) run() {
+	_ = "STUB: not implemented" //nolint:funlen // ok
+	return
 }
+
+// TODO: maybe buffer the config propose if there exists one (the way
+// described in raft dissertation)
+// Currently it is dropped in Step silently.
+
+// Filter out response message from unknown From.
+
+// If the node was removed, block incoming proposals. Note that we
+// only do this if the node was in the config before. Nodes may be
+// a member of the group without knowing this (when they're catching
+// up on the log and don't have the latest config) and we don't want
+// to block the proposal channel in that case.
+//
+// NB: propc is reset when the leader changes, which, if we learn
+// about it, sort of implies that we got readded, maybe? This isn't
+// very sound and likely has bugs.
 
 // Tick increments the internal logical clock for this Node. Election timeouts
 // and heartbeat timeouts are in units of ticks.
-func (n *node) Tick() {
-	select {
-	case n.tickc <- struct{}{}:
-	case <-n.done:
-	default:
-		n.rn.raft.logger.Warningf("%x A tick missed to fire. Node blocks too long!", n.rn.raft.id)
-	}
-}
+func (n *node) Tick() { _ = "STUB: not implemented"; return }
 
-func (n *node) Campaign(ctx context.Context) error {
-	return n.step(ctx, pb.Message{Type: pb.MsgHup})
-}
+func (n *node) Campaign(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (n *node) Propose(ctx context.Context, pds ...ProposeData) {
-	select {
-	case n.propc <- pds:
-	case <-ctx.Done():
-		err := ctx.Err()
-		for i := range pds {
-			pd := &pds[i]
-			if pd.Callback != nil {
-				pd.Callback(err)
-			}
-		}
-	case <-n.done:
-		for i := range pds {
-			pd := &pds[i]
-			if pd.Callback != nil {
-				pd.Callback(ErrStopped)
-			}
-		}
-	}
-}
+func (n *node) Propose(ctx context.Context, pds ...ProposeData) { _ = "STUB: not implemented"; return }
 
-func (n *node) Step(ctx context.Context, m pb.Message) error {
-	span := trace.SpanFromContext(ctx)
-	span.AddEvent("raft.node.Step() Start")
-	defer span.AddEvent("raft.node.Step() End")
+func (n *node) Step(ctx context.Context, m pb.Message) error { _ = "STUB: not implemented"; return nil }
 
-	// ignore unexpected local messages receiving over network
-	if IsLocalMsg(m.Type) {
-		// TODO: return an error?
-		return nil
-	}
-	return n.step(ctx, m)
-}
+// ignore unexpected local messages receiving over network
+
+// TODO: return an error?
 
 func confChangeToMsg(c pb.ConfChangeI) (pb.Message, error) {
-	typ, data, err := pb.MarshalConfChange(c)
-	if err != nil {
-		return pb.Message{}, err
-	}
-	return pb.Message{Type: pb.MsgProp, Entries: []pb.Entry{{Type: typ, Data: data}}}, nil
+	_ = "STUB: not implemented"
+	return *new(pb.Message), nil
 }
 
 func (n *node) ProposeConfChange(ctx context.Context, cc pb.ConfChangeI) error {
-	msg, err := confChangeToMsg(cc)
-	if err != nil {
-		return err
-	}
-	return n.Step(ctx, msg)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Step advances the state machine using msgs. The ctx.Err() will be returned,
 // if any.
-func (n *node) step(ctx context.Context, m pb.Message) error {
-	select {
-	case n.recvc <- m:
-		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-n.done:
-		return ErrStopped
-	}
-}
+func (n *node) step(ctx context.Context, m pb.Message) error { _ = "STUB: not implemented"; return nil }
 
 func (n *node) ApplyConfChange(cc pb.ConfChangeI) *pb.ConfState {
-	var cs pb.ConfState
-	select {
-	case n.confc <- cc.AsV2():
-	case <-n.done:
-	}
-	select {
-	case cs = <-n.confstatec:
-	case <-n.done:
-	}
-	return &cs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (n *node) ReportStateStatus(ctx context.Context, term uint64, vote uint64) error {
-	return n.step(ctx, pb.Message{
-		Type:    pb.MsgStateStatus,
-		LogTerm: term,
-		Vote:    vote,
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (n *node) ReportLogStatus(ctx context.Context, index uint64, term uint64) error {
-	return n.step(ctx, pb.Message{
-		Type:    pb.MsgLogStatus,
-		LogTerm: term,
-		Index:   index,
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (n *node) ReportApplyStatus(ctx context.Context, index uint64) error {
-	return n.step(ctx, pb.Message{
-		Type:  pb.MsgApplyStatus,
-		Index: index,
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (n *node) Status() Status {
-	c := make(chan Status)
-	select {
-	case n.status <- c:
-		return <-c
-	case <-n.done:
-		return Status{}
-	}
-}
+func (n *node) Status() Status { _ = "STUB: not implemented"; return *new(Status) }
 
-func (n *node) ReportUnreachable(id uint64) {
-	select {
-	case n.recvc <- pb.Message{Type: pb.MsgUnreachable, From: id}:
-	case <-n.done:
-	}
-}
+func (n *node) ReportUnreachable(id uint64) { _ = "STUB: not implemented"; return }
 
-func (n *node) ReportSnapshot(id uint64, status SnapshotStatus) {
-	rej := status == SnapshotFailure
-
-	select {
-	case n.recvc <- pb.Message{Type: pb.MsgSnapStatus, From: id, Reject: rej}:
-	case <-n.done:
-	}
-}
+func (n *node) ReportSnapshot(id uint64, status SnapshotStatus) { _ = "STUB: not implemented"; return }
 
 func (n *node) TransferLeadership(ctx context.Context, lead, transferee uint64) {
-	select {
+	_ = "STUB: not implemented"
+
 	// manually set 'from' and 'to', so that leader can voluntarily transfers its leadership
-	case n.recvc <- pb.Message{Type: pb.MsgTransferLeader, From: transferee, To: lead}:
-	case <-n.done:
-	case <-ctx.Done():
-	}
+	return
 }
 
 func (n *node) ReadIndex(ctx context.Context, rctx []byte) error {
-	return n.step(ctx, pb.Message{Type: pb.MsgReadIndex, Entries: []pb.Entry{{Data: rctx}}})
+	_ = "STUB: not implemented"
+	return nil
 }

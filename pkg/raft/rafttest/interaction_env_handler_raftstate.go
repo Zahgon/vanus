@@ -15,34 +15,12 @@
 package rafttest
 
 import (
-	"fmt"
-
 	"github.com/vanus-labs/vanus/pkg/raft"
 )
 
 // isVoter checks whether node id is in the voter list within st.
-func isVoter(id uint64, st raft.Status) bool {
-	idMap := st.Config.Voters.IDs()
-	for idx := range idMap {
-		if id == idx {
-			return true
-		}
-	}
-	return false
-}
+func isVoter(id uint64, st raft.Status) bool { _ = "STUB: not implemented"; return false }
 
 // handleRaftState pretty-prints the raft state for all nodes to the output buffer.
 // For each node, the information is based on its own configuration view.
-func (env *InteractionEnv) handleRaftState() error {
-	for _, n := range env.Nodes {
-		st := n.Status()
-		var voterStatus string
-		if isVoter(st.ID, st) {
-			voterStatus = "(Voter)"
-		} else {
-			voterStatus = "(Non-Voter)"
-		}
-		fmt.Fprintf(env.Output, "%d: %s %s\n", st.ID, st.RaftState, voterStatus)
-	}
-	return nil
-}
+func (env *InteractionEnv) handleRaftState() error { _ = "STUB: not implemented"; return nil }

@@ -21,32 +21,11 @@ import (
 
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	blktest "github.com/vanus-labs/vanus/server/store/block/testing"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
-	"github.com/vanus-labs/vanus/server/store/vsb/index"
 )
 
 func MakeEntry(ctrl *Controller) block.EntryExt {
-	idx0 := MakeIndex0(ctrl)
-	idx1 := MakeIndex1(ctrl)
-	entry := blktest.NewMockEntryExt(ctrl)
-	entry.EXPECT().OptionalAttributeCount().AnyTimes().Return(2)
-	entry.EXPECT().GetUint16(ceschema.EntryTypeOrdinal).AnyTimes().Return(ceschema.Index)
-	entry.EXPECT().RangeOptionalAttributes(Any()).AnyTimes().DoAndReturn(func(f func(ordinal int, val interface{})) {
-		f(0, idx0)
-		f(1, idx1)
-	})
-	return entry
+	_ = "STUB: not implemented"
+	return *new(block.EntryExt)
 }
 
-func CheckEntry(entry block.Entry, ignoreStime bool) {
-	ext, ok := entry.(block.EntryExt)
-	So(ok, ShouldBeTrue)
-	So(ext.OptionalAttributeCount(), ShouldEqual, 2)
-
-	indexes, ok := entry.Get(ceschema.IndexesOrdinal).([]index.Index)
-	So(ok, ShouldBeTrue)
-	So(indexes, ShouldHaveLength, 2)
-	CheckIndex0(indexes[0], ignoreStime)
-	CheckIndex1(indexes[1], ignoreStime)
-}
+func CheckEntry(entry block.Entry, ignoreStime bool) { _ = "STUB: not implemented"; return }

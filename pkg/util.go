@@ -14,15 +14,6 @@
 
 package pkg
 
-import (
-	"crypto/md5"
-	"fmt"
-)
+func GetIDByAddr(addr string) string { _ = "STUB: not implemented"; return "" }
 
-func GetIDByAddr(addr string) string {
-	return fmt.Sprintf("%x", md5.Sum([]byte(addr)))
-}
-
-func IsSpace(c byte) bool {
-	return c <= ' ' && (c == ' ' || c == '\t' || c == '\r' || c == '\n')
-}
+func IsSpace(c byte) bool { _ = "STUB: not implemented"; return false }

@@ -17,7 +17,6 @@ package index
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 type entry struct {
@@ -28,35 +27,15 @@ type entry struct {
 // Make sure Entry implements block.EntryExt.
 var _ block.EntryExt = (*entry)(nil)
 
-func NewEntry(indexes []Index) block.Entry {
-	return &entry{
-		indexes: indexes,
-	}
-}
+func NewEntry(indexes []Index) block.Entry { _ = "STUB: not implemented"; return *new(block.Entry) }
 
-func (e *entry) Get(ordinal int) interface{} {
-	if ordinal == ceschema.IndexesOrdinal {
-		return e.indexes
-	}
-	if ordinal >= 0 && ordinal < len(e.indexes) {
-		return e.indexes[ordinal]
-	}
-	return e.EmptyEntry.Get(ordinal)
-}
+func (e *entry) Get(ordinal int) interface{} { _ = "STUB: not implemented"; return nil }
 
-func (e *entry) GetUint16(ordinal int) uint16 {
-	if ordinal == ceschema.EntryTypeOrdinal {
-		return ceschema.Index
-	}
-	return e.EmptyEntry.GetUint16(ordinal)
-}
+func (e *entry) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
-func (e *entry) OptionalAttributeCount() int {
-	return len(e.indexes)
-}
+func (e *entry) OptionalAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 func (e *entry) RangeOptionalAttributes(cb block.OptionalAttributeCallback) {
-	for i, idx := range e.indexes {
-		cb.OnAttribute(i, idx)
-	}
+	_ = "STUB: not implemented"
+	return
 }

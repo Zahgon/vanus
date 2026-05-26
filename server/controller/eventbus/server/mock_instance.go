@@ -11,7 +11,6 @@ package server
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	metadata "github.com/vanus-labs/vanus/server/controller/eventbus/metadata"
@@ -30,124 +29,74 @@ type MockInstanceMockRecorder struct {
 }
 
 // NewMockInstance creates a new mock instance.
-func NewMockInstance(ctrl *gomock.Controller) *MockInstance {
-	mock := &MockInstance{ctrl: ctrl}
-	mock.recorder = &MockInstanceMockRecorder{mock}
-	return mock
-}
+func NewMockInstance(ctrl *gomock.Controller) *MockInstance { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockInstance) EXPECT() *MockInstanceMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Address mocks base method.
+	return nil
 }
 
-// Address mocks base method.
-func (m *MockInstance) Address() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Address")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockInstance) Address() string { _ = "STUB: not implemented"; return "" }
 
 // Address indicates an expected call of Address.
-func (mr *MockInstanceMockRecorder) Address() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Address", reflect.TypeOf((*MockInstance)(nil).Address))
-}
+func (mr *MockInstanceMockRecorder) Address() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Close mocks base method.
-func (m *MockInstance) Close() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockInstance) Close() error { _ = "STUB: not implemented"; return nil }
 
 // Close indicates an expected call of Close.
-func (mr *MockInstanceMockRecorder) Close() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockInstance)(nil).Close))
-}
+func (mr *MockInstanceMockRecorder) Close() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // CreateBlock mocks base method.
 func (m *MockInstance) CreateBlock(arg0 context.Context, arg1 int64) (*metadata.Block, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateBlock", arg0, arg1)
-	ret0, _ := ret[0].(*metadata.Block)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateBlock indicates an expected call of CreateBlock.
 func (mr *MockInstanceMockRecorder) CreateBlock(arg0, arg1 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateBlock", reflect.TypeOf((*MockInstance)(nil).CreateBlock), arg0, arg1)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteBlock mocks base method.
 func (m *MockInstance) DeleteBlock(arg0 context.Context, arg1 vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteBlock", arg0, arg1)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteBlock indicates an expected call of DeleteBlock.
 func (mr *MockInstanceMockRecorder) DeleteBlock(arg0, arg1 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteBlock", reflect.TypeOf((*MockInstance)(nil).DeleteBlock), arg0, arg1)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetMeta mocks base method.
-func (m *MockInstance) GetMeta() *metadata.VolumeMetadata {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetMeta")
-	ret0, _ := ret[0].(*metadata.VolumeMetadata)
-	return ret0
-}
+func (m *MockInstance) GetMeta() *metadata.VolumeMetadata { _ = "STUB: not implemented"; return nil }
 
 // GetMeta indicates an expected call of GetMeta.
-func (mr *MockInstanceMockRecorder) GetMeta() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMeta", reflect.TypeOf((*MockInstance)(nil).GetMeta))
-}
+func (mr *MockInstanceMockRecorder) GetMeta() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // GetServer mocks base method.
-func (m *MockInstance) GetServer() Server {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetServer")
-	ret0, _ := ret[0].(Server)
-	return ret0
-}
+func (m *MockInstance) GetServer() Server { _ = "STUB: not implemented"; return *new(Server) }
 
 // GetServer indicates an expected call of GetServer.
-func (mr *MockInstanceMockRecorder) GetServer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetServer", reflect.TypeOf((*MockInstance)(nil).GetServer))
-}
+func (mr *MockInstanceMockRecorder) GetServer() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // ID mocks base method.
-func (m *MockInstance) ID() vsr.ID {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ID")
-	ret0, _ := ret[0].(vsr.ID)
-	return ret0
-}
+func (m *MockInstance) ID() vsr.ID { _ = "STUB: not implemented"; return *new(vsr.ID) }
 
 // ID indicates an expected call of ID.
-func (mr *MockInstanceMockRecorder) ID() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ID", reflect.TypeOf((*MockInstance)(nil).ID))
-}
+func (mr *MockInstanceMockRecorder) ID() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // SetServer mocks base method.
-func (m *MockInstance) SetServer(arg0 Server) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetServer", arg0)
-}
+func (m *MockInstance) SetServer(arg0 Server) { _ = "STUB: not implemented"; return }
 
 // SetServer indicates an expected call of SetServer.
 func (mr *MockInstanceMockRecorder) SetServer(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetServer", reflect.TypeOf((*MockInstance)(nil).SetServer), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }

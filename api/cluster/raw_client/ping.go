@@ -26,9 +26,8 @@ import (
 var _ ctrlpb.PingServerClient = (*pingClient)(nil)
 
 func NewPingClient(cc *Conn) ctrlpb.PingServerClient {
-	return &pingClient{
-		cc: cc,
-	}
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.PingServerClient)
 }
 
 type pingClient struct {
@@ -36,10 +35,6 @@ type pingClient struct {
 }
 
 func (p pingClient) Ping(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ctrlpb.PingResponse, error) {
-	out := new(ctrlpb.PingResponse)
-	err := p.cc.invoke(ctx, "/vanus.core.controller.PingServer/Ping", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

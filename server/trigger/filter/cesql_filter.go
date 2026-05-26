@@ -15,13 +15,8 @@
 package filter
 
 import (
-	"runtime"
-
 	cesql "github.com/cloudevents/sdk-go/sql/v2"
-	cesqlparser "github.com/cloudevents/sdk-go/sql/v2/parser"
 	ce "github.com/cloudevents/sdk-go/v2"
-
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type ceSQLFilter struct {
@@ -29,45 +24,11 @@ type ceSQLFilter struct {
 	parsedExpression cesql.Expression
 }
 
-func NewCESQLFilter(expression string) Filter {
-	if expression == "" {
-		return nil
-	}
-	defer func() {
-		if r := recover(); r != nil {
-			size := 1024
-			stacktrace := make([]byte, size)
-			stacktrace = stacktrace[:runtime.Stack(stacktrace, false)]
-			log.Info().
-				Str("expression", expression).
-				Bytes("panic", stacktrace).
-				Msg("parse cesql filter expression panic")
-		}
-	}()
-	parsed, err := cesqlparser.Parse(expression)
-	if err != nil {
-		log.Info().Err(err).Str("expression", expression).Msg("parse cesql filter expression error")
-		return nil
-	}
-	return &ceSQLFilter{rawExpression: expression, parsedExpression: parsed}
-}
+func NewCESQLFilter(expression string) Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
 func (filter *ceSQLFilter) Filter(event ce.Event) Result {
-	res, err := filter.parsedExpression.Evaluate(event)
-	if err != nil {
-		log.Info().
-			Interface("filter", filter).
-			Interface("event", event).
-			Msg("cesql filter evaluate error ")
-		return FailFilter
-	}
-
-	if !res.(bool) {
-		return FailFilter
-	}
-	return PassFilter
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
-func (filter *ceSQLFilter) String() string {
-	return filter.rawExpression
-}
+func (filter *ceSQLFilter) String() string { _ = "STUB: not implemented"; return "" }

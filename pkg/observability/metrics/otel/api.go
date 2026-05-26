@@ -52,16 +52,11 @@ type metricKey struct {
 }
 
 func NewMetricKey(name string, u unit, desc string) *metricKey {
-	return &metricKey{
-		name:        name,
-		description: desc,
-		unit:        u,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func newCounter(k *metricKey) ICounter {
-	return emptyCount
-}
+func newCounter(k *metricKey) ICounter { _ = "STUB: not implemented"; return *new(ICounter) }
 
 type IGauge interface {
 	IncrInt(int64, ...attribute.KeyValue)
@@ -69,9 +64,7 @@ type IGauge interface {
 	Async(func(context.Context, IGauge))
 }
 
-func newGauge(k *metricKey) IGauge {
-	return emptyGauge
-}
+func newGauge(k *metricKey) IGauge { _ = "STUB: not implemented"; return *new(IGauge) }
 
 type IHistogram interface {
 	RecordInt(int64, ...attribute.KeyValue)
@@ -79,70 +72,12 @@ type IHistogram interface {
 	Async(func(context.Context, IHistogram))
 }
 
-func newHistogram(k *metricKey) IHistogram {
-	return emptyHistogram
-}
+func newHistogram(k *metricKey) IHistogram { _ = "STUB: not implemented"; return *new(IHistogram) }
 
-func GetCounter(key *metricKey) ICounter {
-	if !isValidKey(key) {
-		return emptyCount
-	}
-	v, exist := countMap[key.name]
-	if !exist {
-		metricCreateMutex.Lock()
-		v, exist = countMap[key.name]
-		if !exist {
-			v = newCounter(key)
-			countMap[key.name] = v
-		}
-		metricCreateMutex.Unlock()
-	}
-	return v
-}
+func GetCounter(key *metricKey) ICounter { _ = "STUB: not implemented"; return *new(ICounter) }
 
-func GetGauge(key *metricKey) IGauge {
-	if !isValidKey(key) {
-		return emptyGauge
-	}
-	v, exist := gaugeMap[key.name]
-	if !exist {
-		metricCreateMutex.Lock()
-		v, exist = gaugeMap[key.name]
-		if !exist {
-			v = newGauge(key)
-			gaugeMap[key.name] = v
-		}
-		metricCreateMutex.Unlock()
-	}
-	return v
-}
+func GetGauge(key *metricKey) IGauge { _ = "STUB: not implemented"; return *new(IGauge) }
 
-func GetHistogram(key *metricKey) IHistogram {
-	if !isValidKey(key) {
-		return emptyHistogram
-	}
-	v, exist := histogramMap[key.name]
-	if !exist {
-		metricCreateMutex.Lock()
-		v, exist = histogramMap[key.name]
-		if !exist {
-			v = newHistogram(key)
-			histogramMap[key.name] = v
-		}
-		metricCreateMutex.Unlock()
-	}
-	return v
-}
+func GetHistogram(key *metricKey) IHistogram { _ = "STUB: not implemented"; return *new(IHistogram) }
 
-func isValidKey(k *metricKey) bool {
-	if k == nil {
-		return false
-	}
-	if k.name == "" {
-		return false
-	}
-	if k.unit == "" {
-		return false
-	}
-	return true
-}
+func isValidKey(k *metricKey) bool { _ = "STUB: not implemented"; return false }

@@ -11,7 +11,6 @@ package client
 
 import (
 	context "context"
-	reflect "reflect"
 
 	v2 "github.com/cloudevents/sdk-go/v2"
 	gomock "go.uber.org/mock/gomock"
@@ -29,34 +28,25 @@ type MockSenderMockRecorder struct {
 }
 
 // NewMockSender creates a new mock instance.
-func NewMockSender(ctrl *gomock.Controller) *MockSender {
-	mock := &MockSender{ctrl: ctrl}
-	mock.recorder = &MockSenderMockRecorder{mock}
-	return mock
-}
+func NewMockSender(ctrl *gomock.Controller) *MockSender { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockSender) EXPECT() *MockSenderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Send mocks base method.
+	return nil
 }
 
-// Send mocks base method.
 func (m *MockSender) Send(ctx context.Context, events ...*v2.Event) Result {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx}
-	for _, a := range events {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Send", varargs...)
-	ret0, _ := ret[0].(Result)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
 // Send indicates an expected call of Send.
 func (mr *MockSenderMockRecorder) Send(ctx any, events ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx}, events...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockSender)(nil).Send), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockEventClient is a mock of EventClient interface.
@@ -72,31 +62,25 @@ type MockEventClientMockRecorder struct {
 
 // NewMockEventClient creates a new mock instance.
 func NewMockEventClient(ctrl *gomock.Controller) *MockEventClient {
-	mock := &MockEventClient{ctrl: ctrl}
-	mock.recorder = &MockEventClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockEventClient) EXPECT() *MockEventClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Send mocks base method.
+	return nil
 }
 
-// Send mocks base method.
 func (m *MockEventClient) Send(ctx context.Context, events ...*v2.Event) Result {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx}
-	for _, a := range events {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Send", varargs...)
-	ret0, _ := ret[0].(Result)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
 // Send indicates an expected call of Send.
 func (mr *MockEventClientMockRecorder) Send(ctx any, events ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx}, events...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockEventClient)(nil).Send), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }

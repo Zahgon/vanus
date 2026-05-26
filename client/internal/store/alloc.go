@@ -20,10 +20,9 @@ var allocator = NewAllocator()
 
 // Get acquire BlockStore.
 func Get(ctx context.Context, endpoint string) (*BlockStore, error) {
-	return allocator.Get(ctx, endpoint)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Put release BlockStore.
-func Put(ctx context.Context, bs *BlockStore) {
-	allocator.Put(ctx, bs)
-}
+func Put(ctx context.Context, bs *BlockStore) { _ = "STUB: not implemented"; return }

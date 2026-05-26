@@ -26,24 +26,51 @@ import (
 type promCounter struct {
 }
 
-func (pc *promCounter) IncrInt(n int64, attrs ...attribute.KeyValue) {}
+func (pc *promCounter) IncrInt(n int64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (pc *promCounter) IncrFloat(f float64, attrs ...attribute.KeyValue) {}
+func (pc *promCounter) IncrFloat(f float64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (pc *promCounter) Async(f func(ctx context.Context, c ICounter)) {}
+func (pc *promCounter) Async(f func(ctx context.Context, c ICounter)) {
+	_ = "STUB: not implemented"
+	return
+}
 
 type promGauge struct{}
 
-func (pg *promGauge) IncrInt(n int64, attrs ...attribute.KeyValue) {}
+func (pg *promGauge) IncrInt(n int64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (pg *promGauge) IncrFloat(f float64, attrs ...attribute.KeyValue) {}
+func (pg *promGauge) IncrFloat(f float64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (pg *promGauge) Async(func(ctx context.Context, gauge IGauge)) {}
+func (pg *promGauge) Async(func(ctx context.Context, gauge IGauge)) {
+	_ = "STUB: not implemented"
+	return
+}
 
 type promHistogram struct{}
 
-func (ph *promHistogram) RecordInt(n int64, attrs ...attribute.KeyValue) {}
+func (ph *promHistogram) RecordInt(n int64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (ph *promHistogram) RecordFloat(f float64, attrs ...attribute.KeyValue) {}
+func (ph *promHistogram) RecordFloat(f float64, attrs ...attribute.KeyValue) {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (ph *promHistogram) Async(func(ctx context.Context, his IHistogram)) {}
+func (ph *promHistogram) Async(func(ctx context.Context, his IHistogram)) {
+	_ = "STUB: not implemented"
+	return
+}

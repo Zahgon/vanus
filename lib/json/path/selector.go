@@ -25,14 +25,14 @@ type nameSelector struct {
 // Make sure nameSelector implements Selector.
 var _ Selector = (*nameSelector)(nil)
 
-func (ns *nameSelector) Apply() {}
+func (ns *nameSelector) Apply() { _ = "STUB: not implemented"; return }
 
 type wildcardSelector struct{}
 
 // Make sure wildcardSelector implements Selector.
 var _ Selector = (*wildcardSelector)(nil)
 
-func (ws *wildcardSelector) Apply() {}
+func (ws *wildcardSelector) Apply() { _ = "STUB: not implemented"; return }
 
 type indexSelector struct {
 	index int
@@ -41,7 +41,7 @@ type indexSelector struct {
 // Make sure indexSelector implements Selector.
 var _ Selector = (*indexSelector)(nil)
 
-func (is *indexSelector) Apply() {}
+func (is *indexSelector) Apply() { _ = "STUB: not implemented"; return }
 
 type arraySliceSelector struct {
 	start *int
@@ -52,4 +52,4 @@ type arraySliceSelector struct {
 // Make sure arraySliceSelector implements Selector.
 var _ Selector = (*arraySliceSelector)(nil)
 
-func (ass *arraySliceSelector) Apply() {}
+func (ass *arraySliceSelector) Apply() { _ = "STUB: not implemented"; return }

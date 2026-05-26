@@ -15,7 +15,6 @@
 package util
 
 import (
-	"bytes"
 	"time"
 )
 
@@ -31,32 +30,8 @@ var formats = map[byte]string{
 }
 
 // ConvertFormat2Go converts format to layout.
-func ConvertFormat2Go(format string) string {
-	buffer := bytes.NewBuffer(nil)
-	for i := 0; i < len(format); i++ {
-		if layout, ok := formats[format[i]]; ok {
-			buffer.WriteString(layout)
-		} else {
-			switch format[i] {
-			case '\\': // raw output, no parse
-				buffer.WriteByte(format[i+1])
-				i++
-				continue
-			default:
-				buffer.WriteByte(format[i])
-			}
-		}
-	}
-	return buffer.String()
-}
+func ConvertFormat2Go(format string) string { _ = "STUB: not implemented"; return "" }
 
-func TimezoneFromString(timezone string) *time.Location {
-	if timezone == "" {
-		return time.UTC
-	}
-	location, err := time.LoadLocation(timezone)
-	if err != nil {
-		location = time.UTC
-	}
-	return location
-}
+// raw output, no parse
+
+func TimezoneFromString(timezone string) *time.Location { _ = "STUB: not implemented"; return nil }

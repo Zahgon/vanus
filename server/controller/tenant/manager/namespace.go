@@ -17,13 +17,10 @@ package manager
 
 import (
 	"context"
-	"encoding/json"
 	"sync"
 
-	"github.com/vanus-labs/vanus/api/errors"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 
-	primitive "github.com/vanus-labs/vanus/pkg"
 	"github.com/vanus-labs/vanus/pkg/kv"
 	"github.com/vanus-labs/vanus/server/controller/tenant/metadata"
 )
@@ -46,94 +43,33 @@ type namespaceManager struct {
 }
 
 func NewNamespaceManager(client kv.Client) NamespaceManager {
-	return &namespaceManager{
-		kvClient:   client,
-		namespaces: map[vanus.ID]*metadata.Namespace{},
-	}
+	_ = "STUB: not implemented"
+	return *new(NamespaceManager)
 }
 
-func (m *namespaceManager) Init(ctx context.Context) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	pairs, err := m.kvClient.List(ctx, kv.NamespaceAllKey())
-	if err != nil {
-		return err
-	}
-	m.namespaces = make(map[vanus.ID]*metadata.Namespace, len(pairs))
-	for _, pair := range pairs {
-		var ns metadata.Namespace
-		err = json.Unmarshal(pair.Value, &ns)
-		if err != nil {
-			return err
-		}
-		m.namespaces[ns.ID] = &ns
-	}
-	return nil
-}
+func (m *namespaceManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (m *namespaceManager) AddNamespace(ctx context.Context, ns *metadata.Namespace) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	v, err := json.Marshal(ns)
-	if err != nil {
-		return err
-	}
-	err = m.kvClient.Set(ctx, kv.NamespaceKey(ns.ID), v)
-	if err != nil {
-		return err
-	}
-	m.namespaces[ns.ID] = ns
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *namespaceManager) DeleteNamespace(ctx context.Context, id vanus.ID) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	ns, exist := m.namespaces[id]
-	if !exist {
-		return nil
-	}
-	if ns.Name == primitive.DefaultNamespace || ns.Name == primitive.SystemNamespace {
-		return errors.ErrResourceCanNotOp.WithMessage(
-			"default/system namespace can't delete")
-	}
-	err := m.kvClient.Delete(ctx, kv.NamespaceKey(id))
-	if err != nil {
-		return err
-	}
-	delete(m.namespaces, id)
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *namespaceManager) GetNamespace(_ context.Context, id vanus.ID) *metadata.Namespace {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	ns, exist := m.namespaces[id]
-	if !exist {
-		return nil
-	}
-	return ns
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (m *namespaceManager) GetNamespaceByName(_ context.Context, name string) *metadata.Namespace {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	for i := range m.namespaces {
-		if m.namespaces[i].Name == name {
-			return m.namespaces[i]
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *namespaceManager) ListNamespace(_ context.Context) []*metadata.Namespace {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	list := make([]*metadata.Namespace, len(m.namespaces))
-	i := 0
-	for id := range m.namespaces {
-		list[i] = m.namespaces[id]
-		i++
-	}
-	return list
+	_ = "STUB: not implemented"
+	return nil
 }

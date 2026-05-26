@@ -21,14 +21,9 @@ import (
 )
 
 func (env *InteractionEnv) handleTickHeartbeat(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	return env.Tick(idx, env.Nodes[idx].Config.HeartbeatTick)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Tick the node at the given index the given number of times.
-func (env *InteractionEnv) Tick(idx int, num int) error {
-	for i := 0; i < num; i++ {
-		env.Nodes[idx].Tick()
-	}
-	return nil
-}
+func (env *InteractionEnv) Tick(idx int, num int) error { _ = "STUB: not implemented"; return nil }

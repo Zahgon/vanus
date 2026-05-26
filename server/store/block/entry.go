@@ -34,13 +34,9 @@ type BytesValue []byte
 
 var _ Value = BytesValue(nil)
 
-func (bv BytesValue) Size() int {
-	return len(bv)
-}
+func (bv BytesValue) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (bv BytesValue) Value() []byte {
-	return bv
-}
+func (bv BytesValue) Value() []byte { _ = "STUB: not implemented"; return nil }
 
 type ExtensionAttributeCallback interface {
 	OnAttribute(attr []byte, val Value)
@@ -87,39 +83,46 @@ type EmptyEntry struct{}
 // Mark sure EmptyEntry implements Entry.
 var _ Entry = (*EmptyEntry)(nil)
 
-func (e *EmptyEntry) Get(ordinal int) interface{} { //nolint:revive // ok
+func (e *EmptyEntry) Get(ordinal int) interface{} {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return nil
 }
 
-func (e *EmptyEntry) GetBytes(ordinal int) []byte { //nolint:revive // ok
+func (e *EmptyEntry) GetBytes(ordinal int) []byte {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return nil
 }
 
-func (e *EmptyEntry) GetString(ordinal int) string { //nolint:revive // ok
+func (e *EmptyEntry) GetString(ordinal int) string {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return ""
 }
 
-func (e *EmptyEntry) GetUint16(ordinal int) uint16 { //nolint:revive // ok
+func (e *EmptyEntry) GetUint16(ordinal int) uint16 {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return 0
 }
 
-func (e *EmptyEntry) GetUint64(ordinal int) uint64 { //nolint:revive // ok
+func (e *EmptyEntry) GetUint64(ordinal int) uint64 {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return 0
 }
 
-func (e *EmptyEntry) GetInt64(ordinal int) int64 { //nolint:revive // ok
+func (e *EmptyEntry) GetInt64(ordinal int) int64 {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return 0
 }
 
-func (e *EmptyEntry) GetTime(ordinal int) time.Time { //nolint:revive // ok
-	return time.Time{}
+func (e *EmptyEntry) GetTime(ordinal int) time.Time {
+	_ = "STUB: not implemented" //nolint:revive // ok
+	return *new(time.Time)
 }
 
-func (e *EmptyEntry) GetExtensionAttribute([]byte) []byte {
-	return nil
-}
+func (e *EmptyEntry) GetExtensionAttribute([]byte) []byte { _ = "STUB: not implemented"; return nil }
 
-func (e *EmptyEntry) RangeExtensionAttributes(ordinal ExtensionAttributeCallback) { //nolint:revive // ok
+func (e *EmptyEntry) RangeExtensionAttributes(ordinal ExtensionAttributeCallback) {
+	_ = "STUB: not implemented" //nolint:revive // ok
+	return
 }
 
 type EmptyEntryExt struct {
@@ -129,16 +132,14 @@ type EmptyEntryExt struct {
 // Mark sure EmptyEntryExt implements EntryExt.
 var _ EntryExt = (*EmptyEntryExt)(nil)
 
-func (e *EmptyEntryExt) OptionalAttributeCount() int {
-	return 0
+func (e *EmptyEntryExt) OptionalAttributeCount() int { _ = "STUB: not implemented"; return 0 }
+
+func (e *EmptyEntryExt) RangeOptionalAttributes(ordinal OptionalAttributeCallback) {
+	_ = "STUB: not implemented" //nolint:revive // ok
+	return
 }
 
-func (e *EmptyEntryExt) RangeOptionalAttributes(ordinal OptionalAttributeCallback) { //nolint:revive // ok
-}
-
-func (e *EmptyEntryExt) ExtensionAttributeCount() int {
-	return 0
-}
+func (e *EmptyEntryExt) ExtensionAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 type EntryExtWrapper struct {
 	E EntryExt
@@ -147,53 +148,41 @@ type EntryExtWrapper struct {
 // Make sure entryWrapper implements block.Entry.
 var _ EntryExt = (*EntryExtWrapper)(nil)
 
-func (w *EntryExtWrapper) Get(ordinal int) interface{} {
-	return w.E.Get(ordinal)
-}
+func (w *EntryExtWrapper) Get(ordinal int) interface{} { _ = "STUB: not implemented"; return nil }
 
-func (w *EntryExtWrapper) GetBytes(ordinal int) []byte {
-	return w.E.GetBytes(ordinal)
-}
+func (w *EntryExtWrapper) GetBytes(ordinal int) []byte { _ = "STUB: not implemented"; return nil }
 
-func (w *EntryExtWrapper) GetString(ordinal int) string {
-	return w.E.GetString(ordinal)
-}
+func (w *EntryExtWrapper) GetString(ordinal int) string { _ = "STUB: not implemented"; return "" }
 
-func (w *EntryExtWrapper) GetUint16(ordinal int) uint16 {
-	return w.E.GetUint16(ordinal)
-}
+func (w *EntryExtWrapper) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
-func (w *EntryExtWrapper) GetUint64(ordinal int) uint64 {
-	return w.E.GetUint64(ordinal)
-}
+func (w *EntryExtWrapper) GetUint64(ordinal int) uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (w *EntryExtWrapper) GetInt64(ordinal int) int64 {
-	return w.E.GetInt64(ordinal)
-}
+func (w *EntryExtWrapper) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
 func (w *EntryExtWrapper) GetTime(ordinal int) time.Time {
-	return w.E.GetTime(ordinal)
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 func (w *EntryExtWrapper) RangeOptionalAttributes(cb OptionalAttributeCallback) {
-	w.E.RangeOptionalAttributes(cb)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (w *EntryExtWrapper) OptionalAttributeCount() int {
-	return w.E.OptionalAttributeCount()
-}
+func (w *EntryExtWrapper) OptionalAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 func (w *EntryExtWrapper) GetExtensionAttribute(attr []byte) []byte {
-	return w.E.GetExtensionAttribute(attr)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (w *EntryExtWrapper) RangeExtensionAttributes(cb ExtensionAttributeCallback) {
-	w.E.RangeExtensionAttributes(cb)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (w *EntryExtWrapper) ExtensionAttributeCount() int {
-	return w.E.ExtensionAttributeCount()
-}
+func (w *EntryExtWrapper) ExtensionAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 type OnExtensionAttributeFunc func(attr []byte, val Value)
 
@@ -201,7 +190,8 @@ type OnExtensionAttributeFunc func(attr []byte, val Value)
 var _ ExtensionAttributeCallback = (OnExtensionAttributeFunc)(nil)
 
 func (f OnExtensionAttributeFunc) OnAttribute(attr []byte, val Value) {
-	f(attr, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 type OnOptionalAttributeFunc func(ordinal int, val interface{})
@@ -210,29 +200,33 @@ type OnOptionalAttributeFunc func(ordinal int, val interface{})
 var _ OptionalAttributeCallback = (OnOptionalAttributeFunc)(nil)
 
 func (f OnOptionalAttributeFunc) OnBytes(ordinal int, val []byte) {
-	f.OnAttribute(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (f OnOptionalAttributeFunc) OnString(ordinal int, val string) {
-	f.OnAttribute(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (f OnOptionalAttributeFunc) OnUint16(ordinal int, val uint16) {
-	f.OnAttribute(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (f OnOptionalAttributeFunc) OnUint64(ordinal int, val uint64) {
-	f.OnAttribute(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (f OnOptionalAttributeFunc) OnInt64(ordinal int, val int64) {
-	f.OnAttribute(ordinal, val)
-}
+func (f OnOptionalAttributeFunc) OnInt64(ordinal int, val int64) { _ = "STUB: not implemented"; return }
 
 func (f OnOptionalAttributeFunc) OnTime(ordinal int, val time.Time) {
-	f.OnAttribute(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (f OnOptionalAttributeFunc) OnAttribute(ordinal int, val interface{}) {
-	f(ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }

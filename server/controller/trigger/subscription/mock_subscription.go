@@ -11,7 +11,6 @@ package subscription
 
 import (
 	context "context"
-	reflect "reflect"
 	time "time"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
@@ -32,237 +31,188 @@ type MockManagerMockRecorder struct {
 }
 
 // NewMockManager creates a new mock instance.
-func NewMockManager(ctrl *gomock.Controller) *MockManager {
-	mock := &MockManager{ctrl: ctrl}
-	mock.recorder = &MockManagerMockRecorder{mock}
-	return mock
-}
+func NewMockManager(ctrl *gomock.Controller) *MockManager { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockManager) EXPECT() *MockManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddSubscription mocks base method.
+	return nil
 }
 
-// AddSubscription mocks base method.
 func (m *MockManager) AddSubscription(ctx context.Context, subscription *metadata.Subscription) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddSubscription", ctx, subscription)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddSubscription indicates an expected call of AddSubscription.
 func (mr *MockManagerMockRecorder) AddSubscription(ctx, subscription any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddSubscription", reflect.TypeOf((*MockManager)(nil).AddSubscription), ctx, subscription)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription mocks base method.
 func (m *MockManager) DeleteSubscription(ctx context.Context, id vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteSubscription", ctx, id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription indicates an expected call of DeleteSubscription.
 func (mr *MockManagerMockRecorder) DeleteSubscription(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteSubscription", reflect.TypeOf((*MockManager)(nil).DeleteSubscription), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetDeadLetterOffset mocks base method.
 func (m *MockManager) GetDeadLetterOffset(ctx context.Context, id vsr.ID) (uint64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetDeadLetterOffset", ctx, id)
-	ret0, _ := ret[0].(uint64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // GetDeadLetterOffset indicates an expected call of GetDeadLetterOffset.
 func (mr *MockManagerMockRecorder) GetDeadLetterOffset(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeadLetterOffset", reflect.TypeOf((*MockManager)(nil).GetDeadLetterOffset), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetOffset mocks base method.
 func (m *MockManager) GetOffset(ctx context.Context, id vsr.ID) (info.ListOffsetInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetOffset", ctx, id)
-	ret0, _ := ret[0].(info.ListOffsetInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo), nil
 }
 
 // GetOffset indicates an expected call of GetOffset.
 func (mr *MockManagerMockRecorder) GetOffset(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOffset", reflect.TypeOf((*MockManager)(nil).GetOffset), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetOrSaveOffset mocks base method.
 func (m *MockManager) GetOrSaveOffset(ctx context.Context, id vsr.ID) (info.ListOffsetInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetOrSaveOffset", ctx, id)
-	ret0, _ := ret[0].(info.ListOffsetInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo), nil
 }
 
 // GetOrSaveOffset indicates an expected call of GetOrSaveOffset.
 func (mr *MockManagerMockRecorder) GetOrSaveOffset(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrSaveOffset", reflect.TypeOf((*MockManager)(nil).GetOrSaveOffset), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscription mocks base method.
 func (m *MockManager) GetSubscription(ctx context.Context, id vsr.ID) *metadata.Subscription {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSubscription", ctx, id)
-	ret0, _ := ret[0].(*metadata.Subscription)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscription indicates an expected call of GetSubscription.
 func (mr *MockManagerMockRecorder) GetSubscription(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSubscription", reflect.TypeOf((*MockManager)(nil).GetSubscription), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscriptionByName mocks base method.
 func (m *MockManager) GetSubscriptionByName(ctx context.Context, namespaceID vsr.ID, name string) *metadata.Subscription {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSubscriptionByName", ctx, namespaceID, name)
-	ret0, _ := ret[0].(*metadata.Subscription)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscriptionByName indicates an expected call of GetSubscriptionByName.
 func (mr *MockManagerMockRecorder) GetSubscriptionByName(ctx, namespaceID, name any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSubscriptionByName", reflect.TypeOf((*MockManager)(nil).GetSubscriptionByName), ctx, namespaceID, name)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Heartbeat mocks base method.
 func (m *MockManager) Heartbeat(ctx context.Context, id vsr.ID, addr string, time time.Time) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Heartbeat", ctx, id, addr, time)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Heartbeat indicates an expected call of Heartbeat.
 func (mr *MockManagerMockRecorder) Heartbeat(ctx, id, addr, time any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Heartbeat", reflect.TypeOf((*MockManager)(nil).Heartbeat), ctx, id, addr, time)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
-func (m *MockManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSubscription mocks base method.
 func (m *MockManager) ListSubscription(ctx context.Context) []*metadata.Subscription {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListSubscription", ctx)
-	ret0, _ := ret[0].([]*metadata.Subscription)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSubscription indicates an expected call of ListSubscription.
 func (mr *MockManagerMockRecorder) ListSubscription(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSubscription", reflect.TypeOf((*MockManager)(nil).ListSubscription), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResetOffsetByTimestamp mocks base method.
 func (m *MockManager) ResetOffsetByTimestamp(ctx context.Context, id vsr.ID, timestamp uint64) (info.ListOffsetInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ResetOffsetByTimestamp", ctx, id, timestamp)
-	ret0, _ := ret[0].(info.ListOffsetInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo), nil
 }
 
 // ResetOffsetByTimestamp indicates an expected call of ResetOffsetByTimestamp.
 func (mr *MockManagerMockRecorder) ResetOffsetByTimestamp(ctx, id, timestamp any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetOffsetByTimestamp", reflect.TypeOf((*MockManager)(nil).ResetOffsetByTimestamp), ctx, id, timestamp)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveDeadLetterOffset mocks base method.
 func (m *MockManager) SaveDeadLetterOffset(ctx context.Context, id vsr.ID, offset uint64) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SaveDeadLetterOffset", ctx, id, offset)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveDeadLetterOffset indicates an expected call of SaveDeadLetterOffset.
 func (mr *MockManagerMockRecorder) SaveDeadLetterOffset(ctx, id, offset any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveDeadLetterOffset", reflect.TypeOf((*MockManager)(nil).SaveDeadLetterOffset), ctx, id, offset)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveOffset mocks base method.
 func (m *MockManager) SaveOffset(ctx context.Context, id vsr.ID, offsets info.ListOffsetInfo, commit bool) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SaveOffset", ctx, id, offsets, commit)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveOffset indicates an expected call of SaveOffset.
 func (mr *MockManagerMockRecorder) SaveOffset(ctx, id, offsets, commit any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveOffset", reflect.TypeOf((*MockManager)(nil).SaveOffset), ctx, id, offsets, commit)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
-func (m *MockManager) Start() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Start")
-}
+func (m *MockManager) Start() { _ = "STUB: not implemented"; return }
 
 // Start indicates an expected call of Start.
-func (mr *MockManagerMockRecorder) Start() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockManager)(nil).Start))
-}
+func (mr *MockManagerMockRecorder) Start() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Stop mocks base method.
-func (m *MockManager) Stop() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Stop")
-}
+func (m *MockManager) Stop() { _ = "STUB: not implemented"; return }
 
 // Stop indicates an expected call of Stop.
-func (mr *MockManagerMockRecorder) Stop() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockManager)(nil).Stop))
-}
+func (mr *MockManagerMockRecorder) Stop() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // UpdateSubscription mocks base method.
 func (m *MockManager) UpdateSubscription(ctx context.Context, subscription *metadata.Subscription) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateSubscription", ctx, subscription)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSubscription indicates an expected call of UpdateSubscription.
 func (mr *MockManagerMockRecorder) UpdateSubscription(ctx, subscription any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSubscription", reflect.TypeOf((*MockManager)(nil).UpdateSubscription), ctx, subscription)
+	_ = "STUB: not implemented"
+	return nil
 }

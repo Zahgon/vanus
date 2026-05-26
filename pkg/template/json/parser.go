@@ -17,12 +17,9 @@ package json
 import (
 	// standard libraries.
 	"errors"
-	"io"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/bytes"
-	"github.com/vanus-labs/vanus/lib/json/parse"
-	"github.com/vanus-labs/vanus/pkg/template"
 )
 
 var errParseJSONTemplate = errors.New("cannot parse JSON template")
@@ -48,245 +45,61 @@ type templateParser struct {
 }
 
 func (p *templateParser) parse(text string) (templateNode, error) {
-	s := bytes.NewMarkScanner(bytes.UnsafeFromString(text))
-	if err := p.doParse(s); err != nil {
-		return nil, err
-	}
-	n, _ := p.stack.pop()
-	return n, nil
+	_ = "STUB: not implemented"
+	return *new(templateNode), nil
 }
 
-func (p *templateParser) doParse(s *bytes.MarkScanner) error {
-	for {
-		c, err := skipWhitespace(s)
-		if err != nil {
-			if err == io.EOF && p.state == waitEOF { //nolint:errorlint // io.EOF is not an error
-				return nil
-			}
-			return err
-		}
+func (p *templateParser) doParse(s *bytes.MarkScanner) error { _ = "STUB: not implemented"; return nil }
 
-		switch p.state {
-		case waitArrayFirstElement:
-			if c == ']' { // empty array
-				p.reduce()
-				break
-			}
-			fallthrough
-		case waitValue, waitObjectValue, waitArrayElement:
-			if err = p.expectValue(c, s); err != nil {
-				return err
-			}
-		case waitObjectFirstKey:
-			if c == '}' { // empty object
-				p.reduce()
-				break
-			}
-			fallthrough
-		case waitObjectKey:
-			if c != '"' {
-				return errParseJSONTemplate
-			}
-			sn, err := p.expectString(s)
-			if err != nil {
-				return err
-			}
-			mn := &memberNode{key: sn}
-			p.stack.push(mn, p.state)
-			p.state = waitObjectColon
-		case waitObjectColon:
-			if c != ':' {
-				return errParseJSONTemplate
-			}
-			p.state = waitObjectValue
-		case waitObjectComma:
-			switch c {
-			case ',':
-				p.state = waitObjectKey
-			case '}':
-				p.reduce()
-			default:
-				return errParseJSONTemplate
-			}
-		case waitArrayComma:
-			switch c {
-			case ',':
-				p.state = waitArrayElement
-			case ']':
-				p.reduce()
-			default:
-				return errParseJSONTemplate
-			}
-		default:
-			return errParseJSONTemplate
-		}
-	}
-}
+//nolint:errorlint // io.EOF is not an error
+
+// empty array
+
+// empty object
 
 func (p *templateParser) expectValue(c byte, s *bytes.MarkScanner) error {
-	var n templateNode
-	switch c {
-	case '{':
-		p.stack.push(&objectNode{}, p.state)
-		p.state = waitObjectFirstKey
-		return nil
-	case '[':
-		p.stack.push(&arrayNode{}, p.state)
-		p.state = waitArrayFirstElement
-		return nil
-	case '<':
-		nn, err := p.expectVariable(s)
-		if err != nil {
-			return err
-		}
-		n = nn
-	case '"':
-		dsn, err := p.expectDynamicString(s)
-		if err != nil {
-			return err
-		}
-		n = dsn
-	case '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
-		nn, err := p.expectNumber(c, s)
-		if err != nil {
-			return err
-		}
-		n = nn
-	case 't':
-		if err := exceptTrueExt(s); err != nil {
-			return err
-		}
-		n = True
-	case 'f':
-		if err := exceptFalseExt(s); err != nil {
-			return err
-		}
-		n = False
-	case 'n':
-		if err := exceptNullExt(s); err != nil {
-			return err
-		}
-		n = Null
-	default:
-		return errParseJSONTemplate
-	}
-
-	p.reduceExt(n)
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (p *templateParser) expectVariable(s *bytes.MarkScanner) (templateNode, error) {
-	original, path, err := template.ExpectVariable(s)
-	if err != nil {
-		return nil, err
-	}
-	if path != nil {
-		return &jsonPathNode{path: path, original: original}, nil
-	}
-	return &variableNode{name: string(original)}, nil
+	_ = "STUB: not implemented"
+	return *new(templateNode), nil
 }
 
 func (p *templateParser) expectDynamicString(s *bytes.MarkScanner) (templateNode, error) {
-	var elements []templateNode
-	for {
-		// string
-		m := s.Mark(0)
-		next, err := consumeDynamicString(s, bytes.DummyWriter)
-		if err != nil {
-			return nil, err
-		}
-		if bs := s.Since(m, -1); len(bs) != 0 {
-			elements = append(elements, &stringNode{val: unescapeBracket(bs)})
-		}
-
-		if !next {
-			break
-		}
-
-		// variable
-		nn, err := p.expectVariable(s)
-		if err != nil {
-			return nil, errInvalidDynamicString
-		}
-		elements = append(elements, nn)
-	}
-
-	switch len(elements) {
-	case 0:
-		return &stringNode{val: []byte{}}, nil
-	case 1:
-		switch n := elements[0].(type) {
-		case *stringNode:
-			return n, nil
-		default:
-			return &dynamicStringNode{elements}, nil
-		}
-	default:
-		return &dynamicStringNode{elements}, nil
-	}
+	_ = "STUB: not implemented"
+	return *new(templateNode), nil
 }
 
+// string
+
+// variable
+
 func (p *templateParser) expectString(s *bytes.MarkScanner) (*stringNode, error) {
-	m := s.Mark(0) // exclude '"'
-
-	if err := parse.ConsumeDoubleQuotedString(s, bytes.DummyWriter); err != nil {
-		return nil, errInvalidString
-	}
-
-	return &stringNode{val: unescapeBracket(s.Since(m, -1))}, nil
+	_ = "STUB: not implemented"
+	// exclude '"'
+	return nil, nil
 }
 
 func (p *templateParser) expectNumber(c byte, s *bytes.MarkScanner) (*numberNode, error) {
-	m := s.Mark(-1) // include c
-
-	_, err := expectNumberExt(c, s)
-	if err != nil {
-		return nil, err
-	}
-
-	return &numberNode{val: s.Since(m, 0)}, nil
+	_ = "STUB: not implemented"
+	// include c
+	return nil, nil
 }
 
-func (p *templateParser) reduce() {
-	n, s := p.stack.pop()
+func (p *templateParser) reduce() { _ = "STUB: not implemented"; return }
 
-	// resume last state
-	p.state = s
+// resume last state
 
-	// then do reduce
-	p.reduceExt(n)
-}
+// then do reduce
 
-func (p *templateParser) reduceExt(n templateNode) {
-	switch p.state {
-	case waitObjectValue:
-		p.reduceObjectMember(n)
-	case waitArrayElement, waitArrayFirstElement:
-		p.reduceArrayElement(n)
-	case waitValue:
-		p.stack.push(n, p.state)
-		p.state = waitEOF
-	}
-}
+func (p *templateParser) reduceExt(n templateNode) { _ = "STUB: not implemented"; return }
 
-func (p *templateParser) reduceObjectMember(n templateNode) {
-	nn, _ := p.stack.pop()
-	mn, _ := nn.(*memberNode)
-	mn.value = n
+func (p *templateParser) reduceObjectMember(n templateNode) { _ = "STUB: not implemented"; return }
 
-	nn, _ = p.stack.peek()
-	on, _ := nn.(*objectNode)
-	on.members = append(on.members, mn)
+// expect next member
 
-	// expect next member
-	p.state = waitObjectComma
-}
+func (p *templateParser) reduceArrayElement(n templateNode) { _ = "STUB: not implemented"; return }
 
-func (p *templateParser) reduceArrayElement(n templateNode) {
-	nn, _ := p.stack.peek()
-	an, _ := nn.(*arrayNode)
-	an.elements = append(an.elements, n)
-
-	// expect next element
-	p.state = waitArrayComma
-}
+// expect next element

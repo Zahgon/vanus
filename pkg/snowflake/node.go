@@ -20,16 +20,7 @@ const (
 	UnknownService
 )
 
-func (s Service) Name() string {
-	switch s {
-	case ControllerService:
-		return "ControllerService"
-	case StoreService:
-		return "StoreService"
-	default:
-		return "UnknownService"
-	}
-}
+func (s Service) Name() string { _ = "STUB: not implemented"; return "" }
 
 type node struct {
 	start uint16
@@ -38,35 +29,11 @@ type node struct {
 	svc   Service
 }
 
-func NewNode(svc Service, id uint16) *node { //nolint: revive // it's ok
-	switch svc {
-	case ControllerService:
-		return &node{
-			start: controllerNodeIDStart,
-			end:   reservedControlPanelNodeIDStart,
-			svc:   svc,
-			id:    id,
-		}
-	case StoreService:
-		return &node{
-			start: storeNodeIDStart,
-			end:   reservedNodeIDStart,
-			svc:   svc,
-			id:    id,
-		}
-	}
-	return &node{
-		start: reservedNodeIDStart,
-		end:   reservedNodeIDStart,
-		svc:   UnknownService,
-		id:    id,
-	}
+func NewNode(svc Service, id uint16) *node {
+	_ = "STUB: not implemented" //nolint: revive // it's ok
+	return nil
 }
 
-func (n *node) logicID() uint16 {
-	return n.start + n.id
-}
+func (n *node) logicID() uint16 { _ = "STUB: not implemented"; return 0 }
 
-func (n *node) valid() bool {
-	return n.logicID() < n.end && n.logicID() >= n.start
-}
+func (n *node) valid() bool { _ = "STUB: not implemented"; return false }

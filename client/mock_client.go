@@ -11,7 +11,6 @@ package client
 
 import (
 	context "context"
-	reflect "reflect"
 
 	api "github.com/vanus-labs/vanus/client/pkg/api"
 	gomock "go.uber.org/mock/gomock"
@@ -29,44 +28,32 @@ type MockClientMockRecorder struct {
 }
 
 // NewMockClient creates a new mock instance.
-func NewMockClient(ctrl *gomock.Controller) *MockClient {
-	mock := &MockClient{ctrl: ctrl}
-	mock.recorder = &MockClientMockRecorder{mock}
-	return mock
-}
+func NewMockClient(ctrl *gomock.Controller) *MockClient { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockClient) EXPECT() *MockClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Disconnect mocks base method.
+	return nil
 }
 
-// Disconnect mocks base method.
-func (m *MockClient) Disconnect(ctx context.Context) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Disconnect", ctx)
-}
+func (m *MockClient) Disconnect(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 // Disconnect indicates an expected call of Disconnect.
 func (mr *MockClientMockRecorder) Disconnect(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Disconnect", reflect.TypeOf((*MockClient)(nil).Disconnect), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Eventbus mocks base method.
 func (m *MockClient) Eventbus(ctx context.Context, opts ...api.EventbusOption) api.Eventbus {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Eventbus", varargs...)
-	ret0, _ := ret[0].(api.Eventbus)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(api.Eventbus)
 }
 
 // Eventbus indicates an expected call of Eventbus.
 func (mr *MockClientMockRecorder) Eventbus(ctx any, opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Eventbus", reflect.TypeOf((*MockClient)(nil).Eventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -22,10 +22,9 @@ package raft
 
 import (
 	context "context"
+
 	raftpb "github.com/vanus-labs/vanus/pkg/raft/raftpb"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
@@ -50,16 +49,13 @@ type raftServerClient struct {
 }
 
 func NewRaftServerClient(cc grpc.ClientConnInterface) RaftServerClient {
-	return &raftServerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(RaftServerClient)
 }
 
 func (c *raftServerClient) SendMessage(ctx context.Context, opts ...grpc.CallOption) (RaftServer_SendMessageClient, error) {
-	stream, err := c.cc.NewStream(ctx, &RaftServer_ServiceDesc.Streams[0], RaftServer_SendMessage_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &raftServerSendMessageClient{stream}
-	return x, nil
+	_ = "STUB: not implemented"
+	return *new(RaftServer_SendMessageClient), nil
 }
 
 type RaftServer_SendMessageClient interface {
@@ -73,18 +69,13 @@ type raftServerSendMessageClient struct {
 }
 
 func (x *raftServerSendMessageClient) Send(m *raftpb.Message) error {
-	return x.ClientStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *raftServerSendMessageClient) CloseAndRecv() (*emptypb.Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(emptypb.Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RaftServerServer is the server API for RaftServer service.
@@ -99,7 +90,8 @@ type UnimplementedRaftServerServer struct {
 }
 
 func (UnimplementedRaftServerServer) SendMessage(RaftServer_SendMessageServer) error {
-	return status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnsafeRaftServerServer may be embedded to opt out of forward compatibility for this service.
@@ -110,11 +102,13 @@ type UnsafeRaftServerServer interface {
 }
 
 func RegisterRaftServerServer(s grpc.ServiceRegistrar, srv RaftServerServer) {
-	s.RegisterService(&RaftServer_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _RaftServer_SendMessage_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(RaftServerServer).SendMessage(&raftServerSendMessageServer{stream})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type RaftServer_SendMessageServer interface {
@@ -128,15 +122,13 @@ type raftServerSendMessageServer struct {
 }
 
 func (x *raftServerSendMessageServer) SendAndClose(m *emptypb.Empty) error {
-	return x.ServerStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *raftServerSendMessageServer) Recv() (*raftpb.Message, error) {
-	m := new(raftpb.Message)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RaftServer_ServiceDesc is the grpc.ServiceDesc for RaftServer service.

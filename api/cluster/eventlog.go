@@ -11,9 +11,11 @@ type eventlogService struct {
 }
 
 func newEventlogService(cc *raw_client.Conn) EventlogService {
-	return &eventlogService{client: raw_client.NewEventlogClient(cc)}
+	_ = "STUB: not implemented"
+	return *new(EventlogService)
 }
 
 func (es *eventlogService) RawClient() ctrlpb.EventlogControllerClient {
-	return es.client
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.EventlogControllerClient)
 }

@@ -16,8 +16,6 @@ package policy
 
 import (
 	"context"
-	"sort"
-	"sync/atomic"
 
 	"github.com/vanus-labs/vanus/client/pkg/api"
 )
@@ -25,9 +23,8 @@ import (
 var _ api.WritePolicy = (*roundRobinWritePolicy)(nil)
 
 func NewRoundRobinWritePolicy(eb api.Eventbus) api.WritePolicy {
-	return &roundRobinWritePolicy{
-		bus: eb,
-	}
+	_ = "STUB: not implemented"
+	return *new(api.WritePolicy)
 }
 
 type roundRobinWritePolicy struct {
@@ -36,53 +33,20 @@ type roundRobinWritePolicy struct {
 }
 
 func (w *roundRobinWritePolicy) Type() api.PolicyType {
-	return api.RoundRobin
+	_ = "STUB: not implemented"
+	return *new(api.PolicyType)
 }
 
 func (w *roundRobinWritePolicy) NextLog(ctx context.Context) (api.Eventlog, error) {
-	for {
-		logs, err := w.bus.ListLog(ctx)
-		if err != nil {
-			return nil, err
-		}
-		l := len(logs)
-		switch l {
-		case 0:
-			continue
-		case 1:
-		default:
-			sort.Slice(logs, func(i, j int) bool {
-				return logs[i].ID() > logs[j].ID()
-			})
-		}
-		i := atomic.AddUint64(&w.idx, 1) % uint64(l)
-		return logs[i], nil
-	}
+	_ = "STUB: not implemented"
+	return *new(api.Eventlog), nil
 }
 
 var _ api.ReadPolicy = (*roundRobinReadPolicy)(nil)
 
 func NewRoundRobinReadPolicy(eb api.Eventbus, fromWhere api.ConsumeFromWhere) *roundRobinReadPolicy {
-	p := &roundRobinReadPolicy{
-		bus:    eb,
-		offset: 0,
-	}
-	log, err := p.NextLog(context.Background())
-	if err != nil {
-		return p
-	}
-	if fromWhere == api.ConsumeFromWhereEarliest {
-		p.offset, err = log.EarliestOffset(context.Background())
-		if err != nil {
-			p.offset = 0
-		}
-	} else if fromWhere == api.ConsumeFromWhereLatest {
-		p.offset, err = log.LatestOffset(context.Background())
-		if err != nil {
-			p.offset = 0
-		}
-	}
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type roundRobinReadPolicy struct {
@@ -92,45 +56,24 @@ type roundRobinReadPolicy struct {
 }
 
 func (r *roundRobinReadPolicy) Type() api.PolicyType {
-	return api.RoundRobin
+	_ = "STUB: not implemented"
+	return *new(api.PolicyType)
 }
 
 func (r *roundRobinReadPolicy) NextLog(ctx context.Context) (api.Eventlog, error) {
-	for {
-		logs, err := r.bus.ListLog(ctx)
-		if err != nil {
-			return nil, err
-		}
-		l := len(logs)
-		switch l {
-		case 0:
-			continue
-		case 1:
-		default:
-			sort.Slice(logs, func(i, j int) bool {
-				return logs[i].ID() > logs[j].ID()
-			})
-		}
-		i := atomic.AddUint64(&r.idx, 1) % uint64(l)
-		return logs[i], nil
-	}
+	_ = "STUB: not implemented"
+	return *new(api.Eventlog), nil
 }
 
-func (r *roundRobinReadPolicy) Offset() int64 {
-	return atomic.LoadInt64(&r.offset)
-}
+func (r *roundRobinReadPolicy) Offset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (r *roundRobinReadPolicy) Forward(diff int) {
-	atomic.AddInt64(&r.offset, int64(diff))
-}
+func (r *roundRobinReadPolicy) Forward(diff int) { _ = "STUB: not implemented"; return }
 
 var _ api.ReadPolicy = (*manuallyReadPolicy)(nil)
 
 func NewManuallyReadPolicy(log api.Eventlog, offset int64) *manuallyReadPolicy {
-	return &manuallyReadPolicy{
-		log:    log,
-		offset: offset,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type manuallyReadPolicy struct {
@@ -139,41 +82,37 @@ type manuallyReadPolicy struct {
 }
 
 func (r manuallyReadPolicy) Type() api.PolicyType {
-	return api.Manually
+	_ = "STUB: not implemented"
+	return *new(api.PolicyType)
 }
 
 func (r manuallyReadPolicy) NextLog(ctx context.Context) (api.Eventlog, error) {
-	return r.log, nil
+	_ = "STUB: not implemented"
+	return *new(api.Eventlog), nil
 }
 
-func (r manuallyReadPolicy) Offset() int64 {
-	return atomic.LoadInt64(&r.offset)
-}
+func (r manuallyReadPolicy) Offset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (r *manuallyReadPolicy) Forward(diff int) {
-	atomic.AddInt64(&r.offset, int64(diff))
-}
+func (r *manuallyReadPolicy) Forward(diff int) { _ = "STUB: not implemented"; return }
 
 var _ api.LogPolicy = (*readOnlyPolicy)(nil)
 
-func NewReadOnlyPolicy() api.LogPolicy {
-	return &readOnlyPolicy{}
-}
+func NewReadOnlyPolicy() api.LogPolicy { _ = "STUB: not implemented"; return *new(api.LogPolicy) }
 
 type readOnlyPolicy struct{}
 
 func (w *readOnlyPolicy) AccessMode() api.PolicyType {
-	return api.ReadOnly
+	_ = "STUB: not implemented"
+	return *new(api.PolicyType)
 }
 
 var _ api.LogPolicy = (*readWritePolicy)(nil)
 
-func NewReadWritePolicy() api.LogPolicy {
-	return &readWritePolicy{}
-}
+func NewReadWritePolicy() api.LogPolicy { _ = "STUB: not implemented"; return *new(api.LogPolicy) }
 
 type readWritePolicy struct{}
 
 func (w *readWritePolicy) AccessMode() api.PolicyType {
-	return api.ReadWrite
+	_ = "STUB: not implemented"
+	return *new(api.PolicyType)
 }

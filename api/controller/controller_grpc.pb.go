@@ -22,10 +22,9 @@ package controller
 
 import (
 	context "context"
+
 	meta "github.com/vanus-labs/vanus/api/meta"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
@@ -52,16 +51,13 @@ type pingServerClient struct {
 }
 
 func NewPingServerClient(cc grpc.ClientConnInterface) PingServerClient {
-	return &pingServerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(PingServerClient)
 }
 
 func (c *pingServerClient) Ping(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PingResponse, error) {
-	out := new(PingResponse)
-	err := c.cc.Invoke(ctx, PingServer_Ping_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // PingServerServer is the server API for PingServer service.
@@ -76,7 +72,8 @@ type UnimplementedPingServerServer struct {
 }
 
 func (UnimplementedPingServerServer) Ping(context.Context, *emptypb.Empty) (*PingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafePingServerServer may be embedded to opt out of forward compatibility for this service.
@@ -87,25 +84,13 @@ type UnsafePingServerServer interface {
 }
 
 func RegisterPingServerServer(s grpc.ServiceRegistrar, srv PingServerServer) {
-	s.RegisterService(&PingServer_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _PingServer_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PingServerServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: PingServer_Ping_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PingServerServer).Ping(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // PingServer_ServiceDesc is the grpc.ServiceDesc for PingServer service.
@@ -148,52 +133,33 @@ type namespaceControllerClient struct {
 }
 
 func NewNamespaceControllerClient(cc grpc.ClientConnInterface) NamespaceControllerClient {
-	return &namespaceControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(NamespaceControllerClient)
 }
 
 func (c *namespaceControllerClient) CreateNamespace(ctx context.Context, in *CreateNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, NamespaceController_CreateNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *namespaceControllerClient) ListNamespace(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListNamespaceResponse, error) {
-	out := new(ListNamespaceResponse)
-	err := c.cc.Invoke(ctx, NamespaceController_ListNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *namespaceControllerClient) GetNamespace(ctx context.Context, in *GetNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, NamespaceController_GetNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *namespaceControllerClient) DeleteNamespace(ctx context.Context, in *DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, NamespaceController_DeleteNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *namespaceControllerClient) GetNamespaceWithHumanFriendly(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, NamespaceController_GetNamespaceWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // NamespaceControllerServer is the server API for NamespaceController service.
@@ -212,19 +178,28 @@ type UnimplementedNamespaceControllerServer struct {
 }
 
 func (UnimplementedNamespaceControllerServer) CreateNamespace(context.Context, *CreateNamespaceRequest) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedNamespaceControllerServer) ListNamespace(context.Context, *emptypb.Empty) (*ListNamespaceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedNamespaceControllerServer) GetNamespace(context.Context, *GetNamespaceRequest) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedNamespaceControllerServer) DeleteNamespace(context.Context, *DeleteNamespaceRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedNamespaceControllerServer) GetNamespaceWithHumanFriendly(context.Context, *wrapperspb.StringValue) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNamespaceWithHumanFriendly not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeNamespaceControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -235,97 +210,33 @@ type UnsafeNamespaceControllerServer interface {
 }
 
 func RegisterNamespaceControllerServer(s grpc.ServiceRegistrar, srv NamespaceControllerServer) {
-	s.RegisterService(&NamespaceController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _NamespaceController_CreateNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceControllerServer).CreateNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NamespaceController_CreateNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceControllerServer).CreateNamespace(ctx, req.(*CreateNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _NamespaceController_ListNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceControllerServer).ListNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NamespaceController_ListNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceControllerServer).ListNamespace(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _NamespaceController_GetNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceControllerServer).GetNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NamespaceController_GetNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceControllerServer).GetNamespace(ctx, req.(*GetNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _NamespaceController_DeleteNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceControllerServer).DeleteNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NamespaceController_DeleteNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceControllerServer).DeleteNamespace(ctx, req.(*DeleteNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _NamespaceController_GetNamespaceWithHumanFriendly_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceControllerServer).GetNamespaceWithHumanFriendly(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NamespaceController_GetNamespaceWithHumanFriendly_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceControllerServer).GetNamespaceWithHumanFriendly(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // NamespaceController_ServiceDesc is the grpc.ServiceDesc for NamespaceController service.
@@ -389,70 +300,43 @@ type eventbusControllerClient struct {
 }
 
 func NewEventbusControllerClient(cc grpc.ClientConnInterface) EventbusControllerClient {
-	return &eventbusControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(EventbusControllerClient)
 }
 
 func (c *eventbusControllerClient) CreateEventbus(ctx context.Context, in *CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, EventbusController_CreateEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) CreateSystemEventbus(ctx context.Context, in *CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, EventbusController_CreateSystemEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) DeleteEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, EventbusController_DeleteEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) GetEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, EventbusController_GetEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) ListEventbus(ctx context.Context, in *ListEventbusRequest, opts ...grpc.CallOption) (*ListEventbusResponse, error) {
-	out := new(ListEventbusResponse)
-	err := c.cc.Invoke(ctx, EventbusController_ListEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) UpdateEventbus(ctx context.Context, in *UpdateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, EventbusController_UpdateEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventbusControllerClient) GetEventbusWithHumanFriendly(ctx context.Context, in *GetEventbusWithHumanFriendlyRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, EventbusController_GetEventbusWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // EventbusControllerServer is the server API for EventbusController service.
@@ -474,25 +358,38 @@ type UnimplementedEventbusControllerServer struct {
 }
 
 func (UnimplementedEventbusControllerServer) CreateEventbus(context.Context, *CreateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) CreateSystemEventbus(context.Context, *CreateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSystemEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) DeleteEventbus(context.Context, *wrapperspb.UInt64Value) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) GetEventbus(context.Context, *wrapperspb.UInt64Value) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) ListEventbus(context.Context, *ListEventbusRequest) (*ListEventbusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) UpdateEventbus(context.Context, *UpdateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventbusControllerServer) GetEventbusWithHumanFriendly(context.Context, *GetEventbusWithHumanFriendlyRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventbusWithHumanFriendly not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeEventbusControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -503,133 +400,43 @@ type UnsafeEventbusControllerServer interface {
 }
 
 func RegisterEventbusControllerServer(s grpc.ServiceRegistrar, srv EventbusControllerServer) {
-	s.RegisterService(&EventbusController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _EventbusController_CreateEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).CreateEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_CreateEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).CreateEventbus(ctx, req.(*CreateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_CreateSystemEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).CreateSystemEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_CreateSystemEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).CreateSystemEventbus(ctx, req.(*CreateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_DeleteEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt64Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).DeleteEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_DeleteEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).DeleteEventbus(ctx, req.(*wrapperspb.UInt64Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_GetEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt64Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).GetEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_GetEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).GetEventbus(ctx, req.(*wrapperspb.UInt64Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_ListEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).ListEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_ListEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).ListEventbus(ctx, req.(*ListEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_UpdateEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).UpdateEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_UpdateEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).UpdateEventbus(ctx, req.(*UpdateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventbusController_GetEventbusWithHumanFriendly_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventbusWithHumanFriendlyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventbusControllerServer).GetEventbusWithHumanFriendly(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventbusController_GetEventbusWithHumanFriendly_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventbusControllerServer).GetEventbusWithHumanFriendly(ctx, req.(*GetEventbusWithHumanFriendlyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // EventbusController_ServiceDesc is the grpc.ServiceDesc for EventbusController service.
@@ -690,25 +497,18 @@ type eventlogControllerClient struct {
 }
 
 func NewEventlogControllerClient(cc grpc.ClientConnInterface) EventlogControllerClient {
-	return &eventlogControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(EventlogControllerClient)
 }
 
 func (c *eventlogControllerClient) ListSegment(ctx context.Context, in *ListSegmentRequest, opts ...grpc.CallOption) (*ListSegmentResponse, error) {
-	out := new(ListSegmentResponse)
-	err := c.cc.Invoke(ctx, EventlogController_ListSegment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *eventlogControllerClient) GetAppendableSegment(ctx context.Context, in *GetAppendableSegmentRequest, opts ...grpc.CallOption) (*GetAppendableSegmentResponse, error) {
-	out := new(GetAppendableSegmentResponse)
-	err := c.cc.Invoke(ctx, EventlogController_GetAppendableSegment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // EventlogControllerServer is the server API for EventlogController service.
@@ -724,10 +524,13 @@ type UnimplementedEventlogControllerServer struct {
 }
 
 func (UnimplementedEventlogControllerServer) ListSegment(context.Context, *ListSegmentRequest) (*ListSegmentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSegment not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedEventlogControllerServer) GetAppendableSegment(context.Context, *GetAppendableSegmentRequest) (*GetAppendableSegmentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAppendableSegment not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeEventlogControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -738,43 +541,18 @@ type UnsafeEventlogControllerServer interface {
 }
 
 func RegisterEventlogControllerServer(s grpc.ServiceRegistrar, srv EventlogControllerServer) {
-	s.RegisterService(&EventlogController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _EventlogController_ListSegment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSegmentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventlogControllerServer).ListSegment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventlogController_ListSegment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventlogControllerServer).ListSegment(ctx, req.(*ListSegmentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _EventlogController_GetAppendableSegment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAppendableSegmentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventlogControllerServer).GetAppendableSegment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventlogController_GetAppendableSegment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventlogControllerServer).GetAppendableSegment(ctx, req.(*GetAppendableSegmentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // EventlogController_ServiceDesc is the grpc.ServiceDesc for EventlogController service.
@@ -823,25 +601,18 @@ type segmentControllerClient struct {
 }
 
 func NewSegmentControllerClient(cc grpc.ClientConnInterface) SegmentControllerClient {
-	return &segmentControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(SegmentControllerClient)
 }
 
 func (c *segmentControllerClient) QuerySegmentRouteInfo(ctx context.Context, in *QuerySegmentRouteInfoRequest, opts ...grpc.CallOption) (*QuerySegmentRouteInfoResponse, error) {
-	out := new(QuerySegmentRouteInfoResponse)
-	err := c.cc.Invoke(ctx, SegmentController_QuerySegmentRouteInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentControllerClient) SegmentHeartbeat(ctx context.Context, opts ...grpc.CallOption) (SegmentController_SegmentHeartbeatClient, error) {
-	stream, err := c.cc.NewStream(ctx, &SegmentController_ServiceDesc.Streams[0], SegmentController_SegmentHeartbeat_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &segmentControllerSegmentHeartbeatClient{stream}
-	return x, nil
+	_ = "STUB: not implemented"
+	return *new(SegmentController_SegmentHeartbeatClient), nil
 }
 
 type SegmentController_SegmentHeartbeatClient interface {
@@ -855,54 +626,33 @@ type segmentControllerSegmentHeartbeatClient struct {
 }
 
 func (x *segmentControllerSegmentHeartbeatClient) Send(m *SegmentHeartbeatRequest) error {
-	return x.ClientStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *segmentControllerSegmentHeartbeatClient) CloseAndRecv() (*SegmentHeartbeatResponse, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(SegmentHeartbeatResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentControllerClient) RegisterSegmentServer(ctx context.Context, in *RegisterSegmentServerRequest, opts ...grpc.CallOption) (*RegisterSegmentServerResponse, error) {
-	out := new(RegisterSegmentServerResponse)
-	err := c.cc.Invoke(ctx, SegmentController_RegisterSegmentServer_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentControllerClient) UnregisterSegmentServer(ctx context.Context, in *UnregisterSegmentServerRequest, opts ...grpc.CallOption) (*UnregisterSegmentServerResponse, error) {
-	out := new(UnregisterSegmentServerResponse)
-	err := c.cc.Invoke(ctx, SegmentController_UnregisterSegmentServer_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentControllerClient) ReportSegmentBlockIsFull(ctx context.Context, in *SegmentHeartbeatRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SegmentController_ReportSegmentBlockIsFull_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentControllerClient) ReportSegmentLeader(ctx context.Context, in *ReportSegmentLeaderRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SegmentController_ReportSegmentLeader_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SegmentControllerServer is the server API for SegmentController service.
@@ -922,22 +672,33 @@ type UnimplementedSegmentControllerServer struct {
 }
 
 func (UnimplementedSegmentControllerServer) QuerySegmentRouteInfo(context.Context, *QuerySegmentRouteInfoRequest) (*QuerySegmentRouteInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method QuerySegmentRouteInfo not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentControllerServer) SegmentHeartbeat(SegmentController_SegmentHeartbeatServer) error {
-	return status.Errorf(codes.Unimplemented, "method SegmentHeartbeat not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (UnimplementedSegmentControllerServer) RegisterSegmentServer(context.Context, *RegisterSegmentServerRequest) (*RegisterSegmentServerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterSegmentServer not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentControllerServer) UnregisterSegmentServer(context.Context, *UnregisterSegmentServerRequest) (*UnregisterSegmentServerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterSegmentServer not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentControllerServer) ReportSegmentBlockIsFull(context.Context, *SegmentHeartbeatRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReportSegmentBlockIsFull not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentControllerServer) ReportSegmentLeader(context.Context, *ReportSegmentLeaderRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReportSegmentLeader not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeSegmentControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -948,29 +709,18 @@ type UnsafeSegmentControllerServer interface {
 }
 
 func RegisterSegmentControllerServer(s grpc.ServiceRegistrar, srv SegmentControllerServer) {
-	s.RegisterService(&SegmentController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _SegmentController_QuerySegmentRouteInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QuerySegmentRouteInfoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentControllerServer).QuerySegmentRouteInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentController_QuerySegmentRouteInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentControllerServer).QuerySegmentRouteInfo(ctx, req.(*QuerySegmentRouteInfoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentController_SegmentHeartbeat_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(SegmentControllerServer).SegmentHeartbeat(&segmentControllerSegmentHeartbeatServer{stream})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type SegmentController_SegmentHeartbeatServer interface {
@@ -984,87 +734,33 @@ type segmentControllerSegmentHeartbeatServer struct {
 }
 
 func (x *segmentControllerSegmentHeartbeatServer) SendAndClose(m *SegmentHeartbeatResponse) error {
-	return x.ServerStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *segmentControllerSegmentHeartbeatServer) Recv() (*SegmentHeartbeatRequest, error) {
-	m := new(SegmentHeartbeatRequest)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentController_RegisterSegmentServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterSegmentServerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentControllerServer).RegisterSegmentServer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentController_RegisterSegmentServer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentControllerServer).RegisterSegmentServer(ctx, req.(*RegisterSegmentServerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentController_UnregisterSegmentServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterSegmentServerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentControllerServer).UnregisterSegmentServer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentController_UnregisterSegmentServer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentControllerServer).UnregisterSegmentServer(ctx, req.(*UnregisterSegmentServerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentController_ReportSegmentBlockIsFull_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SegmentHeartbeatRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentControllerServer).ReportSegmentBlockIsFull(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentController_ReportSegmentBlockIsFull_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentControllerServer).ReportSegmentBlockIsFull(ctx, req.(*SegmentHeartbeatRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentController_ReportSegmentLeader_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReportSegmentLeaderRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentControllerServer).ReportSegmentLeader(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentController_ReportSegmentLeader_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentControllerServer).ReportSegmentLeader(ctx, req.(*ReportSegmentLeaderRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SegmentController_ServiceDesc is the grpc.ServiceDesc for SegmentController service.
@@ -1147,79 +843,48 @@ type triggerControllerClient struct {
 }
 
 func NewTriggerControllerClient(cc grpc.ClientConnInterface) TriggerControllerClient {
-	return &triggerControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(TriggerControllerClient)
 }
 
 func (c *triggerControllerClient) CreateSubscription(ctx context.Context, in *CreateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, TriggerController_CreateSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) UpdateSubscription(ctx context.Context, in *UpdateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, TriggerController_UpdateSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, TriggerController_DeleteSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) DisableSubscription(ctx context.Context, in *DisableSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, TriggerController_DisableSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) ResumeSubscription(ctx context.Context, in *ResumeSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, TriggerController_ResumeSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) GetSubscription(ctx context.Context, in *GetSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, TriggerController_GetSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) ListSubscription(ctx context.Context, in *ListSubscriptionRequest, opts ...grpc.CallOption) (*ListSubscriptionResponse, error) {
-	out := new(ListSubscriptionResponse)
-	err := c.cc.Invoke(ctx, TriggerController_ListSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) TriggerWorkerHeartbeat(ctx context.Context, opts ...grpc.CallOption) (TriggerController_TriggerWorkerHeartbeatClient, error) {
-	stream, err := c.cc.NewStream(ctx, &TriggerController_ServiceDesc.Streams[0], TriggerController_TriggerWorkerHeartbeat_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &triggerControllerTriggerWorkerHeartbeatClient{stream}
-	return x, nil
+	_ = "STUB: not implemented"
+	return *new(TriggerController_TriggerWorkerHeartbeatClient), nil
 }
 
 type TriggerController_TriggerWorkerHeartbeatClient interface {
@@ -1233,72 +898,43 @@ type triggerControllerTriggerWorkerHeartbeatClient struct {
 }
 
 func (x *triggerControllerTriggerWorkerHeartbeatClient) Send(m *TriggerWorkerHeartbeatRequest) error {
-	return x.ClientStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *triggerControllerTriggerWorkerHeartbeatClient) CloseAndRecv() (*TriggerWorkerHeartbeatResponse, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(TriggerWorkerHeartbeatResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) RegisterTriggerWorker(ctx context.Context, in *RegisterTriggerWorkerRequest, opts ...grpc.CallOption) (*RegisterTriggerWorkerResponse, error) {
-	out := new(RegisterTriggerWorkerResponse)
-	err := c.cc.Invoke(ctx, TriggerController_RegisterTriggerWorker_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) UnregisterTriggerWorker(ctx context.Context, in *UnregisterTriggerWorkerRequest, opts ...grpc.CallOption) (*UnregisterTriggerWorkerResponse, error) {
-	out := new(UnregisterTriggerWorkerResponse)
-	err := c.cc.Invoke(ctx, TriggerController_UnregisterTriggerWorker_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) ResetOffsetToTimestamp(ctx context.Context, in *ResetOffsetToTimestampRequest, opts ...grpc.CallOption) (*ResetOffsetToTimestampResponse, error) {
-	out := new(ResetOffsetToTimestampResponse)
-	err := c.cc.Invoke(ctx, TriggerController_ResetOffsetToTimestamp_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) CommitOffset(ctx context.Context, in *CommitOffsetRequest, opts ...grpc.CallOption) (*CommitOffsetResponse, error) {
-	out := new(CommitOffsetResponse)
-	err := c.cc.Invoke(ctx, TriggerController_CommitOffset_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) SetDeadLetterEventOffset(ctx context.Context, in *SetDeadLetterEventOffsetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, TriggerController_SetDeadLetterEventOffset_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *triggerControllerClient) GetDeadLetterEventOffset(ctx context.Context, in *GetDeadLetterEventOffsetRequest, opts ...grpc.CallOption) (*GetDeadLetterEventOffsetResponse, error) {
-	out := new(GetDeadLetterEventOffsetResponse)
-	err := c.cc.Invoke(ctx, TriggerController_GetDeadLetterEventOffset_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // TriggerControllerServer is the server API for TriggerController service.
@@ -1326,46 +962,73 @@ type UnimplementedTriggerControllerServer struct {
 }
 
 func (UnimplementedTriggerControllerServer) CreateSubscription(context.Context, *CreateSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) UpdateSubscription(context.Context, *UpdateSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) DisableSubscription(context.Context, *DisableSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) ResumeSubscription(context.Context, *ResumeSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResumeSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) GetSubscription(context.Context, *GetSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) ListSubscription(context.Context, *ListSubscriptionRequest) (*ListSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) TriggerWorkerHeartbeat(TriggerController_TriggerWorkerHeartbeatServer) error {
-	return status.Errorf(codes.Unimplemented, "method TriggerWorkerHeartbeat not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (UnimplementedTriggerControllerServer) RegisterTriggerWorker(context.Context, *RegisterTriggerWorkerRequest) (*RegisterTriggerWorkerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterTriggerWorker not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) UnregisterTriggerWorker(context.Context, *UnregisterTriggerWorkerRequest) (*UnregisterTriggerWorkerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterTriggerWorker not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) ResetOffsetToTimestamp(context.Context, *ResetOffsetToTimestampRequest) (*ResetOffsetToTimestampResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetOffsetToTimestamp not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) CommitOffset(context.Context, *CommitOffsetRequest) (*CommitOffsetResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CommitOffset not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) SetDeadLetterEventOffset(context.Context, *SetDeadLetterEventOffsetRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetDeadLetterEventOffset not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedTriggerControllerServer) GetDeadLetterEventOffset(context.Context, *GetDeadLetterEventOffsetRequest) (*GetDeadLetterEventOffsetResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetDeadLetterEventOffset not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeTriggerControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -1376,137 +1039,48 @@ type UnsafeTriggerControllerServer interface {
 }
 
 func RegisterTriggerControllerServer(s grpc.ServiceRegistrar, srv TriggerControllerServer) {
-	s.RegisterService(&TriggerController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _TriggerController_CreateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).CreateSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_CreateSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).CreateSubscription(ctx, req.(*CreateSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_UpdateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).UpdateSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_UpdateSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).UpdateSubscription(ctx, req.(*UpdateSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_DeleteSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).DeleteSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_DeleteSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).DeleteSubscription(ctx, req.(*DeleteSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_DisableSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).DisableSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_DisableSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).DisableSubscription(ctx, req.(*DisableSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_ResumeSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResumeSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).ResumeSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_ResumeSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).ResumeSubscription(ctx, req.(*ResumeSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_GetSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).GetSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_GetSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).GetSubscription(ctx, req.(*GetSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_ListSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).ListSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_ListSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).ListSubscription(ctx, req.(*ListSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_TriggerWorkerHeartbeat_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(TriggerControllerServer).TriggerWorkerHeartbeat(&triggerControllerTriggerWorkerHeartbeatServer{stream})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type TriggerController_TriggerWorkerHeartbeatServer interface {
@@ -1520,123 +1094,43 @@ type triggerControllerTriggerWorkerHeartbeatServer struct {
 }
 
 func (x *triggerControllerTriggerWorkerHeartbeatServer) SendAndClose(m *TriggerWorkerHeartbeatResponse) error {
-	return x.ServerStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *triggerControllerTriggerWorkerHeartbeatServer) Recv() (*TriggerWorkerHeartbeatRequest, error) {
-	m := new(TriggerWorkerHeartbeatRequest)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_RegisterTriggerWorker_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterTriggerWorkerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).RegisterTriggerWorker(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_RegisterTriggerWorker_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).RegisterTriggerWorker(ctx, req.(*RegisterTriggerWorkerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_UnregisterTriggerWorker_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterTriggerWorkerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).UnregisterTriggerWorker(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_UnregisterTriggerWorker_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).UnregisterTriggerWorker(ctx, req.(*UnregisterTriggerWorkerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_ResetOffsetToTimestamp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetOffsetToTimestampRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).ResetOffsetToTimestamp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_ResetOffsetToTimestamp_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).ResetOffsetToTimestamp(ctx, req.(*ResetOffsetToTimestampRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_CommitOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommitOffsetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).CommitOffset(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_CommitOffset_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).CommitOffset(ctx, req.(*CommitOffsetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_SetDeadLetterEventOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetDeadLetterEventOffsetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).SetDeadLetterEventOffset(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_SetDeadLetterEventOffset_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).SetDeadLetterEventOffset(ctx, req.(*SetDeadLetterEventOffsetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _TriggerController_GetDeadLetterEventOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetDeadLetterEventOffsetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TriggerControllerServer).GetDeadLetterEventOffset(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TriggerController_GetDeadLetterEventOffset_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TriggerControllerServer).GetDeadLetterEventOffset(ctx, req.(*GetDeadLetterEventOffsetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // TriggerController_ServiceDesc is the grpc.ServiceDesc for TriggerController service.
@@ -1729,34 +1223,23 @@ type snowflakeControllerClient struct {
 }
 
 func NewSnowflakeControllerClient(cc grpc.ClientConnInterface) SnowflakeControllerClient {
-	return &snowflakeControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(SnowflakeControllerClient)
 }
 
 func (c *snowflakeControllerClient) GetClusterStartTime(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*timestamppb.Timestamp, error) {
-	out := new(timestamppb.Timestamp)
-	err := c.cc.Invoke(ctx, SnowflakeController_GetClusterStartTime_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *snowflakeControllerClient) RegisterNode(ctx context.Context, in *wrapperspb.UInt32Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SnowflakeController_RegisterNode_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *snowflakeControllerClient) UnregisterNode(ctx context.Context, in *wrapperspb.UInt32Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SnowflakeController_UnregisterNode_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SnowflakeControllerServer is the server API for SnowflakeController service.
@@ -1773,13 +1256,18 @@ type UnimplementedSnowflakeControllerServer struct {
 }
 
 func (UnimplementedSnowflakeControllerServer) GetClusterStartTime(context.Context, *emptypb.Empty) (*timestamppb.Timestamp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetClusterStartTime not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSnowflakeControllerServer) RegisterNode(context.Context, *wrapperspb.UInt32Value) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterNode not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSnowflakeControllerServer) UnregisterNode(context.Context, *wrapperspb.UInt32Value) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterNode not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeSnowflakeControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -1790,61 +1278,23 @@ type UnsafeSnowflakeControllerServer interface {
 }
 
 func RegisterSnowflakeControllerServer(s grpc.ServiceRegistrar, srv SnowflakeControllerServer) {
-	s.RegisterService(&SnowflakeController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _SnowflakeController_GetClusterStartTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnowflakeControllerServer).GetClusterStartTime(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnowflakeController_GetClusterStartTime_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnowflakeControllerServer).GetClusterStartTime(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SnowflakeController_RegisterNode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt32Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnowflakeControllerServer).RegisterNode(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnowflakeController_RegisterNode_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnowflakeControllerServer).RegisterNode(ctx, req.(*wrapperspb.UInt32Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SnowflakeController_UnregisterNode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt32Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnowflakeControllerServer).UnregisterNode(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnowflakeController_UnregisterNode_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnowflakeControllerServer).UnregisterNode(ctx, req.(*wrapperspb.UInt32Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SnowflakeController_ServiceDesc is the grpc.ServiceDesc for SnowflakeController service.
@@ -1913,133 +1363,78 @@ type authControllerClient struct {
 }
 
 func NewAuthControllerClient(cc grpc.ClientConnInterface) AuthControllerClient {
-	return &authControllerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(AuthControllerClient)
 }
 
 func (c *authControllerClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*meta.User, error) {
-	out := new(meta.User)
-	err := c.cc.Invoke(ctx, AuthController_CreateUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) DeleteUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, AuthController_DeleteUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.User, error) {
-	out := new(meta.User)
-	err := c.cc.Invoke(ctx, AuthController_GetUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) ListUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListUserResponse, error) {
-	out := new(ListUserResponse)
-	err := c.cc.Invoke(ctx, AuthController_ListUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetUserByToken(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*wrapperspb.StringValue, error) {
-	out := new(wrapperspb.StringValue)
-	err := c.cc.Invoke(ctx, AuthController_GetUserByToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) CreateToken(ctx context.Context, in *CreateTokenRequest, opts ...grpc.CallOption) (*meta.Token, error) {
-	out := new(meta.Token)
-	err := c.cc.Invoke(ctx, AuthController_CreateToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) DeleteToken(ctx context.Context, in *DeleteTokenRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, AuthController_DeleteToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetToken(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*meta.Token, error) {
-	out := new(meta.Token)
-	err := c.cc.Invoke(ctx, AuthController_GetToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetUserToken(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*GetTokenResponse, error) {
-	out := new(GetTokenResponse)
-	err := c.cc.Invoke(ctx, AuthController_GetUserToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) ListToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListTokenResponse, error) {
-	out := new(ListTokenResponse)
-	err := c.cc.Invoke(ctx, AuthController_ListToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GrantRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, AuthController_GrantRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) RevokeRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, AuthController_RevokeRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetUserRole(ctx context.Context, in *GetUserRoleRequest, opts ...grpc.CallOption) (*GetUserRoleResponse, error) {
-	out := new(GetUserRoleResponse)
-	err := c.cc.Invoke(ctx, AuthController_GetUserRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authControllerClient) GetResourceRole(ctx context.Context, in *GetResourceRoleRequest, opts ...grpc.CallOption) (*GetResourceRoleResponse, error) {
-	out := new(GetResourceRoleResponse)
-	err := c.cc.Invoke(ctx, AuthController_GetResourceRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AuthControllerServer is the server API for AuthController service.
@@ -2067,46 +1462,73 @@ type UnimplementedAuthControllerServer struct {
 }
 
 func (UnimplementedAuthControllerServer) CreateUser(context.Context, *CreateUserRequest) (*meta.User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) DeleteUser(context.Context, *wrapperspb.StringValue) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetUser(context.Context, *wrapperspb.StringValue) (*meta.User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) ListUser(context.Context, *emptypb.Empty) (*ListUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetUserByToken(context.Context, *wrapperspb.StringValue) (*wrapperspb.StringValue, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserByToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) CreateToken(context.Context, *CreateTokenRequest) (*meta.Token, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) DeleteToken(context.Context, *DeleteTokenRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetToken(context.Context, *wrapperspb.UInt64Value) (*meta.Token, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetUserToken(context.Context, *wrapperspb.StringValue) (*GetTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) ListToken(context.Context, *emptypb.Empty) (*ListTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GrantRole(context.Context, *RoleRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GrantRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) RevokeRole(context.Context, *RoleRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevokeRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetUserRole(context.Context, *GetUserRoleRequest) (*GetUserRoleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthControllerServer) GetResourceRole(context.Context, *GetResourceRoleRequest) (*GetResourceRoleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetResourceRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeAuthControllerServer may be embedded to opt out of forward compatibility for this service.
@@ -2117,259 +1539,78 @@ type UnsafeAuthControllerServer interface {
 }
 
 func RegisterAuthControllerServer(s grpc.ServiceRegistrar, srv AuthControllerServer) {
-	s.RegisterService(&AuthController_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _AuthController_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).CreateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_CreateUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).CreateUser(ctx, req.(*CreateUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).DeleteUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_DeleteUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).DeleteUser(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetUser(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_ListUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).ListUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_ListUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).ListUser(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetUserByToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetUserByToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetUserByToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetUserByToken(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_CreateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTokenRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).CreateToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_CreateToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).CreateToken(ctx, req.(*CreateTokenRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_DeleteToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteTokenRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).DeleteToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_DeleteToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).DeleteToken(ctx, req.(*DeleteTokenRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt64Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetToken(ctx, req.(*wrapperspb.UInt64Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetUserToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetUserToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetUserToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetUserToken(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_ListToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).ListToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_ListToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).ListToken(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GrantRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GrantRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GrantRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GrantRole(ctx, req.(*RoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_RevokeRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).RevokeRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_RevokeRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).RevokeRole(ctx, req.(*RoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetUserRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetUserRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetUserRole(ctx, req.(*GetUserRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthController_GetResourceRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetResourceRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthControllerServer).GetResourceRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthController_GetResourceRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthControllerServer).GetResourceRole(ctx, req.(*GetResourceRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AuthController_ServiceDesc is the grpc.ServiceDesc for AuthController service.

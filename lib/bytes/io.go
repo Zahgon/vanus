@@ -15,8 +15,6 @@
 package bytes
 
 import (
-	// standard libraries.
-	"errors"
 	"io"
 )
 
@@ -30,54 +28,23 @@ type MarkScanner struct {
 // Make sure MarkScanner implements io.ByteScanner.
 var _ io.ByteScanner = (*MarkScanner)(nil)
 
-func NewMarkScanner(b []byte) *MarkScanner {
-	return &MarkScanner{Buf: b}
-}
+func NewMarkScanner(b []byte) *MarkScanner { _ = "STUB: not implemented"; return nil }
 
-func (s *MarkScanner) empty() bool {
-	return len(s.Buf) <= s.off
-}
+func (s *MarkScanner) empty() bool { _ = "STUB: not implemented"; return false }
 
-func (s *MarkScanner) ReadByte() (byte, error) {
-	if s.empty() {
-		return 0, io.EOF
-	}
-	b := s.Buf[s.off]
-	s.off++
-	return b, nil
-}
+func (s *MarkScanner) ReadByte() (byte, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (s *MarkScanner) UnreadByte() error {
-	if s.off <= 0 {
-		return errors.New("reader.UnreadByte: at beginning of slice")
-	}
-	s.off--
-	return nil
-}
+func (s *MarkScanner) UnreadByte() error { _ = "STUB: not implemented"; return nil }
 
-func (s *MarkScanner) Mark(off int) int {
-	return s.off + off
-}
+func (s *MarkScanner) Mark(off int) int { _ = "STUB: not implemented"; return 0 }
 
-func (s *MarkScanner) Since(mark int, off int) []byte {
-	return s.Buf[mark : s.off+off]
-}
+func (s *MarkScanner) Since(mark int, off int) []byte { _ = "STUB: not implemented"; return nil }
 
-func (s *MarkScanner) From(mark int) []byte {
-	return s.Buf[mark:]
-}
+func (s *MarkScanner) From(mark int) []byte { _ = "STUB: not implemented"; return nil }
 
-func (s *MarkScanner) Resume(mark int) error {
-	s.off = mark
-	return nil
-}
+func (s *MarkScanner) Resume(mark int) error { _ = "STUB: not implemented"; return nil }
 
-func ScannedBytes(s *MarkScanner, mark int, eof bool) []byte {
-	if eof {
-		return s.Since(mark, 0)
-	}
-	return s.Since(mark, -1)
-}
+func ScannedBytes(s *MarkScanner, mark int, eof bool) []byte { _ = "STUB: not implemented"; return nil }
 
 type nopWriter struct{}
 
@@ -87,13 +54,9 @@ var (
 	_ io.ByteWriter = (*nopWriter)(nil)
 )
 
-func (w *nopWriter) Write(p []byte) (int, error) {
-	return len(p), nil
-}
+func (w *nopWriter) Write(p []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (w *nopWriter) WriteByte(_ byte) error {
-	return nil
-}
+func (w *nopWriter) WriteByte(_ byte) error { _ = "STUB: not implemented"; return nil }
 
 type CopyOnDiffWriter struct {
 	Buf []byte
@@ -104,27 +67,9 @@ type CopyOnDiffWriter struct {
 // Make sure CopyOnDiffWriter implements io.ByteWriter.
 var _ io.ByteWriter = (*CopyOnDiffWriter)(nil)
 
-func (w *CopyOnDiffWriter) WriteByte(c byte) error {
-	if w.new != nil {
-		w.new = append(w.new, c)
-		return nil
-	}
-	if w.off < len(w.Buf) && w.Buf[w.off] == c {
-		w.off++
-		return nil
-	}
-	w.new = make([]byte, w.off+1)
-	copy(w.new, w.Buf[:w.off])
-	w.new[w.off] = c
-	return nil
-}
+func (w *CopyOnDiffWriter) WriteByte(c byte) error { _ = "STUB: not implemented"; return nil }
 
-func (w *CopyOnDiffWriter) Bytes() []byte {
-	if w.new != nil {
-		return w.new
-	}
-	return w.Buf[:w.off]
-}
+func (w *CopyOnDiffWriter) Bytes() []byte { _ = "STUB: not implemented"; return nil }
 
 type LastByteWriter interface {
 	io.Writer

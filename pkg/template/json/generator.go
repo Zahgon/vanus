@@ -17,12 +17,7 @@ package json
 import (
 	// standard libraries.
 	stdbytes "bytes"
-
 	// third-party libraries.
-	"github.com/ohler55/ojg/jp"
-
-	// first-party libraries.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
 type templateGenerator struct {
@@ -32,143 +27,32 @@ type templateGenerator struct {
 }
 
 func (g *templateGenerator) generate(root templateNode) []templateSegment {
-	g.stack.push(root)
-
-	for {
-		n, i := g.stack.peek()
-
-		switch node := n.(type) {
-		case *objectNode:
-			if g.generateObjectNode(node, i) {
-				continue
-			}
-		case *arrayNode:
-			if g.generateArrayNode(node, i) {
-				continue
-			}
-		case *dynamicStringNode:
-			g.generateDynamicStringNode(node)
-		case *variableNode:
-			g.insertSegment(&variableSegment{name: node.name})
-		case *stringNode:
-			g.buf.WriteByte('"')
-			g.buf.Write(node.val)
-			g.buf.WriteByte('"')
-		case *numberNode:
-			g.buf.Write(node.val)
-		case *boolNode:
-			if node.val {
-				g.buf.Write([]byte("true"))
-			} else {
-				g.buf.Write([]byte("false"))
-			}
-		case *nullNode:
-			g.buf.Write([]byte("null"))
-		default:
-			panic("unexpected node type") // unreachable
-		}
-
-		if g.stack.pop() {
-			break
-		}
-	}
-
-	g.packLiteral()
-
-	return g.segments
+	_ = "STUB: not implemented"
+	return nil
 }
 
+// unreachable
+
 func (g *templateGenerator) generateObjectNode(node *objectNode, i int) bool {
-	if i == 0 {
-		g.buf.WriteByte('{')
-	}
-
-	if i >= len(node.members) {
-		g.buf.WriteByte('}')
-		return false
-	}
-
-	mn := node.members[i]
-	switch n := mn.value.(type) {
-	case *jsonPathNode:
-		key := make([]byte, len(mn.key.val)+3)
-		key[0] = '"'
-		copy(key[1:], mn.key.val)
-		key[len(key)-2] = '"'
-		key[len(key)-1] = ':'
-		g.insertSegment(&memberSegment{
-			key:   key,
-			value: jp.MustParse(n.original),
-		})
-		g.stack.advance()
-	default:
-		if i != 0 {
-			g.buf.WriteByte(',')
-		}
-		g.buf.WriteByte('"')
-		g.buf.Write(mn.key.val)
-		g.buf.Write([]byte(`":`))
-		g.stack.advanceThenPush(n)
-	}
-	return true
+	_ = "STUB: not implemented"
+	return false
 }
 
 func (g *templateGenerator) generateArrayNode(node *arrayNode, i int) bool {
-	if i == 0 {
-		g.buf.WriteByte('[')
-	}
-
-	if i >= len(node.elements) {
-		g.buf.WriteByte(']')
-		return false
-	}
-
-	en := node.elements[i]
-	switch n := en.(type) {
-	case *jsonPathNode:
-		g.insertSegment(&elementSegment{
-			value: jp.MustParse(n.original),
-		})
-		g.stack.advance()
-	default:
-		if i != 0 {
-			g.buf.WriteByte(',')
-		}
-		g.stack.advanceThenPush(n)
-	}
-	return true
+	_ = "STUB: not implemented"
+	return false
 }
 
 func (g *templateGenerator) generateDynamicStringNode(node *dynamicStringNode) {
-	g.buf.WriteByte('"')
-	for _, en := range node.elements {
-		switch n := en.(type) {
-		case *stringNode:
-			g.buf.Write(n.val)
-		case *jsonPathNode:
-			g.insertSegment(&jsonPathStringSegment{
-				path: jp.MustParse(n.original),
-			})
-		case *variableNode:
-			g.insertSegment(&variableStringSegment{name: n.name})
-		default:
-			panic("unexpected node type") // unreachable
-		}
-	}
-	g.buf.WriteByte('"')
+	_ = "STUB: not implemented"
+	return
 }
+
+// unreachable
 
 func (g *templateGenerator) insertSegment(segment templateSegment) {
-	g.packLiteral()
-	g.segments = append(g.segments, segment)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (g *templateGenerator) packLiteral() {
-	bs := g.buf.Bytes()
-	if len(bs) != 0 {
-		g.segments = append(g.segments, &literalSegment{
-			val: bytes.Clone(bs),
-		})
-		g.buf.Reset()
-	}
-}
+func (g *templateGenerator) packLiteral() { _ = "STUB: not implemented"; return }

@@ -11,7 +11,6 @@ package storage
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	info "github.com/vanus-labs/vanus/pkg/info"
@@ -31,69 +30,61 @@ type MockOffsetStorageMockRecorder struct {
 
 // NewMockOffsetStorage creates a new mock instance.
 func NewMockOffsetStorage(ctrl *gomock.Controller) *MockOffsetStorage {
-	mock := &MockOffsetStorage{ctrl: ctrl}
-	mock.recorder = &MockOffsetStorageMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockOffsetStorage) EXPECT() *MockOffsetStorageMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CreateOffset mocks base method.
+	return nil
 }
 
-// CreateOffset mocks base method.
 func (m *MockOffsetStorage) CreateOffset(ctx context.Context, subscriptionID vsr.ID, info info.OffsetInfo) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateOffset", ctx, subscriptionID, info)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateOffset indicates an expected call of CreateOffset.
 func (mr *MockOffsetStorageMockRecorder) CreateOffset(ctx, subscriptionID, info any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOffset", reflect.TypeOf((*MockOffsetStorage)(nil).CreateOffset), ctx, subscriptionID, info)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteOffset mocks base method.
 func (m *MockOffsetStorage) DeleteOffset(ctx context.Context, subscriptionID vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteOffset", ctx, subscriptionID)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteOffset indicates an expected call of DeleteOffset.
 func (mr *MockOffsetStorageMockRecorder) DeleteOffset(ctx, subscriptionID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteOffset", reflect.TypeOf((*MockOffsetStorage)(nil).DeleteOffset), ctx, subscriptionID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetOffsets mocks base method.
 func (m *MockOffsetStorage) GetOffsets(ctx context.Context, subscriptionID vsr.ID) (info.ListOffsetInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetOffsets", ctx, subscriptionID)
-	ret0, _ := ret[0].(info.ListOffsetInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo), nil
 }
 
 // GetOffsets indicates an expected call of GetOffsets.
 func (mr *MockOffsetStorageMockRecorder) GetOffsets(ctx, subscriptionID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOffsets", reflect.TypeOf((*MockOffsetStorage)(nil).GetOffsets), ctx, subscriptionID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateOffset mocks base method.
 func (m *MockOffsetStorage) UpdateOffset(ctx context.Context, subscriptionID vsr.ID, info info.OffsetInfo) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateOffset", ctx, subscriptionID, info)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateOffset indicates an expected call of UpdateOffset.
 func (mr *MockOffsetStorageMockRecorder) UpdateOffset(ctx, subscriptionID, info any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateOffset", reflect.TypeOf((*MockOffsetStorage)(nil).UpdateOffset), ctx, subscriptionID, info)
+	_ = "STUB: not implemented"
+	return nil
 }

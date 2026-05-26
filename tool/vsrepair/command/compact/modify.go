@@ -15,57 +15,11 @@
 package compact
 
 import (
-	// standard libraries.
-	"strconv"
-
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
 	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/meta"
 )
 
-func ModifyCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "compact nodeID compact",
-		Short: "modify compact",
-		Run:   modify,
-	}
-	cmd.Flags().StringVar(&volumePath, "volume", "", "volume path")
-	cmd.Flags().Uint64Var(&compact, "compact", 0, "compact")
-	cmd.Flags().Uint64Var(&term, "term", 0, "term")
-	return cmd
-}
+func ModifyCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
-func modify(_ *cobra.Command, args []string) {
-	if len(args) != 1 {
-		panic("invalid args")
-	}
-
-	db, err := meta.Open(volumePath)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-
-	node, err := strconv.ParseUint(args[0], 0, 0)
-	if err != nil {
-		panic(err)
-	}
-
-	info, err := db.GetCompact(node)
-	if err != nil {
-		panic(err)
-	}
-
-	if compact != 0 {
-		info.Index = compact
-	}
-	if term != 0 {
-		info.Term = term
-	}
-
-	if err := db.PutCompact(node, info); err != nil {
-		panic(err)
-	}
-}
+func modify(_ *cobra.Command, args []string) { _ = "STUB: not implemented"; return }

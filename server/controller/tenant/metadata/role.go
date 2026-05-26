@@ -15,10 +15,8 @@
 package metadata
 
 import (
-	"fmt"
 	"time"
 
-	"github.com/vanus-labs/vanus/api/errors"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 
 	"github.com/vanus-labs/vanus/pkg/authorization"
@@ -34,63 +32,10 @@ type UserRole struct {
 	UpdatedAt      time.Time                  `json:"updated_at"`
 }
 
-func (ur *UserRole) GetRoleID() string {
-	if ur.RoleID == "" {
-		if ur.Role == authorization.RoleClusterAdmin {
-			return string(authorization.RoleClusterAdmin)
-		}
-		return fmt.Sprintf("%s_%s_%s", ur.Role, ur.ResourceKind, ur.ResourceID.Key())
-	}
-	return ur.RoleID
-}
+func (ur *UserRole) GetRoleID() string { _ = "STUB: not implemented"; return "" }
 
-func (ur *UserRole) BuiltIn() bool {
-	return ur.RoleID == ""
-}
+func (ur *UserRole) BuiltIn() bool { _ = "STUB: not implemented"; return false }
 
-func (ur *UserRole) Validate() error {
-	if ur.UserIdentifier == "" {
-		return errors.ErrInvalidRequest.WithMessage("user identifier is empty")
-	}
-	if ur.BuiltIn() { //nolint:nestif // ok
-		if !authorization.IsRoleExist(ur.Role) {
-			return errors.ErrInvalidRequest.WithMessage("role is invalid")
-		}
-		if ur.Role == authorization.RoleClusterAdmin {
-			if ur.ResourceKind != "" {
-				return errors.ErrInvalidRequest.WithMessage(
-					"role is clusterAdmin resourceKind is not need")
-			}
-			if ur.ResourceID != vanus.EmptyID() {
-				return errors.ErrInvalidRequest.WithMessage(
-					"role is clusterAdmin resourceID is not need")
-			}
-			return nil
-		}
-		if !authorization.IsResourceKindExist(ur.ResourceKind) {
-			return errors.ErrInvalidRequest.WithMessage("resourceKind is invalid")
-		}
-		if ur.ResourceKind != authorization.ResourceEventbus &&
-			(ur.Role == authorization.RoleRead || ur.Role == authorization.RoleWrite) {
-			return errors.ErrInvalidRequest.WithMessage(
-				"only eventbus support read or write role")
-		}
-		if ur.ResourceID == vanus.EmptyID() {
-			return errors.ErrInvalidRequest.WithMessage("resourceID is 0")
-		}
-		return nil
-	}
-	if ur.Role != "" {
-		return errors.ErrInvalidRequest.WithMessage(
-			"use custom defined role but role is not empty")
-	}
-	if ur.ResourceKind != "" {
-		return errors.ErrInvalidRequest.WithMessage(
-			"use custom defined role but resource_kind is not empty")
-	}
-	if ur.ResourceID != vanus.EmptyID() {
-		return errors.ErrInvalidRequest.WithMessage(
-			"use custom defined role but resource_id is not 0")
-	}
-	return nil
-}
+func (ur *UserRole) Validate() error { _ = "STUB: not implemented"; return nil }
+
+//nolint:nestif // ok

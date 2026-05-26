@@ -51,56 +51,13 @@ func main() {
 }
 
 func generateEventbusCreateScripts(w io.Writer, m map[string]map[string]interface{}) {
-	for _, v := range m {
-		name := v["name"].(string)
-		logNum := v["log_number"].(float64)
-		desc := v["description"]
-		if !strings.HasPrefix(name, "__") {
-			cmd := fmt.Sprintf("vsctl eventbus create --name %s --eventlog %d --description '%s'\n", name, int(logNum), desc)
-			_, _ = w.Write([]byte(cmd))
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func generateSubscriptions(w io.Writer, m map[string]map[string]interface{}) {
-	for k, v := range m {
-		data1, err := json.Marshal(v["filters"])
-		if err != nil {
-			panic(fmt.Sprintf("failed to marshall filters, key: %s, value: %v", k, v["filters"]))
-		}
-		data2, err := json.Marshal(v["transformer"])
-		if err != nil {
-			panic(fmt.Sprintf("failed to marshall transformer, key: %s, value: %v", k, v["transformer"]))
-		}
-		sink := v["sink"].(string)
-		disable := v["phase"].(string) == "stopped"
-		eventbus := v["eventbus"].(string)
-		name := v["name"].(string)
-		description := v["description"].(string)
-		cmd := fmt.Sprintf("vsctl subscription create --name %s --eventbus %s --sink %s --description '%s' --disable %v --filters '%s' --transformer '%s'\n",
-			name, eventbus, sink, description, disable, string(data1), string(data2))
-		_, _ = w.Write([]byte(cmd))
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func readline(reader *bufio.Reader) ([]byte, error) {
-	line, prefix, err := reader.ReadLine()
-	if err != nil {
-		if err == io.EOF {
-			return nil, io.EOF
-		}
-		panic("read file error, " + err.Error())
-	}
-	for prefix {
-		var _line []byte
-		_line, prefix, err = reader.ReadLine()
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			panic("read file error, " + err.Error())
-		}
-		line = append(line, _line...)
-	}
-	return line, nil
-}
+func readline(reader *bufio.Reader) ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }

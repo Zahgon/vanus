@@ -22,9 +22,8 @@ package segment
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
@@ -69,106 +68,63 @@ type segmentServerClient struct {
 }
 
 func NewSegmentServerClient(cc grpc.ClientConnInterface) SegmentServerClient {
-	return &segmentServerClient{cc}
+	_ = "STUB: not implemented"
+	return *new(SegmentServerClient)
 }
 
 func (c *segmentServerClient) Start(ctx context.Context, in *StartSegmentServerRequest, opts ...grpc.CallOption) (*StartSegmentServerResponse, error) {
-	out := new(StartSegmentServerResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_Start_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) Stop(ctx context.Context, in *StopSegmentServerRequest, opts ...grpc.CallOption) (*StopSegmentServerResponse, error) {
-	out := new(StopSegmentServerResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_Stop_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) CreateBlock(ctx context.Context, in *CreateBlockRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SegmentServer_CreateBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) RemoveBlock(ctx context.Context, in *RemoveBlockRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SegmentServer_RemoveBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) DescribeBlock(ctx context.Context, in *DescribeBlockRequest, opts ...grpc.CallOption) (*DescribeBlockResponse, error) {
-	out := new(DescribeBlockResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_DescribeBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) ActivateSegment(ctx context.Context, in *ActivateSegmentRequest, opts ...grpc.CallOption) (*ActivateSegmentResponse, error) {
-	out := new(ActivateSegmentResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_ActivateSegment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) InactivateSegment(ctx context.Context, in *InactivateSegmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SegmentServer_InactivateSegment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) AppendToBlock(ctx context.Context, in *AppendToBlockRequest, opts ...grpc.CallOption) (*AppendToBlockResponse, error) {
-	out := new(AppendToBlockResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_AppendToBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) ReadFromBlock(ctx context.Context, in *ReadFromBlockRequest, opts ...grpc.CallOption) (*ReadFromBlockResponse, error) {
-	out := new(ReadFromBlockResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_ReadFromBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) LookupOffsetInBlock(ctx context.Context, in *LookupOffsetInBlockRequest, opts ...grpc.CallOption) (*LookupOffsetInBlockResponse, error) {
-	out := new(LookupOffsetInBlockResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_LookupOffsetInBlock_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *segmentServerClient) Status(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*StatusResponse, error) {
-	out := new(StatusResponse)
-	err := c.cc.Invoke(ctx, SegmentServer_Status_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SegmentServerServer is the server API for SegmentServer service.
@@ -193,37 +149,58 @@ type UnimplementedSegmentServerServer struct {
 }
 
 func (UnimplementedSegmentServerServer) Start(context.Context, *StartSegmentServerRequest) (*StartSegmentServerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Start not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) Stop(context.Context, *StopSegmentServerRequest) (*StopSegmentServerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) CreateBlock(context.Context, *CreateBlockRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) RemoveBlock(context.Context, *RemoveBlockRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) DescribeBlock(context.Context, *DescribeBlockRequest) (*DescribeBlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DescribeBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) ActivateSegment(context.Context, *ActivateSegmentRequest) (*ActivateSegmentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ActivateSegment not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) InactivateSegment(context.Context, *InactivateSegmentRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method InactivateSegment not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) AppendToBlock(context.Context, *AppendToBlockRequest) (*AppendToBlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AppendToBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) ReadFromBlock(context.Context, *ReadFromBlockRequest) (*ReadFromBlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadFromBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) LookupOffsetInBlock(context.Context, *LookupOffsetInBlockRequest) (*LookupOffsetInBlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LookupOffsetInBlock not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedSegmentServerServer) Status(context.Context, *emptypb.Empty) (*StatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Status not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeSegmentServerServer may be embedded to opt out of forward compatibility for this service.
@@ -234,205 +211,63 @@ type UnsafeSegmentServerServer interface {
 }
 
 func RegisterSegmentServerServer(s grpc.ServiceRegistrar, srv SegmentServerServer) {
-	s.RegisterService(&SegmentServer_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _SegmentServer_Start_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartSegmentServerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).Start(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_Start_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).Start(ctx, req.(*StartSegmentServerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StopSegmentServerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).Stop(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_Stop_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).Stop(ctx, req.(*StopSegmentServerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_CreateBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).CreateBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_CreateBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).CreateBlock(ctx, req.(*CreateBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_RemoveBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).RemoveBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_RemoveBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).RemoveBlock(ctx, req.(*RemoveBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_DescribeBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DescribeBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).DescribeBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_DescribeBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).DescribeBlock(ctx, req.(*DescribeBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_ActivateSegment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ActivateSegmentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).ActivateSegment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_ActivateSegment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).ActivateSegment(ctx, req.(*ActivateSegmentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_InactivateSegment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InactivateSegmentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).InactivateSegment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_InactivateSegment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).InactivateSegment(ctx, req.(*InactivateSegmentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_AppendToBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AppendToBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).AppendToBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_AppendToBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).AppendToBlock(ctx, req.(*AppendToBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_ReadFromBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadFromBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).ReadFromBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_ReadFromBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).ReadFromBlock(ctx, req.(*ReadFromBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_LookupOffsetInBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LookupOffsetInBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).LookupOffsetInBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_LookupOffsetInBlock_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).LookupOffsetInBlock(ctx, req.(*LookupOffsetInBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _SegmentServer_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SegmentServerServer).Status(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SegmentServer_Status_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SegmentServerServer).Status(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SegmentServer_ServiceDesc is the grpc.ServiceDesc for SegmentServer service.

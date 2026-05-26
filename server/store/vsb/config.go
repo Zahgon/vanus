@@ -21,7 +21,6 @@ import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
 	ioengine "github.com/vanus-labs/vanus/server/store/io/engine"
-	"github.com/vanus-labs/vanus/server/store/io/engine/psync"
 	"github.com/vanus-labs/vanus/server/store/io/stream"
 )
 
@@ -34,66 +33,30 @@ type config struct {
 }
 
 func (cfg *config) streamSchedulerOptions() (opts []stream.Option) {
-	if cfg.flushBatchSize != 0 {
-		opts = append(opts, stream.WithFlushBatchSize(cfg.flushBatchSize))
-	}
-	if cfg.flushDelayTime != 0 {
-		opts = append(opts, stream.WithFlushDelayTime(cfg.flushDelayTime))
-	}
-	if cfg.callbackParallel != 0 {
-		opts = append(opts, stream.WithCallbackParallel(cfg.callbackParallel))
-	}
-	return opts
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func defaultConfig() config {
-	cfg := config{}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	if cfg.engine == nil {
-		cfg.engine = defaultIOEngine()
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
 
 func defaultIOEngine() ioengine.Interface {
-	return psync.New()
+	_ = "STUB: not implemented"
+	return *new(ioengine.Interface)
 }
 
-func WithIOEngine(engine ioengine.Interface) Option {
-	return func(cfg *config) {
-		cfg.engine = engine
-	}
-}
+func WithIOEngine(engine ioengine.Interface) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithFlushBatchSize(size int) Option {
-	return func(cfg *config) {
-		cfg.flushBatchSize = size
-	}
-}
+func WithFlushBatchSize(size int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithFlushDelayTime(d time.Duration) Option {
-	return func(cfg *config) {
-		cfg.flushDelayTime = d
-	}
-}
+func WithFlushDelayTime(d time.Duration) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithCallbackParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.callbackParallel = parallel
-	}
-}
+func WithCallbackParallel(parallel int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 func WithArchivedListener(lis block.ArchivedListener) Option {
-	return func(cfg *config) {
-		cfg.lis = lis
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }

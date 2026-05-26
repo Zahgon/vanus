@@ -16,22 +16,15 @@ package transform
 
 import (
 	// standard libraries.
-	"encoding/json"
-	"errors"
-	"runtime"
 
 	// third-party libraries.
 	ce "github.com/cloudevents/sdk-go/v2"
-	"golang.org/x/exp/maps"
 
 	// first-party project.
 	"github.com/vanus-labs/vanus/pkg/template"
-	jt "github.com/vanus-labs/vanus/pkg/template/json"
-	tt "github.com/vanus-labs/vanus/pkg/template/text"
 
 	// this project.
 	primitive "github.com/vanus-labs/vanus/pkg"
-	"github.com/vanus-labs/vanus/pkg/transform/context"
 	"github.com/vanus-labs/vanus/server/trigger/transform/define"
 	"github.com/vanus-labs/vanus/server/trigger/transform/pipeline"
 )
@@ -43,113 +36,20 @@ type Transformer struct {
 }
 
 func NewTransformer(transformer *primitive.Transformer) (*Transformer, error) {
-	if !transformer.Exist() {
-		return nil, nil //nolint:nilnil // nil is valid
-	}
-
-	tf := &Transformer{
-		define:   define.NewDefine(),
-		pipeline: pipeline.NewPipeline(),
-	}
-
-	tf.define.Parse(transformer.Define)
-	tf.pipeline.Parse(transformer.Pipeline)
-
-	t, err := CompileTemplate(transformer.Template)
-	if err != nil {
-		return nil, err
-	}
-	tf.template = t
-
-	return tf, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (tf *Transformer) Execute(event *ce.Event) (err error) {
-	defer func() {
-		if r := recover(); r != nil {
-			size := 1024
-			stacktrace := make([]byte, size)
-			stacktrace = stacktrace[:runtime.Stack(stacktrace, false)]
-			err = errors.New(string(stacktrace))
-		}
-	}()
+//nolint:nilnil // nil is valid
 
-	var data interface{}
-	err = json.Unmarshal(event.Data(), &data)
-	if err != nil {
-		return err
-	}
-
-	ceCtx := &context.EventContext{
-		Event: event,
-		Data:  data,
-	}
-
-	defineValue, err := tf.define.EvaluateValue(ceCtx)
-	if err != nil {
-		return err
-	}
-	ceCtx.Define = defineValue
-
-	err = tf.pipeline.Run(ceCtx)
-	if err != nil {
-		return err
-	}
-
-	if tf.template != nil {
-		model := buildTemplateModel(event, data)
-		d, _ := tf.template.Execute(model, defineValue)
-
-		event.DataEncoded = d
-		event.SetDataContentType(tf.template.ContentType())
-		return nil
-	}
-
-	return event.SetData(ce.ApplicationJSON, ceCtx.Data)
-}
+func (tf *Transformer) Execute(event *ce.Event) (err error) { _ = "STUB: not implemented"; return nil }
 
 func buildTemplateModel(event *ce.Event, data any) map[string]any {
-	model := map[string]any{
-		"id":          event.ID(),
-		"source":      event.Source(),
-		"specversion": event.SpecVersion(),
-		"type":        event.Type(),
-	}
-	if dataContentType := event.DataContentType(); dataContentType != "" {
-		model["datacontenttype"] = dataContentType
-	}
-	if dataSchema := event.DataSchema(); dataSchema != "" {
-		model["dataschema"] = dataSchema
-	}
-	if subject := event.Subject(); subject != "" {
-		model["subject"] = subject
-	}
-	if time := event.Time(); !time.IsZero() {
-		model["time"] = time
-	}
-	if data != nil {
-		model["data"] = data
-	}
-	if exts := event.Extensions(); len(exts) > 0 {
-		maps.Copy(model, exts)
-	}
-	return model
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func CompileTemplate(tc primitive.TemplateConfig) (t template.Template, err error) {
-	templateType, ok := tc.RecognizeTemplateType()
-	if !ok {
-		return nil, errors.New("unknown template type")
-	}
-
-	switch templateType {
-	case primitive.TemplateTypeNone:
-		return nil, nil
-	case primitive.TemplateTypeText:
-		return tt.Compile(tc.Template)
-	case primitive.TemplateTypeJSON:
-		return jt.Compile(tc.Template)
-	default:
-		return nil, errors.New("unsupported template type")
-	}
+	_ = "STUB: not implemented"
+	return *new(template.Template), nil
 }

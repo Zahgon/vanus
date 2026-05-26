@@ -19,9 +19,4 @@ type Config struct {
 	Port   int  `yaml:"port"`
 }
 
-func (c Config) GetPort() int {
-	if c.Port == 0 {
-		return 2112
-	}
-	return c.Port
-}
+func (c Config) GetPort() int { _ = "STUB: not implemented"; return 0 }

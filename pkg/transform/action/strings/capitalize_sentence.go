@@ -16,17 +16,10 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewCapitalizeSentence ["capitalize_sentence", "key"].
 func NewCapitalizeSentenceAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "CAPITALIZE_SENTENCE",
-		FixedArgs:  []arg.TypeList{arg.EventList},
-		Fn:         function.CapitalizeSentence,
-	}
-	return a
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }

@@ -14,36 +14,11 @@
 
 package meta
 
-import (
-	// standard libraries.
-	"context"
-	"encoding/binary"
-	"path/filepath"
+// standard libraries.
 
-	// this project.
-	"github.com/vanus-labs/vanus/server/store/meta"
-	"github.com/vanus-labs/vanus/server/store/raft/storage"
-	walog "github.com/vanus-labs/vanus/server/store/wal"
-)
+// this project.
 
 func ReviewCompact(volumeDir string, node uint64, watcher func(*CompactInfo, int64)) error {
-	ctx := context.Background()
-	dir := filepath.Join(volumeDir, "meta")
-	comKey := []byte(storage.CompactKey(node))
-
-	return meta.ReviewSyncStore(ctx, dir, comKey, func(v interface{}, ver int64) {
-		if v == meta.DeletedMark {
-			watcher(nil, ver)
-		} else {
-			com, ok := v.([]byte)
-			if !ok {
-				panic("compacted is not []byte")
-			}
-			info := CompactInfo{
-				Index: binary.BigEndian.Uint64(com[0:8]),
-				Term:  binary.BigEndian.Uint64(com[8:16]),
-			}
-			watcher(&info, ver)
-		}
-	}, walog.WithReadOnly())
+	_ = "STUB: not implemented"
+	return nil
 }

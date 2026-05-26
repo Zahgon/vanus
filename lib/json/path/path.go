@@ -25,4 +25,4 @@ type rootPath struct {
 // Make sure rootPath implements Path.
 var _ Path = (*rootPath)(nil)
 
-func (p *rootPath) Apply() {}
+func (p *rootPath) Apply() { _ = "STUB: not implemented"; return }

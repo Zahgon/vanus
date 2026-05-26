@@ -11,7 +11,6 @@ package testing
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	block "github.com/vanus-labs/vanus/server/store/block"
@@ -30,30 +29,25 @@ type MockSeekerMockRecorder struct {
 }
 
 // NewMockSeeker creates a new mock instance.
-func NewMockSeeker(ctrl *gomock.Controller) *MockSeeker {
-	mock := &MockSeeker{ctrl: ctrl}
-	mock.recorder = &MockSeekerMockRecorder{mock}
-	return mock
-}
+func NewMockSeeker(ctrl *gomock.Controller) *MockSeeker { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockSeeker) EXPECT() *MockSeekerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Seek mocks base method.
+	return nil
 }
 
-// Seek mocks base method.
 func (m *MockSeeker) Seek(ctx context.Context, index int64, key block.Entry, flag block.SeekKeyFlag) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Seek", ctx, index, key, flag)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Seek indicates an expected call of Seek.
 func (mr *MockSeekerMockRecorder) Seek(ctx, index, key, flag any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Seek", reflect.TypeOf((*MockSeeker)(nil).Seek), ctx, index, key, flag)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockReader is a mock of Reader interface.
@@ -68,30 +62,25 @@ type MockReaderMockRecorder struct {
 }
 
 // NewMockReader creates a new mock instance.
-func NewMockReader(ctrl *gomock.Controller) *MockReader {
-	mock := &MockReader{ctrl: ctrl}
-	mock.recorder = &MockReaderMockRecorder{mock}
-	return mock
-}
+func NewMockReader(ctrl *gomock.Controller) *MockReader { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockReader) EXPECT() *MockReaderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Read mocks base method.
+	return nil
 }
 
-// Read mocks base method.
 func (m *MockReader) Read(ctx context.Context, seq int64, num int) ([]block.Entry, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Read", ctx, seq, num)
-	ret0, _ := ret[0].([]block.Entry)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Read indicates an expected call of Read.
 func (mr *MockReaderMockRecorder) Read(ctx, seq, num any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Read", reflect.TypeOf((*MockReader)(nil).Read), ctx, seq, num)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockAppender is a mock of Appender interface.
@@ -106,27 +95,25 @@ type MockAppenderMockRecorder struct {
 }
 
 // NewMockAppender creates a new mock instance.
-func NewMockAppender(ctrl *gomock.Controller) *MockAppender {
-	mock := &MockAppender{ctrl: ctrl}
-	mock.recorder = &MockAppenderMockRecorder{mock}
-	return mock
-}
+func NewMockAppender(ctrl *gomock.Controller) *MockAppender { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockAppender) EXPECT() *MockAppenderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Append mocks base method.
+	return nil
 }
 
-// Append mocks base method.
 func (m *MockAppender) Append(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Append", ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // Append indicates an expected call of Append.
 func (mr *MockAppenderMockRecorder) Append(ctx, entries, cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Append", reflect.TypeOf((*MockAppender)(nil).Append), ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockBlock is a mock of Block interface.
@@ -141,69 +128,53 @@ type MockBlockMockRecorder struct {
 }
 
 // NewMockBlock creates a new mock instance.
-func NewMockBlock(ctrl *gomock.Controller) *MockBlock {
-	mock := &MockBlock{ctrl: ctrl}
-	mock.recorder = &MockBlockMockRecorder{mock}
-	return mock
-}
+func NewMockBlock(ctrl *gomock.Controller) *MockBlock { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockBlock) EXPECT() *MockBlockMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Append mocks base method.
+	return nil
 }
 
-// Append mocks base method.
 func (m *MockBlock) Append(ctx context.Context, entries []block.Entry, cb block.AppendCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Append", ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // Append indicates an expected call of Append.
 func (mr *MockBlockMockRecorder) Append(ctx, entries, cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Append", reflect.TypeOf((*MockBlock)(nil).Append), ctx, entries, cb)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ID mocks base method.
-func (m *MockBlock) ID() vsr.ID {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ID")
-	ret0, _ := ret[0].(vsr.ID)
-	return ret0
-}
+func (m *MockBlock) ID() vsr.ID { _ = "STUB: not implemented"; return *new(vsr.ID) }
 
 // ID indicates an expected call of ID.
-func (mr *MockBlockMockRecorder) ID() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ID", reflect.TypeOf((*MockBlock)(nil).ID))
-}
+func (mr *MockBlockMockRecorder) ID() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Read mocks base method.
 func (m *MockBlock) Read(ctx context.Context, seq int64, num int) ([]block.Entry, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Read", ctx, seq, num)
-	ret0, _ := ret[0].([]block.Entry)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Read indicates an expected call of Read.
 func (mr *MockBlockMockRecorder) Read(ctx, seq, num any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Read", reflect.TypeOf((*MockBlock)(nil).Read), ctx, seq, num)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Seek mocks base method.
 func (m *MockBlock) Seek(ctx context.Context, index int64, key block.Entry, flag block.SeekKeyFlag) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Seek", ctx, index, key, flag)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Seek indicates an expected call of Seek.
 func (mr *MockBlockMockRecorder) Seek(ctx, index, key, flag any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Seek", reflect.TypeOf((*MockBlock)(nil).Seek), ctx, index, key, flag)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -17,16 +17,10 @@ package block
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 	"sync"
 	"time"
 
-	"github.com/huandu/skiplist"
-
-	"github.com/vanus-labs/vanus/api/errors"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	"github.com/vanus-labs/vanus/pkg/kv"
 	"github.com/vanus-labs/vanus/server/controller/eventbus/metadata"
@@ -47,16 +41,8 @@ type Allocator interface {
 }
 
 func NewAllocator(defaultBlockCapacity int64, selector VolumeSelector) Allocator {
-	if defaultBlockCapacity <= 0 {
-		defaultBlockCapacity = defaultBlockSize
-	} else if defaultBlockCapacity < minimumBlockSize {
-		defaultBlockCapacity = minimumBlockSize
-	}
-	return &allocator{
-		blockCapacity:  defaultBlockCapacity,
-		selector:       selector,
-		allocateTicker: time.NewTicker(time.Second),
-	}
+	_ = "STUB: not implemented"
+	return *new(Allocator)
 }
 
 type allocator struct {
@@ -70,143 +56,39 @@ type allocator struct {
 }
 
 func (al *allocator) PickByVolumes(ctx context.Context, volumes []vanus.ID) ([]*metadata.Block, error) {
-	instances := make([]server.Instance, len(volumes))
-	for idx := range volumes {
-		i := al.selector.SelectByID(volumes[idx])
-		if i == nil {
-			return nil, errors.ErrVolumeInstanceNoServer
-		}
-		instances[idx] = i
-	}
-	return al.pick(ctx, instances)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (al *allocator) Run(ctx context.Context, kvCli kv.Client, startDynamicAllocate bool) error { //nolint:revive // ok
-	al.kvClient = kvCli
-	pairs, err := al.kvClient.List(ctx, metadata.BlockKeyPrefixInKVStore)
-	if err != nil {
-		return err
-	}
-	for idx := range pairs {
-		pair := pairs[idx]
-		bl := &metadata.Block{}
-		_err := json.Unmarshal(pair.Value, bl)
-		if _err != nil {
-			return _err
-		}
-		v, exist := al.volumeBlockBuffer.Load(bl.VolumeID.Key())
-		if !exist {
-			v = skiplist.New(skiplist.String)
-			al.volumeBlockBuffer.Store(bl.VolumeID.Key(), v)
-		}
-		l, _ := v.(*skiplist.SkipList)
-		if bl.SegmentID == vanus.EmptyID() {
-			l.Set(bl.ID.Key(), bl)
-		}
-	}
-	// if startDynamicAllocate {
-	// disable by wenfeng on 3.10
-	// al.cancelCtx, al.cancel = context.WithCancel(context.Background())
-	// go al.dynamicAllocateBlockTask(al.cancelCtx)
-	// }
+func (al *allocator) Run(ctx context.Context, kvCli kv.Client, startDynamicAllocate bool) error {
+	_ = "STUB: not implemented" //nolint:revive // ok
 	return nil
 }
 
-func (al *allocator) Pick(ctx context.Context, num int) ([]*metadata.Block, error) {
-	al.mutex.Lock()
-	defer al.mutex.Unlock()
-	instances := al.selector.Select(num, al.blockCapacity)
-	if len(instances) == 0 {
-		return nil, errors.ErrVolumeInstanceNotFound
-	}
+// if startDynamicAllocate {
+// disable by wenfeng on 3.10
+// al.cancelCtx, al.cancel = context.WithCancel(context.Background())
+// go al.dynamicAllocateBlockTask(al.cancelCtx)
+// }
 
-	return al.pick(ctx, instances)
+func (al *allocator) Pick(ctx context.Context, num int) ([]*metadata.Block, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (al *allocator) pick(ctx context.Context, volumes []server.Instance) ([]*metadata.Block, error) {
-	blockArr := make([]*metadata.Block, len(volumes))
-	for idx := range volumes {
-		var skipList *skiplist.SkipList
-		ins := volumes[idx]
-		v, exist := al.volumeBlockBuffer.Load(ins.GetMeta().ID.Key())
-		var err error
-		var block *metadata.Block
-		if exist {
-			skipList, _ = v.(*skiplist.SkipList)
-		}
-
-		if !exist || skipList.Len() == 0 {
-			block, err = ins.CreateBlock(ctx, al.blockCapacity)
-			if err != nil {
-				return nil, err
-			}
-			if err = al.updateBlockInKV(ctx, block); err != nil {
-				log.Error(ctx).Err(err).
-					Interface("block", block).
-					Msg("save block metadata to kv failed after creating")
-				return nil, err
-			}
-		} else {
-			val := skipList.RemoveFront()
-			block, _ = val.Value.(*metadata.Block)
-		}
-		blockArr[idx] = block
-	}
-	return blockArr, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (al *allocator) Stop() {}
+func (al *allocator) Stop() { _ = "STUB: not implemented"; return }
 
-func (al *allocator) dynamicAllocateBlockTask(ctx context.Context) { //nolint:unused // ok
-	for {
-		select {
-		case <-ctx.Done():
-			log.Info(ctx).Msg("the dynamic-allocate task exit")
-			return
-		case <-al.allocateTicker.C:
-			instances := al.selector.GetAllVolume()
-			for _, instance := range instances {
-				var skipList *skiplist.SkipList
-				v, exist := al.volumeBlockBuffer.Load(instance.GetMeta().ID.Key())
-				if !exist {
-					v = skiplist.New(skiplist.String)
-					al.volumeBlockBuffer.Store(instance.GetMeta().ID.Key(), v)
-				}
-				skipList, _ = v.(*skiplist.SkipList)
-				for skipList.Len() < defaultBlockBufferSizePerVolume {
-					block, err := instance.CreateBlock(ctx, al.blockCapacity)
-					if err != nil {
-						log.Warn(ctx).
-							Interface("volume_id", instance.GetMeta().ID).
-							Int("buffer_size", skipList.Len()).
-							Msg("create block failed")
-						break
-					}
-					if err = al.updateBlockInKV(ctx, block); err != nil {
-						log.Warn(ctx).
-							Interface("volume_id", instance.GetMeta().ID).
-							Interface("block_id", block.ID).
-							Int("buffer_size", skipList.Len()).
-							Err(err).Msg("insert block medata to etcd failed")
-						break
-					}
-					log.Info(ctx).Interface("volume_id", instance.GetMeta().ID).
-						Interface("block_id", block.ID).Msg("a new block created")
-					skipList.Set(block.ID.Key(), block)
-				}
-			}
-		}
-	}
+func (al *allocator) dynamicAllocateBlockTask(ctx context.Context) {
+	_ = "STUB: not implemented" //nolint:unused // ok
+	return
 }
 
 func (al *allocator) updateBlockInKV(ctx context.Context, block *metadata.Block) error {
-	if block == nil {
-		return nil
-	}
-	data, err := json.Marshal(block)
-	if err != nil {
-		return err
-	}
-	key := strings.Join([]string{metadata.BlockKeyPrefixInKVStore, block.VolumeID.Key(), block.ID.Key()}, "/")
-	return al.kvClient.Set(ctx, key, data)
+	_ = "STUB: not implemented"
+	return nil
 }

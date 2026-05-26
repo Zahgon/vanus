@@ -14,20 +14,10 @@
 
 package quorum
 
-import (
-	"math"
-	"strconv"
-)
-
 // Index is a Raft log position.
 type Index uint64
 
-func (i Index) String() string {
-	if i == math.MaxUint64 {
-		return "∞"
-	}
-	return strconv.FormatUint(uint64(i), 10)
-}
+func (i Index) String() string { _ = "STUB: not implemented"; return "" }
 
 // AckedIndexer allows looking up a commit index for a given ID of a voter
 // from a corresponding MajorityConfig.
@@ -38,8 +28,8 @@ type AckedIndexer interface {
 type mapAckIndexer map[uint64]Index
 
 func (m mapAckIndexer) AckedIndex(id uint64) (Index, bool) {
-	idx, ok := m[id]
-	return idx, ok
+	_ = "STUB: not implemented"
+	return *new(Index), false
 }
 
 // VoteResult indicates the outcome of a vote.

@@ -17,223 +17,83 @@ package path
 import (
 	// standard libraries.
 	"errors"
-	"strings"
-	"unicode/utf8"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/bytes"
-	"github.com/vanus-labs/vanus/lib/json/parse"
 )
 
 var errInvalidJSONPath = errors.New("invalid JSON path")
 
-func Parse(text string) (Path, error) {
-	s := bytes.NewMarkScanner(bytes.UnsafeFromString(text))
-	if bytes.ExpectChar(s, '$') != nil { // root identifier
-		return nil, errInvalidJSONPath
-	}
-	segments, err := ConsumeSegments(s)
-	if err != nil {
-		return nil, errInvalidJSONPath
-	}
-	return &rootPath{segments: segments}, nil
-}
+func Parse(text string) (Path, error) { _ = "STUB: not implemented"; return *new(Path), nil }
+
+// root identifier
 
 func ConsumeExt(c byte, s *bytes.MarkScanner) (Path, error) {
-	if c != '$' {
-		return nil, errInvalidJSONPath
-	}
-	segments, err := ConsumeSegments(s)
-	if err != nil {
-		return nil, errInvalidJSONPath
-	}
-	return &rootPath{segments: segments}, nil
+	_ = "STUB: not implemented"
+	return *new(Path), nil
 }
 
 func ConsumeSegments(s *bytes.MarkScanner) ([]Segment, error) {
-	var segments []Segment
-	for {
-		m := s.Mark(0)
-		segment, err := consumeSegment(s)
-		if err != nil {
-			_ = s.Resume(m)
-			if len(segments) == 0 {
-				return nil, err
-			}
-			return segments, nil
-		}
-		segments = append(segments, segment)
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func consumeSegment(s *bytes.MarkScanner) (Segment, error) {
-	c, err := s.ReadByte()
-	if err != nil {
-		return nil, err
-	}
-
-	switch c {
-	case '[':
-		return consumeBracketedSelection(s)
-	case '.':
-		return consumeDotSegment(s)
-	default:
-		return nil, errInvalidJSONPath
-	}
+	_ = "STUB: not implemented"
+	return *new(Segment), nil
 }
 
 func consumeBracketedSelection(s *bytes.MarkScanner) (Segment, error) {
-	var selectors []Selector
-	for {
-		_, c, err := parse.SkipWhitespace(s)
-		if err != nil {
-			return nil, err
-		}
-
-		selector, err := consumeSelectorExt(c, s)
-		if err != nil {
-			return nil, err
-		}
-
-		selectors = append(selectors, selector)
-
-		_, c, err = parse.SkipWhitespace(s)
-		if err != nil {
-			return nil, err
-		}
-
-		switch c {
-		case ']': // end of bracketed selection
-			return &bracketedSelection{selectors: selectors}, nil
-		case ',': // continue
-		default:
-			return nil, errInvalidJSONPath
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(Segment), nil
 }
+
+// end of bracketed selection
+
+// continue
 
 func consumeSelectorExt(c byte, s *bytes.MarkScanner) (Selector, error) {
-	switch c {
-	case '\'': // name selector
-		var b strings.Builder
-		if err := parse.ConsumeSingleQuotedString(s, &b); err != nil {
-			return nil, err
-		}
-		return &nameSelector{member: b.String()}, nil
-	case '"': // name selector
-		var b strings.Builder
-		if err := parse.ConsumeDoubleQuotedString(s, &b); err != nil {
-			return nil, err
-		}
-		return &nameSelector{member: b.String()}, nil
-	case '*': // wildcard selector
-		return &wildcardSelector{}, nil
-	case '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
-		return consumeIndexOrSliceSelector(c, s)
-	case ':': // array slice selector
-		return consumeSliceSelector(nil, s)
-	case '?': // filter selector
-		// TODO(james.yin)
-		return nil, errors.New("not implemented filter selector")
-	}
-	return nil, errInvalidJSONPath
+	_ = "STUB: not implemented"
+	return *
+
+	// name selector
+	new(Selector), nil
 }
+
+// name selector
+
+// wildcard selector
+
+// array slice selector
+
+// filter selector
+// TODO(james.yin)
 
 func consumeIndexOrSliceSelector(c byte, s *bytes.MarkScanner) (Selector, error) {
-	indexOrStart, err := parse.ExpectIntegerExt(c, s)
-	if err != nil {
-		return nil, err
-	}
-
-	m := s.Mark(0)
-	if _, c, err = parse.SkipWhitespace(s); err != nil {
-		return nil, err
-	}
-
-	// array slice selector
-	if c == ':' {
-		return consumeSliceSelector(&indexOrStart, s)
-	}
-
-	_ = s.Resume(m)
-	return &indexSelector{index: indexOrStart}, nil
+	_ = "STUB: not implemented"
+	return *new(Selector), nil
 }
 
+// array slice selector
+
 func consumeSliceSelector(start *int, s *bytes.MarkScanner) (*arraySliceSelector, error) {
-	m := s.Mark(0)
-	_, c, err := parse.SkipWhitespace(s)
-	if err != nil {
-		_ = s.Resume(m)
-		return nil, err
-	}
-
-	var end *int
-
-	me := s.Mark(0)
-	e, err := parse.ExpectIntegerExt(c, s)
-	if err != nil {
-		_ = s.Resume(me)
-	} else {
-		end = &e
-		m = s.Mark(0)
-		if _, c, err = parse.SkipWhitespace(s); err != nil {
-			return nil, err
-		}
-	}
-
-	step := 1
-	if c == ':' {
-		m = s.Mark(0)
-		if _, c, err = parse.SkipWhitespace(s); err != nil {
-			return nil, err
-		}
-		if step, err = parse.ExpectIntegerExt(c, s); err != nil {
-			step = 1
-			_ = s.Resume(m)
-		}
-	} else {
-		_ = s.Resume(m)
-	}
-
-	return &arraySliceSelector{
-		start: start,
-		end:   end,
-		step:  step,
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func consumeDotSegment(s *bytes.MarkScanner) (Segment, error) {
-	r, _ := bytes.ReadRune(s)
-	switch r {
-	case '*': // wildcard selector
-		return &wildcardSelector{}, nil
-	case '.': // descendant segment
-		// TODO(james.yin)
-		return nil, errors.New("not implemented descendant segment")
-	default: // member-name-shorthand
-		return consumeMemberNameShorthandExt(r, s)
-	}
+	_ = "STUB: not implemented"
+	return *new(Segment), nil
 }
 
+// wildcard selector
+
+// descendant segment
+// TODO(james.yin)
+
+// member-name-shorthand
+
 func consumeMemberNameShorthandExt(r rune, s *bytes.MarkScanner) (Segment, error) {
-	var b strings.Builder
-
-	if r == utf8.RuneError || !parse.ExceptNameFirst(r) {
-		return nil, errInvalidJSONPath
-	}
-	if _, err := b.WriteRune(r); err != nil {
-		return nil, err
-	}
-
-	for {
-		m := s.Mark(0)
-		r, _ = bytes.ReadRune(s)
-		if r == utf8.RuneError || !parse.ExceptNameChar(r) {
-			_ = s.Resume(m)
-			return &nameSelector{member: b.String()}, nil
-		}
-		if _, err := b.WriteRune(r); err != nil {
-			return nil, err
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(Segment), nil
 }

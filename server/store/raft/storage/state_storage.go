@@ -17,8 +17,6 @@ package storage
 import (
 	// standard libraries.
 	"context"
-	"fmt"
-	"sync/atomic"
 
 	// third-party libraries.
 
@@ -45,78 +43,40 @@ type stateStorage struct {
 
 // InitialState returns the saved HardState and ConfState information.
 func (s *Storage) InitialState() (raftpb.HardState, raftpb.ConfState, error) {
-	return s.prevHardSt, s.prevConfSt, nil
+	_ = "STUB: not implemented"
+	return *new(raftpb.HardState), *new(raftpb.ConfState), nil
 }
 
 // HardState returns the saved HardState.
 // NOTE: HardState.Commit will always be 0, don't use it.
 func (s *Storage) HardState() raftpb.HardState {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	return raftpb.HardState{
-		Term: s.prevHardSt.Term,
-		Vote: s.prevHardSt.Vote,
-	}
+	_ = "STUB: not implemented"
+	return *new(raftpb.HardState)
 }
 
 // SetHardState saves the current HardState.
 func (s *Storage) SetHardState(ctx context.Context, hs raftpb.HardState, cb meta.StoreCallback) {
-	data, err := hs.Marshal()
-	if err != nil {
-		cb(err)
-		return
-	}
-	s.stateStore.Store(ctx, s.hsKey, data, cb)
-
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	s.prevHardSt.Term = hs.Term
-	s.prevHardSt.Vote = hs.Vote
+	_ = "STUB: not implemented"
+	return
 }
 
-func (s *Storage) Commit() uint64 {
-	return atomic.LoadUint64(&s.prevHardSt.Commit)
-}
+func (s *Storage) Commit() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Storage) SetCommit(ctx context.Context, commit uint64) {
-	s.hintStore.Store(ctx, s.offKey, commit)
-	atomic.StoreUint64(&s.prevHardSt.Commit, commit)
-}
+func (s *Storage) SetCommit(ctx context.Context, commit uint64) { _ = "STUB: not implemented"; return }
 
 func (s *Storage) SetConfState(ctx context.Context, cs raftpb.ConfState, cb meta.StoreCallback) {
-	data, err := cs.Marshal()
-	if err != nil {
-		cb(err)
-		return
-	}
-	s.stateStore.Store(ctx, s.csKey, data, cb)
-
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	s.prevConfSt = cs
+	_ = "STUB: not implemented"
+	return
 }
 
-func (s *Storage) Applied() uint64 {
-	return atomic.LoadUint64(&s.prevApply)
-}
+func (s *Storage) Applied() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Storage) SetApplied(ctx context.Context, app uint64) {
-	s.hintStore.Store(ctx, s.appKey, app)
-	atomic.StoreUint64(&s.prevApply, app)
-}
+func (s *Storage) SetApplied(ctx context.Context, app uint64) { _ = "STUB: not implemented"; return }
 
-func HardStateKey(id uint64) string {
-	return fmt.Sprintf("block/%020d/hardState", id)
-}
+func HardStateKey(id uint64) string { _ = "STUB: not implemented"; return "" }
 
-func CommitKey(id uint64) string {
-	return fmt.Sprintf("block/%020d/commit", id)
-}
+func CommitKey(id uint64) string { _ = "STUB: not implemented"; return "" }
 
-func ConfStateKey(id uint64) string {
-	return fmt.Sprintf("block/%020d/confState", id)
-}
+func ConfStateKey(id uint64) string { _ = "STUB: not implemented"; return "" }
 
-func ApplyKey(id uint64) string {
-	return fmt.Sprintf("block/%020d/applied", id)
-}
+func ApplyKey(id uint64) string { _ = "STUB: not implemented"; return "" }

@@ -17,11 +17,6 @@ package storage
 
 import (
 	"context"
-	"encoding/json"
-	"path"
-	"path/filepath"
-
-	"github.com/vanus-labs/vanus/api/errors"
 
 	"github.com/vanus-labs/vanus/pkg/kv"
 	"github.com/vanus-labs/vanus/server/controller/trigger/metadata"
@@ -39,55 +34,28 @@ type triggerWorkerStorage struct {
 }
 
 func NewTriggerWorkerStorage(client kv.Client) TriggerWorkerStorage {
-	return &triggerWorkerStorage{
-		client: client,
-	}
+	_ = "STUB: not implemented"
+	return *new(TriggerWorkerStorage)
 }
 
-func (s *triggerWorkerStorage) getKey(id string) string {
-	return path.Join(kv.TriggerWorker, id)
-}
+func (s *triggerWorkerStorage) getKey(id string) string { _ = "STUB: not implemented"; return "" }
 
 func (s *triggerWorkerStorage) SaveTriggerWorker(ctx context.Context, info metadata.TriggerWorkerInfo) error {
-	key := s.getKey(info.ID)
-	v, err := json.Marshal(info)
-	if err != nil {
-		return errors.ErrJSONMarshal.Wrap(err)
-	}
-	return s.client.Set(ctx, key, v)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *triggerWorkerStorage) GetTriggerWorker(ctx context.Context, id string) (*metadata.TriggerWorkerInfo, error) {
-	v, err := s.client.Get(ctx, s.getKey(id))
-	if err != nil {
-		return nil, err
-	}
-	var tWorker metadata.TriggerWorkerInfo
-	err = json.Unmarshal(v, &tWorker)
-	if err != nil {
-		return nil, errors.ErrJSONUnMarshal.Wrap(err)
-	}
-	return &tWorker, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *triggerWorkerStorage) DeleteTriggerWorker(ctx context.Context, id string) error {
-	return s.client.Delete(ctx, s.getKey(id))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *triggerWorkerStorage) ListTriggerWorker(ctx context.Context) ([]*metadata.TriggerWorkerInfo, error) {
-	l, err := s.client.List(ctx, s.getKey("/"))
-	if err != nil {
-		return nil, err
-	}
-	list := make([]*metadata.TriggerWorkerInfo, 0)
-	for _, v := range l {
-		var tWorker metadata.TriggerWorkerInfo
-		err = json.Unmarshal(v.Value, &tWorker)
-		if err != nil {
-			return nil, errors.ErrJSONUnMarshal.Wrap(err)
-		}
-		tWorker.ID = filepath.Base(v.Key)
-		list = append(list, &tWorker)
-	}
-	return list, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

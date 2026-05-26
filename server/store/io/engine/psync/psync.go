@@ -41,10 +41,7 @@ type psync struct {
 // Make sure engine implements engine.Interface.
 var _ engine.Interface = (*psync)(nil)
 
-func New(opts ...Option) engine.Interface {
-	cfg := makeConfig(opts...)
-	return new(psync).init(cfg)
-}
+func New(opts ...Option) engine.Interface { _ = "STUB: not implemented"; return *new(engine.Interface) }
 
 func (e *psync) init(cfg config) *psync {
 	e.q.Init(false)
@@ -54,11 +51,11 @@ func (e *psync) init(cfg config) *psync {
 	return e
 }
 
-func (e *psync) Close() {
-	e.q.Close()
-}
+func (e *psync) Close() { _ = "STUB: not implemented"; return }
 
-func (e *psync) WriteAt(z zone.Interface, b []byte, off int64, so, eo int, cb io.WriteCallback) { //nolint:revive // ok
+func (e *psync) WriteAt(z zone.Interface, b []byte, off int64, so, eo int, cb io.WriteCallback) {
+	_ = "STUB: not implemented" //nolint:revive // ok
+	return
 	// if eo != 0 && eo != len(b) {
 	// 	b = b[:eo]
 	// }
@@ -66,22 +63,12 @@ func (e *psync) WriteAt(z zone.Interface, b []byte, off int64, so, eo int, cb io
 	// 	b = b[so:]
 	// 	off += int64(so)
 	// }
-	f, off := z.Raw(off)
-	e.q.Push(writeTask{f, b, off, cb})
 }
 
-func (e *psync) run() {
-	for {
-		task, ok := e.q.SharedPop()
-		if !ok {
-			return
-		}
-
-		task.invoke()
-	}
-}
+func (e *psync) run() { _ = "STUB: not implemented"; return }
 
 func (t *writeTask) invoke() {
+	_ = "STUB: not implemented"
 	// NOTE: data race is ok here.
-	t.cb(t.f.WriteAt(t.b, t.off))
+	return
 }

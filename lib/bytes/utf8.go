@@ -17,7 +17,6 @@ package bytes
 import (
 	// standard libraries.
 	"io"
-	"unicode/utf8"
 )
 
 const (
@@ -83,57 +82,23 @@ var acceptRanges = [16]acceptRange{
 	4: {locb, 0x8F},
 }
 
-func ReadRune(r io.ByteReader) (rune, int) {
-	b0, err := r.ReadByte()
-	if err != nil {
-		return utf8.RuneError, 0
-	}
-	return ReadRuneExt(b0, r)
-}
+func ReadRune(r io.ByteReader) (rune, int) { _ = "STUB: not implemented"; return 0, 0 }
 
-func ReadRuneExt(b0 byte, r io.ByteReader) (rune, int) {
-	x := first[b0]
-	if x >= as {
-		// The following code simulates an additional check for x == xx and
-		// handling the ASCII and invalid cases accordingly. This mask-and-or
-		// approach prevents an additional branch.
-		mask := rune(x) << 31 >> 31 //nolint:gomnd // Create 0x0000 or 0xFFFF.
-		return rune(b0)&^mask | utf8.RuneError&mask, 1
-	}
+func ReadRuneExt(b0 byte, r io.ByteReader) (rune, int) { _ = "STUB: not implemented"; return 0, 0 }
 
-	sz := int(x & 0b111) //nolint:gomnd // magic is ok
-	accept := acceptRanges[x>>4]
+// The following code simulates an additional check for x == xx and
+// handling the ASCII and invalid cases accordingly. This mask-and-or
+// approach prevents an additional branch.
+//nolint:gomnd // Create 0x0000 or 0xFFFF.
 
-	b1, err := r.ReadByte()
-	if err != nil || b1 < accept.lo || accept.hi < b1 {
-		return utf8.RuneError, 1
-	}
-	if sz == 2 { //nolint:gomnd // magic is ok
-		return rune(b0&mask2)<<6 | rune(b1&maskx), 2 //nolint:gomnd // magic is ok
-	}
+//nolint:gomnd // magic is ok
 
-	b2, err := r.ReadByte()
-	if err != nil || b2 < locb || hicb < b2 {
-		return utf8.RuneError, 1
-	}
-	if sz == 3 { //nolint:gomnd // magic is ok
-		return rune(b0&mask3)<<12 | rune(b1&maskx)<<6 | rune(b2&maskx), 3 //nolint:gomnd // magic is ok
-	}
+//nolint:gomnd // magic is ok
+//nolint:gomnd // magic is ok
 
-	b3, err := r.ReadByte()
-	if err != nil || b3 < locb || hicb < b3 {
-		return utf8.RuneError, 1
-	}
-	return rune(b0&mask4)<<18 | rune(b1&maskx)<<12 | rune(b2&maskx)<<6 | rune(b3&maskx), 4 //nolint:gomnd // magic is ok
-}
+//nolint:gomnd // magic is ok
+//nolint:gomnd // magic is ok
 
-func WriteRune(w io.ByteWriter, ru rune) error {
-	var buf [utf8.UTFMax]byte
-	n := utf8.EncodeRune(buf[:], ru)
-	for i := 0; i < n; i++ {
-		if err := w.WriteByte(buf[i]); err != nil {
-			return err
-		}
-	}
-	return nil
-}
+//nolint:gomnd // magic is ok
+
+func WriteRune(w io.ByteWriter, ru rune) error { _ = "STUB: not implemented"; return nil }

@@ -66,221 +66,54 @@ var (
 	_ PendingTask = (*stream)(nil)
 )
 
-func (s *stream) Zone() zone.Interface {
-	return s.z
-}
+func (s *stream) Zone() zone.Interface { _ = "STUB: not implemented"; return *new(zone.Interface) }
 
-func (s *stream) WriteOffset() int64 {
-	if s.buf == nil {
-		return s.off
-	}
-	return s.off + int64(s.buf.Size())
-}
+func (s *stream) WriteOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *stream) Sync() {
-	s.mu.Lock()
-	defer s.mu.Unlock()
+func (s *stream) Sync() { _ = "STUB: not implemented"; return }
 
-	if !s.dirty {
-		return
-	}
+func (s *stream) Append(r stdio.Reader, cb io.WriteCallback) { _ = "STUB: not implemented"; return }
 
-	s.dirty = false
-	s.cancelFlushTimer()
-	s.flushBlock(s.buf, s.waiting)
-	s.waiting = nil
-}
+//nolint:errorlint // compare to EOF is ok
 
-func (s *stream) Append(r stdio.Reader, cb io.WriteCallback) {
-	flushBatchSize := s.s.bufferSize()
+func (s *stream) startFlushTimer() { _ = "STUB: not implemented"; return }
 
-	s.mu.Lock()
-	defer s.mu.Unlock()
+func (s *stream) cancelFlushTimer() { _ = "STUB: not implemented"; return }
 
-	var n int
-	var err error
-	var last *block.Buffer
-
-	for err == nil {
-		if s.buf == nil {
-			s.buf = s.s.getBuffer(s.off)
-		}
-
-		n, err = s.buf.Append(r)
-		if err != nil && err != stdio.EOF { //nolint:errorlint // compare to EOF is ok
-			panic(err)
-		}
-
-		if n == 0 {
-			continue
-		}
-
-		if s.buf.Full() {
-			if s.dirty {
-				s.dirty = false
-				s.cancelFlushTimer()
-			}
-
-			if last != nil {
-				s.flushBuffer(last, s.waiting)
-				s.waiting = nil
-			}
-			last = s.buf
-
-			s.off += int64(flushBatchSize)
-			s.buf = nil
-		}
-	}
-
-	empty := s.buf == nil || s.buf.Empty()
-
-	if empty {
-		s.waiting = append(s.waiting, cb)
-		if last == nil {
-			s.dirty = true
-			s.startFlushTimer()
-			return
-		}
-	}
-
-	if last != nil {
-		s.flushBuffer(last, s.waiting)
-		s.waiting = nil
-	}
-
-	if !empty {
-		s.waiting = append(s.waiting, cb)
-		if !s.dirty {
-			s.dirty = true
-			s.startFlushTimer()
-		}
-	}
-}
-
-func (s *stream) startFlushTimer() {
-	if s.timer != nil {
-		return
-	}
-	s.timer = s.s.delayFlush(s)
-}
-
-func (s *stream) cancelFlushTimer() {
-	if s.timer == nil {
-		return
-	}
-	s.s.cancelFlushTask(s.timer)
-	s.timer = nil
-}
-
-func (s *stream) OnTimeout(pid PendingID) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	if s.timer != pid {
-		return
-	}
-
-	s.dirty = false
-	s.flushBlock(s.buf, s.waiting)
-	s.waiting = nil
-	s.timer = nil
-}
+func (s *stream) OnTimeout(pid PendingID) { _ = "STUB: not implemented"; return }
 
 func (s *stream) flushBuffer(b *block.Buffer, cbs []io.WriteCallback) {
-	b.Flush(s, func(off int, err error) {
-		base := b.Base()
-		s.s.putBuffer(b)
-		if err != nil && err != block.ErrAlreadyFlushed { //nolint:errorlint // compare to ErrAlreadyFlushed is ok
-			panic(err)
-		}
-		s.callbackExecutor.Execute(func() {
-			s.onFlushed(base, off, cbs)
-		})
-	})
+	_ = "STUB: not implemented"
+	return
 }
+
+//nolint:errorlint // compare to ErrAlreadyFlushed is ok
 
 func (s *stream) flushBlock(b block.Interface, cbs []io.WriteCallback) {
-	base := b.Base()
-	b.Flush(s, func(off int, err error) {
-		if err != nil && err != block.ErrAlreadyFlushed { //nolint:errorlint // compare to ErrAlreadyFlushed is ok
-			panic(err)
-		}
-		s.callbackExecutor.Execute(func() {
-			s.onFlushed(base, off, cbs)
-		})
-	})
+	_ = "STUB: not implemented"
+	return
 }
+
+//nolint:errorlint // compare to ErrAlreadyFlushed is ok
 
 func (s *stream) onFlushed(base int64, off int, cbs []io.WriteCallback) {
-	ft, ok := s.pending[base]
-
-	// Wait previous block flushed.
-	if !ok {
-		s.pending[base] = &flushTask{
-			off: off,
-			cbs: cbs,
-		}
-		return
-	}
-
-	if !ft.ready {
-		ft.off = off
-		if len(cbs) != 0 {
-			if len(ft.cbs) != 0 {
-				ft.cbs = append(ft.cbs, cbs...)
-			} else {
-				ft.cbs = cbs
-			}
-		}
-		return
-	}
-
-	// FIXME(james.yin): pass n
-	invokeCallbacks(cbs, 0, nil)
-
-	flushBatchSize := s.s.bufferSize()
-
-	// Partial flush.
-	if off != flushBatchSize {
-		ft.off = off
-		return
-	}
-
-	for {
-		delete(s.pending, base)
-
-		// Check next block.
-		base += int64(flushBatchSize)
-
-		ft, ok = s.pending[base]
-		if !ok {
-			s.pending[base] = &flushTask{
-				ready: true,
-			}
-			return
-		}
-
-		// FIXME(james.yin): pass n
-		invokeCallbacks(ft.cbs, 0, nil)
-
-		if ft.off != flushBatchSize {
-			ft.ready = true
-			ft.cbs = nil
-			return
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func invokeCallbacks(cbs []io.WriteCallback, n int, err error) {
-	if len(cbs) == 0 {
-		return
-	}
+// Wait previous block flushed.
 
-	for _, cb := range cbs {
-		cb(n, err)
-	}
-}
+// FIXME(james.yin): pass n
+
+// Partial flush.
+
+// Check next block.
+
+// FIXME(james.yin): pass n
+
+func invokeCallbacks(cbs []io.WriteCallback, n int, err error) { _ = "STUB: not implemented"; return }
 
 func (s *stream) WriteAt(b []byte, off int64, so, eo int, cb io.WriteCallback) {
-	s.s.writeAt(s.z, b, off, so, eo, cb)
+	_ = "STUB: not implemented"
+	return
 }

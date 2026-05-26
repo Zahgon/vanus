@@ -22,59 +22,25 @@ import (
 
 var errUnexpectedChar = errors.New("unexpected character")
 
-func ExpectChar(r io.ByteReader, c byte) error {
-	b, err := r.ReadByte()
-	if err != nil || b != c {
-		return errUnexpectedChar
-	}
-	return nil
-}
+func ExpectChar(r io.ByteReader, c byte) error { _ = "STUB: not implemented"; return nil }
 
 func ConsumeUntil(r io.ByteReader, w io.ByteWriter, stop func(byte) bool) (int, byte, error) {
-	for count := 0; ; count++ {
-		c, err := r.ReadByte()
-		if err != nil {
-			return count, 0, err
-		}
-		if stop(c) {
-			return count, c, nil
-		}
-		if err = w.WriteByte(c); err != nil {
-			return count, c, err
-		}
-	}
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }
 
 func Skip(r io.ByteReader, expect func(byte) bool) (int, byte, error) {
-	for count := 0; ; count++ {
-		c, err := r.ReadByte()
-		if err != nil {
-			return count, 0, err
-		}
-		if !expect(c) {
-			return count, c, nil
-		}
-	}
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }
 
-func IgnoreCount(_ int, c byte, err error) (byte, error) {
-	return c, err
-}
+func IgnoreCount(_ int, c byte, err error) (byte, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func AcceptEOF(count int, c byte, err error) (int, bool, byte, error) {
-	switch {
-	case err == nil:
-		return count, false, c, nil
-	case err == io.EOF: //nolint:errorlint // io.EOF is not an error
-		return count, true, 0, nil
-	default:
-		return 0, false, 0, err
-	}
+	_ = "STUB: not implemented"
+	return 0, false, 0, nil
 }
 
-func Unread(r io.ByteScanner, eof bool, err error) error {
-	if err == nil && !eof {
-		err = r.UnreadByte()
-	}
-	return err
-}
+//nolint:errorlint // io.EOF is not an error
+
+func Unread(r io.ByteScanner, eof bool, err error) error { _ = "STUB: not implemented"; return nil }

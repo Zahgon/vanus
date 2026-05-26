@@ -24,40 +24,22 @@ type define struct {
 }
 
 // newDefine name format is <var> .
-func newDefine(name string) Arg {
-	return define{
-		name:     name[1 : len(name)-1],
-		original: name,
-	}
-}
+func newDefine(name string) Arg { _ = "STUB: not implemented"; return *new(Arg) }
 
-func (arg define) Type() Type {
-	return Define
-}
+func (arg define) Type() Type { _ = "STUB: not implemented"; return *new(Type) }
 
-func (arg define) Name() string {
-	return arg.name
-}
+func (arg define) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (arg define) Original() string {
-	return arg.original
-}
+func (arg define) Original() string { _ = "STUB: not implemented"; return "" }
 
 func (arg define) Evaluate(ceCtx *context.EventContext) (interface{}, error) {
-	if len(ceCtx.Define) == 0 {
-		return nil, ErrArgValueNil
-	}
-	v, exist := ceCtx.Define[arg.name]
-	if !exist {
-		return nil, ErrArgValueNil
-	}
-	return v, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (arg define) SetValue(*context.EventContext, interface{}) error {
-	return ErrOperationNotSupport
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (arg define) DeleteValue(*context.EventContext) error {
-	return ErrOperationNotSupport
-}
+func (arg define) DeleteValue(*context.EventContext) error { _ = "STUB: not implemented"; return nil }

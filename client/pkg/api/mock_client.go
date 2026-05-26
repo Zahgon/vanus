@@ -11,7 +11,6 @@ package api
 
 import (
 	context "context"
-	reflect "reflect"
 
 	cloudevents "github.com/vanus-labs/vanus/api/cloudevents"
 	gomock "go.uber.org/mock/gomock"
@@ -29,117 +28,82 @@ type MockEventbusMockRecorder struct {
 }
 
 // NewMockEventbus creates a new mock instance.
-func NewMockEventbus(ctrl *gomock.Controller) *MockEventbus {
-	mock := &MockEventbus{ctrl: ctrl}
-	mock.recorder = &MockEventbusMockRecorder{mock}
-	return mock
-}
+func NewMockEventbus(ctrl *gomock.Controller) *MockEventbus { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockEventbus) EXPECT() *MockEventbusMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CheckHealth mocks base method.
+	return nil
 }
 
-// CheckHealth mocks base method.
 func (m *MockEventbus) CheckHealth(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CheckHealth", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CheckHealth indicates an expected call of CheckHealth.
 func (mr *MockEventbusMockRecorder) CheckHealth(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckHealth", reflect.TypeOf((*MockEventbus)(nil).CheckHealth), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Close mocks base method.
-func (m *MockEventbus) Close(ctx context.Context) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Close", ctx)
-}
+func (m *MockEventbus) Close(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 // Close indicates an expected call of Close.
 func (mr *MockEventbusMockRecorder) Close(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockEventbus)(nil).Close), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetLog mocks base method.
 func (m *MockEventbus) GetLog(ctx context.Context, logID uint64, opts ...LogOption) (Eventlog, error) {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx, logID}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetLog", varargs...)
-	ret0, _ := ret[0].(Eventlog)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(Eventlog), nil
 }
 
 // GetLog indicates an expected call of GetLog.
 func (mr *MockEventbusMockRecorder) GetLog(ctx, logID any, opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx, logID}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLog", reflect.TypeOf((*MockEventbus)(nil).GetLog), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListLog mocks base method.
 func (m *MockEventbus) ListLog(ctx context.Context, opts ...LogOption) ([]Eventlog, error) {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListLog", varargs...)
-	ret0, _ := ret[0].([]Eventlog)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListLog indicates an expected call of ListLog.
 func (mr *MockEventbusMockRecorder) ListLog(ctx any, opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListLog", reflect.TypeOf((*MockEventbus)(nil).ListLog), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Reader mocks base method.
 func (m *MockEventbus) Reader(opts ...ReadOption) BusReader {
-	m.ctrl.T.Helper()
-	varargs := []any{}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Reader", varargs...)
-	ret0, _ := ret[0].(BusReader)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(BusReader)
 }
 
 // Reader indicates an expected call of Reader.
 func (mr *MockEventbusMockRecorder) Reader(opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reader", reflect.TypeOf((*MockEventbus)(nil).Reader), opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Writer mocks base method.
 func (m *MockEventbus) Writer(opts ...WriteOption) BusWriter {
-	m.ctrl.T.Helper()
-	varargs := []any{}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Writer", varargs...)
-	ret0, _ := ret[0].(BusWriter)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(BusWriter)
 }
 
 // Writer indicates an expected call of Writer.
 func (mr *MockEventbusMockRecorder) Writer(opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Writer", reflect.TypeOf((*MockEventbus)(nil).Writer), opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockBusWriter is a mock of BusWriter interface.
@@ -155,34 +119,27 @@ type MockBusWriterMockRecorder struct {
 
 // NewMockBusWriter creates a new mock instance.
 func NewMockBusWriter(ctrl *gomock.Controller) *MockBusWriter {
-	mock := &MockBusWriter{ctrl: ctrl}
-	mock.recorder = &MockBusWriterMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockBusWriter) EXPECT() *MockBusWriterMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Append mocks base method.
+	return nil
 }
 
-// Append mocks base method.
 func (m *MockBusWriter) Append(ctx context.Context, events *cloudevents.CloudEventBatch, opts ...WriteOption) ([]string, error) {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx, events}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Append", varargs...)
-	ret0, _ := ret[0].([]string)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Append indicates an expected call of Append.
 func (mr *MockBusWriterMockRecorder) Append(ctx, events any, opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx, events}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Append", reflect.TypeOf((*MockBusWriter)(nil).Append), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockBusReader is a mock of BusReader interface.
@@ -198,36 +155,27 @@ type MockBusReaderMockRecorder struct {
 
 // NewMockBusReader creates a new mock instance.
 func NewMockBusReader(ctrl *gomock.Controller) *MockBusReader {
-	mock := &MockBusReader{ctrl: ctrl}
-	mock.recorder = &MockBusReaderMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockBusReader) EXPECT() *MockBusReaderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Read mocks base method.
+	return nil
 }
 
-// Read mocks base method.
 func (m *MockBusReader) Read(ctx context.Context, opts ...ReadOption) (*cloudevents.CloudEventBatch, int64, uint64, error) {
-	m.ctrl.T.Helper()
-	varargs := []any{ctx}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Read", varargs...)
-	ret0, _ := ret[0].(*cloudevents.CloudEventBatch)
-	ret1, _ := ret[1].(int64)
-	ret2, _ := ret[2].(uint64)
-	ret3, _ := ret[3].(error)
-	return ret0, ret1, ret2, ret3
+	_ = "STUB: not implemented"
+	return nil, 0, 0, nil
 }
 
 // Read indicates an expected call of Read.
 func (mr *MockBusReaderMockRecorder) Read(ctx any, opts ...any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{ctx}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Read", reflect.TypeOf((*MockBusReader)(nil).Read), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockEventlog is a mock of Eventlog interface.
@@ -242,101 +190,77 @@ type MockEventlogMockRecorder struct {
 }
 
 // NewMockEventlog creates a new mock instance.
-func NewMockEventlog(ctrl *gomock.Controller) *MockEventlog {
-	mock := &MockEventlog{ctrl: ctrl}
-	mock.recorder = &MockEventlogMockRecorder{mock}
-	return mock
-}
+func NewMockEventlog(ctrl *gomock.Controller) *MockEventlog { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockEventlog) EXPECT() *MockEventlogMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CheckHealth mocks base method.
+	return nil
 }
 
-// CheckHealth mocks base method.
 func (m *MockEventlog) CheckHealth(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CheckHealth", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CheckHealth indicates an expected call of CheckHealth.
 func (mr *MockEventlogMockRecorder) CheckHealth(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckHealth", reflect.TypeOf((*MockEventlog)(nil).CheckHealth), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EarliestOffset mocks base method.
 func (m *MockEventlog) EarliestOffset(ctx context.Context) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "EarliestOffset", ctx)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // EarliestOffset indicates an expected call of EarliestOffset.
 func (mr *MockEventlogMockRecorder) EarliestOffset(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EarliestOffset", reflect.TypeOf((*MockEventlog)(nil).EarliestOffset), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ID mocks base method.
-func (m *MockEventlog) ID() uint64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ID")
-	ret0, _ := ret[0].(uint64)
-	return ret0
-}
+func (m *MockEventlog) ID() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // ID indicates an expected call of ID.
-func (mr *MockEventlogMockRecorder) ID() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ID", reflect.TypeOf((*MockEventlog)(nil).ID))
-}
+func (mr *MockEventlogMockRecorder) ID() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // LatestOffset mocks base method.
 func (m *MockEventlog) LatestOffset(ctx context.Context) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "LatestOffset", ctx)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // LatestOffset indicates an expected call of LatestOffset.
 func (mr *MockEventlogMockRecorder) LatestOffset(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LatestOffset", reflect.TypeOf((*MockEventlog)(nil).LatestOffset), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Length mocks base method.
 func (m *MockEventlog) Length(ctx context.Context) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Length", ctx)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Length indicates an expected call of Length.
 func (mr *MockEventlogMockRecorder) Length(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Length", reflect.TypeOf((*MockEventlog)(nil).Length), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // QueryOffsetByTime mocks base method.
 func (m *MockEventlog) QueryOffsetByTime(ctx context.Context, timestamp int64) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "QueryOffsetByTime", ctx, timestamp)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // QueryOffsetByTime indicates an expected call of QueryOffsetByTime.
 func (mr *MockEventlogMockRecorder) QueryOffsetByTime(ctx, timestamp any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "QueryOffsetByTime", reflect.TypeOf((*MockEventlog)(nil).QueryOffsetByTime), ctx, timestamp)
+	_ = "STUB: not implemented"
+	return nil
 }

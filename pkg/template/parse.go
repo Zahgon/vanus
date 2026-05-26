@@ -18,8 +18,6 @@ import (
 	// standard libraries.
 	"errors"
 	"io"
-	"unicode"
-	"unicode/utf8"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/bytes"
@@ -29,50 +27,16 @@ import (
 var errVariable = errors.New("invalid variable")
 
 func ExpectVariable(s *bytes.MarkScanner) ([]byte, jp.Path, error) {
-	m := s.Mark(0) // exclude '<'
-
-	c, err := s.ReadByte()
-	if err != nil {
-		return nil, nil, errVariable
-	}
-
-	switch c {
-	case '$': // JSON path, begin with the root identifier '$'
-		path, err := jp.ConsumeExt(c, s)
-		if err != nil {
-			return nil, nil, err
-		}
-		if err = bytes.ExpectChar(s, '>'); err != nil {
-			return nil, nil, err
-		}
-		return s.Since(m, -1), path, nil
-	default:
-		if err := consumeIdentifierExt(c, s, bytes.DummyWriter); err != nil {
-			return nil, nil, err
-		}
-		return s.Since(m, -1), nil, nil
-	}
+	_ = "STUB: not implemented"
+	// exclude '<'
+	return nil, *new(jp.Path), nil
 }
+
+// JSON path, begin with the root identifier '$'
 
 func consumeIdentifierExt(c byte, r io.ByteReader, w io.ByteWriter) error {
-	ru, _ := bytes.ReadRuneExt(c, r)
-
-	for {
-		if !unicode.Is(IdentifierRangeTable, ru) {
-			return errVariable
-		}
-
-		if err := bytes.WriteRune(w, ru); err != nil {
-			return err
-		}
-
-		ru, _ = bytes.ReadRune(r)
-		if ru == utf8.RuneError {
-			return errVariable
-		}
-
-		if ru == '>' { // close angled bracket, end of variable
-			return nil
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// close angled bracket, end of variable

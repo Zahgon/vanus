@@ -21,21 +21,12 @@ import (
 )
 
 func (env *InteractionEnv) handleTransferLeadership(t *testing.T, d datadriven.TestData) error {
-	var from, to uint64
-	d.ScanArgs(t, "from", &from)
-	d.ScanArgs(t, "to", &to)
-	if from == 0 || from > uint64(len(env.Nodes)) {
-		t.Fatalf(`expected valid "from" argument`)
-	}
-	if to == 0 || to > uint64(len(env.Nodes)) {
-		t.Fatalf(`expected valid "to" argument`)
-	}
-	return env.transferLeadership(from, to)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Initiate leadership transfer.
 func (env *InteractionEnv) transferLeadership(from, to uint64) error {
-	fromIdx := from - 1
-	env.Nodes[fromIdx].TransferLeader(to)
+	_ = "STUB: not implemented"
 	return nil
 }

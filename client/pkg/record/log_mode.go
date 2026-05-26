@@ -25,14 +25,8 @@ const (
 	PremRead  LogMode = 1 << 2
 )
 
-func (m LogMode) Perm() LogMode {
-	return m & ModePerm
-}
+func (m LogMode) Perm() LogMode { _ = "STUB: not implemented"; return *new(LogMode) }
 
-func (m LogMode) Writable() bool {
-	return m&PremWrite != 0
-}
+func (m LogMode) Writable() bool { _ = "STUB: not implemented"; return false }
 
-func (m LogMode) Readable() bool {
-	return m&PremRead != 0
-}
+func (m LogMode) Readable() bool { _ = "STUB: not implemented"; return false }

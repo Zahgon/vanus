@@ -18,10 +18,7 @@ package trigger
 import (
 	// standard libraries.
 	"context"
-	"encoding/json"
-	"reflect"
 	"sync"
-	"time"
 
 	// third-party libraries.
 	ce "github.com/cloudevents/sdk-go/v2"
@@ -32,8 +29,6 @@ import (
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 	eb "github.com/vanus-labs/vanus/client"
 	"github.com/vanus-labs/vanus/client/pkg/api"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
-	"github.com/vanus-labs/vanus/pkg/observability/metrics"
 
 	// this project.
 	primitive "github.com/vanus-labs/vanus/pkg"
@@ -104,591 +99,148 @@ type toSendEvent struct {
 }
 
 func NewTrigger(subscription *primitive.Subscription, opts ...Option) (Trigger, error) {
-	return newTrigger(subscription, opts...)
+	_ = "STUB: not implemented"
+	return *new(Trigger), nil
 }
 
 func newTrigger(subscription *primitive.Subscription, opts ...Option) (*trigger, error) {
-	trans, err := transform.NewTransformer(subscription.Transformer)
-	if err != nil {
-		return nil, err
-	}
-
-	t := &trigger{
-		stop:              func() {},
-		config:            defaultConfig(),
-		state:             TriggerCreated,
-		filter:            filter.GetFilter(subscription.Filters),
-		subscription:      subscription,
-		subscriptionIDStr: subscription.ID.String(),
-		eventbusIDStr:     subscription.EventbusID.String(),
-		transformer:       trans,
-	}
-	if subscription.Protocol == primitive.GRPC {
-		t.batch = true
-	}
-	t.applyOptions(opts...)
-	if t.rateLimiter == nil {
-		t.rateLimiter = ratelimit.NewUnlimited()
-	}
-	t.offsetManager = offset.NewSubscriptionOffset(subscription.ID, t.config.MaxUACKNumber, subscription.Offsets)
-	t.pool, _ = ants.NewPool(t.config.GoroutineSize)
-	return t, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (t *trigger) applyOptions(opts ...Option) {
-	for _, fn := range opts {
-		fn(t)
-	}
-}
+func (t *trigger) applyOptions(opts ...Option) { _ = "STUB: not implemented"; return }
 
-func (t *trigger) getConfig() Config {
-	t.lock.RLock()
-	defer t.lock.RUnlock()
-	return t.config
-}
+func (t *trigger) getConfig() Config { _ = "STUB: not implemented"; return *new(Config) }
 
 func (t *trigger) getClient() client.EventClient {
-	t.lock.RLock()
-	defer t.lock.RUnlock()
-	return t.eventCli
+	_ = "STUB: not implemented"
+	return *new(client.EventClient)
 }
 
 func (t *trigger) changeTarget(
 	sink primitive.URI, protocol primitive.Protocol, credential primitive.SinkCredential,
 ) error {
-	eventCli := newEventClient(clientConfig{
-		sink:       sink,
-		protocol:   protocol,
-		credential: credential,
-		gateway:    t.config.TargetGateway})
-	t.lock.Lock()
-	defer t.lock.Unlock()
-	t.eventCli = eventCli
-	t.subscription.Sink = sink
-	t.subscription.Protocol = protocol
-	t.subscription.SinkCredential = credential
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (t *trigger) getFilter() filter.Filter {
-	t.lock.RLock()
-	defer t.lock.RUnlock()
-	return t.filter
-}
+func (t *trigger) getFilter() filter.Filter { _ = "STUB: not implemented"; return *new(filter.Filter) }
 
 func (t *trigger) changeFilter(filters []*primitive.SubscriptionFilter) {
-	f := filter.GetFilter(filters)
-	t.lock.Lock()
-	defer t.lock.Unlock()
-	t.filter = f
-	t.subscription.Filters = filters
+	_ = "STUB: not implemented"
+	return
 }
 
-func (t *trigger) getTransformer() *transform.Transformer {
-	t.lock.RLock()
-	defer t.lock.RUnlock()
-	return t.transformer
-}
+func (t *trigger) getTransformer() *transform.Transformer { _ = "STUB: not implemented"; return nil }
 
 func (t *trigger) changeTransformer(transformer *primitive.Transformer) {
+	_ = "STUB: not implemented"
 	// FIXME(james.yin): encounter error?
-	trans, _ := transform.NewTransformer(transformer)
-	t.lock.Lock()
-	defer t.lock.Unlock()
-	t.transformer = trans
-	t.subscription.Transformer = transformer
+	return
 }
 
 func (t *trigger) changeConfig(config primitive.SubscriptionConfig) {
-	t.lock.Lock()
-	defer t.lock.Unlock()
-	if config.RateLimit != t.subscription.Config.RateLimit {
-		t.applyOptions(WithRateLimit(config.RateLimit))
-	}
-	if config.DeliveryTimeout != t.subscription.Config.DeliveryTimeout {
-		t.applyOptions(WithDeliveryTimeout(config.DeliveryTimeout))
-	}
-	if config.GetMaxRetryAttempts() != t.subscription.Config.GetMaxRetryAttempts() {
-		t.applyOptions(WithMaxRetryAttempts(config.GetMaxRetryAttempts()))
-	}
-	t.subscription.Config = config
+	_ = "STUB: not implemented"
+	return
 }
 
 // eventArrived for test.
 func (t *trigger) eventArrived(ctx context.Context, event info.EventRecord) error {
-	select {
-	case t.eventCh <- event:
-		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (t *trigger) transformEvent(record info.EventRecord, retry bool) (*toSendEvent, error) {
-	transformer := t.getTransformer()
-	event := record.Event
-	if transformer != nil {
-		// transform will chang event which lost origin event
-		clone := record.Event.Clone()
-		event = &clone
-		startTime := time.Now()
-		err := transformer.Execute(event)
-		metrics.TriggerTransformCostSecond.WithLabelValues(t.subscriptionIDStr).Observe(time.Since(startTime).Seconds())
-		if err != nil {
-			return nil, err
-		}
-	}
-	return &toSendEvent{retry: retry, record: record, transform: event}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// transform will chang event which lost origin event
+
 func (t *trigger) sendEvent(ctx context.Context, events ...*ce.Event) client.Result {
-	timeoutCtx, cancel := context.WithTimeout(ctx, t.getConfig().DeliveryTimeout)
-	defer cancel()
-	t.rateLimiter.Take()
-	startTime := time.Now()
-	r := t.getClient().Send(timeoutCtx, events...)
-	if r == client.Success {
-		metrics.TriggerPushEventTime.WithLabelValues(t.subscriptionIDStr).Observe(time.Since(startTime).Seconds())
-	}
-	return r
+	_ = "STUB: not implemented"
+	return *new(client.Result)
 }
 
 func (t *trigger) runRetryEventFilterTransform(ctx context.Context) {
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case record, ok := <-t.retryEventCh:
-			if !ok {
-				return
-			}
-			t.offsetManager.EventReceive(record.OffsetInfo)
-			_ = t.pool.Submit(func() {
-				ec, _ := record.Event.Context.(*ce.EventContextV1)
-				if len(ec.Extensions) == 0 {
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				v, exist := ec.Extensions[primitive.XVanusSubscriptionID]
-				if !exist || t.subscriptionIDStr != v.(string) {
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				startTime := time.Now()
-				res := filter.Run(t.getFilter(), *record.Event)
-				metrics.TriggerFilterCostSecond.WithLabelValues(t.subscriptionIDStr).Observe(time.Since(startTime).Seconds())
-				if res == filter.FailFilter {
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				metrics.TriggerFilterMatchRetryEventCounter.WithLabelValues(t.subscriptionIDStr).Inc()
-				event, err := t.transformEvent(record, true)
-				if err != nil {
-					log.Info(ctx).Err(err).
-						Str("event_id", event.record.Event.ID()).
-						Str(log.KeySubscriptionID, t.subscriptionIDStr).
-						Str(log.KeyEventbusID, t.eventbusIDStr).
-						Stringer(log.KeyEventlogID, event.record.EventlogID).
-						Uint64("event_offset", event.record.OffsetInfo.Offset).
-						Msg("event transform error")
-					t.writeFailEvent(ctx, record.Event, ErrTransformCode, err)
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				t.sendCh <- event
-			})
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func (t *trigger) runEventFilterTransform(ctx context.Context) {
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case record, ok := <-t.eventCh:
-			if !ok {
-				return
-			}
-			t.offsetManager.EventReceive(record.OffsetInfo)
-			_ = t.pool.Submit(func() {
-				startTime := time.Now()
-				res := filter.Run(t.getFilter(), *record.Event)
-				metrics.TriggerFilterCostSecond.WithLabelValues(t.subscriptionIDStr).Observe(time.Since(startTime).Seconds())
-				if res == filter.FailFilter {
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				metrics.TriggerFilterMatchEventCounter.WithLabelValues(t.subscriptionIDStr).Inc()
-				event, err := t.transformEvent(record, false)
-				if err != nil {
-					log.Info(ctx).Err(err).
-						Str("event_id", event.record.Event.ID()).
-						Str(log.KeySubscriptionID, t.subscriptionIDStr).
-						Str(log.KeyEventbusID, t.eventbusIDStr).
-						Stringer(log.KeyEventlogID, event.record.EventlogID).
-						Uint64("event_offset", event.record.OffsetInfo.Offset).
-						Msg("event transform error")
-					t.writeFailEvent(ctx, record.Event, ErrTransformCode, err)
-					t.offsetManager.EventCommit(record.OffsetInfo)
-					return
-				}
-				t.sendCh <- event
-			})
-		}
-	}
-}
+func (t *trigger) runEventFilterTransform(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-func (t *trigger) runEventToBatch(ctx context.Context) {
-	var events []*toSendEvent
-	ticker := time.NewTicker(500 * time.Millisecond) ////nolint:gomnd
-	defer ticker.Stop()
-	var lock sync.Mutex
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case <-ticker.C:
-			lock.Lock()
-			if len(events) != 0 {
-				e := make([]*toSendEvent, len(events))
-				copy(e, events)
-				t.batchSendCh <- e
-				events = nil
-			}
-			lock.Unlock()
-		case event, ok := <-t.sendCh:
-			if !ok {
-				return
-			}
-			lock.Lock()
-			events = append(events, event)
-			if !t.batch || len(events) >= t.config.SendBatchSize {
-				e := make([]*toSendEvent, len(events))
-				copy(e, events)
-				t.batchSendCh <- e
-				events = nil
-			}
-			lock.Unlock()
-		}
-	}
-}
+func (t *trigger) runEventToBatch(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-func (t *trigger) runEventSend(ctx context.Context) {
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case events, ok := <-t.batchSendCh:
-			if !ok {
-				return
-			}
-			if t.config.Ordered {
-				t.processEvent(ctx, events...)
-			} else {
-				_ = t.pool.Submit(func() {
-					t.processEvent(ctx, events...)
-				})
-			}
-		}
-	}
-}
+////nolint:gomnd
+
+func (t *trigger) runEventSend(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 func (t *trigger) processEvent(ctx context.Context, events ...*toSendEvent) {
-	defer func() {
-		// commit offset
-		for _, event := range events {
-			t.offsetManager.EventCommit(event.record.OffsetInfo)
-		}
-	}()
-	result := ""
-	retryEventCnt := 0
-	l := len(events)
-	es := make([]*ce.Event, l)
-	for i := range events {
-		if events[i].retry {
-			retryEventCnt++
-		}
-		es[i] = events[i].transform
-	}
-	r := t.sendEvent(ctx, es...)
-	if r != client.Success {
-		result = metrics.LabelFailed
-		log.Info(ctx).Err(r.Err).
-			Int("code", r.StatusCode).
-			Int("count", l).
-			Str("event_id", events[0].record.Event.ID()).
-			Interface("target", t.subscription.Sink).
-			Str(log.KeySubscriptionID, t.subscriptionIDStr).
-			Str(log.KeyEventbusID, t.eventbusIDStr).
-			Stringer(log.KeyEventlogID, events[0].record.EventlogID).
-			Uint64("event_offset", events[0].record.OffsetInfo.Offset).
-			Msg("send event fail")
-		code := r.StatusCode
-		if t.config.Ordered {
-			// todo retry util success, now ordered event no need retry direct into dead letter
-			code = OrderEventCode
-		}
-		for _, event := range events {
-			t.writeFailEvent(ctx, event.record.Event, code, r.Err)
-		}
-	} else {
-		result = metrics.LabelSuccess
-		eByte, _ := json.Marshal(es[0])
-		log.Debug(ctx).
-			Int("code", r.StatusCode).
-			Int("count", l).
-			Str("event_id", events[0].record.Event.ID()).
-			Bytes("event", eByte).
-			Msg("send event success")
-	}
-	if retryEventCnt > 0 {
-		metrics.TriggerPushEventCounter.WithLabelValues(t.subscriptionIDStr, t.eventbusIDStr, metrics.LabelTrue, result).
-			Add(float64(retryEventCnt))
-	}
-	if l > retryEventCnt {
-		metrics.TriggerPushEventCounter.WithLabelValues(t.subscriptionIDStr, t.eventbusIDStr, metrics.LabelFalse, result).
-			Add(float64(l - retryEventCnt))
-	}
+	_ = "STUB: not implemented"
+
+	// commit offset
+	return
 }
+
+// todo retry util success, now ordered event no need retry direct into dead letter
 
 func (t *trigger) writeFailEvent(ctx context.Context, e *ce.Event, code int, err error) {
-	needRetry, reason := isShouldRetry(code)
-	ec, _ := e.Context.(*ce.EventContextV1)
-	if ec.Extensions == nil {
-		ec.Extensions = make(map[string]interface{})
-	}
-	attempts := int32(0)
-	if needRetry {
-		// get attempts
-		if v, ok := ec.Extensions[primitive.XVanusRetryAttempts]; ok {
-			var err error
-			attempts, err = getRetryAttempts(v)
-			if err != nil {
-				log.Info(ctx).Err(err).Msg("get retry attempts error")
-			}
-			if attempts >= t.getConfig().MaxRetryAttempts {
-				needRetry = false
-				reason = "MaxDeliveryAttemptExceeded"
-			}
-		}
-	}
-	if !needRetry {
-		// dead letter
-		if t.dlEventWriter == nil {
-			return
-		}
-		t.writeEventToDeadLetter(ctx, e, reason, err.Error())
-		metrics.TriggerDeadLetterEventCounter.WithLabelValues(t.subscriptionIDStr).Inc()
-		return
-	}
-	// retry
-	t.writeEventToRetry(ctx, e, attempts)
-	metrics.TriggerRetryEventCounter.WithLabelValues(t.subscriptionIDStr).Inc()
+	_ = "STUB: not implemented"
+	return
 }
 
-func (t *trigger) writeEventToRetry(ctx context.Context, e *ce.Event, attempts int32) {
-	ec, _ := e.Context.(*ce.EventContextV1)
-	attempts++
-	ec.Extensions[primitive.XVanusRetryAttempts] = attempts
-	delayTime := calDeliveryTime(attempts)
-	ec.Extensions[primitive.XVanusDeliveryTime] = ce.Timestamp{Time: time.Now().Add(delayTime)}
-	ec.Extensions[primitive.XVanusSubscriptionID] = t.subscriptionIDStr
-	ec.Extensions[primitive.XVanusEventbus] = t.subscription.RetryEventbusID.Key()
-	var writeAttempt int
-	for {
-		writeAttempt++
-		startTime := time.Now()
-		timeoutCtx, cancel := context.WithTimeout(ctx, t.getConfig().DeliveryTimeout)
-		_, err := api.AppendOne(timeoutCtx, t.timerEventWriter, e)
-		cancel()
-		metrics.TriggerRetryEventAppendSecond.WithLabelValues(t.subscriptionIDStr).
-			Observe(time.Since(startTime).Seconds())
-		if err != nil {
-			log.Info(ctx).Err(err).
-				Str(log.KeySubscriptionID, t.subscriptionIDStr).
-				Int("attempt", writeAttempt).
-				Interface("event", e).
-				Msg("write retry event error")
+// get attempts
 
-			if writeAttempt >= t.config.MaxWriteAttempt {
-				return
-			}
-			time.Sleep(time.Second)
-		} else {
-			break
-		}
-	}
-	log.Debug(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Interface("event", e).
-		Msg("write retry event success")
+// dead letter
+
+// retry
+
+func (t *trigger) writeEventToRetry(ctx context.Context, e *ce.Event, attempts int32) {
+	_ = "STUB: not implemented"
+	return
 }
 
 func (t *trigger) writeEventToDeadLetter(ctx context.Context, e *ce.Event, reason, errorMsg string) {
-	ec, _ := e.Context.(*ce.EventContextV1)
-	delete(ec.Extensions, primitive.XVanusEventbus)
-	ec.Extensions[primitive.XVanusSubscriptionID] = t.subscriptionIDStr
-	ec.Extensions[primitive.LastDeliveryTime] = ce.Timestamp{Time: time.Now()}
-	ec.Extensions[primitive.LastDeliveryError] = errorMsg
-	ec.Extensions[primitive.DeadLetterReason] = reason
-	var writeAttempt int
-	for {
-		writeAttempt++
-		startTime := time.Now()
-		timeoutCtx, cancel := context.WithTimeout(ctx, t.getConfig().DeliveryTimeout)
-		_, err := api.AppendOne(timeoutCtx, t.dlEventWriter, e)
-		cancel()
-		metrics.TriggerDeadLetterEventAppendSecond.WithLabelValues(t.subscriptionIDStr).
-			Observe(time.Since(startTime).Seconds())
-		if err != nil {
-			log.Info(ctx).Err(err).
-				Str(log.KeySubscriptionID, t.subscriptionIDStr).
-				Int("attempt", writeAttempt).
-				Interface("event", e).
-				Msg("write dl event error")
-			if writeAttempt >= t.config.MaxWriteAttempt {
-				return
-			}
-			time.Sleep(time.Second)
-		} else {
-			break
-		}
-	}
-	log.Debug(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Interface("event", e).
-		Msg("write dl event success")
+	_ = "STUB: not implemented"
+	return
 }
 
 func (t *trigger) getReaderConfig() reader.Config {
-	return reader.Config{
-		EventbusID:     t.subscription.EventbusID,
-		Client:         t.client,
-		SubscriptionID: t.subscription.ID,
-		BatchSize:      t.config.PullBatchSize,
-		Offset:         getOffset(t.subscription),
-	}
+	_ = "STUB: not implemented"
+	return *new(reader.Config)
 }
 
 func (t *trigger) getRetryEventReaderConfig() reader.Config {
-	return reader.Config{
-		EventbusID:     t.subscription.RetryEventbusID,
-		Client:         t.client,
-		SubscriptionID: t.subscription.ID,
-		BatchSize:      t.config.PullBatchSize,
-		Offset:         getOffset(t.subscription),
-	}
+	_ = "STUB: not implemented"
+	return *new(reader.Config)
 }
 
 // getOffset from subscription.
 func getOffset(sub *primitive.Subscription) map[vanus.ID]uint64 {
+	_ = "STUB: not implemented"
 	// get offset from subscription
-	offsetMap := make(map[vanus.ID]uint64)
-	for _, o := range sub.Offsets {
-		offsetMap[o.EventlogID] = o.Offset
-	}
-	return offsetMap
-}
-
-func (t *trigger) Init(ctx context.Context) error {
-	t.eventCli = newEventClient(clientConfig{
-		sink:       t.subscription.Sink,
-		protocol:   t.subscription.Protocol,
-		credential: t.subscription.SinkCredential,
-		gateway:    t.config.TargetGateway})
-	t.client = eb.Connect(t.config.Controllers)
-
-	t.timerEventWriter = t.client.Eventbus(ctx, api.WithID(
-		t.subscription.TimerEventbusID.Uint64())).Writer()
-	if !t.config.DisableDeadLetter {
-		t.dlEventWriter = t.client.Eventbus(ctx,
-			api.WithID(t.subscription.DeadLetterEventbusID.Uint64())).Writer()
-	}
-	t.eventCh = make(chan info.EventRecord, t.config.BufferSize)
-	t.sendCh = make(chan *toSendEvent, t.config.BufferSize)
-	t.batchSendCh = make(chan []*toSendEvent, t.config.BufferSize)
-	t.reader = reader.NewReader(t.getReaderConfig(), t.eventCh)
-	t.retryEventCh = make(chan info.EventRecord, t.config.BufferSize)
-	t.retryEventReader = reader.NewReader(t.getRetryEventReaderConfig(), t.retryEventCh)
 	return nil
 }
 
-func (t *trigger) Start(ctx context.Context) error {
-	log.Info(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Msg("trigger start...")
-	ctx, cancel := context.WithCancel(context.Background())
-	t.stop = cancel
-	// eb event
-	err := t.reader.Start()
-	if err != nil {
-		return err
-	}
-	// retry event
-	err = t.retryEventReader.Start()
-	if err != nil {
-		t.reader.Close()
-		return err
-	}
-	t.wg.StartWithContext(ctx, t.runEventFilterTransform)
-	t.wg.StartWithContext(ctx, t.runEventToBatch)
-	t.wg.StartWithContext(ctx, t.runEventSend)
-	t.wg.StartWithContext(ctx, t.runRetryEventFilterTransform)
-	t.state = TriggerRunning
-	log.Info(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Msg("trigger started")
-	return nil
-}
+func (t *trigger) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (t *trigger) Stop(ctx context.Context) error {
-	log.Info(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Msg("trigger stop...")
+func (t *trigger) Start(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	if t.state == TriggerStopped {
-		return nil
-	}
-	t.reader.Close()
-	t.retryEventReader.Close()
-	t.stop()
-	close(t.eventCh)
-	close(t.retryEventCh)
-	close(t.sendCh)
-	close(t.batchSendCh)
-	t.wg.Wait()
-	t.pool.Release()
-	t.offsetManager.Close()
-	t.state = TriggerStopped
-	log.Info(ctx).
-		Str(log.KeySubscriptionID, t.subscriptionIDStr).
-		Msg("trigger stopped")
-	return nil
-}
+// eb event
+
+// retry event
+
+func (t *trigger) Stop(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (t *trigger) Change(_ context.Context, subscription *primitive.Subscription) error {
-	if t.subscription.Sink != subscription.Sink ||
-		t.subscription.Protocol != subscription.Protocol ||
-		!reflect.DeepEqual(t.subscription.SinkCredential, subscription.SinkCredential) {
-		err := t.changeTarget(subscription.Sink, subscription.Protocol, subscription.SinkCredential)
-		if err != nil {
-			return err
-		}
-	}
-	if !reflect.DeepEqual(t.subscription.Filters, subscription.Filters) {
-		t.changeFilter(subscription.Filters) //nolint:contextcheck // wrong advice
-	}
-	if !reflect.DeepEqual(t.subscription.Transformer, subscription.Transformer) {
-		t.changeTransformer(subscription.Transformer)
-	}
-	if !reflect.DeepEqual(t.subscription.Config, subscription.Config) {
-		t.changeConfig(subscription.Config)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
+//nolint:contextcheck // wrong advice
 
 // GetOffsets contains retry eventlog.
 func (t *trigger) GetOffsets(_ context.Context) pInfo.ListOffsetInfo {
-	return t.offsetManager.GetCommit()
+	_ = "STUB: not implemented"
+	return *new(pInfo.ListOffsetInfo)
 }

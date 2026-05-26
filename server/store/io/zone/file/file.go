@@ -30,11 +30,8 @@ type file struct {
 var _ zone.Interface = (*file)(nil)
 
 func New(f *os.File) (zone.Interface, error) {
-	return &file{
-		f: f,
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(zone.Interface), nil
 }
 
-func (f *file) Raw(off int64) (*os.File, int64) {
-	return f.f, off
-}
+func (f *file) Raw(off int64) (*os.File, int64) { _ = "STUB: not implemented"; return nil, 0 }

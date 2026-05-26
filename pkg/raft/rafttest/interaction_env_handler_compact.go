@@ -15,26 +15,19 @@
 package rafttest
 
 import (
-	"strconv"
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
 )
 
 func (env *InteractionEnv) handleCompact(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	newFirstIndex, err := strconv.ParseUint(d.CmdArgs[1].Key, 10, 64)
-	if err != nil {
-		return err
-	}
-	return env.Compact(idx, newFirstIndex)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Compact truncates the log on the node at index idx so that the supplied new
 // first index results.
 func (env *InteractionEnv) Compact(idx int, newFirstIndex uint64) error {
-	if err := env.Nodes[idx].Compact(newFirstIndex); err != nil {
-		return err
-	}
-	return env.RaftLog(idx)
+	_ = "STUB: not implemented"
+	return nil
 }

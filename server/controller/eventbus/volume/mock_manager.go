@@ -11,7 +11,6 @@ package volume
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	kv "github.com/vanus-labs/vanus/pkg/kv"
@@ -32,111 +31,95 @@ type MockManagerMockRecorder struct {
 }
 
 // NewMockManager creates a new mock instance.
-func NewMockManager(ctrl *gomock.Controller) *MockManager {
-	mock := &MockManager{ctrl: ctrl}
-	mock.recorder = &MockManagerMockRecorder{mock}
-	return mock
-}
+func NewMockManager(ctrl *gomock.Controller) *MockManager { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockManager) EXPECT() *MockManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// GetAllActiveVolumes mocks base method.
+	return nil
 }
 
-// GetAllActiveVolumes mocks base method.
 func (m *MockManager) GetAllActiveVolumes() []server.Instance {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAllActiveVolumes")
-	ret0, _ := ret[0].([]server.Instance)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAllActiveVolumes indicates an expected call of GetAllActiveVolumes.
 func (mr *MockManagerMockRecorder) GetAllActiveVolumes() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllActiveVolumes", reflect.TypeOf((*MockManager)(nil).GetAllActiveVolumes))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetBlocksOfVolume mocks base method.
 func (m *MockManager) GetBlocksOfVolume(ctx context.Context, instance server.Instance) (map[uint64]*metadata.Block, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetBlocksOfVolume", ctx, instance)
-	ret0, _ := ret[0].(map[uint64]*metadata.Block)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetBlocksOfVolume indicates an expected call of GetBlocksOfVolume.
 func (mr *MockManagerMockRecorder) GetBlocksOfVolume(ctx, instance any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBlocksOfVolume", reflect.TypeOf((*MockManager)(nil).GetBlocksOfVolume), ctx, instance)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetVolumeInstanceByID mocks base method.
 func (m *MockManager) GetVolumeInstanceByID(id vsr.ID) server.Instance {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetVolumeInstanceByID", id)
-	ret0, _ := ret[0].(server.Instance)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(server.Instance)
 }
 
 // GetVolumeInstanceByID indicates an expected call of GetVolumeInstanceByID.
 func (mr *MockManagerMockRecorder) GetVolumeInstanceByID(id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetVolumeInstanceByID", reflect.TypeOf((*MockManager)(nil).GetVolumeInstanceByID), id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
 func (m *MockManager) Init(ctx context.Context, kvClient kv.Client) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx, kvClient)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init indicates an expected call of Init.
 func (mr *MockManagerMockRecorder) Init(ctx, kvClient any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockManager)(nil).Init), ctx, kvClient)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // LookupVolumeByID mocks base method.
 func (m *MockManager) LookupVolumeByID(id uint64) server.Instance {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "LookupVolumeByID", id)
-	ret0, _ := ret[0].(server.Instance)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(server.Instance)
 }
 
 // LookupVolumeByID indicates an expected call of LookupVolumeByID.
 func (mr *MockManagerMockRecorder) LookupVolumeByID(id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LookupVolumeByID", reflect.TypeOf((*MockManager)(nil).LookupVolumeByID), id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterVolume mocks base method.
 func (m *MockManager) RegisterVolume(ctx context.Context, md *metadata.VolumeMetadata) (server.Instance, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RegisterVolume", ctx, md)
-	ret0, _ := ret[0].(server.Instance)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(server.Instance), nil
 }
 
 // RegisterVolume indicates an expected call of RegisterVolume.
 func (mr *MockManagerMockRecorder) RegisterVolume(ctx, md any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RegisterVolume", reflect.TypeOf((*MockManager)(nil).RegisterVolume), ctx, md)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateRouting mocks base method.
 func (m *MockManager) UpdateRouting(ctx context.Context, ins server.Instance, srv server.Server) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "UpdateRouting", ctx, ins, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 // UpdateRouting indicates an expected call of UpdateRouting.
 func (mr *MockManagerMockRecorder) UpdateRouting(ctx, ins, srv any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateRouting", reflect.TypeOf((*MockManager)(nil).UpdateRouting), ctx, ins, srv)
+	_ = "STUB: not implemented"
+	return nil
 }

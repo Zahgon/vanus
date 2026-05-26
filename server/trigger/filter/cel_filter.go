@@ -18,7 +18,6 @@ import (
 	ce "github.com/cloudevents/sdk-go/v2"
 
 	"github.com/vanus-labs/vanus/pkg/cel"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type CELFilter struct {
@@ -26,30 +25,11 @@ type CELFilter struct {
 	parsedExpression *cel.Expression
 }
 
-func NewCELFilter(expression string) Filter {
-	if expression == "" {
-		return nil
-	}
-	cel, err := cel.Parse(expression)
-	if err != nil {
-		log.Info().Err(err).Str("expression", expression).Msg("parse cel expression error")
-		return nil
-	}
-	return &CELFilter{rawExpression: expression, parsedExpression: cel}
-}
+func NewCELFilter(expression string) Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
 func (filter *CELFilter) Filter(event ce.Event) Result {
-	result, err := filter.parsedExpression.Eval(event)
-	if err != nil {
-		log.Info().Err(err).Msg("cel eval error")
-		return FailFilter
-	}
-	if result {
-		return PassFilter
-	}
-	return FailFilter
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
-func (filter *CELFilter) String() string {
-	return filter.rawExpression
-}
+func (filter *CELFilter) String() string { _ = "STUB: not implemented"; return "" }

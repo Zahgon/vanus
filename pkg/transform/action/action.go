@@ -17,8 +17,6 @@ package action
 import (
 	"fmt"
 
-	"github.com/pkg/errors"
-
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
 	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
@@ -49,96 +47,40 @@ type CommonAction struct {
 	TargetArg arg.Arg
 }
 
-func (a *CommonAction) Name() string {
-	return a.ActionName
-}
+func (a *CommonAction) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (a *CommonAction) Arity() int {
-	return len(a.FixedArgs)
-}
+func (a *CommonAction) Arity() int { _ = "STUB: not implemented"; return 0 }
 
 func (a *CommonAction) ArgType(index int) arg.TypeList {
-	if index < len(a.FixedArgs) {
-		return a.FixedArgs[index]
-	}
-	return a.VariadicArg
+	_ = "STUB: not implemented"
+	return *new(arg.TypeList)
 }
 
-func (a *CommonAction) IsVariadic() bool {
-	return len(a.VariadicArg) > 0
-}
+func (a *CommonAction) IsVariadic() bool { _ = "STUB: not implemented"; return false }
 
 func (a *CommonAction) RunArgs(ceCtx *context.EventContext) ([]interface{}, error) {
-	args := make([]interface{}, len(a.Args))
-	if len(a.Args) != len(a.ArgTypes) {
-		return nil, fmt.Errorf("arg lenth %d not same arg type %d", len(a.Args), len(a.ArgTypes))
-	}
-	for i, _arg := range a.Args {
-		value, err := _arg.Evaluate(ceCtx)
-		if err != nil {
-			return nil, errors.Wrapf(err, "arg  %s evaluate error", _arg.Original())
-		}
-		v, err := common.Cast(value, a.ArgTypes[i])
-		if err != nil {
-			return nil, err
-		}
-		args[i] = v
-	}
-	return args, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type FunctionAction struct {
 	CommonAction
 }
 
-func (a *FunctionAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args[1:]
-	return a.setArgTypes()
-}
+func (a *FunctionAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
-func (a *FunctionAction) setArgTypes() error {
-	if a.Fn == nil {
-		return fmt.Errorf("fn is nil")
-	}
-	if len(a.Args) < a.Fn.Arity() {
-		return ErrArgNumber
-	}
-	if len(a.Args) > a.Fn.Arity() && !a.Fn.IsVariadic() {
-		return ErrArgNumber
-	}
-	argTypes := make([]common.Type, len(a.Args))
-	for i := 0; i < len(a.Args); i++ {
-		argTypes[i] = *a.Fn.ArgType(i)
-	}
-	a.ArgTypes = argTypes
-	return nil
-}
+func (a *FunctionAction) setArgTypes() error { _ = "STUB: not implemented"; return nil }
 
 func (a *FunctionAction) Execute(ceCtx *context.EventContext) error {
-	if a.Fn == nil {
-		return fmt.Errorf("fn is nil")
-	}
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	fnValue, err := a.Fn.Execute(args)
-	if err != nil {
-		return err
-	}
-	return a.TargetArg.SetValue(ceCtx, fnValue)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type SourceTargetSameAction struct {
 	FunctionAction
 }
 
-func (a *SourceTargetSameAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args
-	return a.setArgTypes()
-}
+func (a *SourceTargetSameAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 var (
 	ErrExist     = fmt.Errorf("action have exist")
@@ -155,7 +97,4 @@ type NestActionImpl struct {
 	Actions []Action
 }
 
-func (c *NestActionImpl) InitAction(actions []Action) error {
-	c.Actions = actions
-	return nil
-}
+func (c *NestActionImpl) InitAction(actions []Action) error { _ = "STUB: not implemented"; return nil }

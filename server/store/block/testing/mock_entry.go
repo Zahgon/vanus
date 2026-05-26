@@ -10,7 +10,6 @@
 package testing
 
 import (
-	reflect "reflect"
 	time "time"
 
 	block "github.com/vanus-labs/vanus/server/store/block"
@@ -29,44 +28,26 @@ type MockValueMockRecorder struct {
 }
 
 // NewMockValue creates a new mock instance.
-func NewMockValue(ctrl *gomock.Controller) *MockValue {
-	mock := &MockValue{ctrl: ctrl}
-	mock.recorder = &MockValueMockRecorder{mock}
-	return mock
-}
+func NewMockValue(ctrl *gomock.Controller) *MockValue { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockValue) EXPECT() *MockValueMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Size mocks base method.
+	return nil
 }
 
-// Size mocks base method.
-func (m *MockValue) Size() int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Size")
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockValue) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Size indicates an expected call of Size.
-func (mr *MockValueMockRecorder) Size() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Size", reflect.TypeOf((*MockValue)(nil).Size))
-}
+func (mr *MockValueMockRecorder) Size() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Value mocks base method.
-func (m *MockValue) Value() []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Value")
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockValue) Value() []byte { _ = "STUB: not implemented"; return nil }
 
 // Value indicates an expected call of Value.
-func (mr *MockValueMockRecorder) Value() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Value", reflect.TypeOf((*MockValue)(nil).Value))
-}
+func (mr *MockValueMockRecorder) Value() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // MockValueMarshaler is a mock of ValueMarshaler interface.
 type MockValueMarshaler struct {
@@ -81,56 +62,42 @@ type MockValueMarshalerMockRecorder struct {
 
 // NewMockValueMarshaler creates a new mock instance.
 func NewMockValueMarshaler(ctrl *gomock.Controller) *MockValueMarshaler {
-	mock := &MockValueMarshaler{ctrl: ctrl}
-	mock.recorder = &MockValueMarshalerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockValueMarshaler) EXPECT() *MockValueMarshalerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// MarshalTo mocks base method.
+	return nil
 }
 
-// MarshalTo mocks base method.
-func (m *MockValueMarshaler) MarshalTo(buf []byte) int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "MarshalTo", buf)
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockValueMarshaler) MarshalTo(buf []byte) int { _ = "STUB: not implemented"; return 0 }
 
 // MarshalTo indicates an expected call of MarshalTo.
 func (mr *MockValueMarshalerMockRecorder) MarshalTo(buf any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "MarshalTo", reflect.TypeOf((*MockValueMarshaler)(nil).MarshalTo), buf)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Size mocks base method.
-func (m *MockValueMarshaler) Size() int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Size")
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockValueMarshaler) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Size indicates an expected call of Size.
 func (mr *MockValueMarshalerMockRecorder) Size() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Size", reflect.TypeOf((*MockValueMarshaler)(nil).Size))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Value mocks base method.
-func (m *MockValueMarshaler) Value() []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Value")
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockValueMarshaler) Value() []byte { _ = "STUB: not implemented"; return nil }
 
 // Value indicates an expected call of Value.
 func (mr *MockValueMarshalerMockRecorder) Value() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Value", reflect.TypeOf((*MockValueMarshaler)(nil).Value))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockExtensionAttributeCallback is a mock of ExtensionAttributeCallback interface.
@@ -146,26 +113,27 @@ type MockExtensionAttributeCallbackMockRecorder struct {
 
 // NewMockExtensionAttributeCallback creates a new mock instance.
 func NewMockExtensionAttributeCallback(ctrl *gomock.Controller) *MockExtensionAttributeCallback {
-	mock := &MockExtensionAttributeCallback{ctrl: ctrl}
-	mock.recorder = &MockExtensionAttributeCallbackMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockExtensionAttributeCallback) EXPECT() *MockExtensionAttributeCallbackMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// OnAttribute mocks base method.
+	return nil
 }
 
-// OnAttribute mocks base method.
 func (m *MockExtensionAttributeCallback) OnAttribute(attr []byte, val block.Value) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnAttribute", attr, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnAttribute indicates an expected call of OnAttribute.
 func (mr *MockExtensionAttributeCallbackMockRecorder) OnAttribute(attr, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnAttribute", reflect.TypeOf((*MockExtensionAttributeCallback)(nil).OnAttribute), attr, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockEntry is a mock of Entry interface.
@@ -180,139 +148,103 @@ type MockEntryMockRecorder struct {
 }
 
 // NewMockEntry creates a new mock instance.
-func NewMockEntry(ctrl *gomock.Controller) *MockEntry {
-	mock := &MockEntry{ctrl: ctrl}
-	mock.recorder = &MockEntryMockRecorder{mock}
-	return mock
-}
+func NewMockEntry(ctrl *gomock.Controller) *MockEntry { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockEntry) EXPECT() *MockEntryMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Get mocks base method.
+	return nil
 }
 
-// Get mocks base method.
-func (m *MockEntry) Get(ordinal int) any {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Get", ordinal)
-	ret0, _ := ret[0].(any)
-	return ret0
-}
+func (m *MockEntry) Get(ordinal int) any { _ = "STUB: not implemented"; return *new(any) }
 
 // Get indicates an expected call of Get.
 func (mr *MockEntryMockRecorder) Get(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockEntry)(nil).Get), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetBytes mocks base method.
-func (m *MockEntry) GetBytes(ordinal int) []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetBytes", ordinal)
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockEntry) GetBytes(ordinal int) []byte { _ = "STUB: not implemented"; return nil }
 
 // GetBytes indicates an expected call of GetBytes.
 func (mr *MockEntryMockRecorder) GetBytes(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBytes", reflect.TypeOf((*MockEntry)(nil).GetBytes), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetExtensionAttribute mocks base method.
 func (m *MockEntry) GetExtensionAttribute(arg0 []byte) []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetExtensionAttribute", arg0)
-	ret0, _ := ret[0].([]byte)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetExtensionAttribute indicates an expected call of GetExtensionAttribute.
 func (mr *MockEntryMockRecorder) GetExtensionAttribute(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetExtensionAttribute", reflect.TypeOf((*MockEntry)(nil).GetExtensionAttribute), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetInt64 mocks base method.
-func (m *MockEntry) GetInt64(ordinal int) int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetInt64", ordinal)
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockEntry) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
 // GetInt64 indicates an expected call of GetInt64.
 func (mr *MockEntryMockRecorder) GetInt64(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInt64", reflect.TypeOf((*MockEntry)(nil).GetInt64), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetString mocks base method.
-func (m *MockEntry) GetString(ordinal int) string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetString", ordinal)
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockEntry) GetString(ordinal int) string { _ = "STUB: not implemented"; return "" }
 
 // GetString indicates an expected call of GetString.
 func (mr *MockEntryMockRecorder) GetString(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetString", reflect.TypeOf((*MockEntry)(nil).GetString), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetTime mocks base method.
 func (m *MockEntry) GetTime(ordinal int) time.Time {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTime", ordinal)
-	ret0, _ := ret[0].(time.Time)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 // GetTime indicates an expected call of GetTime.
 func (mr *MockEntryMockRecorder) GetTime(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTime", reflect.TypeOf((*MockEntry)(nil).GetTime), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUint16 mocks base method.
-func (m *MockEntry) GetUint16(ordinal int) uint16 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUint16", ordinal)
-	ret0, _ := ret[0].(uint16)
-	return ret0
-}
+func (m *MockEntry) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
 // GetUint16 indicates an expected call of GetUint16.
 func (mr *MockEntryMockRecorder) GetUint16(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUint16", reflect.TypeOf((*MockEntry)(nil).GetUint16), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUint64 mocks base method.
-func (m *MockEntry) GetUint64(ordinal int) uint64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUint64", ordinal)
-	ret0, _ := ret[0].(uint64)
-	return ret0
-}
+func (m *MockEntry) GetUint64(ordinal int) uint64 { _ = "STUB: not implemented"; return 0 }
 
 // GetUint64 indicates an expected call of GetUint64.
 func (mr *MockEntryMockRecorder) GetUint64(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUint64", reflect.TypeOf((*MockEntry)(nil).GetUint64), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RangeExtensionAttributes mocks base method.
 func (m *MockEntry) RangeExtensionAttributes(cb block.ExtensionAttributeCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "RangeExtensionAttributes", cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // RangeExtensionAttributes indicates an expected call of RangeExtensionAttributes.
 func (mr *MockEntryMockRecorder) RangeExtensionAttributes(cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RangeExtensionAttributes", reflect.TypeOf((*MockEntry)(nil).RangeExtensionAttributes), cb)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockOptionalAttributeCallback is a mock of OptionalAttributeCallback interface.
@@ -328,98 +260,99 @@ type MockOptionalAttributeCallbackMockRecorder struct {
 
 // NewMockOptionalAttributeCallback creates a new mock instance.
 func NewMockOptionalAttributeCallback(ctrl *gomock.Controller) *MockOptionalAttributeCallback {
-	mock := &MockOptionalAttributeCallback{ctrl: ctrl}
-	mock.recorder = &MockOptionalAttributeCallbackMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockOptionalAttributeCallback) EXPECT() *MockOptionalAttributeCallbackMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// OnAttribute mocks base method.
+	return nil
 }
 
-// OnAttribute mocks base method.
 func (m *MockOptionalAttributeCallback) OnAttribute(ordinal int, val any) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnAttribute", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnAttribute indicates an expected call of OnAttribute.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnAttribute(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnAttribute", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnAttribute), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnBytes mocks base method.
 func (m *MockOptionalAttributeCallback) OnBytes(ordinal int, val []byte) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnBytes", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnBytes indicates an expected call of OnBytes.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnBytes(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnBytes", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnBytes), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnInt64 mocks base method.
 func (m *MockOptionalAttributeCallback) OnInt64(ordinal int, val int64) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnInt64", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnInt64 indicates an expected call of OnInt64.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnInt64(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnInt64", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnInt64), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnString mocks base method.
 func (m *MockOptionalAttributeCallback) OnString(ordinal int, val string) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnString", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnString indicates an expected call of OnString.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnString(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnString", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnString), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnTime mocks base method.
 func (m *MockOptionalAttributeCallback) OnTime(ordinal int, val time.Time) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnTime", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnTime indicates an expected call of OnTime.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnTime(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnTime", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnTime), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnUint16 mocks base method.
 func (m *MockOptionalAttributeCallback) OnUint16(ordinal int, val uint16) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnUint16", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnUint16 indicates an expected call of OnUint16.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnUint16(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnUint16", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnUint16), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnUint64 mocks base method.
 func (m *MockOptionalAttributeCallback) OnUint64(ordinal int, val uint64) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnUint64", ordinal, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnUint64 indicates an expected call of OnUint64.
 func (mr *MockOptionalAttributeCallbackMockRecorder) OnUint64(ordinal, val any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnUint64", reflect.TypeOf((*MockOptionalAttributeCallback)(nil).OnUint64), ordinal, val)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockEntryExt is a mock of EntryExt interface.
@@ -434,177 +367,131 @@ type MockEntryExtMockRecorder struct {
 }
 
 // NewMockEntryExt creates a new mock instance.
-func NewMockEntryExt(ctrl *gomock.Controller) *MockEntryExt {
-	mock := &MockEntryExt{ctrl: ctrl}
-	mock.recorder = &MockEntryExtMockRecorder{mock}
-	return mock
-}
+func NewMockEntryExt(ctrl *gomock.Controller) *MockEntryExt { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockEntryExt) EXPECT() *MockEntryExtMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// ExtensionAttributeCount mocks base method.
+	return nil
 }
 
-// ExtensionAttributeCount mocks base method.
-func (m *MockEntryExt) ExtensionAttributeCount() int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ExtensionAttributeCount")
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockEntryExt) ExtensionAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 // ExtensionAttributeCount indicates an expected call of ExtensionAttributeCount.
 func (mr *MockEntryExtMockRecorder) ExtensionAttributeCount() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtensionAttributeCount", reflect.TypeOf((*MockEntryExt)(nil).ExtensionAttributeCount))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Get mocks base method.
-func (m *MockEntryExt) Get(ordinal int) any {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Get", ordinal)
-	ret0, _ := ret[0].(any)
-	return ret0
-}
+func (m *MockEntryExt) Get(ordinal int) any { _ = "STUB: not implemented"; return *new(any) }
 
 // Get indicates an expected call of Get.
 func (mr *MockEntryExtMockRecorder) Get(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockEntryExt)(nil).Get), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetBytes mocks base method.
-func (m *MockEntryExt) GetBytes(ordinal int) []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetBytes", ordinal)
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockEntryExt) GetBytes(ordinal int) []byte { _ = "STUB: not implemented"; return nil }
 
 // GetBytes indicates an expected call of GetBytes.
 func (mr *MockEntryExtMockRecorder) GetBytes(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBytes", reflect.TypeOf((*MockEntryExt)(nil).GetBytes), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetExtensionAttribute mocks base method.
 func (m *MockEntryExt) GetExtensionAttribute(arg0 []byte) []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetExtensionAttribute", arg0)
-	ret0, _ := ret[0].([]byte)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetExtensionAttribute indicates an expected call of GetExtensionAttribute.
 func (mr *MockEntryExtMockRecorder) GetExtensionAttribute(arg0 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetExtensionAttribute", reflect.TypeOf((*MockEntryExt)(nil).GetExtensionAttribute), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetInt64 mocks base method.
-func (m *MockEntryExt) GetInt64(ordinal int) int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetInt64", ordinal)
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockEntryExt) GetInt64(ordinal int) int64 { _ = "STUB: not implemented"; return 0 }
 
 // GetInt64 indicates an expected call of GetInt64.
 func (mr *MockEntryExtMockRecorder) GetInt64(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInt64", reflect.TypeOf((*MockEntryExt)(nil).GetInt64), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetString mocks base method.
-func (m *MockEntryExt) GetString(ordinal int) string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetString", ordinal)
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockEntryExt) GetString(ordinal int) string { _ = "STUB: not implemented"; return "" }
 
 // GetString indicates an expected call of GetString.
 func (mr *MockEntryExtMockRecorder) GetString(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetString", reflect.TypeOf((*MockEntryExt)(nil).GetString), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetTime mocks base method.
 func (m *MockEntryExt) GetTime(ordinal int) time.Time {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTime", ordinal)
-	ret0, _ := ret[0].(time.Time)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
 // GetTime indicates an expected call of GetTime.
 func (mr *MockEntryExtMockRecorder) GetTime(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTime", reflect.TypeOf((*MockEntryExt)(nil).GetTime), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUint16 mocks base method.
-func (m *MockEntryExt) GetUint16(ordinal int) uint16 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUint16", ordinal)
-	ret0, _ := ret[0].(uint16)
-	return ret0
-}
+func (m *MockEntryExt) GetUint16(ordinal int) uint16 { _ = "STUB: not implemented"; return 0 }
 
 // GetUint16 indicates an expected call of GetUint16.
 func (mr *MockEntryExtMockRecorder) GetUint16(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUint16", reflect.TypeOf((*MockEntryExt)(nil).GetUint16), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUint64 mocks base method.
-func (m *MockEntryExt) GetUint64(ordinal int) uint64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUint64", ordinal)
-	ret0, _ := ret[0].(uint64)
-	return ret0
-}
+func (m *MockEntryExt) GetUint64(ordinal int) uint64 { _ = "STUB: not implemented"; return 0 }
 
 // GetUint64 indicates an expected call of GetUint64.
 func (mr *MockEntryExtMockRecorder) GetUint64(ordinal any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUint64", reflect.TypeOf((*MockEntryExt)(nil).GetUint64), ordinal)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OptionalAttributeCount mocks base method.
-func (m *MockEntryExt) OptionalAttributeCount() int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "OptionalAttributeCount")
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockEntryExt) OptionalAttributeCount() int { _ = "STUB: not implemented"; return 0 }
 
 // OptionalAttributeCount indicates an expected call of OptionalAttributeCount.
 func (mr *MockEntryExtMockRecorder) OptionalAttributeCount() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OptionalAttributeCount", reflect.TypeOf((*MockEntryExt)(nil).OptionalAttributeCount))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RangeExtensionAttributes mocks base method.
 func (m *MockEntryExt) RangeExtensionAttributes(cb block.ExtensionAttributeCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "RangeExtensionAttributes", cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // RangeExtensionAttributes indicates an expected call of RangeExtensionAttributes.
 func (mr *MockEntryExtMockRecorder) RangeExtensionAttributes(cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RangeExtensionAttributes", reflect.TypeOf((*MockEntryExt)(nil).RangeExtensionAttributes), cb)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RangeOptionalAttributes mocks base method.
 func (m *MockEntryExt) RangeOptionalAttributes(cb block.OptionalAttributeCallback) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "RangeOptionalAttributes", cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 // RangeOptionalAttributes indicates an expected call of RangeOptionalAttributes.
 func (mr *MockEntryExtMockRecorder) RangeOptionalAttributes(cb any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RangeOptionalAttributes", reflect.TypeOf((*MockEntryExt)(nil).RangeOptionalAttributes), cb)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -26,14 +26,8 @@ type RefCount struct {
 	count atomic.Int32
 }
 
-func (c *RefCount) Acquire() {
-	c.count.Add(1)
-}
+func (c *RefCount) Acquire() { _ = "STUB: not implemented"; return }
 
-func (c *RefCount) Release() bool {
-	return c.count.Add(-1) == 0
-}
+func (c *RefCount) Release() bool { _ = "STUB: not implemented"; return false }
 
-func (c *RefCount) UseCount() int32 {
-	return c.count.Load()
-}
+func (c *RefCount) UseCount() int32 { _ = "STUB: not implemented"; return 0 }

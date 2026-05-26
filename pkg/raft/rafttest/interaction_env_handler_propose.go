@@ -18,21 +18,15 @@ import (
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
-
-	"github.com/vanus-labs/vanus/pkg/raft"
 )
 
 func (env *InteractionEnv) handlePropose(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	if len(d.CmdArgs) != 2 || len(d.CmdArgs[1].Vals) > 0 {
-		t.Fatalf("expected exactly one key with no vals: %+v", d.CmdArgs[1:])
-	}
-	return env.Propose(idx, []byte(d.CmdArgs[1].Key))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Propose a regular entry.
 func (env *InteractionEnv) Propose(idx int, data []byte) error {
-	ch := make(chan error, 1)
-	env.Nodes[idx].Propose(raft.ProposeData{Data: data, Callback: func(err error) { ch <- err }, NoWaitCommit: true})
-	return <-ch
+	_ = "STUB: not implemented"
+	return nil
 }

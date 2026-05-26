@@ -17,7 +17,6 @@ package meta
 import (
 	// standard libraries.
 	"context"
-	"errors"
 	"time"
 
 	// third-party libraries.
@@ -39,192 +38,93 @@ type SyncStore struct {
 }
 
 func newSyncStore(wal *walog.WAL, committed *skiplist.SkipList, version, snapshot int64) *SyncStore {
-	s := &SyncStore{
-		store: store{
-			committed: committed,
-			version:   version,
-			wal:       wal,
-			snapshot:  snapshot,
-			marshaler: defaultCodec,
-		},
-		snapshotC: make(chan struct{}, 1),
-		doneC:     make(chan struct{}),
-	}
-
-	go s.runSnapshot()
-
-	return s
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *SyncStore) Close(_ context.Context) {
+	_ = "STUB: not implemented"
 	// Close WAL.
-	s.wal.Close()
-	s.wal.Wait()
-
-	// NOTE: Can not close the snapshotC before close the WAL,
-	// because write to snapshotC in callback of WAL append.
-	close(s.snapshotC)
-	<-s.doneC
+	return
 }
 
+// NOTE: Can not close the snapshotC before close the WAL,
+// because write to snapshotC in callback of WAL append.
+
 func (s *SyncStore) Load(key []byte) (interface{}, bool) {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	return s.load(key)
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
 func (s *SyncStore) Range(begin, end []byte, cb RangeCallback) error {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	for el := s.committed.Find(begin); el != nil; el = el.Next() {
-		if skiplist.Bytes.Compare(el.Key(), end) >= 0 {
-			break
-		}
-		if err := cb(el.Key().([]byte), el.Value); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 type StoreCallback = func(error)
 
 func (s *SyncStore) Store(ctx context.Context, key []byte, value interface{}, cb StoreCallback) {
-	s.set(ctx, KVRange(key, value), cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (s *SyncStore) BatchStore(ctx context.Context, kvs Ranger, cb StoreCallback) {
-	s.set(ctx, kvs, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (s *SyncStore) Delete(ctx context.Context, key []byte, cb StoreCallback) {
-	s.set(ctx, KVRange(key, DeletedMark), cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (s *SyncStore) BatchDelete(ctx context.Context, keys [][]byte, cb StoreCallback) {
-	s.set(ctx, &deleteRange{keys}, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (s *SyncStore) set(ctx context.Context, kvs Ranger, cb StoreCallback) {
-	entry, err := s.marshaler.Marshal(kvs)
-	if err != nil {
-		cb(err)
-		return
-	}
-
-	// Use callbacks for ordering guarantees.
-	s.wal.AppendOne(ctx, entry, func(r walog.Range, err error) {
-		if err != nil {
-			// Convert ErrClosed.
-			if errors.Is(err, walog.ErrClosed) {
-				err = ErrClosed
-			}
-			cb(err)
-			return
-		}
-
-		// Update state.
-		s.mu.Lock()
-		_ = kvs.Range(func(key []byte, value interface{}) error {
-			update(s.committed, key, value)
-			return nil
-		})
-		s.version = r.EO
-		s.mu.Unlock()
-
-		cb(nil)
-
-		select {
-		case s.snapshotC <- struct{}{}:
-		default:
-		}
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
-func (s *SyncStore) runSnapshot() {
-	ticker := time.NewTicker(runSnapshotInterval)
-	defer func() {
-		ticker.Stop()
-		close(s.doneC)
-	}()
-	for {
-		select {
-		case _, ok := <-s.snapshotC:
-			if !ok {
-				return
-			}
-		case <-ticker.C:
-		}
-		s.tryCreateSnapshot()
-	}
-}
+// Use callbacks for ordering guarantees.
+
+// Convert ErrClosed.
+
+// Update state.
+
+func (s *SyncStore) runSnapshot() { _ = "STUB: not implemented"; return }
 
 func RecoverSyncStore(ctx context.Context, dir string, opts ...walog.Option) (*SyncStore, error) {
-	committed, snapshot, err := recoverLatestSnapshot(ctx, dir, defaultCodec)
-	if err != nil {
-		return nil, err
-	}
-
-	version := snapshot
-	opts = append([]walog.Option{
-		walog.FromPosition(snapshot),
-		walog.WithRecoveryCallback(func(data []byte, r walog.Range) error {
-			err2 := defaultCodec.Unmarshal(data, func(key []byte, value interface{}) error {
-				rawUpdate(committed, key, value)
-				return nil
-			})
-			if err2 != nil {
-				return err2
-			}
-			version = r.EO
-			return nil
-		}),
-	}, opts...)
-	wal, err := walog.Open(ctx, dir, opts...)
-	if err != nil {
-		return nil, err
-	}
-
-	return newSyncStore(wal, committed, version, snapshot), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type storeFuture chan error
 
-func newStoreFuture() storeFuture {
-	return make(storeFuture, 1)
-}
+func newStoreFuture() storeFuture { _ = "STUB: not implemented"; return *new(storeFuture) }
 
-func (sf storeFuture) onStored(err error) {
-	if err != nil {
-		sf <- err
-	}
-	close(sf)
-}
+func (sf storeFuture) onStored(err error) { _ = "STUB: not implemented"; return }
 
-func (sf storeFuture) wait() error {
-	return <-sf
-}
+func (sf storeFuture) wait() error { _ = "STUB: not implemented"; return nil }
 
 func Store(ctx context.Context, s *SyncStore, key []byte, value interface{}) error {
-	future := newStoreFuture()
-	s.Store(ctx, key, value, future.onStored)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func BatchStore(ctx context.Context, s *SyncStore, kvs Ranger) error {
-	future := newStoreFuture()
-	s.BatchStore(ctx, kvs, future.onStored)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func Delete(ctx context.Context, s *SyncStore, key []byte) error {
-	future := newStoreFuture()
-	s.Delete(ctx, key, future.onStored)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func BatchDelete(ctx context.Context, s *SyncStore, keys [][]byte) error {
-	future := newStoreFuture()
-	s.BatchDelete(ctx, keys, future.onStored)
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }

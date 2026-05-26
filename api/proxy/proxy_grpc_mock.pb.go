@@ -5,7 +5,6 @@ package proxy
 
 import (
 	context "context"
-	reflect "reflect"
 
 	controller "github.com/vanus-labs/vanus/api/controller"
 	meta "github.com/vanus-labs/vanus/api/meta"
@@ -29,834 +28,507 @@ type MockControllerProxyClientMockRecorder struct {
 
 // NewMockControllerProxyClient creates a new mock instance.
 func NewMockControllerProxyClient(ctrl *gomock.Controller) *MockControllerProxyClient {
-	mock := &MockControllerProxyClient{ctrl: ctrl}
-	mock.recorder = &MockControllerProxyClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockControllerProxyClient) EXPECT() *MockControllerProxyClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// ClusterInfo mocks base method.
+	return nil
 }
 
-// ClusterInfo mocks base method.
 func (m *MockControllerProxyClient) ClusterInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ClusterInfoResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ClusterInfo", varargs...)
-	ret0, _ := ret[0].(*ClusterInfoResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ClusterInfo indicates an expected call of ClusterInfo.
 func (mr *MockControllerProxyClientMockRecorder) ClusterInfo(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ClusterInfo", reflect.TypeOf((*MockControllerProxyClient)(nil).ClusterInfo), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateEventbus mocks base method.
 func (m *MockControllerProxyClient) CreateEventbus(ctx context.Context, in *controller.CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateEventbus", varargs...)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateEventbus indicates an expected call of CreateEventbus.
 func (mr *MockControllerProxyClientMockRecorder) CreateEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateNamespace mocks base method.
 func (m *MockControllerProxyClient) CreateNamespace(ctx context.Context, in *controller.CreateNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateNamespace", varargs...)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateNamespace indicates an expected call of CreateNamespace.
 func (mr *MockControllerProxyClientMockRecorder) CreateNamespace(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateNamespace", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateNamespace), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateSubscription mocks base method.
 func (m *MockControllerProxyClient) CreateSubscription(ctx context.Context, in *controller.CreateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateSubscription", varargs...)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateSubscription indicates an expected call of CreateSubscription.
 func (mr *MockControllerProxyClientMockRecorder) CreateSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateSystemEventbus mocks base method.
 func (m *MockControllerProxyClient) CreateSystemEventbus(ctx context.Context, in *controller.CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateSystemEventbus", varargs...)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateSystemEventbus indicates an expected call of CreateSystemEventbus.
 func (mr *MockControllerProxyClientMockRecorder) CreateSystemEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSystemEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateSystemEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateToken mocks base method.
 func (m *MockControllerProxyClient) CreateToken(ctx context.Context, in *controller.CreateTokenRequest, opts ...grpc.CallOption) (*meta.Token, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateToken", varargs...)
-	ret0, _ := ret[0].(*meta.Token)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateToken indicates an expected call of CreateToken.
 func (mr *MockControllerProxyClientMockRecorder) CreateToken(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateToken", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateToken), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateUser mocks base method.
 func (m *MockControllerProxyClient) CreateUser(ctx context.Context, in *controller.CreateUserRequest, opts ...grpc.CallOption) (*meta.User, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreateUser", varargs...)
-	ret0, _ := ret[0].(*meta.User)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateUser indicates an expected call of CreateUser.
 func (mr *MockControllerProxyClientMockRecorder) CreateUser(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockControllerProxyClient)(nil).CreateUser), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteEventbus mocks base method.
 func (m *MockControllerProxyClient) DeleteEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeleteEventbus", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteEventbus indicates an expected call of DeleteEventbus.
 func (mr *MockControllerProxyClientMockRecorder) DeleteEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).DeleteEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteNamespace mocks base method.
 func (m *MockControllerProxyClient) DeleteNamespace(ctx context.Context, in *controller.DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeleteNamespace", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteNamespace indicates an expected call of DeleteNamespace.
 func (mr *MockControllerProxyClientMockRecorder) DeleteNamespace(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteNamespace", reflect.TypeOf((*MockControllerProxyClient)(nil).DeleteNamespace), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription mocks base method.
 func (m *MockControllerProxyClient) DeleteSubscription(ctx context.Context, in *controller.DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeleteSubscription", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteSubscription indicates an expected call of DeleteSubscription.
 func (mr *MockControllerProxyClientMockRecorder) DeleteSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).DeleteSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteToken mocks base method.
 func (m *MockControllerProxyClient) DeleteToken(ctx context.Context, in *controller.DeleteTokenRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeleteToken", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteToken indicates an expected call of DeleteToken.
 func (mr *MockControllerProxyClientMockRecorder) DeleteToken(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteToken", reflect.TypeOf((*MockControllerProxyClient)(nil).DeleteToken), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUser mocks base method.
 func (m *MockControllerProxyClient) DeleteUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeleteUser", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteUser indicates an expected call of DeleteUser.
 func (mr *MockControllerProxyClientMockRecorder) DeleteUser(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUser", reflect.TypeOf((*MockControllerProxyClient)(nil).DeleteUser), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DisableSubscription mocks base method.
 func (m *MockControllerProxyClient) DisableSubscription(ctx context.Context, in *controller.DisableSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DisableSubscription", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DisableSubscription indicates an expected call of DisableSubscription.
 func (mr *MockControllerProxyClientMockRecorder) DisableSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisableSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).DisableSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetDeadLetterEvent mocks base method.
 func (m *MockControllerProxyClient) GetDeadLetterEvent(ctx context.Context, in *GetDeadLetterEventRequest, opts ...grpc.CallOption) (*GetDeadLetterEventResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetDeadLetterEvent", varargs...)
-	ret0, _ := ret[0].(*GetDeadLetterEventResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetDeadLetterEvent indicates an expected call of GetDeadLetterEvent.
 func (mr *MockControllerProxyClientMockRecorder) GetDeadLetterEvent(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeadLetterEvent", reflect.TypeOf((*MockControllerProxyClient)(nil).GetDeadLetterEvent), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEvent mocks base method.
 func (m *MockControllerProxyClient) GetEvent(ctx context.Context, in *GetEventRequest, opts ...grpc.CallOption) (*GetEventResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetEvent", varargs...)
-	ret0, _ := ret[0].(*GetEventResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEvent indicates an expected call of GetEvent.
 func (mr *MockControllerProxyClientMockRecorder) GetEvent(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEvent", reflect.TypeOf((*MockControllerProxyClient)(nil).GetEvent), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventbus mocks base method.
 func (m *MockControllerProxyClient) GetEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetEventbus", varargs...)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEventbus indicates an expected call of GetEventbus.
 func (mr *MockControllerProxyClientMockRecorder) GetEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).GetEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventbusWithHumanFriendly mocks base method.
 func (m *MockControllerProxyClient) GetEventbusWithHumanFriendly(ctx context.Context, in *controller.GetEventbusWithHumanFriendlyRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetEventbusWithHumanFriendly", varargs...)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEventbusWithHumanFriendly indicates an expected call of GetEventbusWithHumanFriendly.
 func (mr *MockControllerProxyClientMockRecorder) GetEventbusWithHumanFriendly(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventbusWithHumanFriendly", reflect.TypeOf((*MockControllerProxyClient)(nil).GetEventbusWithHumanFriendly), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespace mocks base method.
 func (m *MockControllerProxyClient) GetNamespace(ctx context.Context, in *controller.GetNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetNamespace", varargs...)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetNamespace indicates an expected call of GetNamespace.
 func (mr *MockControllerProxyClientMockRecorder) GetNamespace(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespace", reflect.TypeOf((*MockControllerProxyClient)(nil).GetNamespace), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespaceWithHumanFriendly mocks base method.
 func (m *MockControllerProxyClient) GetNamespaceWithHumanFriendly(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetNamespaceWithHumanFriendly", varargs...)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetNamespaceWithHumanFriendly indicates an expected call of GetNamespaceWithHumanFriendly.
 func (mr *MockControllerProxyClientMockRecorder) GetNamespaceWithHumanFriendly(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespaceWithHumanFriendly", reflect.TypeOf((*MockControllerProxyClient)(nil).GetNamespaceWithHumanFriendly), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetResourceRole mocks base method.
 func (m *MockControllerProxyClient) GetResourceRole(ctx context.Context, in *controller.GetResourceRoleRequest, opts ...grpc.CallOption) (*controller.GetResourceRoleResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetResourceRole", varargs...)
-	ret0, _ := ret[0].(*controller.GetResourceRoleResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetResourceRole indicates an expected call of GetResourceRole.
 func (mr *MockControllerProxyClientMockRecorder) GetResourceRole(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetResourceRole", reflect.TypeOf((*MockControllerProxyClient)(nil).GetResourceRole), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscription mocks base method.
 func (m *MockControllerProxyClient) GetSubscription(ctx context.Context, in *controller.GetSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetSubscription", varargs...)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetSubscription indicates an expected call of GetSubscription.
 func (mr *MockControllerProxyClientMockRecorder) GetSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).GetSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUser mocks base method.
 func (m *MockControllerProxyClient) GetUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.User, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetUser", varargs...)
-	ret0, _ := ret[0].(*meta.User)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUser indicates an expected call of GetUser.
 func (mr *MockControllerProxyClientMockRecorder) GetUser(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockControllerProxyClient)(nil).GetUser), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserRole mocks base method.
 func (m *MockControllerProxyClient) GetUserRole(ctx context.Context, in *controller.GetUserRoleRequest, opts ...grpc.CallOption) (*controller.GetUserRoleResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetUserRole", varargs...)
-	ret0, _ := ret[0].(*controller.GetUserRoleResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserRole indicates an expected call of GetUserRole.
 func (mr *MockControllerProxyClientMockRecorder) GetUserRole(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserRole", reflect.TypeOf((*MockControllerProxyClient)(nil).GetUserRole), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserToken mocks base method.
 func (m *MockControllerProxyClient) GetUserToken(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*controller.GetTokenResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GetUserToken", varargs...)
-	ret0, _ := ret[0].(*controller.GetTokenResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserToken indicates an expected call of GetUserToken.
 func (mr *MockControllerProxyClientMockRecorder) GetUserToken(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserToken", reflect.TypeOf((*MockControllerProxyClient)(nil).GetUserToken), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GrantRole mocks base method.
 func (m *MockControllerProxyClient) GrantRole(ctx context.Context, in *controller.RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "GrantRole", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GrantRole indicates an expected call of GrantRole.
 func (mr *MockControllerProxyClientMockRecorder) GrantRole(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GrantRole", reflect.TypeOf((*MockControllerProxyClient)(nil).GrantRole), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListEventbus mocks base method.
 func (m *MockControllerProxyClient) ListEventbus(ctx context.Context, in *controller.ListEventbusRequest, opts ...grpc.CallOption) (*controller.ListEventbusResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListEventbus", varargs...)
-	ret0, _ := ret[0].(*controller.ListEventbusResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListEventbus indicates an expected call of ListEventbus.
 func (mr *MockControllerProxyClientMockRecorder) ListEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).ListEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListNamespace mocks base method.
 func (m *MockControllerProxyClient) ListNamespace(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListNamespaceResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListNamespace", varargs...)
-	ret0, _ := ret[0].(*controller.ListNamespaceResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListNamespace indicates an expected call of ListNamespace.
 func (mr *MockControllerProxyClientMockRecorder) ListNamespace(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNamespace", reflect.TypeOf((*MockControllerProxyClient)(nil).ListNamespace), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSegment mocks base method.
 func (m *MockControllerProxyClient) ListSegment(ctx context.Context, in *controller.ListSegmentRequest, opts ...grpc.CallOption) (*controller.ListSegmentResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListSegment", varargs...)
-	ret0, _ := ret[0].(*controller.ListSegmentResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListSegment indicates an expected call of ListSegment.
 func (mr *MockControllerProxyClientMockRecorder) ListSegment(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSegment", reflect.TypeOf((*MockControllerProxyClient)(nil).ListSegment), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSubscription mocks base method.
 func (m *MockControllerProxyClient) ListSubscription(ctx context.Context, in *controller.ListSubscriptionRequest, opts ...grpc.CallOption) (*controller.ListSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListSubscription", varargs...)
-	ret0, _ := ret[0].(*controller.ListSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListSubscription indicates an expected call of ListSubscription.
 func (mr *MockControllerProxyClientMockRecorder) ListSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).ListSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListToken mocks base method.
 func (m *MockControllerProxyClient) ListToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListTokenResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListToken", varargs...)
-	ret0, _ := ret[0].(*controller.ListTokenResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListToken indicates an expected call of ListToken.
 func (mr *MockControllerProxyClientMockRecorder) ListToken(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListToken", reflect.TypeOf((*MockControllerProxyClient)(nil).ListToken), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListUser mocks base method.
 func (m *MockControllerProxyClient) ListUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListUserResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ListUser", varargs...)
-	ret0, _ := ret[0].(*controller.ListUserResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListUser indicates an expected call of ListUser.
 func (mr *MockControllerProxyClientMockRecorder) ListUser(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUser", reflect.TypeOf((*MockControllerProxyClient)(nil).ListUser), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // LookupOffset mocks base method.
 func (m *MockControllerProxyClient) LookupOffset(ctx context.Context, in *LookupOffsetRequest, opts ...grpc.CallOption) (*LookupOffsetResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "LookupOffset", varargs...)
-	ret0, _ := ret[0].(*LookupOffsetResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // LookupOffset indicates an expected call of LookupOffset.
 func (mr *MockControllerProxyClientMockRecorder) LookupOffset(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LookupOffset", reflect.TypeOf((*MockControllerProxyClient)(nil).LookupOffset), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResendDeadLetterEvent mocks base method.
 func (m *MockControllerProxyClient) ResendDeadLetterEvent(ctx context.Context, in *ResendDeadLetterEventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ResendDeadLetterEvent", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResendDeadLetterEvent indicates an expected call of ResendDeadLetterEvent.
 func (mr *MockControllerProxyClientMockRecorder) ResendDeadLetterEvent(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResendDeadLetterEvent", reflect.TypeOf((*MockControllerProxyClient)(nil).ResendDeadLetterEvent), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResetOffsetToTimestamp mocks base method.
 func (m *MockControllerProxyClient) ResetOffsetToTimestamp(ctx context.Context, in *controller.ResetOffsetToTimestampRequest, opts ...grpc.CallOption) (*controller.ResetOffsetToTimestampResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ResetOffsetToTimestamp", varargs...)
-	ret0, _ := ret[0].(*controller.ResetOffsetToTimestampResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResetOffsetToTimestamp indicates an expected call of ResetOffsetToTimestamp.
 func (mr *MockControllerProxyClientMockRecorder) ResetOffsetToTimestamp(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetOffsetToTimestamp", reflect.TypeOf((*MockControllerProxyClient)(nil).ResetOffsetToTimestamp), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResumeSubscription mocks base method.
 func (m *MockControllerProxyClient) ResumeSubscription(ctx context.Context, in *controller.ResumeSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ResumeSubscription", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResumeSubscription indicates an expected call of ResumeSubscription.
 func (mr *MockControllerProxyClientMockRecorder) ResumeSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).ResumeSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RevokeRole mocks base method.
 func (m *MockControllerProxyClient) RevokeRole(ctx context.Context, in *controller.RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "RevokeRole", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RevokeRole indicates an expected call of RevokeRole.
 func (mr *MockControllerProxyClientMockRecorder) RevokeRole(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RevokeRole", reflect.TypeOf((*MockControllerProxyClient)(nil).RevokeRole), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetDeadLetterEventOffset mocks base method.
 func (m *MockControllerProxyClient) SetDeadLetterEventOffset(ctx context.Context, in *controller.SetDeadLetterEventOffsetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "SetDeadLetterEventOffset", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SetDeadLetterEventOffset indicates an expected call of SetDeadLetterEventOffset.
 func (mr *MockControllerProxyClientMockRecorder) SetDeadLetterEventOffset(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDeadLetterEventOffset", reflect.TypeOf((*MockControllerProxyClient)(nil).SetDeadLetterEventOffset), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateEventbus mocks base method.
 func (m *MockControllerProxyClient) UpdateEventbus(ctx context.Context, in *controller.UpdateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "UpdateEventbus", varargs...)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UpdateEventbus indicates an expected call of UpdateEventbus.
 func (mr *MockControllerProxyClientMockRecorder) UpdateEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).UpdateEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSubscription mocks base method.
 func (m *MockControllerProxyClient) UpdateSubscription(ctx context.Context, in *controller.UpdateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "UpdateSubscription", varargs...)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UpdateSubscription indicates an expected call of UpdateSubscription.
 func (mr *MockControllerProxyClientMockRecorder) UpdateSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).UpdateSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateEventbus mocks base method.
 func (m *MockControllerProxyClient) ValidateEventbus(ctx context.Context, in *ValidateEventbusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ValidateEventbus", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ValidateEventbus indicates an expected call of ValidateEventbus.
 func (mr *MockControllerProxyClientMockRecorder) ValidateEventbus(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ValidateEventbus", reflect.TypeOf((*MockControllerProxyClient)(nil).ValidateEventbus), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateSubscription mocks base method.
 func (m *MockControllerProxyClient) ValidateSubscription(ctx context.Context, in *ValidateSubscriptionRequest, opts ...grpc.CallOption) (*ValidateSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ValidateSubscription", varargs...)
-	ret0, _ := ret[0].(*ValidateSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ValidateSubscription indicates an expected call of ValidateSubscription.
 func (mr *MockControllerProxyClientMockRecorder) ValidateSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ValidateSubscription", reflect.TypeOf((*MockControllerProxyClient)(nil).ValidateSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockControllerProxyServer is a mock of ControllerProxyServer interface.
@@ -872,629 +544,507 @@ type MockControllerProxyServerMockRecorder struct {
 
 // NewMockControllerProxyServer creates a new mock instance.
 func NewMockControllerProxyServer(ctrl *gomock.Controller) *MockControllerProxyServer {
-	mock := &MockControllerProxyServer{ctrl: ctrl}
-	mock.recorder = &MockControllerProxyServerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockControllerProxyServer) EXPECT() *MockControllerProxyServerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// ClusterInfo mocks base method.
+	return nil
 }
 
-// ClusterInfo mocks base method.
 func (m *MockControllerProxyServer) ClusterInfo(ctx context.Context, in *emptypb.Empty) (*ClusterInfoResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ClusterInfo", ctx, in)
-	ret0, _ := ret[0].(*ClusterInfoResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ClusterInfo indicates an expected call of ClusterInfo.
 func (mr *MockControllerProxyServerMockRecorder) ClusterInfo(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ClusterInfo", reflect.TypeOf((*MockControllerProxyServer)(nil).ClusterInfo), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateEventbus mocks base method.
 func (m *MockControllerProxyServer) CreateEventbus(ctx context.Context, in *controller.CreateEventbusRequest) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateEventbus", ctx, in)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateEventbus indicates an expected call of CreateEventbus.
 func (mr *MockControllerProxyServerMockRecorder) CreateEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateNamespace mocks base method.
 func (m *MockControllerProxyServer) CreateNamespace(ctx context.Context, in *controller.CreateNamespaceRequest) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateNamespace", ctx, in)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateNamespace indicates an expected call of CreateNamespace.
 func (mr *MockControllerProxyServerMockRecorder) CreateNamespace(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateNamespace", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateNamespace), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateSubscription mocks base method.
 func (m *MockControllerProxyServer) CreateSubscription(ctx context.Context, in *controller.CreateSubscriptionRequest) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateSubscription", ctx, in)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateSubscription indicates an expected call of CreateSubscription.
 func (mr *MockControllerProxyServerMockRecorder) CreateSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateSystemEventbus mocks base method.
 func (m *MockControllerProxyServer) CreateSystemEventbus(ctx context.Context, in *controller.CreateEventbusRequest) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateSystemEventbus", ctx, in)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateSystemEventbus indicates an expected call of CreateSystemEventbus.
 func (mr *MockControllerProxyServerMockRecorder) CreateSystemEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSystemEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateSystemEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateToken mocks base method.
 func (m *MockControllerProxyServer) CreateToken(ctx context.Context, in *controller.CreateTokenRequest) (*meta.Token, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateToken", ctx, in)
-	ret0, _ := ret[0].(*meta.Token)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateToken indicates an expected call of CreateToken.
 func (mr *MockControllerProxyServerMockRecorder) CreateToken(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateToken", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateToken), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateUser mocks base method.
 func (m *MockControllerProxyServer) CreateUser(ctx context.Context, in *controller.CreateUserRequest) (*meta.User, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateUser", ctx, in)
-	ret0, _ := ret[0].(*meta.User)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CreateUser indicates an expected call of CreateUser.
 func (mr *MockControllerProxyServerMockRecorder) CreateUser(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockControllerProxyServer)(nil).CreateUser), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteEventbus mocks base method.
 func (m *MockControllerProxyServer) DeleteEventbus(ctx context.Context, in *wrapperspb.UInt64Value) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteEventbus", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteEventbus indicates an expected call of DeleteEventbus.
 func (mr *MockControllerProxyServerMockRecorder) DeleteEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).DeleteEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteNamespace mocks base method.
 func (m *MockControllerProxyServer) DeleteNamespace(ctx context.Context, in *controller.DeleteNamespaceRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteNamespace", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteNamespace indicates an expected call of DeleteNamespace.
 func (mr *MockControllerProxyServerMockRecorder) DeleteNamespace(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteNamespace", reflect.TypeOf((*MockControllerProxyServer)(nil).DeleteNamespace), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription mocks base method.
 func (m *MockControllerProxyServer) DeleteSubscription(ctx context.Context, in *controller.DeleteSubscriptionRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteSubscription", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteSubscription indicates an expected call of DeleteSubscription.
 func (mr *MockControllerProxyServerMockRecorder) DeleteSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).DeleteSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteToken mocks base method.
 func (m *MockControllerProxyServer) DeleteToken(ctx context.Context, in *controller.DeleteTokenRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteToken", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteToken indicates an expected call of DeleteToken.
 func (mr *MockControllerProxyServerMockRecorder) DeleteToken(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteToken", reflect.TypeOf((*MockControllerProxyServer)(nil).DeleteToken), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteUser mocks base method.
 func (m *MockControllerProxyServer) DeleteUser(ctx context.Context, in *wrapperspb.StringValue) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteUser", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DeleteUser indicates an expected call of DeleteUser.
 func (mr *MockControllerProxyServerMockRecorder) DeleteUser(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUser", reflect.TypeOf((*MockControllerProxyServer)(nil).DeleteUser), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DisableSubscription mocks base method.
 func (m *MockControllerProxyServer) DisableSubscription(ctx context.Context, in *controller.DisableSubscriptionRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DisableSubscription", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DisableSubscription indicates an expected call of DisableSubscription.
 func (mr *MockControllerProxyServerMockRecorder) DisableSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisableSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).DisableSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetDeadLetterEvent mocks base method.
 func (m *MockControllerProxyServer) GetDeadLetterEvent(ctx context.Context, in *GetDeadLetterEventRequest) (*GetDeadLetterEventResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetDeadLetterEvent", ctx, in)
-	ret0, _ := ret[0].(*GetDeadLetterEventResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetDeadLetterEvent indicates an expected call of GetDeadLetterEvent.
 func (mr *MockControllerProxyServerMockRecorder) GetDeadLetterEvent(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeadLetterEvent", reflect.TypeOf((*MockControllerProxyServer)(nil).GetDeadLetterEvent), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEvent mocks base method.
 func (m *MockControllerProxyServer) GetEvent(ctx context.Context, in *GetEventRequest) (*GetEventResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEvent", ctx, in)
-	ret0, _ := ret[0].(*GetEventResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEvent indicates an expected call of GetEvent.
 func (mr *MockControllerProxyServerMockRecorder) GetEvent(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEvent", reflect.TypeOf((*MockControllerProxyServer)(nil).GetEvent), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventbus mocks base method.
 func (m *MockControllerProxyServer) GetEventbus(ctx context.Context, in *wrapperspb.UInt64Value) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEventbus", ctx, in)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEventbus indicates an expected call of GetEventbus.
 func (mr *MockControllerProxyServerMockRecorder) GetEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).GetEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventbusWithHumanFriendly mocks base method.
 func (m *MockControllerProxyServer) GetEventbusWithHumanFriendly(ctx context.Context, in *controller.GetEventbusWithHumanFriendlyRequest) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEventbusWithHumanFriendly", ctx, in)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetEventbusWithHumanFriendly indicates an expected call of GetEventbusWithHumanFriendly.
 func (mr *MockControllerProxyServerMockRecorder) GetEventbusWithHumanFriendly(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventbusWithHumanFriendly", reflect.TypeOf((*MockControllerProxyServer)(nil).GetEventbusWithHumanFriendly), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespace mocks base method.
 func (m *MockControllerProxyServer) GetNamespace(ctx context.Context, in *controller.GetNamespaceRequest) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetNamespace", ctx, in)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetNamespace indicates an expected call of GetNamespace.
 func (mr *MockControllerProxyServerMockRecorder) GetNamespace(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespace", reflect.TypeOf((*MockControllerProxyServer)(nil).GetNamespace), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetNamespaceWithHumanFriendly mocks base method.
 func (m *MockControllerProxyServer) GetNamespaceWithHumanFriendly(ctx context.Context, in *wrapperspb.StringValue) (*meta.Namespace, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetNamespaceWithHumanFriendly", ctx, in)
-	ret0, _ := ret[0].(*meta.Namespace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetNamespaceWithHumanFriendly indicates an expected call of GetNamespaceWithHumanFriendly.
 func (mr *MockControllerProxyServerMockRecorder) GetNamespaceWithHumanFriendly(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNamespaceWithHumanFriendly", reflect.TypeOf((*MockControllerProxyServer)(nil).GetNamespaceWithHumanFriendly), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetResourceRole mocks base method.
 func (m *MockControllerProxyServer) GetResourceRole(ctx context.Context, in *controller.GetResourceRoleRequest) (*controller.GetResourceRoleResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetResourceRole", ctx, in)
-	ret0, _ := ret[0].(*controller.GetResourceRoleResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetResourceRole indicates an expected call of GetResourceRole.
 func (mr *MockControllerProxyServerMockRecorder) GetResourceRole(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetResourceRole", reflect.TypeOf((*MockControllerProxyServer)(nil).GetResourceRole), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscription mocks base method.
 func (m *MockControllerProxyServer) GetSubscription(ctx context.Context, in *controller.GetSubscriptionRequest) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSubscription", ctx, in)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetSubscription indicates an expected call of GetSubscription.
 func (mr *MockControllerProxyServerMockRecorder) GetSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).GetSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUser mocks base method.
 func (m *MockControllerProxyServer) GetUser(ctx context.Context, in *wrapperspb.StringValue) (*meta.User, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUser", ctx, in)
-	ret0, _ := ret[0].(*meta.User)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUser indicates an expected call of GetUser.
 func (mr *MockControllerProxyServerMockRecorder) GetUser(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockControllerProxyServer)(nil).GetUser), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserRole mocks base method.
 func (m *MockControllerProxyServer) GetUserRole(ctx context.Context, in *controller.GetUserRoleRequest) (*controller.GetUserRoleResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserRole", ctx, in)
-	ret0, _ := ret[0].(*controller.GetUserRoleResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserRole indicates an expected call of GetUserRole.
 func (mr *MockControllerProxyServerMockRecorder) GetUserRole(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserRole", reflect.TypeOf((*MockControllerProxyServer)(nil).GetUserRole), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserToken mocks base method.
 func (m *MockControllerProxyServer) GetUserToken(ctx context.Context, in *wrapperspb.StringValue) (*controller.GetTokenResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserToken", ctx, in)
-	ret0, _ := ret[0].(*controller.GetTokenResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserToken indicates an expected call of GetUserToken.
 func (mr *MockControllerProxyServerMockRecorder) GetUserToken(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserToken", reflect.TypeOf((*MockControllerProxyServer)(nil).GetUserToken), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GrantRole mocks base method.
 func (m *MockControllerProxyServer) GrantRole(ctx context.Context, in *controller.RoleRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GrantRole", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GrantRole indicates an expected call of GrantRole.
 func (mr *MockControllerProxyServerMockRecorder) GrantRole(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GrantRole", reflect.TypeOf((*MockControllerProxyServer)(nil).GrantRole), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListEventbus mocks base method.
 func (m *MockControllerProxyServer) ListEventbus(ctx context.Context, in *controller.ListEventbusRequest) (*controller.ListEventbusResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListEventbus", ctx, in)
-	ret0, _ := ret[0].(*controller.ListEventbusResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListEventbus indicates an expected call of ListEventbus.
 func (mr *MockControllerProxyServerMockRecorder) ListEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).ListEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListNamespace mocks base method.
 func (m *MockControllerProxyServer) ListNamespace(ctx context.Context, in *emptypb.Empty) (*controller.ListNamespaceResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListNamespace", ctx, in)
-	ret0, _ := ret[0].(*controller.ListNamespaceResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListNamespace indicates an expected call of ListNamespace.
 func (mr *MockControllerProxyServerMockRecorder) ListNamespace(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNamespace", reflect.TypeOf((*MockControllerProxyServer)(nil).ListNamespace), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSegment mocks base method.
 func (m *MockControllerProxyServer) ListSegment(ctx context.Context, in *controller.ListSegmentRequest) (*controller.ListSegmentResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListSegment", ctx, in)
-	ret0, _ := ret[0].(*controller.ListSegmentResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListSegment indicates an expected call of ListSegment.
 func (mr *MockControllerProxyServerMockRecorder) ListSegment(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSegment", reflect.TypeOf((*MockControllerProxyServer)(nil).ListSegment), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSubscription mocks base method.
 func (m *MockControllerProxyServer) ListSubscription(ctx context.Context, in *controller.ListSubscriptionRequest) (*controller.ListSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListSubscription", ctx, in)
-	ret0, _ := ret[0].(*controller.ListSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListSubscription indicates an expected call of ListSubscription.
 func (mr *MockControllerProxyServerMockRecorder) ListSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).ListSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListToken mocks base method.
 func (m *MockControllerProxyServer) ListToken(ctx context.Context, in *emptypb.Empty) (*controller.ListTokenResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListToken", ctx, in)
-	ret0, _ := ret[0].(*controller.ListTokenResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListToken indicates an expected call of ListToken.
 func (mr *MockControllerProxyServerMockRecorder) ListToken(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListToken", reflect.TypeOf((*MockControllerProxyServer)(nil).ListToken), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListUser mocks base method.
 func (m *MockControllerProxyServer) ListUser(ctx context.Context, in *emptypb.Empty) (*controller.ListUserResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListUser", ctx, in)
-	ret0, _ := ret[0].(*controller.ListUserResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListUser indicates an expected call of ListUser.
 func (mr *MockControllerProxyServerMockRecorder) ListUser(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUser", reflect.TypeOf((*MockControllerProxyServer)(nil).ListUser), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // LookupOffset mocks base method.
 func (m *MockControllerProxyServer) LookupOffset(ctx context.Context, in *LookupOffsetRequest) (*LookupOffsetResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "LookupOffset", ctx, in)
-	ret0, _ := ret[0].(*LookupOffsetResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // LookupOffset indicates an expected call of LookupOffset.
 func (mr *MockControllerProxyServerMockRecorder) LookupOffset(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LookupOffset", reflect.TypeOf((*MockControllerProxyServer)(nil).LookupOffset), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResendDeadLetterEvent mocks base method.
 func (m *MockControllerProxyServer) ResendDeadLetterEvent(ctx context.Context, in *ResendDeadLetterEventRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ResendDeadLetterEvent", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResendDeadLetterEvent indicates an expected call of ResendDeadLetterEvent.
 func (mr *MockControllerProxyServerMockRecorder) ResendDeadLetterEvent(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResendDeadLetterEvent", reflect.TypeOf((*MockControllerProxyServer)(nil).ResendDeadLetterEvent), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResetOffsetToTimestamp mocks base method.
 func (m *MockControllerProxyServer) ResetOffsetToTimestamp(ctx context.Context, in *controller.ResetOffsetToTimestampRequest) (*controller.ResetOffsetToTimestampResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ResetOffsetToTimestamp", ctx, in)
-	ret0, _ := ret[0].(*controller.ResetOffsetToTimestampResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResetOffsetToTimestamp indicates an expected call of ResetOffsetToTimestamp.
 func (mr *MockControllerProxyServerMockRecorder) ResetOffsetToTimestamp(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetOffsetToTimestamp", reflect.TypeOf((*MockControllerProxyServer)(nil).ResetOffsetToTimestamp), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResumeSubscription mocks base method.
 func (m *MockControllerProxyServer) ResumeSubscription(ctx context.Context, in *controller.ResumeSubscriptionRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ResumeSubscription", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResumeSubscription indicates an expected call of ResumeSubscription.
 func (mr *MockControllerProxyServerMockRecorder) ResumeSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).ResumeSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RevokeRole mocks base method.
 func (m *MockControllerProxyServer) RevokeRole(ctx context.Context, in *controller.RoleRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RevokeRole", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RevokeRole indicates an expected call of RevokeRole.
 func (mr *MockControllerProxyServerMockRecorder) RevokeRole(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RevokeRole", reflect.TypeOf((*MockControllerProxyServer)(nil).RevokeRole), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetDeadLetterEventOffset mocks base method.
 func (m *MockControllerProxyServer) SetDeadLetterEventOffset(ctx context.Context, in *controller.SetDeadLetterEventOffsetRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetDeadLetterEventOffset", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // SetDeadLetterEventOffset indicates an expected call of SetDeadLetterEventOffset.
 func (mr *MockControllerProxyServerMockRecorder) SetDeadLetterEventOffset(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDeadLetterEventOffset", reflect.TypeOf((*MockControllerProxyServer)(nil).SetDeadLetterEventOffset), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateEventbus mocks base method.
 func (m *MockControllerProxyServer) UpdateEventbus(ctx context.Context, in *controller.UpdateEventbusRequest) (*meta.Eventbus, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateEventbus", ctx, in)
-	ret0, _ := ret[0].(*meta.Eventbus)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UpdateEventbus indicates an expected call of UpdateEventbus.
 func (mr *MockControllerProxyServerMockRecorder) UpdateEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).UpdateEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSubscription mocks base method.
 func (m *MockControllerProxyServer) UpdateSubscription(ctx context.Context, in *controller.UpdateSubscriptionRequest) (*meta.Subscription, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateSubscription", ctx, in)
-	ret0, _ := ret[0].(*meta.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UpdateSubscription indicates an expected call of UpdateSubscription.
 func (mr *MockControllerProxyServerMockRecorder) UpdateSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).UpdateSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateEventbus mocks base method.
 func (m *MockControllerProxyServer) ValidateEventbus(ctx context.Context, in *ValidateEventbusRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ValidateEventbus", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ValidateEventbus indicates an expected call of ValidateEventbus.
 func (mr *MockControllerProxyServerMockRecorder) ValidateEventbus(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ValidateEventbus", reflect.TypeOf((*MockControllerProxyServer)(nil).ValidateEventbus), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateSubscription mocks base method.
 func (m *MockControllerProxyServer) ValidateSubscription(ctx context.Context, in *ValidateSubscriptionRequest) (*ValidateSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ValidateSubscription", ctx, in)
-	ret0, _ := ret[0].(*ValidateSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ValidateSubscription indicates an expected call of ValidateSubscription.
 func (mr *MockControllerProxyServerMockRecorder) ValidateSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ValidateSubscription", reflect.TypeOf((*MockControllerProxyServer)(nil).ValidateSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxy_SubscribeClient is a mock of StoreProxy_SubscribeClient interface.
@@ -1510,114 +1060,96 @@ type MockStoreProxy_SubscribeClientMockRecorder struct {
 
 // NewMockStoreProxy_SubscribeClient creates a new mock instance.
 func NewMockStoreProxy_SubscribeClient(ctrl *gomock.Controller) *MockStoreProxy_SubscribeClient {
-	mock := &MockStoreProxy_SubscribeClient{ctrl: ctrl}
-	mock.recorder = &MockStoreProxy_SubscribeClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxy_SubscribeClient) EXPECT() *MockStoreProxy_SubscribeClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CloseSend mocks base method.
+	return nil
 }
 
-// CloseSend mocks base method.
-func (m *MockStoreProxy_SubscribeClient) CloseSend() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CloseSend")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockStoreProxy_SubscribeClient) CloseSend() error { _ = "STUB: not implemented"; return nil }
 
 // CloseSend indicates an expected call of CloseSend.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) CloseSend() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CloseSend", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).CloseSend))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Context mocks base method.
 func (m *MockStoreProxy_SubscribeClient) Context() context.Context {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Context")
-	ret0, _ := ret[0].(context.Context)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
 // Context indicates an expected call of Context.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) Context() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Context", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).Context))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Header mocks base method.
 func (m *MockStoreProxy_SubscribeClient) Header() (metadata.MD, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Header")
-	ret0, _ := ret[0].(metadata.MD)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(metadata.MD), nil
 }
 
 // Header indicates an expected call of Header.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) Header() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Header", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).Header))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Recv mocks base method.
 func (m *MockStoreProxy_SubscribeClient) Recv() (*SubscribeResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Recv")
-	ret0, _ := ret[0].(*SubscribeResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Recv indicates an expected call of Recv.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) Recv() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Recv", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).Recv))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg mocks base method.
 func (m *MockStoreProxy_SubscribeClient) RecvMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RecvMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg indicates an expected call of RecvMsg.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) RecvMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecvMsg", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).RecvMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg mocks base method.
 func (m *MockStoreProxy_SubscribeClient) SendMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg indicates an expected call of SendMsg.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) SendMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendMsg", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).SendMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Trailer mocks base method.
 func (m *MockStoreProxy_SubscribeClient) Trailer() metadata.MD {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Trailer")
-	ret0, _ := ret[0].(metadata.MD)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(metadata.MD)
 }
 
 // Trailer indicates an expected call of Trailer.
 func (mr *MockStoreProxy_SubscribeClientMockRecorder) Trailer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Trailer", reflect.TypeOf((*MockStoreProxy_SubscribeClient)(nil).Trailer))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxy_SubscribeServer is a mock of StoreProxy_SubscribeServer interface.
@@ -1633,110 +1165,99 @@ type MockStoreProxy_SubscribeServerMockRecorder struct {
 
 // NewMockStoreProxy_SubscribeServer creates a new mock instance.
 func NewMockStoreProxy_SubscribeServer(ctrl *gomock.Controller) *MockStoreProxy_SubscribeServer {
-	mock := &MockStoreProxy_SubscribeServer{ctrl: ctrl}
-	mock.recorder = &MockStoreProxy_SubscribeServerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxy_SubscribeServer) EXPECT() *MockStoreProxy_SubscribeServerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Context mocks base method.
+	return nil
 }
 
-// Context mocks base method.
 func (m *MockStoreProxy_SubscribeServer) Context() context.Context {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Context")
-	ret0, _ := ret[0].(context.Context)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
 // Context indicates an expected call of Context.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) Context() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Context", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).Context))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg mocks base method.
 func (m *MockStoreProxy_SubscribeServer) RecvMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RecvMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg indicates an expected call of RecvMsg.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) RecvMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecvMsg", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).RecvMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Send mocks base method.
 func (m *MockStoreProxy_SubscribeServer) Send(arg0 *SubscribeResponse) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Send", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Send indicates an expected call of Send.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) Send(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).Send), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendHeader mocks base method.
 func (m *MockStoreProxy_SubscribeServer) SendHeader(arg0 metadata.MD) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendHeader", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendHeader indicates an expected call of SendHeader.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) SendHeader(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendHeader", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).SendHeader), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg mocks base method.
 func (m *MockStoreProxy_SubscribeServer) SendMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg indicates an expected call of SendMsg.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) SendMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendMsg", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).SendMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetHeader mocks base method.
 func (m *MockStoreProxy_SubscribeServer) SetHeader(arg0 metadata.MD) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetHeader", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetHeader indicates an expected call of SetHeader.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) SetHeader(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetHeader", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).SetHeader), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetTrailer mocks base method.
 func (m *MockStoreProxy_SubscribeServer) SetTrailer(arg0 metadata.MD) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetTrailer", arg0)
+	_ = "STUB: not implemented"
+	return
 }
 
 // SetTrailer indicates an expected call of SetTrailer.
 func (mr *MockStoreProxy_SubscribeServerMockRecorder) SetTrailer(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTrailer", reflect.TypeOf((*MockStoreProxy_SubscribeServer)(nil).SetTrailer), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxy_AckClient is a mock of StoreProxy_AckClient interface.
@@ -1752,128 +1273,108 @@ type MockStoreProxy_AckClientMockRecorder struct {
 
 // NewMockStoreProxy_AckClient creates a new mock instance.
 func NewMockStoreProxy_AckClient(ctrl *gomock.Controller) *MockStoreProxy_AckClient {
-	mock := &MockStoreProxy_AckClient{ctrl: ctrl}
-	mock.recorder = &MockStoreProxy_AckClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxy_AckClient) EXPECT() *MockStoreProxy_AckClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CloseAndRecv mocks base method.
+	return nil
 }
 
-// CloseAndRecv mocks base method.
 func (m *MockStoreProxy_AckClient) CloseAndRecv() (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CloseAndRecv")
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CloseAndRecv indicates an expected call of CloseAndRecv.
 func (mr *MockStoreProxy_AckClientMockRecorder) CloseAndRecv() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CloseAndRecv", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).CloseAndRecv))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CloseSend mocks base method.
-func (m *MockStoreProxy_AckClient) CloseSend() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CloseSend")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockStoreProxy_AckClient) CloseSend() error { _ = "STUB: not implemented"; return nil }
 
 // CloseSend indicates an expected call of CloseSend.
 func (mr *MockStoreProxy_AckClientMockRecorder) CloseSend() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CloseSend", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).CloseSend))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Context mocks base method.
 func (m *MockStoreProxy_AckClient) Context() context.Context {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Context")
-	ret0, _ := ret[0].(context.Context)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
 // Context indicates an expected call of Context.
 func (mr *MockStoreProxy_AckClientMockRecorder) Context() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Context", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).Context))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Header mocks base method.
 func (m *MockStoreProxy_AckClient) Header() (metadata.MD, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Header")
-	ret0, _ := ret[0].(metadata.MD)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(metadata.MD), nil
 }
 
 // Header indicates an expected call of Header.
 func (mr *MockStoreProxy_AckClientMockRecorder) Header() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Header", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).Header))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg mocks base method.
 func (m *MockStoreProxy_AckClient) RecvMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RecvMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg indicates an expected call of RecvMsg.
 func (mr *MockStoreProxy_AckClientMockRecorder) RecvMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecvMsg", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).RecvMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Send mocks base method.
 func (m *MockStoreProxy_AckClient) Send(arg0 *AckRequest) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Send", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Send indicates an expected call of Send.
 func (mr *MockStoreProxy_AckClientMockRecorder) Send(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).Send), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg mocks base method.
 func (m *MockStoreProxy_AckClient) SendMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg indicates an expected call of SendMsg.
 func (mr *MockStoreProxy_AckClientMockRecorder) SendMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendMsg", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).SendMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Trailer mocks base method.
 func (m *MockStoreProxy_AckClient) Trailer() metadata.MD {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Trailer")
-	ret0, _ := ret[0].(metadata.MD)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(metadata.MD)
 }
 
 // Trailer indicates an expected call of Trailer.
 func (mr *MockStoreProxy_AckClientMockRecorder) Trailer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Trailer", reflect.TypeOf((*MockStoreProxy_AckClient)(nil).Trailer))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxy_AckServer is a mock of StoreProxy_AckServer interface.
@@ -1889,125 +1390,108 @@ type MockStoreProxy_AckServerMockRecorder struct {
 
 // NewMockStoreProxy_AckServer creates a new mock instance.
 func NewMockStoreProxy_AckServer(ctrl *gomock.Controller) *MockStoreProxy_AckServer {
-	mock := &MockStoreProxy_AckServer{ctrl: ctrl}
-	mock.recorder = &MockStoreProxy_AckServerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxy_AckServer) EXPECT() *MockStoreProxy_AckServerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Context mocks base method.
+	return nil
 }
 
-// Context mocks base method.
 func (m *MockStoreProxy_AckServer) Context() context.Context {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Context")
-	ret0, _ := ret[0].(context.Context)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
 // Context indicates an expected call of Context.
 func (mr *MockStoreProxy_AckServerMockRecorder) Context() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Context", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).Context))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Recv mocks base method.
 func (m *MockStoreProxy_AckServer) Recv() (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Recv")
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Recv indicates an expected call of Recv.
 func (mr *MockStoreProxy_AckServerMockRecorder) Recv() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Recv", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).Recv))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg mocks base method.
 func (m *MockStoreProxy_AckServer) RecvMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RecvMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvMsg indicates an expected call of RecvMsg.
 func (mr *MockStoreProxy_AckServerMockRecorder) RecvMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecvMsg", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).RecvMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendAndClose mocks base method.
 func (m *MockStoreProxy_AckServer) SendAndClose(arg0 *AckRequest) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendAndClose", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendAndClose indicates an expected call of SendAndClose.
 func (mr *MockStoreProxy_AckServerMockRecorder) SendAndClose(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendAndClose", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).SendAndClose), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendHeader mocks base method.
 func (m *MockStoreProxy_AckServer) SendHeader(arg0 metadata.MD) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendHeader", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendHeader indicates an expected call of SendHeader.
 func (mr *MockStoreProxy_AckServerMockRecorder) SendHeader(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendHeader", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).SendHeader), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg mocks base method.
 func (m *MockStoreProxy_AckServer) SendMsg(arg0 interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SendMsg", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SendMsg indicates an expected call of SendMsg.
 func (mr *MockStoreProxy_AckServerMockRecorder) SendMsg(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendMsg", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).SendMsg), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetHeader mocks base method.
 func (m *MockStoreProxy_AckServer) SetHeader(arg0 metadata.MD) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetHeader", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetHeader indicates an expected call of SetHeader.
 func (mr *MockStoreProxy_AckServerMockRecorder) SetHeader(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetHeader", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).SetHeader), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetTrailer mocks base method.
-func (m *MockStoreProxy_AckServer) SetTrailer(arg0 metadata.MD) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetTrailer", arg0)
-}
+func (m *MockStoreProxy_AckServer) SetTrailer(arg0 metadata.MD) { _ = "STUB: not implemented"; return }
 
 // SetTrailer indicates an expected call of SetTrailer.
 func (mr *MockStoreProxy_AckServerMockRecorder) SetTrailer(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTrailer", reflect.TypeOf((*MockStoreProxy_AckServer)(nil).SetTrailer), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxyClient is a mock of StoreProxyClient interface.
@@ -2023,74 +1507,51 @@ type MockStoreProxyClientMockRecorder struct {
 
 // NewMockStoreProxyClient creates a new mock instance.
 func NewMockStoreProxyClient(ctrl *gomock.Controller) *MockStoreProxyClient {
-	mock := &MockStoreProxyClient{ctrl: ctrl}
-	mock.recorder = &MockStoreProxyClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxyClient) EXPECT() *MockStoreProxyClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Ack mocks base method.
+	return nil
 }
 
-// Ack mocks base method.
 func (m *MockStoreProxyClient) Ack(ctx context.Context, opts ...grpc.CallOption) (StoreProxy_AckClient, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Ack", varargs...)
-	ret0, _ := ret[0].(StoreProxy_AckClient)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(StoreProxy_AckClient), nil
 }
 
 // Ack indicates an expected call of Ack.
 func (mr *MockStoreProxyClientMockRecorder) Ack(ctx interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Ack", reflect.TypeOf((*MockStoreProxyClient)(nil).Ack), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Publish mocks base method.
 func (m *MockStoreProxyClient) Publish(ctx context.Context, in *PublishRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Publish", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Publish indicates an expected call of Publish.
 func (mr *MockStoreProxyClientMockRecorder) Publish(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Publish", reflect.TypeOf((*MockStoreProxyClient)(nil).Publish), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Subscribe mocks base method.
 func (m *MockStoreProxyClient) Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (StoreProxy_SubscribeClient, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Subscribe", varargs...)
-	ret0, _ := ret[0].(StoreProxy_SubscribeClient)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(StoreProxy_SubscribeClient), nil
 }
 
 // Subscribe indicates an expected call of Subscribe.
 func (mr *MockStoreProxyClientMockRecorder) Subscribe(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Subscribe", reflect.TypeOf((*MockStoreProxyClient)(nil).Subscribe), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockStoreProxyServer is a mock of StoreProxyServer interface.
@@ -2106,55 +1567,49 @@ type MockStoreProxyServerMockRecorder struct {
 
 // NewMockStoreProxyServer creates a new mock instance.
 func NewMockStoreProxyServer(ctrl *gomock.Controller) *MockStoreProxyServer {
-	mock := &MockStoreProxyServer{ctrl: ctrl}
-	mock.recorder = &MockStoreProxyServerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStoreProxyServer) EXPECT() *MockStoreProxyServerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Ack mocks base method.
+	return nil
 }
 
-// Ack mocks base method.
 func (m *MockStoreProxyServer) Ack(server StoreProxy_AckServer) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Ack", server)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Ack indicates an expected call of Ack.
 func (mr *MockStoreProxyServerMockRecorder) Ack(server interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Ack", reflect.TypeOf((*MockStoreProxyServer)(nil).Ack), server)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Publish mocks base method.
 func (m *MockStoreProxyServer) Publish(ctx context.Context, in *PublishRequest) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Publish", ctx, in)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Publish indicates an expected call of Publish.
 func (mr *MockStoreProxyServerMockRecorder) Publish(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Publish", reflect.TypeOf((*MockStoreProxyServer)(nil).Publish), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Subscribe mocks base method.
 func (m *MockStoreProxyServer) Subscribe(blob *SubscribeRequest, server StoreProxy_SubscribeServer) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Subscribe", blob, server)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Subscribe indicates an expected call of Subscribe.
 func (mr *MockStoreProxyServerMockRecorder) Subscribe(blob, server interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Subscribe", reflect.TypeOf((*MockStoreProxyServer)(nil).Subscribe), blob, server)
+	_ = "STUB: not implemented"
+	return nil
 }

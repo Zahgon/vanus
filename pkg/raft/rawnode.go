@@ -42,108 +42,72 @@ type RawNode struct {
 // recommended that instead of calling Bootstrap, applications bootstrap their
 // state manually by setting up a Storage that has a first index > 1 and which
 // stores the desired ConfState as its InitialState.
-func NewRawNode(config *Config) (*RawNode, error) {
-	r := newRaft(config)
-	rn := &RawNode{
-		raft: r,
-	}
-	return rn, nil
-}
+func NewRawNode(config *Config) (*RawNode, error) { _ = "STUB: not implemented"; return nil, nil }
 
 // Tick advances the internal logical clock by a single tick.
 func (rn *RawNode) Tick() {
-	rn.raft.tick()
+	_ = "STUB: not implemented"
+
+	// TickQuiesced advances the internal logical clock by a single tick without
+	// performing any other state machine processing. It allows the caller to avoid
+	// periodic heartbeats and elections when all of the peers in a Raft group are
+	// known to be at the same state. Expected usage is to periodically invoke Tick
+	// or TickQuiesced depending on whether the group is "active" or "quiesced".
+	//
+	// WARNING: Be very careful about using this method as it subverts the Raft
+	// state machine. You should probably be using Tick instead.
+	return
 }
 
-// TickQuiesced advances the internal logical clock by a single tick without
-// performing any other state machine processing. It allows the caller to avoid
-// periodic heartbeats and elections when all of the peers in a Raft group are
-// known to be at the same state. Expected usage is to periodically invoke Tick
-// or TickQuiesced depending on whether the group is "active" or "quiesced".
-//
-// WARNING: Be very careful about using this method as it subverts the Raft
-// state machine. You should probably be using Tick instead.
-func (rn *RawNode) TickQuiesced() {
-	rn.raft.electionElapsed++
-}
+func (rn *RawNode) TickQuiesced() { _ = "STUB: not implemented"; return }
 
 // Campaign causes this RawNode to transition to candidate state.
-func (rn *RawNode) Campaign() error {
-	return rn.raft.Step(pb.Message{
-		Type: pb.MsgHup,
-	})
-}
+func (rn *RawNode) Campaign() error { _ = "STUB: not implemented"; return nil }
 
 // Propose proposes data be appended to the raft log.
-func (rn *RawNode) Propose(pds ...ProposeData) {
-	rn.raft.Propose(pds...)
-}
+func (rn *RawNode) Propose(pds ...ProposeData) { _ = "STUB: not implemented"; return }
 
 // ProposeConfChange proposes a config change. See (Node).ProposeConfChange for
 // details.
 func (rn *RawNode) ProposeConfChange(cc pb.ConfChangeI) error {
-	m, err := confChangeToMsg(cc)
-	if err != nil {
-		return err
-	}
-	return rn.raft.Step(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ApplyConfChange applies a config change to the local node. The app must call
 // this when it applies a configuration change, except when it decides to reject
 // the configuration change, in which case no call must take place.
 func (rn *RawNode) ApplyConfChange(cc pb.ConfChangeI) *pb.ConfState {
-	cs := rn.raft.applyConfChange(cc.AsV2())
-	return &cs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (rn *RawNode) ReportStateStatus(term uint64, vote uint64) error {
-	return rn.raft.Step(pb.Message{
-		Type:    pb.MsgStateStatus,
-		LogTerm: term,
-		Vote:    vote,
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (rn *RawNode) ReportLogStatus(index uint64, term uint64) error {
-	return rn.raft.Step(pb.Message{
-		Type:    pb.MsgLogStatus,
-		LogTerm: term,
-		Index:   index,
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (rn *RawNode) ReportApplyStatus(index uint64) error {
-	return rn.raft.Step(pb.Message{
-		Type:  pb.MsgApplyStatus,
-		Index: index,
-	})
-}
+func (rn *RawNode) ReportApplyStatus(index uint64) error { _ = "STUB: not implemented"; return nil }
 
 // Step advances the state machine using the given message.
 func (rn *RawNode) Step(m pb.Message) error {
+	_ = "STUB: not implemented"
 	// ignore unexpected local messages receiving over network
-	if IsLocalMsg(m.Type) {
-		return ErrStepLocalMsg
-	}
-	if pr := rn.raft.prs.Progress[m.From]; pr != nil || !IsResponseMsg(m.Type) {
-		return rn.raft.Step(m)
-	}
-	return ErrStepPeerNotFound
+	return nil
 }
 
 // Status returns the current status of the given group. This allocates, see
 // BasicStatus and WithProgress for allocation-friendlier choices.
-func (rn *RawNode) Status() Status {
-	status := getStatus(rn.raft)
-	return status
-}
+func (rn *RawNode) Status() Status { _ = "STUB: not implemented"; return *new(Status) }
 
 // BasicStatus returns a BasicStatus. Notably this does not contain the
 // Progress map; see WithProgress for an allocation-free way to inspect it.
-func (rn *RawNode) BasicStatus() BasicStatus {
-	return getBasicStatus(rn.raft)
-}
+func (rn *RawNode) BasicStatus() BasicStatus { _ = "STUB: not implemented"; return *new(BasicStatus) }
 
 // ProgressType indicates the type of replica a Progress corresponds to.
 type ProgressType byte
@@ -158,38 +122,24 @@ const (
 // WithProgress is a helper to introspect the Progress for this node and its
 // peers.
 func (rn *RawNode) WithProgress(visitor func(id uint64, typ ProgressType, pr tracker.Progress)) {
-	rn.raft.prs.Visit(func(id uint64, pr *tracker.Progress) {
-		typ := ProgressTypePeer
-		if pr.IsLearner {
-			typ = ProgressTypeLearner
-		}
-		p := *pr
-		p.Inflights = nil
-		visitor(id, typ, p)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // ReportUnreachable reports the given node is not reachable for the last send.
-func (rn *RawNode) ReportUnreachable(id uint64) {
-	_ = rn.raft.Step(pb.Message{Type: pb.MsgUnreachable, From: id})
-}
+func (rn *RawNode) ReportUnreachable(id uint64) { _ = "STUB: not implemented"; return }
 
 // ReportSnapshot reports the status of the sent snapshot.
 func (rn *RawNode) ReportSnapshot(id uint64, status SnapshotStatus) {
-	rej := status == SnapshotFailure
-
-	_ = rn.raft.Step(pb.Message{Type: pb.MsgSnapStatus, From: id, Reject: rej})
+	_ = "STUB: not implemented"
+	return
 }
 
 // TransferLeader tries to transfer leadership to the given transferee.
-func (rn *RawNode) TransferLeader(transferee uint64) {
-	_ = rn.raft.Step(pb.Message{Type: pb.MsgTransferLeader, From: transferee})
-}
+func (rn *RawNode) TransferLeader(transferee uint64) { _ = "STUB: not implemented"; return }
 
 // ReadIndex requests a read state. The read state will be set in ready.
 // Read State has a read index. Once the application advances further than the read
 // index, any linearizable read requests issued before the read request can be
 // processed safely. The read state will have the same rctx attached.
-func (rn *RawNode) ReadIndex(rctx []byte) {
-	_ = rn.raft.Step(pb.Message{Type: pb.MsgReadIndex, Entries: []pb.Entry{{Data: rctx}}})
-}
+func (rn *RawNode) ReadIndex(rctx []byte) { _ = "STUB: not implemented"; return }

@@ -17,7 +17,6 @@ package storage
 import (
 	primitive "github.com/vanus-labs/vanus/pkg"
 	"github.com/vanus-labs/vanus/pkg/kv"
-	"github.com/vanus-labs/vanus/pkg/kv/etcd"
 )
 
 type Storage interface {
@@ -35,17 +34,8 @@ type storage struct {
 }
 
 func NewStorage(config primitive.KvStorageConfig) (Storage, error) {
-	client, err := etcd.NewEtcdClientV3(config.ServerList, config.KeyPrefix)
-	if err != nil {
-		return nil, err
-	}
-	s := &storage{client: client}
-	s.SubscriptionStorage = NewSubscriptionStorage(client)
-	s.OffsetStorage = NewOffsetStorage(client)
-	s.TriggerWorkerStorage = NewTriggerWorkerStorage(client)
-	return s, nil
+	_ = "STUB: not implemented"
+	return *new(Storage), nil
 }
 
-func (s *storage) Close() {
-	s.client.Close()
-}
+func (s *storage) Close() { _ = "STUB: not implemented"; return }

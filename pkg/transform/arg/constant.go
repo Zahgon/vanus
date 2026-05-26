@@ -15,8 +15,6 @@
 package arg
 
 import (
-	"fmt"
-
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -24,33 +22,25 @@ type constant struct {
 	value interface{}
 }
 
-func newConstant(value interface{}) Arg {
-	return constant{
-		value: value,
-	}
-}
+func newConstant(value interface{}) Arg { _ = "STUB: not implemented"; return *new(Arg) }
 
-func (arg constant) Type() Type {
-	return Constant
-}
-func (arg constant) Name() string {
-	return arg.Original()
-}
-func (arg constant) Original() string {
-	if v, ok := arg.value.(string); ok {
-		return v
-	}
-	return fmt.Sprintf("%v", arg.value)
-}
+func (arg constant) Type() Type { _ = "STUB: not implemented"; return *new(Type) }
+
+func (arg constant) Name() string { _ = "STUB: not implemented"; return "" }
+
+func (arg constant) Original() string { _ = "STUB: not implemented"; return "" }
 
 func (arg constant) Evaluate(*context.EventContext) (interface{}, error) {
-	return arg.value, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (arg constant) SetValue(*context.EventContext, interface{}) error {
-	return ErrOperationNotSupport
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (arg constant) DeleteValue(_ *context.EventContext) error {
-	return ErrOperationNotSupport
+	_ = "STUB: not implemented"
+	return nil
 }

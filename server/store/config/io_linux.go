@@ -20,12 +20,9 @@ package config
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/io/engine"
-	"github.com/vanus-labs/vanus/server/store/io/engine/uring"
 )
 
 func buildIOEngineEx(cfg IO) engine.Interface {
-	if cfg.Engine == Uring {
-		return uring.New()
-	}
-	panic("io engine is not supported")
+	_ = "STUB: not implemented"
+	return *new(engine.Interface)
 }

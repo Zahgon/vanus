@@ -14,13 +14,9 @@
 
 package codec
 
-import (
-	// standard libraries.
-	"encoding/binary"
-
+import ( // standard libraries.
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 const (
@@ -46,18 +42,11 @@ type recordEncoder struct {
 // Make sure recordEncoder implements PacketDataEncoder.
 var _ PacketDataEncoder = (*recordEncoder)(nil)
 
-func (e *recordEncoder) Size(entry block.Entry) int {
-	return recordHeaderSize + e.rde.Size(entry)
-}
+func (e *recordEncoder) Size(entry block.Entry) int { _ = "STUB: not implemented"; return 0 }
 
 func (e *recordEncoder) MarshalTo(entry block.Entry, buf []byte) (int, error) {
-	n, headerSize, err := e.rde.MarshalTo(entry, buf[recordPayloadOffset:])
-	if err != nil {
-		return -1, err
-	}
-	binary.LittleEndian.PutUint16(buf[recordTypeOffset:], ceschema.EntryType(entry))
-	binary.LittleEndian.PutUint16(buf[recordOffsetOffset:], recordPayloadOffset+uint16(headerSize))
-	return recordPayloadOffset + n, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 type RecordDataDecoder interface {
@@ -72,10 +61,6 @@ type recordDecoder struct {
 var _ PacketDataDecoder = (*recordDecoder)(nil)
 
 func (d *recordDecoder) Unmarshal(data []byte) (block.Entry, error) {
-	t := binary.LittleEndian.Uint16(data)
-	offset := binary.LittleEndian.Uint16(data[recordOffsetOffset:])
-	if offset < recordPayloadOffset {
-		return nil, ErrCorruptedRecord
-	}
-	return d.rdd.Unmarshal(t, int(offset)-recordPayloadOffset, data[recordPayloadOffset:])
+	_ = "STUB: not implemented"
+	return *new(block.Entry), nil
 }

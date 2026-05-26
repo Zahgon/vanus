@@ -10,8 +10,6 @@
 package testing
 
 import (
-	reflect "reflect"
-
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -27,71 +25,40 @@ type MockFragmentMockRecorder struct {
 }
 
 // NewMockFragment creates a new mock instance.
-func NewMockFragment(ctrl *gomock.Controller) *MockFragment {
-	mock := &MockFragment{ctrl: ctrl}
-	mock.recorder = &MockFragmentMockRecorder{mock}
-	return mock
-}
+func NewMockFragment(ctrl *gomock.Controller) *MockFragment { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockFragment) EXPECT() *MockFragmentMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// EndOffset mocks base method.
+	return nil
 }
 
-// EndOffset mocks base method.
-func (m *MockFragment) EndOffset() int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "EndOffset")
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockFragment) EndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
 // EndOffset indicates an expected call of EndOffset.
-func (mr *MockFragmentMockRecorder) EndOffset() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EndOffset", reflect.TypeOf((*MockFragment)(nil).EndOffset))
-}
+func (mr *MockFragmentMockRecorder) EndOffset() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Payload mocks base method.
-func (m *MockFragment) Payload() []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Payload")
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockFragment) Payload() []byte { _ = "STUB: not implemented"; return nil }
 
 // Payload indicates an expected call of Payload.
-func (mr *MockFragmentMockRecorder) Payload() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Payload", reflect.TypeOf((*MockFragment)(nil).Payload))
-}
+func (mr *MockFragmentMockRecorder) Payload() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Size mocks base method.
-func (m *MockFragment) Size() int {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Size")
-	ret0, _ := ret[0].(int)
-	return ret0
-}
+func (m *MockFragment) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Size indicates an expected call of Size.
-func (mr *MockFragmentMockRecorder) Size() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Size", reflect.TypeOf((*MockFragment)(nil).Size))
-}
+func (mr *MockFragmentMockRecorder) Size() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // StartOffset mocks base method.
-func (m *MockFragment) StartOffset() int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartOffset")
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockFragment) StartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
 // StartOffset indicates an expected call of StartOffset.
 func (mr *MockFragmentMockRecorder) StartOffset() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartOffset", reflect.TypeOf((*MockFragment)(nil).StartOffset))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockFragmentMarshaler is a mock of FragmentMarshaler interface.
@@ -107,27 +74,25 @@ type MockFragmentMarshalerMockRecorder struct {
 
 // NewMockFragmentMarshaler creates a new mock instance.
 func NewMockFragmentMarshaler(ctrl *gomock.Controller) *MockFragmentMarshaler {
-	mock := &MockFragmentMarshaler{ctrl: ctrl}
-	mock.recorder = &MockFragmentMarshalerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockFragmentMarshaler) EXPECT() *MockFragmentMarshalerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// MarshalFragment mocks base method.
+	return nil
 }
 
-// MarshalFragment mocks base method.
 func (m *MockFragmentMarshaler) MarshalFragment() ([]byte, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "MarshalFragment")
-	ret0, _ := ret[0].([]byte)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // MarshalFragment indicates an expected call of MarshalFragment.
 func (mr *MockFragmentMarshalerMockRecorder) MarshalFragment() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "MarshalFragment", reflect.TypeOf((*MockFragmentMarshaler)(nil).MarshalFragment))
+	_ = "STUB: not implemented"
+	return nil
 }

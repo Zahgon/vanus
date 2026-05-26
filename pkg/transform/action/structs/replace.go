@@ -15,11 +15,8 @@
 package structs
 
 import (
-	"fmt"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -28,30 +25,11 @@ type replaceAction struct {
 	action.CommonAction
 }
 
-func NewReplaceAction() action.Action {
-	return &replaceAction{
-		action.CommonAction{
-			ActionName: "REPLACE",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.All},
-		},
-	}
-}
+func NewReplaceAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *replaceAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args[1:]
-	a.ArgTypes = []common.Type{common.Any}
-	return nil
-}
+func (a *replaceAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *replaceAction) Execute(ceCtx *context.EventContext) error {
-	v, _ := a.TargetArg.Evaluate(ceCtx)
-	if v == nil {
-		return fmt.Errorf("key %s not exist", a.TargetArg.Original())
-	}
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	return a.TargetArg.SetValue(ceCtx, args[0])
+	_ = "STUB: not implemented"
+	return nil
 }

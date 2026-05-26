@@ -17,12 +17,7 @@ package meta
 import (
 	// standard libraries.
 	"context"
-	"fmt"
 	"os"
-	"path/filepath"
-	"strconv"
-
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	// third-party libraries.
 	"github.com/huandu/skiplist"
@@ -34,111 +29,33 @@ const (
 	defaultDirPerm      = 0o755
 )
 
-func (s *store) tryCreateSnapshot() {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	if s.needCreateSnapshot() {
-		s.createSnapshot()
-	}
-}
+func (s *store) tryCreateSnapshot() { _ = "STUB: not implemented"; return }
 
 func (s *store) needCreateSnapshot() bool {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): create snapshot condition
-	return s.snapshot-s.version > 4*1024*1024
+	return false
 }
 
-func (s *store) createSnapshot() {
-	data, err := s.marshaler.Marshal(SkiplistRange(s.committed))
-	if err != nil {
-		return
-	}
+func (s *store) createSnapshot() { _ = "STUB: not implemented"; return }
 
-	// Write data to file.
-	path := s.resolveSnapshotPath(s.version)
-	if err = os.WriteFile(path, data, defaultSnapshotPrem); err != nil {
-		log.Warn().Err(err).
-			Str("path", path).
-			Msg("Write snapshot failed.")
-		return
-	}
-	lastSnapshot := s.snapshot
-	s.snapshot = s.version
+// Write data to file.
 
-	// Compact expired wal.
-	_ = s.wal.Compact(context.Background(), s.snapshot)
-	_ = os.Remove(s.resolveSnapshotPath(lastSnapshot))
-}
+// Compact expired wal.
 
-func (s *store) resolveSnapshotPath(version int64) string {
-	return filepath.Join(s.wal.Dir(), fmt.Sprintf("%020d%s", version, snapshotExt))
-}
+func (s *store) resolveSnapshotPath(version int64) string { _ = "STUB: not implemented"; return "" }
 
 func recoverLatestSnapshot(
 	_ context.Context, dir string, unmarshaler Unmarshaler,
 ) (*skiplist.SkipList, int64, error) {
+	_ = "STUB: not implemented"
 	// Make sure the snapshot directory exists.
-	if err := os.MkdirAll(dir, defaultDirPerm); err != nil {
-		return nil, 0, err
-	}
-
-	files, err := os.ReadDir(dir)
-	if err != nil {
-		return nil, 0, err
-	}
-	latest, expired := filterLatestSnapshot(files)
-
-	if latest == nil {
-		return skiplist.New(skiplist.Bytes), 0, nil
-	}
-
-	filename := latest.Name()
-	snapshot, err := strconv.ParseInt(filename[:len(filename)-len(snapshotExt)], 10, 64)
-	if err != nil {
-		return nil, 0, err
-	}
-
-	path := filepath.Join(dir, filename)
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, 0, err
-	}
-
-	m := skiplist.New(skiplist.Bytes)
-	err = unmarshaler.Unmarshal(data, func(key []byte, value interface{}) error {
-		m.Set(key, value)
-		return nil
-	})
-	if err != nil {
-		return nil, 0, err
-	}
-
-	// Delete expired snapshots.
-	for _, entry := range expired {
-		_ = os.Remove(filepath.Join(dir, entry.Name()))
-	}
-
-	return m, snapshot, nil
+	return nil, 0, nil
 }
 
+// Delete expired snapshots.
+
 func filterLatestSnapshot(entries []os.DirEntry) (os.DirEntry, []os.DirEntry) {
-	if len(entries) == 0 {
-		return nil, nil
-	}
-
-	var snapshots []os.DirEntry
-	for i := 1; i <= len(entries); i++ {
-		entry := entries[len(entries)-i]
-		if !entry.Type().IsRegular() {
-			continue
-		}
-		if filepath.Ext(entry.Name()) != snapshotExt {
-			continue
-		}
-		snapshots = append(snapshots, entry)
-	}
-
-	if len(snapshots) == 0 {
-		return nil, nil
-	}
-	return snapshots[0], snapshots[1:]
+	_ = "STUB: not implemented"
+	return *new(os.DirEntry), nil
 }

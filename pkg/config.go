@@ -14,26 +14,9 @@
 
 package pkg
 
-import (
-	"os"
-
-	"gopkg.in/yaml.v3"
-)
-
 type KvStorageConfig struct {
 	KeyPrefix  string   `yaml:"key_prefix" json:"keyPrefix"`
 	ServerList []string `yaml:"server_list" json:"serverList"`
 }
 
-func LoadConfig(filename string, config interface{}) error {
-	b, err := os.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-	str := os.ExpandEnv(string(b))
-	err = yaml.Unmarshal([]byte(str), config)
-	if err != nil {
-		return err
-	}
-	return nil
-}
+func LoadConfig(filename string, config interface{}) error { _ = "STUB: not implemented"; return nil }

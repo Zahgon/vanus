@@ -17,84 +17,29 @@ package convert
 import (
 	ctrlpb "github.com/vanus-labs/vanus/api/controller"
 	metapb "github.com/vanus-labs/vanus/api/meta"
-	vanus "github.com/vanus-labs/vanus/api/vsr"
 
-	"github.com/vanus-labs/vanus/pkg/authorization"
 	"github.com/vanus-labs/vanus/server/controller/tenant/metadata"
 )
 
 func FromPbCreateNamespace(ns *ctrlpb.CreateNamespaceRequest) *metadata.Namespace {
-	to := &metadata.Namespace{
-		ID:          vanus.NewIDFromUint64(ns.Id),
-		Name:        ns.Name,
-		Description: ns.Description,
-	}
-	return to
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func ToPbNamespace(ns *metadata.Namespace) *metapb.Namespace {
-	to := &metapb.Namespace{
-		Id:          ns.ID.Uint64(),
-		Name:        ns.Name,
-		Description: ns.Description,
-		CreatedAt:   ns.CreatedAt.UnixMilli(),
-		UpdatedAt:   ns.UpdatedAt.UnixMilli(),
-	}
-	return to
-}
+func ToPbNamespace(ns *metadata.Namespace) *metapb.Namespace { _ = "STUB: not implemented"; return nil }
 
-func ToPbUser(from *metadata.User) *metapb.User {
-	to := &metapb.User{
-		Identifier:  from.Identifier,
-		Description: from.Description,
-		CreatedAt:   from.CreatedAt.UnixMilli(),
-		UpdatedAt:   from.UpdatedAt.UnixMilli(),
-	}
-	return to
-}
+func ToPbUser(from *metadata.User) *metapb.User { _ = "STUB: not implemented"; return nil }
 
-func ToPbToken(token *metadata.Token) *metapb.Token {
-	to := &metapb.Token{
-		Id:             token.ID.Uint64(),
-		Token:          token.Token,
-		UserIdentifier: token.UserIdentifier,
-		CreatedAt:      token.CreatedAt.UnixMilli(),
-		UpdatedAt:      token.UpdatedAt.UnixMilli(),
-	}
-	return to
-}
+func ToPbToken(token *metadata.Token) *metapb.Token { _ = "STUB: not implemented"; return nil }
 
 func FromPbRoleRequest(from *ctrlpb.RoleRequest) *metadata.UserRole {
-	to := &metadata.UserRole{
-		UserIdentifier: from.UserIdentifier,
-		RoleID:         from.RoleId,
-		Role:           authorization.Role(from.RoleName),
-		ResourceKind:   authorization.ResourceKind(from.ResourceKind),
-		ResourceID:     vanus.NewIDFromUint64(from.ResourceId),
-	}
-	return to
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func ToPbUserRole(from *metadata.UserRole) *metapb.UserRole {
-	to := &metapb.UserRole{
-		UserIdentifier: from.UserIdentifier,
-		RoleName:       string(from.Role),
-		ResourceKind:   string(from.ResourceKind),
-		ResourceId:     from.ResourceID.Uint64(),
-		BuiltIn:        from.BuiltIn(),
-		CreatedAt:      from.CreatedAt.UnixMilli(),
-	}
-	return to
-}
+func ToPbUserRole(from *metadata.UserRole) *metapb.UserRole { _ = "STUB: not implemented"; return nil }
 
 func ToPbResourceRole(from *metadata.UserRole) *metapb.ResourceRole {
-	to := &metapb.ResourceRole{
-		UserIdentifier: from.UserIdentifier,
-		RoleName:       string(from.Role),
-		ResourceKind:   string(from.ResourceKind),
-		ResourceId:     from.ResourceID.Uint64(),
-		BuiltIn:        from.BuiltIn(),
-		CreatedAt:      from.CreatedAt.UnixMilli(),
-	}
-	return to
+	_ = "STUB: not implemented"
+	return nil
 }

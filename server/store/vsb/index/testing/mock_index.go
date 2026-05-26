@@ -10,8 +10,6 @@
 package testing
 
 import (
-	reflect "reflect"
-
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -27,69 +25,35 @@ type MockIndexMockRecorder struct {
 }
 
 // NewMockIndex creates a new mock instance.
-func NewMockIndex(ctrl *gomock.Controller) *MockIndex {
-	mock := &MockIndex{ctrl: ctrl}
-	mock.recorder = &MockIndexMockRecorder{mock}
-	return mock
-}
+func NewMockIndex(ctrl *gomock.Controller) *MockIndex { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockIndex) EXPECT() *MockIndexMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// EndOffset mocks base method.
+	return nil
 }
 
-// EndOffset mocks base method.
-func (m *MockIndex) EndOffset() int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "EndOffset")
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockIndex) EndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
 // EndOffset indicates an expected call of EndOffset.
-func (mr *MockIndexMockRecorder) EndOffset() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EndOffset", reflect.TypeOf((*MockIndex)(nil).EndOffset))
-}
+func (mr *MockIndexMockRecorder) EndOffset() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Length mocks base method.
-func (m *MockIndex) Length() int32 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Length")
-	ret0, _ := ret[0].(int32)
-	return ret0
-}
+func (m *MockIndex) Length() int32 { _ = "STUB: not implemented"; return 0 }
 
 // Length indicates an expected call of Length.
-func (mr *MockIndexMockRecorder) Length() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Length", reflect.TypeOf((*MockIndex)(nil).Length))
-}
+func (mr *MockIndexMockRecorder) Length() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // StartOffset mocks base method.
-func (m *MockIndex) StartOffset() int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartOffset")
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockIndex) StartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
 // StartOffset indicates an expected call of StartOffset.
-func (mr *MockIndexMockRecorder) StartOffset() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartOffset", reflect.TypeOf((*MockIndex)(nil).StartOffset))
-}
+func (mr *MockIndexMockRecorder) StartOffset() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Stime mocks base method.
-func (m *MockIndex) Stime() int64 {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Stime")
-	ret0, _ := ret[0].(int64)
-	return ret0
-}
+func (m *MockIndex) Stime() int64 { _ = "STUB: not implemented"; return 0 }
 
 // Stime indicates an expected call of Stime.
-func (mr *MockIndexMockRecorder) Stime() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stime", reflect.TypeOf((*MockIndex)(nil).Stime))
-}
+func (mr *MockIndexMockRecorder) Stime() *gomock.Call { _ = "STUB: not implemented"; return nil }

@@ -15,8 +15,6 @@
 package metadata
 
 import (
-	"path"
-
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 	"github.com/vanus-labs/vanus/pkg/kv"
 )
@@ -32,22 +30,15 @@ const (
 	EventlogSegmentsKeyPrefixInKVStore = kv.ResourceSegmentOfEventlog
 )
 
-func GetEventbusMetadataKey(id vanus.ID) string {
-	return path.Join(kv.ResourceEventbus, id.Key())
-}
+func GetEventbusMetadataKey(id vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
-func GetEventlogMetadataKey(elID vanus.ID) string {
-	return path.Join(EventlogKeyPrefixInKVStore, elID.Key())
-}
+func GetEventlogMetadataKey(elID vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
-func GetBlockMetadataKey(volumeID, blockID vanus.ID) string {
-	return path.Join(kv.ResourceVolumeBlock, volumeID.Key(), blockID.Key())
-}
+func GetBlockMetadataKey(volumeID, blockID vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
-func GetSegmentMetadataKey(segmentID vanus.ID) string {
-	return path.Join(SegmentKeyPrefixInKVStore, segmentID.Key())
-}
+func GetSegmentMetadataKey(segmentID vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
 func GetEventlogSegmentsMetadataKey(eventlogID, segmentID vanus.ID) string {
-	return path.Join(EventlogSegmentsKeyPrefixInKVStore, eventlogID.Key(), segmentID.Key())
+	_ = "STUB: not implemented"
+	return ""
 }

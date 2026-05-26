@@ -11,7 +11,6 @@ package kv
 
 import (
 	context "context"
-	reflect "reflect"
 	time "time"
 
 	gomock "go.uber.org/mock/gomock"
@@ -29,214 +28,173 @@ type MockClientMockRecorder struct {
 }
 
 // NewMockClient creates a new mock instance.
-func NewMockClient(ctrl *gomock.Controller) *MockClient {
-	mock := &MockClient{ctrl: ctrl}
-	mock.recorder = &MockClientMockRecorder{mock}
-	return mock
-}
+func NewMockClient(ctrl *gomock.Controller) *MockClient { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockClient) EXPECT() *MockClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Close mocks base method.
+	return nil
 }
 
-// Close mocks base method.
-func (m *MockClient) Close() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockClient) Close() error { _ = "STUB: not implemented"; return nil }
 
 // Close indicates an expected call of Close.
-func (mr *MockClientMockRecorder) Close() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockClient)(nil).Close))
-}
+func (mr *MockClientMockRecorder) Close() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // CompareAndDelete mocks base method.
 func (m *MockClient) CompareAndDelete(ctx context.Context, key string, preValue []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CompareAndDelete", ctx, key, preValue)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CompareAndDelete indicates an expected call of CompareAndDelete.
 func (mr *MockClientMockRecorder) CompareAndDelete(ctx, key, preValue any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CompareAndDelete", reflect.TypeOf((*MockClient)(nil).CompareAndDelete), ctx, key, preValue)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CompareAndSwap mocks base method.
 func (m *MockClient) CompareAndSwap(ctx context.Context, key string, preValue, value []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CompareAndSwap", ctx, key, preValue, value)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CompareAndSwap indicates an expected call of CompareAndSwap.
 func (mr *MockClientMockRecorder) CompareAndSwap(ctx, key, preValue, value any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CompareAndSwap", reflect.TypeOf((*MockClient)(nil).CompareAndSwap), ctx, key, preValue, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Create mocks base method.
 func (m *MockClient) Create(ctx context.Context, key string, value []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Create", ctx, key, value)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Create indicates an expected call of Create.
 func (mr *MockClientMockRecorder) Create(ctx, key, value any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockClient)(nil).Create), ctx, key, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Delete mocks base method.
 func (m *MockClient) Delete(ctx context.Context, key string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Delete", ctx, key)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Delete indicates an expected call of Delete.
 func (mr *MockClientMockRecorder) Delete(ctx, key any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockClient)(nil).Delete), ctx, key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteDir mocks base method.
 func (m *MockClient) DeleteDir(ctx context.Context, path string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteDir", ctx, path)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteDir indicates an expected call of DeleteDir.
 func (mr *MockClientMockRecorder) DeleteDir(ctx, path any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteDir", reflect.TypeOf((*MockClient)(nil).DeleteDir), ctx, path)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Exists mocks base method.
 func (m *MockClient) Exists(ctx context.Context, key string) (bool, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Exists", ctx, key)
-	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // Exists indicates an expected call of Exists.
 func (mr *MockClientMockRecorder) Exists(ctx, key any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Exists", reflect.TypeOf((*MockClient)(nil).Exists), ctx, key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Get mocks base method.
 func (m *MockClient) Get(ctx context.Context, key string) ([]byte, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Get", ctx, key)
-	ret0, _ := ret[0].([]byte)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Get indicates an expected call of Get.
 func (mr *MockClientMockRecorder) Get(ctx, key any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockClient)(nil).Get), ctx, key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // List mocks base method.
 func (m *MockClient) List(ctx context.Context, path string) ([]Pair, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "List", ctx, path)
-	ret0, _ := ret[0].([]Pair)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // List indicates an expected call of List.
 func (mr *MockClientMockRecorder) List(ctx, path any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockClient)(nil).List), ctx, path)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Set mocks base method.
 func (m *MockClient) Set(ctx context.Context, key string, value []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Set", ctx, key, value)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Set indicates an expected call of Set.
 func (mr *MockClientMockRecorder) Set(ctx, key, value any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Set", reflect.TypeOf((*MockClient)(nil).Set), ctx, key, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetWithTTL mocks base method.
 func (m *MockClient) SetWithTTL(ctx context.Context, key string, value []byte, ttl time.Duration) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetWithTTL", ctx, key, value, ttl)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetWithTTL indicates an expected call of SetWithTTL.
 func (mr *MockClientMockRecorder) SetWithTTL(ctx, key, value, ttl any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetWithTTL", reflect.TypeOf((*MockClient)(nil).SetWithTTL), ctx, key, value, ttl)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Update mocks base method.
 func (m *MockClient) Update(ctx context.Context, key string, value []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Update", ctx, key, value)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Update indicates an expected call of Update.
 func (mr *MockClientMockRecorder) Update(ctx, key, value any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockClient)(nil).Update), ctx, key, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Watch mocks base method.
 func (m *MockClient) Watch(ctx context.Context, key string, stopCh <-chan struct{}) (chan Pair, chan error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Watch", ctx, key, stopCh)
-	ret0, _ := ret[0].(chan Pair)
-	ret1, _ := ret[1].(chan error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Watch indicates an expected call of Watch.
 func (mr *MockClientMockRecorder) Watch(ctx, key, stopCh any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Watch", reflect.TypeOf((*MockClient)(nil).Watch), ctx, key, stopCh)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WatchTree mocks base method.
 func (m *MockClient) WatchTree(ctx context.Context, path string, stopCh <-chan struct{}) (chan Pair, chan error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "WatchTree", ctx, path, stopCh)
-	ret0, _ := ret[0].(chan Pair)
-	ret1, _ := ret[1].(chan error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // WatchTree indicates an expected call of WatchTree.
 func (mr *MockClientMockRecorder) WatchTree(ctx, path, stopCh any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WatchTree", reflect.TypeOf((*MockClient)(nil).WatchTree), ctx, path, stopCh)
+	_ = "STUB: not implemented"
+	return nil
 }

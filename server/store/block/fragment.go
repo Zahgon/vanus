@@ -15,10 +15,6 @@
 //go:generate mockgen -source=fragment.go -destination=testing/mock_fragment.go -package=testing
 package block
 
-import (
-	"encoding/binary"
-)
-
 // Fragment is a fragment of a block.
 //
 // The layout of `Fragment` is:
@@ -42,16 +38,7 @@ type FragmentMarshaler interface {
 	MarshalFragment() ([]byte, error)
 }
 
-func MarshalFragment(frag Fragment) ([]byte, error) {
-	if m, ok := frag.(FragmentMarshaler); ok {
-		return m.MarshalFragment()
-	}
-
-	buf := make([]byte, 8+frag.Size())
-	binary.LittleEndian.PutUint64(buf, uint64(frag.StartOffset()))
-	copy(buf[8:], frag.Payload())
-	return buf, nil
-}
+func MarshalFragment(frag Fragment) ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
 type fragment struct {
 	data []byte
@@ -63,26 +50,14 @@ var (
 	_ FragmentMarshaler = (*fragment)(nil)
 )
 
-func NewFragment(data []byte) Fragment {
-	return &fragment{data: data}
-}
+func NewFragment(data []byte) Fragment { _ = "STUB: not implemented"; return *new(Fragment) }
 
-func (f *fragment) Payload() []byte {
-	return f.data[8:]
-}
+func (f *fragment) Payload() []byte { _ = "STUB: not implemented"; return nil }
 
-func (f *fragment) Size() int {
-	return len(f.data) - 8
-}
+func (f *fragment) Size() int { _ = "STUB: not implemented"; return 0 }
 
-func (f *fragment) StartOffset() int64 {
-	return int64(binary.LittleEndian.Uint64(f.data))
-}
+func (f *fragment) StartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (f *fragment) EndOffset() int64 {
-	return f.StartOffset() + int64(f.Size())
-}
+func (f *fragment) EndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (f *fragment) MarshalFragment() ([]byte, error) {
-	return f.data, nil
-}
+func (f *fragment) MarshalFragment() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }

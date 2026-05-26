@@ -17,9 +17,6 @@ package parse
 import (
 	// standard libraries.
 	"io"
-
-	// this project.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
 const basicPlan = "" + //nolint:unused // reserved for future use.
@@ -54,9 +51,11 @@ const singleQuotePlan = "" +
 	`................................` //  0xe0
 
 func ConsumeEscapedWithDoubleQuote(r io.ByteReader, w io.ByteWriter) error {
-	return bytes.ConsumeEscaped(r, w, doubleQuotePlan)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func ConsumeEscapedWithSingleQuote(r io.ByteReader, w io.ByteWriter) error {
-	return bytes.ConsumeEscaped(r, w, singleQuotePlan)
+	_ = "STUB: not implemented"
+	return nil
 }

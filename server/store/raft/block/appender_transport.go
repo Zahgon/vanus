@@ -19,7 +19,7 @@ import (
 	"context"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
+
 	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 
 	// this project.
@@ -30,27 +30,12 @@ import (
 var _ transport.Receiver = (*appender)(nil)
 
 func (a *appender) send(ctx context.Context, msg *raftpb.Message) {
-	to := msg.To
-	endpoint := a.hint[to]
-	a.host.Send(ctx, msg, to, endpoint, func(err error) {
-		if err != nil {
-			log.Warn(ctx).Err(err).
-				Uint64("to", to).
-				Str("endpoint", endpoint).
-				Msg("send message failed")
-			a.reportUnreachable(msg.To)
-		}
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // Receive implements transport.Receiver.
 func (a *appender) Receive(_ context.Context, msg *raftpb.Message, from uint64, endpoint string) {
-	a.transportExecutor.Execute(func() {
-		if endpoint != "" && a.hint[from] != endpoint {
-			a.hint[from] = endpoint
-			_ = a.e.RegisterNodeRecord(from, endpoint)
-		}
-
-		a.step(msg)
-	})
+	_ = "STUB: not implemented"
+	return
 }

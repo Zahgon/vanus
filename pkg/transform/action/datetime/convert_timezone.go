@@ -16,18 +16,10 @@ package datetime
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewConvertTimezoneAction ["sourceJSONPath", "fromTimeZone", "toTimeZone", "dateTimeFormat"].
 func NewConvertTimezoneAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName:  "CONVERT_TIMEZONE",
-		FixedArgs:   []arg.TypeList{arg.EventList, {arg.Constant}, {arg.Constant}},
-		VariadicArg: arg.TypeList{arg.Constant},
-		Fn:          function.ConvertTimeZoneFunction,
-	}
-	return a
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }

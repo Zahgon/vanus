@@ -15,12 +15,8 @@
 package strings
 
 import (
-	"fmt"
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -30,44 +26,16 @@ type ExtractBetweenDelimitersAction struct {
 
 // NewExtractBetweenDelimitersAction [sourceJSONPath, targetJSONPath, startDelimiter, endDelimiter].
 func NewExtractBetweenDelimitersAction() action.Action {
-	return &ExtractBetweenDelimitersAction{
-		CommonAction: action.CommonAction{
-			ActionName: "EXTRACT_BETWEEN_DELIMITERS",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.EventList, arg.All, arg.All},
-		},
-	}
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }
 
 func (a *ExtractBetweenDelimitersAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[1]
-	a.Args = args[:1]
-	a.Args = append(a.Args, args[2:]...)
-	a.ArgTypes = []common.Type{common.String, common.String, common.String}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (a *ExtractBetweenDelimitersAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	sourceJSONPath, _ := args[0].(string)
-	startDelimiter, _ := args[1].(string)
-	endDelimiter, _ := args[2].(string)
-
-	if startDelimiter == "" || endDelimiter == "" {
-		return fmt.Errorf("start or end delimiter is empty")
-	}
-	startIndex := strings.Index(sourceJSONPath, startDelimiter)
-	if startIndex < 0 {
-		return fmt.Errorf("start delemiter is not exist")
-	}
-	startIndex += len(startDelimiter)
-	endIndex := strings.Index(sourceJSONPath[startIndex:], endDelimiter)
-	if endIndex < 0 {
-		return fmt.Errorf("end delemiter is not exist")
-	}
-	endIndex += startIndex
-	newValue := sourceJSONPath[startIndex:endIndex]
-	return a.TargetArg.SetValue(ceCtx, newValue)
+	_ = "STUB: not implemented"
+	return nil
 }

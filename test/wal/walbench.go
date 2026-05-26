@@ -112,14 +112,4 @@ func main() {
 	fmt.Printf("tps: %f\n", float64(count)/cost.Seconds())
 }
 
-func generatePayload(size int) []byte {
-	data := func() string {
-		str := ""
-		for idx := 0; idx < size-1; idx++ {
-			str += "a"
-		}
-		str += "\n"
-		return str
-	}()
-	return []byte(data)
-}
+func generatePayload(size int) []byte { _ = "STUB: not implemented"; return nil }

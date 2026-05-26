@@ -33,71 +33,40 @@ type ProposeData struct {
 
 type ProposeDataOption func(cfg *ProposeData)
 
-func Data(data []byte) ProposeDataOption {
-	return func(pd *ProposeData) {
-		pd.Data = data
-	}
-}
+func Data(data []byte) ProposeDataOption { _ = "STUB: not implemented"; return *new(ProposeDataOption) }
 
 func Callback(cb ProposeCallback) ProposeDataOption {
-	return func(pd *ProposeData) {
-		pd.Callback = cb
-	}
+	_ = "STUB: not implemented"
+	return *new(ProposeDataOption)
 }
 
-func NoWaitCommit() ProposeDataOption {
-	return func(pd *ProposeData) {
-		pd.NoWaitCommit = true
-	}
-}
+func NoWaitCommit() ProposeDataOption { _ = "STUB: not implemented"; return *new(ProposeDataOption) }
 
 type ProposeOption func(cfg *ProposeData)
 
 func WithData(opts ...ProposeDataOption) ProposeOption {
-	return func(cfg *ProposeData) {
-		for _, opt := range opts {
-			opt(cfg)
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(ProposeOption)
 }
 
-func Propose(ctx context.Context, n Node, opts ...ProposeOption) {
-	pds := make([]ProposeData, len(opts))
-	for i, opt := range opts {
-		opt(&pds[i])
-	}
-	n.Propose(ctx, pds...)
-}
+func Propose(ctx context.Context, n Node, opts ...ProposeOption) { _ = "STUB: not implemented"; return }
 
 type proposeFuture chan error
 
-func newProposeFuture() proposeFuture {
-	return make(proposeFuture, 1)
-}
+func newProposeFuture() proposeFuture { _ = "STUB: not implemented"; return *new(proposeFuture) }
 
-func (pf proposeFuture) onProposed(err error) {
-	if err != nil {
-		pf <- err
-	}
-	close(pf)
-}
+func (pf proposeFuture) onProposed(err error) { _ = "STUB: not implemented"; return }
 
-func (pf proposeFuture) wait() error {
-	return <-pf
-}
+func (pf proposeFuture) wait() error { _ = "STUB: not implemented"; return nil }
 
 func Propose0(ctx context.Context, n Node, data []byte) error {
-	future := newProposeFuture()
-	n.Propose(ctx, ProposeData{Data: data, Callback: future.onProposed})
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func Propose1(ctx context.Context, n Node, data []byte) error {
-	future := newProposeFuture()
-	n.Propose(ctx, ProposeData{Data: data, Callback: future.onProposed, NoWaitCommit: true})
-	return future.wait()
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func Propose2(ctx context.Context, n Node, data []byte) {
-	n.Propose(ctx, ProposeData{Data: data})
-}
+func Propose2(ctx context.Context, n Node, data []byte) { _ = "STUB: not implemented"; return }

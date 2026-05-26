@@ -19,7 +19,4 @@ type InPlace struct{}
 // Make sure InPlace implements Executor.
 var _ Executor = (*flow)(nil)
 
-func (*InPlace) Execute(t Task) bool {
-	t()
-	return true
-}
+func (*InPlace) Execute(t Task) bool { _ = "STUB: not implemented"; return false }

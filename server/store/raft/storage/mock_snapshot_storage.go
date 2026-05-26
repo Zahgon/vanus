@@ -10,8 +10,6 @@
 package storage
 
 import (
-	reflect "reflect"
-
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -28,41 +26,37 @@ type MockSnapshotOperatorMockRecorder struct {
 
 // NewMockSnapshotOperator creates a new mock instance.
 func NewMockSnapshotOperator(ctrl *gomock.Controller) *MockSnapshotOperator {
-	mock := &MockSnapshotOperator{ctrl: ctrl}
-	mock.recorder = &MockSnapshotOperatorMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockSnapshotOperator) EXPECT() *MockSnapshotOperatorMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// ApplySnapshot mocks base method.
+	return nil
 }
 
-// ApplySnapshot mocks base method.
 func (m *MockSnapshotOperator) ApplySnapshot(data []byte) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ApplySnapshot", data)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ApplySnapshot indicates an expected call of ApplySnapshot.
 func (mr *MockSnapshotOperatorMockRecorder) ApplySnapshot(data any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ApplySnapshot", reflect.TypeOf((*MockSnapshotOperator)(nil).ApplySnapshot), data)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSnapshot mocks base method.
 func (m *MockSnapshotOperator) GetSnapshot(index uint64) ([]byte, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSnapshot", index)
-	ret0, _ := ret[0].([]byte)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetSnapshot indicates an expected call of GetSnapshot.
 func (mr *MockSnapshotOperatorMockRecorder) GetSnapshot(index any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSnapshot", reflect.TypeOf((*MockSnapshotOperator)(nil).GetSnapshot), index)
+	_ = "STUB: not implemented"
+	return nil
 }

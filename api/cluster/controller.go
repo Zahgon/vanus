@@ -17,20 +17,13 @@ package cluster
 
 import (
 	"context"
-	stderr "errors"
-	"strings"
 	"sync"
 	"time"
 
-	errors2 "github.com/vanus-labs/vanus/api/errors"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
-
 	"google.golang.org/grpc/credentials"
-	"google.golang.org/protobuf/types/known/emptypb"
 
 	"github.com/vanus-labs/vanus/api/cluster/raw_client"
 	ctrlpb "github.com/vanus-labs/vanus/api/controller"
-	"github.com/vanus-labs/vanus/api/errors"
 	metapb "github.com/vanus-labs/vanus/api/meta"
 )
 
@@ -103,30 +96,11 @@ var (
 )
 
 func NewClusterController(endpoints []string, credentials credentials.TransportCredentials) Cluster {
-	mutex.Lock()
-	defer mutex.Unlock()
-
-	cc, exist := connCache[strings.Join(endpoints, ",")]
-	if !exist {
-		cc = raw_client.NewConnection(endpoints, credentials)
-		connCache[strings.Join(endpoints, ",")] = cc
-	}
-
-	// single instance
-	c := &cluster{
-		cc:                cc,
-		nsSvc:             newNamespaceService(cc),
-		segmentSvc:        newSegmentService(cc),
-		elSvc:             newEventlogService(cc),
-		triggerSvc:        newTriggerService(cc),
-		idSvc:             newIDService(cc),
-		authSvc:           newAuthService(cc),
-		ping:              raw_client.NewPingClient(cc),
-		controllerAddress: endpoints,
-	}
-	c.ebSvc = newEventbusService(cc, c.NamespaceService())
-	return c
+	_ = "STUB: not implemented"
+	return *new(Cluster)
 }
+
+// single instance
 
 type cluster struct {
 	controllerAddress []string
@@ -142,69 +116,43 @@ type cluster struct {
 }
 
 func (c *cluster) WaitForControllerReady(createEventbus bool) error {
-	start := time.Now()
-
-	log.Info().Msg("wait for controller is ready")
-	t := time.NewTicker(defaultClusterStartTimeout)
-	defer t.Stop()
-	for !c.IsReady(createEventbus) {
-		select {
-		case <-t.C:
-			return stderr.New("cluster isn't ready")
-		default:
-			time.Sleep(time.Second)
-		}
-	}
-
-	log.Info().
-		Dur("waiting_time", time.Now().Sub(start)).
-		Msg("controller is ready")
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (c *cluster) IsReady(createEventbus bool) bool {
-	res, err := c.ping.Ping(context.Background(), &emptypb.Empty{})
-	if err != nil {
-		if !errors.Is(err, errors2.ErrNotLeader) {
-			log.Warn().Err(err).Msg("failed to ping controller")
-		}
-		return false
-	}
-	if res.LeaderAddr == "" {
-		return false
-	}
-	return !createEventbus || (createEventbus && res.GetIsEventbusReady())
-}
+func (c *cluster) IsReady(createEventbus bool) bool { _ = "STUB: not implemented"; return false }
 
 func (c *cluster) Status() Topology {
+	_ = "STUB: not implemented"
 	// TODO(wenfeng)
-	return Topology{}
+	return *new(Topology)
 }
 
 func (c *cluster) NamespaceService() NamespaceService {
-	return c.nsSvc
+	_ = "STUB: not implemented"
+	return *new(NamespaceService)
 }
 
 func (c *cluster) EventbusService() EventbusService {
-	return c.ebSvc
+	_ = "STUB: not implemented"
+	return *new(EventbusService)
 }
 
 func (c *cluster) SegmentService() SegmentService {
-	return c.segmentSvc
+	_ = "STUB: not implemented"
+	return *new(SegmentService)
 }
 
 func (c *cluster) EventlogService() EventlogService {
-	return c.elSvc
+	_ = "STUB: not implemented"
+	return *new(EventlogService)
 }
 
 func (c *cluster) TriggerService() TriggerService {
-	return c.triggerSvc
+	_ = "STUB: not implemented"
+	return *new(TriggerService)
 }
 
-func (c *cluster) IDService() IDService {
-	return c.idSvc
-}
+func (c *cluster) IDService() IDService { _ = "STUB: not implemented"; return *new(IDService) }
 
-func (c *cluster) AuthService() AuthService {
-	return c.authSvc
-}
+func (c *cluster) AuthService() AuthService { _ = "STUB: not implemented"; return *new(AuthService) }

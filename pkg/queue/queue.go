@@ -17,7 +17,6 @@ package queue
 import (
 	"time"
 
-	"golang.org/x/time/rate"
 	"k8s.io/client-go/util/workqueue"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
@@ -46,57 +45,32 @@ type queue struct {
 	queue workqueue.RateLimitingInterface
 }
 
-func New() Queue {
-	return &queue{
-		queue: workqueue.NewNamedRateLimitingQueue(DefaultControllerRateLimiter(), ""),
-	}
-}
+func New() Queue { _ = "STUB: not implemented"; return *new(Queue) }
 
 func DefaultControllerRateLimiter() workqueue.RateLimiter {
-	return workqueue.NewMaxOfRateLimiter(
-		workqueue.NewItemExponentialFailureRateLimiter(limitBaseDelay, limitMaxDelay),
-		// 10 qps, 100 bucket size.  This is only for retry speed and its only the overall factor (not per item)
-		&workqueue.BucketRateLimiter{Limiter: rate.NewLimiter(rate.Limit(limitSize), burst)},
-	)
+	_ = "STUB: not implemented"
+	return *new(workqueue.RateLimiter)
 }
 
-func (q *queue) Add(key vanus.ID) {
-	q.queue.Add(key)
-}
+// 10 qps, 100 bucket size.  This is only for retry speed and its only the overall factor (not per item)
 
-func (q *queue) Len() int {
-	return q.queue.Len()
-}
+func (q *queue) Add(key vanus.ID) { _ = "STUB: not implemented"; return }
+
+func (q *queue) Len() int { _ = "STUB: not implemented"; return 0 }
 
 func (q *queue) Get() (value vanus.ID, shutdown bool) {
-	v, shutdown := q.queue.Get()
-	if !shutdown {
-		value, _ = v.(vanus.ID)
-	}
-	return value, shutdown
+	_ = "STUB: not implemented"
+	return *new(vanus.ID), false
 }
 
-func (q *queue) Done(key vanus.ID) {
-	q.queue.Done(key)
-}
+func (q *queue) Done(key vanus.ID) { _ = "STUB: not implemented"; return }
 
-func (q *queue) ShutDown() {
-	q.queue.ShutDown()
-}
+func (q *queue) ShutDown() { _ = "STUB: not implemented"; return }
 
-func (q *queue) IsShutDown() bool {
-	return q.queue.ShuttingDown()
-}
+func (q *queue) IsShutDown() bool { _ = "STUB: not implemented"; return false }
 
-func (q *queue) ReAdd(key vanus.ID) {
-	q.queue.Done(key)
-	q.queue.AddRateLimited(key)
-}
+func (q *queue) ReAdd(key vanus.ID) { _ = "STUB: not implemented"; return }
 
-func (q *queue) GetFailNum(key vanus.ID) int {
-	return q.queue.NumRequeues(key)
-}
+func (q *queue) GetFailNum(key vanus.ID) int { _ = "STUB: not implemented"; return 0 }
 
-func (q *queue) ClearFailNum(key vanus.ID) {
-	q.queue.Forget(key)
-}
+func (q *queue) ClearFailNum(key vanus.ID) { _ = "STUB: not implemented"; return }

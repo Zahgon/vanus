@@ -15,7 +15,6 @@
 package rafttest
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/vanus-labs/vanus/pkg/raft"
@@ -33,66 +32,35 @@ type RedirectLogger struct {
 var _ raft.Logger = (*RedirectLogger)(nil)
 
 func (l *RedirectLogger) printf(lvl int, format string, args ...interface{}) {
-	if l.Lvl <= lvl {
-		fmt.Fprint(l, lvlNames[lvl], " ")
-		fmt.Fprintf(l, format, args...)
-		if n := len(format); n > 0 && format[n-1] != '\n' {
-			l.WriteByte('\n')
-		}
-	}
-}
-func (l *RedirectLogger) print(lvl int, args ...interface{}) {
-	if l.Lvl <= lvl {
-		fmt.Fprint(l, lvlNames[lvl], " ")
-		fmt.Fprintln(l, args...)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func (l *RedirectLogger) Debug(v ...interface{}) {
-	l.print(0, v...)
-}
+func (l *RedirectLogger) print(lvl int, args ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Debugf(format string, v ...interface{}) {
-	l.printf(0, format, v...)
-}
+func (l *RedirectLogger) Debug(v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Info(v ...interface{}) {
-	l.print(1, v...)
-}
+func (l *RedirectLogger) Debugf(format string, v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Infof(format string, v ...interface{}) {
-	l.printf(1, format, v...)
-}
+func (l *RedirectLogger) Info(v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Warning(v ...interface{}) {
-	l.print(2, v...)
-}
+func (l *RedirectLogger) Infof(format string, v ...interface{}) { _ = "STUB: not implemented"; return }
+
+func (l *RedirectLogger) Warning(v ...interface{}) { _ = "STUB: not implemented"; return }
 
 func (l *RedirectLogger) Warningf(format string, v ...interface{}) {
-	l.printf(2, format, v...)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (l *RedirectLogger) Error(v ...interface{}) {
-	l.print(3, v...)
-}
+func (l *RedirectLogger) Error(v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Errorf(format string, v ...interface{}) {
-	l.printf(3, format, v...)
-}
+func (l *RedirectLogger) Errorf(format string, v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Fatal(v ...interface{}) {
-	l.print(4, v...)
-}
+func (l *RedirectLogger) Fatal(v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Fatalf(format string, v ...interface{}) {
+func (l *RedirectLogger) Fatalf(format string, v ...interface{}) { _ = "STUB: not implemented"; return }
 
-	l.printf(4, format, v...)
-}
+func (l *RedirectLogger) Panic(v ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (l *RedirectLogger) Panic(v ...interface{}) {
-	l.print(4, v...)
-}
-
-func (l *RedirectLogger) Panicf(format string, v ...interface{}) {
-	l.printf(4, format, v...)
-}
+func (l *RedirectLogger) Panicf(format string, v ...interface{}) { _ = "STUB: not implemented"; return }

@@ -29,9 +29,8 @@ package cloudevents
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
@@ -56,16 +55,13 @@ type cloudEventsClient struct {
 }
 
 func NewCloudEventsClient(cc grpc.ClientConnInterface) CloudEventsClient {
-	return &cloudEventsClient{cc}
+	_ = "STUB: not implemented"
+	return *new(CloudEventsClient)
 }
 
 func (c *cloudEventsClient) Send(ctx context.Context, in *BatchEvent, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, CloudEvents_Send_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CloudEventsServer is the server API for CloudEvents service.
@@ -80,7 +76,8 @@ type UnimplementedCloudEventsServer struct {
 }
 
 func (UnimplementedCloudEventsServer) Send(context.Context, *BatchEvent) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeCloudEventsServer may be embedded to opt out of forward compatibility for this service.
@@ -91,25 +88,13 @@ type UnsafeCloudEventsServer interface {
 }
 
 func RegisterCloudEventsServer(s grpc.ServiceRegistrar, srv CloudEventsServer) {
-	s.RegisterService(&CloudEvents_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _CloudEvents_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BatchEvent)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CloudEventsServer).Send(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CloudEvents_Send_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CloudEventsServer).Send(ctx, req.(*BatchEvent))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // CloudEvents_ServiceDesc is the grpc.ServiceDesc for CloudEvents service.

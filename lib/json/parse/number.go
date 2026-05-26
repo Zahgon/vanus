@@ -18,58 +18,25 @@ import (
 	// standard libraries.
 	"errors"
 	"io"
-
 	// this project.
-	"github.com/vanus-labs/vanus/lib/bytes"
 )
 
 var errInvalidInteger = errors.New("invalid integer")
 
-func IsDigit(c byte) bool {
-	return c >= '0' && c <= '9'
-}
+func IsDigit(c byte) bool { _ = "STUB: not implemented"; return false }
 
 func ConsumeDigits(r io.ByteReader, w io.ByteWriter) (int, byte, error) {
-	return bytes.ConsumeUntil(r, w, func(c byte) bool {
-		return !IsDigit(c)
-	})
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }
 
 func ExpectIntegerExt(c byte, s io.ByteScanner) (int, error) {
-	if c == '0' {
-		return 0, nil
-	}
-
-	var err error
-	sign := 1
-	if c == '-' {
-		sign = -1
-		c, err = s.ReadByte()
-		if err != nil {
-			return 0, errInvalidInteger
-		}
-	}
-
-	if c < '1' || c > '9' {
-		return 0, errInvalidInteger
-	}
-	num := int(c - '0')
-
-	for {
-		c, err = s.ReadByte()
-		if err != nil {
-			if err == io.EOF { //nolint:errorlint // io.EOF is not an error.
-				return sign * num, nil
-			}
-			return 0, err
-		}
-
-		if !IsDigit(c) {
-			return sign * num, s.UnreadByte()
-		}
-
-		// TODO(james.yin): check overflow
-
-		num = num*10 + int(c-'0') //nolint:gomnd // 10 is base
-	}
+	_ = "STUB: not implemented"
+	return 0, nil
 }
+
+//nolint:errorlint // io.EOF is not an error.
+
+// TODO(james.yin): check overflow
+
+//nolint:gomnd // 10 is base

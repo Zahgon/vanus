@@ -11,7 +11,6 @@ package storage
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	metadata "github.com/vanus-labs/vanus/server/controller/trigger/metadata"
@@ -31,84 +30,73 @@ type MockSubscriptionStorageMockRecorder struct {
 
 // NewMockSubscriptionStorage creates a new mock instance.
 func NewMockSubscriptionStorage(ctrl *gomock.Controller) *MockSubscriptionStorage {
-	mock := &MockSubscriptionStorage{ctrl: ctrl}
-	mock.recorder = &MockSubscriptionStorageMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockSubscriptionStorage) EXPECT() *MockSubscriptionStorageMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// CreateSubscription mocks base method.
+	return nil
 }
 
-// CreateSubscription mocks base method.
 func (m *MockSubscriptionStorage) CreateSubscription(ctx context.Context, sub *metadata.Subscription) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateSubscription", ctx, sub)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateSubscription indicates an expected call of CreateSubscription.
 func (mr *MockSubscriptionStorageMockRecorder) CreateSubscription(ctx, sub any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSubscription", reflect.TypeOf((*MockSubscriptionStorage)(nil).CreateSubscription), ctx, sub)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription mocks base method.
 func (m *MockSubscriptionStorage) DeleteSubscription(ctx context.Context, id vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteSubscription", ctx, id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteSubscription indicates an expected call of DeleteSubscription.
 func (mr *MockSubscriptionStorageMockRecorder) DeleteSubscription(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteSubscription", reflect.TypeOf((*MockSubscriptionStorage)(nil).DeleteSubscription), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSubscription mocks base method.
 func (m *MockSubscriptionStorage) GetSubscription(ctx context.Context, id vsr.ID) (*metadata.Subscription, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSubscription", ctx, id)
-	ret0, _ := ret[0].(*metadata.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetSubscription indicates an expected call of GetSubscription.
 func (mr *MockSubscriptionStorageMockRecorder) GetSubscription(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSubscription", reflect.TypeOf((*MockSubscriptionStorage)(nil).GetSubscription), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListSubscription mocks base method.
 func (m *MockSubscriptionStorage) ListSubscription(ctx context.Context) ([]*metadata.Subscription, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListSubscription", ctx)
-	ret0, _ := ret[0].([]*metadata.Subscription)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListSubscription indicates an expected call of ListSubscription.
 func (mr *MockSubscriptionStorageMockRecorder) ListSubscription(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSubscription", reflect.TypeOf((*MockSubscriptionStorage)(nil).ListSubscription), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSubscription mocks base method.
 func (m *MockSubscriptionStorage) UpdateSubscription(ctx context.Context, sub *metadata.Subscription) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateSubscription", ctx, sub)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSubscription indicates an expected call of UpdateSubscription.
 func (mr *MockSubscriptionStorageMockRecorder) UpdateSubscription(ctx, sub any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSubscription", reflect.TypeOf((*MockSubscriptionStorage)(nil).UpdateSubscription), ctx, sub)
+	_ = "STUB: not implemented"
+	return nil
 }

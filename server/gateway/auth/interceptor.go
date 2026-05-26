@@ -23,18 +23,12 @@ import (
 type AuthorizationFunc func(ctx context.Context, method string, req interface{}) (err error)
 
 func UnaryServerInterceptor(authFunc AuthorizationFunc) grpc.UnaryServerInterceptor {
-	return func(ctx context.Context, req interface{},
-		info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
-		err := authFunc(ctx, info.FullMethod, req)
-		if err != nil {
-			return nil, err
-		}
-		return handler(ctx, req)
-	}
+	_ = "STUB: not implemented"
+	return *new(grpc.UnaryServerInterceptor)
 }
+
 func StreamServerInterceptor() grpc.StreamServerInterceptor {
+	_ = "STUB: not implemented"
 	// todo stream authorize
-	return func(srv interface{}, stream grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
-		return handler(srv, stream)
-	}
+	return *new(grpc.StreamServerInterceptor)
 }

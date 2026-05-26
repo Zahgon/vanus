@@ -18,7 +18,6 @@ package main
 import (
 	"os"
 
-	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 
 	"github.com/vanus-labs/vanus/tool/vsctl/command"
@@ -84,13 +83,6 @@ func main() {
 	MustStart()
 }
 
-func Start() error {
-	return rootCmd.Execute()
-}
+func Start() error { _ = "STUB: not implemented"; return nil }
 
-func MustStart() {
-	if err := Start(); err != nil {
-		color.Red("vsctl run error: %s", err)
-		os.Exit(-1)
-	}
-}
+func MustStart() { _ = "STUB: not implemented"; return }

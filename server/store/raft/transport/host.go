@@ -20,7 +20,7 @@ import (
 	"sync"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
+
 	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 )
 
@@ -46,73 +46,28 @@ type host struct {
 // Make sure host implements Host.
 var _ Host = (*host)(nil)
 
-func NewHost(resolver Resolver, callback string) Host {
-	h := &host{
-		resolver: resolver,
-		callback: callback,
-	}
-	h.lo = &loopback{
-		addr: callback,
-		dmu:  h,
-	}
-	return h
-}
+func NewHost(resolver Resolver, callback string) Host { _ = "STUB: not implemented"; return *new(Host) }
 
-func (h *host) Stop() {
-	h.peers.Range(func(key, value interface{}) bool {
-		p, _ := value.(*peer)
-		p.Close()
-		return true
-	})
-}
+func (h *host) Stop() { _ = "STUB: not implemented"; return }
 
 func (h *host) Send(ctx context.Context, msg *raftpb.Message, to uint64, endpoint string, cb SendCallback) {
-	mux := h.resolveMultiplexer(ctx, to, endpoint)
-	if mux == nil {
-		log.Info(ctx).
-			Uint64("to", to).
-			Str("endpoint", endpoint).
-			Msg("found not mux")
-		cb(ErrNotReachable)
-		return
-	}
-	mux.Send(ctx, msg, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (h *host) resolveMultiplexer(_ context.Context, to uint64, endpoint string) Multiplexer {
-	if endpoint == "" {
-		if endpoint = h.resolver.Resolve(to); endpoint == "" {
-			return nil
-		}
-	}
-
-	if endpoint == h.callback {
-		return h.lo
-	}
-
-	if mux, ok := h.peers.Load(endpoint); ok {
-		p, _ := mux.(*peer)
-		return p
-	}
-	p := newPeer(endpoint, h.callback)
-	if mux, loaded := h.peers.LoadOrStore(endpoint, p); loaded {
-		defer p.Close()
-		p2, _ := mux.(*peer)
-		return p2
-	}
-	return p
+	_ = "STUB: not implemented"
+	return *new(Multiplexer)
 }
 
 // Receive implements Demultiplexer.
 func (h *host) Receive(ctx context.Context, msg *raftpb.Message, endpoint string) error {
-	if receiver, ok := h.receivers.Load(msg.To); ok {
-		r, _ := receiver.(Receiver)
-		r.Receive(ctx, msg, msg.From, endpoint)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (h *host) Register(node uint64, r Receiver) {
+	_ = "STUB: not implemented"
 	// TODO(james.yin): Handles the case where the receiver already exists.
-	h.receivers.LoadOrStore(node, r)
+	return
 }

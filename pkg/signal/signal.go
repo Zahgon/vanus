@@ -17,7 +17,6 @@ package signal
 import (
 	"context"
 	"os"
-	"os/signal"
 	"syscall"
 )
 
@@ -30,40 +29,20 @@ var shutdownSignals = []os.Signal{os.Interrupt, syscall.SIGTERM}
 // is terminated with exit code 1.
 // Only one of SetupSignalContext and SetupSignalHandler should be called, and only can
 // be called once.
-func SetupSignalHandler() <-chan struct{} {
-	return SetupSignalContext().Done()
-}
+func SetupSignalHandler() <-chan struct{} { _ = "STUB: not implemented"; return nil }
 
 // SetupSignalContext is same as SetupSignalHandler, but a context.Context is returned.
 // Only one of SetupSignalContext and SetupSignalHandler should be called, and only can
 // be called once.
 func SetupSignalContext() context.Context {
-	close(onlyOneSignalHandler) // panics when called twice
-
-	shutdownHandler = make(chan os.Signal, 2)
-
-	ctx, cancel := context.WithCancel(context.Background())
-	signal.Notify(shutdownHandler, shutdownSignals...)
-	go func() {
-		<-shutdownHandler
-		cancel()
-		<-shutdownHandler
-		os.Exit(1) // second signal. Exit directly.
-	}()
-
-	return ctx
+	_ = "STUB: not implemented"
+	return *
+	// panics when called twice
+	new(context.Context)
 }
+
+// second signal. Exit directly.
 
 // RequestShutdown emulates a received event that is considered as shutdown signal (SIGTERM/SIGINT)
 // This returns whether a handler was notified.
-func RequestShutdown() bool {
-	if shutdownHandler != nil {
-		select {
-		case shutdownHandler <- shutdownSignals[0]:
-			return true
-		default:
-		}
-	}
-
-	return false
-}
+func RequestShutdown() bool { _ = "STUB: not implemented"; return false }

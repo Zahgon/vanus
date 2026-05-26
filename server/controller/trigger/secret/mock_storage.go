@@ -11,7 +11,6 @@ package secret
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	pkg "github.com/vanus-labs/vanus/pkg"
@@ -30,56 +29,47 @@ type MockStorageMockRecorder struct {
 }
 
 // NewMockStorage creates a new mock instance.
-func NewMockStorage(ctrl *gomock.Controller) *MockStorage {
-	mock := &MockStorage{ctrl: ctrl}
-	mock.recorder = &MockStorageMockRecorder{mock}
-	return mock
-}
+func NewMockStorage(ctrl *gomock.Controller) *MockStorage { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockStorage) EXPECT() *MockStorageMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Delete mocks base method.
+	return nil
 }
 
-// Delete mocks base method.
 func (m *MockStorage) Delete(ctx context.Context, subID vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Delete", ctx, subID)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Delete indicates an expected call of Delete.
 func (mr *MockStorageMockRecorder) Delete(ctx, subID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockStorage)(nil).Delete), ctx, subID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Read mocks base method.
 func (m *MockStorage) Read(ctx context.Context, subID vsr.ID, credentialType pkg.CredentialType) (pkg.SinkCredential, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Read", ctx, subID, credentialType)
-	ret0, _ := ret[0].(pkg.SinkCredential)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(pkg.SinkCredential), nil
 }
 
 // Read indicates an expected call of Read.
 func (mr *MockStorageMockRecorder) Read(ctx, subID, credentialType any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Read", reflect.TypeOf((*MockStorage)(nil).Read), ctx, subID, credentialType)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Write mocks base method.
 func (m *MockStorage) Write(ctx context.Context, subID vsr.ID, credential pkg.SinkCredential) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Write", ctx, subID, credential)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Write indicates an expected call of Write.
 func (mr *MockStorageMockRecorder) Write(ctx, subID, credential any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Write", reflect.TypeOf((*MockStorage)(nil).Write), ctx, subID, credential)
+	_ = "STUB: not implemented"
+	return nil
 }

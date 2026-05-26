@@ -6,7 +6,6 @@ package snowflake
 
 import (
 	"sync"
-	"time"
 
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
@@ -14,16 +13,9 @@ import (
 var lock = sync.Mutex{}
 
 // NewTestID only used for Uint Test.
-func NewTestID() vanus.ID {
-	lock.Lock()
-	defer lock.Unlock()
+func NewTestID() vanus.ID { _ = "STUB: not implemented"; return *new(vanus.ID) }
 
-	// avoiding same id
-	time.Sleep(time.Microsecond)
-	return vanus.ID(time.Now().UnixNano())
-}
+// avoiding same id
 
 // InitializeFake just only used for Uint Test.
-func InitializeFake() {
-	fake = true
-}
+func InitializeFake() { _ = "STUB: not implemented"; return }

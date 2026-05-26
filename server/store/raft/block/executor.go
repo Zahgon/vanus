@@ -29,7 +29,8 @@ type executorFactory struct {
 }
 
 func newExecutorFactory(cfg executorConfig, startImmediately bool) *executorFactory {
-	return new(executorFactory).init(cfg, startImmediately)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (k *executorFactory) init(cfg executorConfig, startImmediately bool) *executorFactory {
@@ -42,35 +43,34 @@ func (k *executorFactory) init(cfg executorConfig, startImmediately bool) *execu
 	return k
 }
 
-func (k *executorFactory) start() {
-	k.raftExecutor.Start()
-	k.appendExecutor.Start()
-	k.commitExecutor.Start()
-	k.persistExecutor.Start()
-	k.applyExecutor.Start()
-	k.transportExecutor.Start()
-}
+func (k *executorFactory) start() { _ = "STUB: not implemented"; return }
 
 func (k *executorFactory) newRaftFlow() executor.ExecuteCloser {
-	return k.raftExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }
 
 func (k *executorFactory) newAppendFlow() executor.ExecuteCloser {
-	return k.appendExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }
 
 func (k *executorFactory) newCommitFlow() executor.ExecuteCloser {
-	return k.commitExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }
 
 func (k *executorFactory) newPersistFlow() executor.ExecuteCloser {
-	return k.persistExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }
 
 func (k *executorFactory) newApplyFlow() executor.ExecuteCloser {
-	return k.applyExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }
 
 func (k *executorFactory) newTransportFlow() executor.ExecuteCloser {
-	return k.transportExecutor.NewFlow()
+	_ = "STUB: not implemented"
+	return *new(executor.ExecuteCloser)
 }

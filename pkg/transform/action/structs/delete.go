@@ -25,20 +25,11 @@ type deleteAction struct {
 	action.CommonAction
 }
 
-func NewDeleteAction() action.Action {
-	return &deleteAction{
-		action.CommonAction{
-			ActionName: "DELETE",
-			FixedArgs:  []arg.TypeList{arg.EventList},
-		},
-	}
-}
+func NewDeleteAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *deleteAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	return nil
-}
+func (a *deleteAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *deleteAction) Execute(ceCtx *context.EventContext) error {
-	return a.TargetArg.DeleteValue(ceCtx)
+	_ = "STUB: not implemented"
+	return nil
 }

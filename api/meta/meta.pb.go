@@ -21,11 +21,11 @@
 package meta
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -60,32 +60,27 @@ var (
 	}
 )
 
-func (x StorageTier) Enum() *StorageTier {
-	p := new(StorageTier)
-	*p = x
-	return p
-}
+func (x StorageTier) Enum() *StorageTier { _ = "STUB: not implemented"; return nil }
 
-func (x StorageTier) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x StorageTier) String() string { _ = "STUB: not implemented"; return "" }
 
 func (StorageTier) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[0].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (StorageTier) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[0]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x StorageTier) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use StorageTier.Descriptor instead.
-func (StorageTier) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{0}
-}
+func (StorageTier) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type CompressAlgorithm int32
 
@@ -106,31 +101,29 @@ var (
 	}
 )
 
-func (x CompressAlgorithm) Enum() *CompressAlgorithm {
-	p := new(CompressAlgorithm)
-	*p = x
-	return p
-}
+func (x CompressAlgorithm) Enum() *CompressAlgorithm { _ = "STUB: not implemented"; return nil }
 
-func (x CompressAlgorithm) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x CompressAlgorithm) String() string { _ = "STUB: not implemented"; return "" }
 
 func (CompressAlgorithm) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[1].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (CompressAlgorithm) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[1]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x CompressAlgorithm) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use CompressAlgorithm.Descriptor instead.
 func (CompressAlgorithm) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type Protocol int32
@@ -158,32 +151,27 @@ var (
 	}
 )
 
-func (x Protocol) Enum() *Protocol {
-	p := new(Protocol)
-	*p = x
-	return p
-}
+func (x Protocol) Enum() *Protocol { _ = "STUB: not implemented"; return nil }
 
-func (x Protocol) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x Protocol) String() string { _ = "STUB: not implemented"; return "" }
 
 func (Protocol) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[2].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (Protocol) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[2]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x Protocol) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use Protocol.Descriptor instead.
-func (Protocol) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{2}
-}
+func (Protocol) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type TemplateType int32
 
@@ -210,32 +198,27 @@ var (
 	}
 )
 
-func (x TemplateType) Enum() *TemplateType {
-	p := new(TemplateType)
-	*p = x
-	return p
-}
+func (x TemplateType) Enum() *TemplateType { _ = "STUB: not implemented"; return nil }
 
-func (x TemplateType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x TemplateType) String() string { _ = "STUB: not implemented"; return "" }
 
 func (TemplateType) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[3].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (TemplateType) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[3]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x TemplateType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use TemplateType.Descriptor instead.
-func (TemplateType) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{3}
-}
+func (TemplateType) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type SinkCredential_CredentialType int32
 
@@ -263,30 +246,31 @@ var (
 )
 
 func (x SinkCredential_CredentialType) Enum() *SinkCredential_CredentialType {
-	p := new(SinkCredential_CredentialType)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (x SinkCredential_CredentialType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x SinkCredential_CredentialType) String() string { _ = "STUB: not implemented"; return "" }
 
 func (SinkCredential_CredentialType) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[4].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (SinkCredential_CredentialType) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[4]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x SinkCredential_CredentialType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use SinkCredential_CredentialType.Descriptor instead.
 func (SinkCredential_CredentialType) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{8, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type SubscriptionConfig_OffsetType int32
@@ -312,30 +296,31 @@ var (
 )
 
 func (x SubscriptionConfig_OffsetType) Enum() *SubscriptionConfig_OffsetType {
-	p := new(SubscriptionConfig_OffsetType)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (x SubscriptionConfig_OffsetType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x SubscriptionConfig_OffsetType) String() string { _ = "STUB: not implemented"; return "" }
 
 func (SubscriptionConfig_OffsetType) Descriptor() protoreflect.EnumDescriptor {
-	return file_vanus_core_meta_meta_proto_enumTypes[5].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (SubscriptionConfig_OffsetType) Type() protoreflect.EnumType {
-	return &file_vanus_core_meta_meta_proto_enumTypes[5]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x SubscriptionConfig_OffsetType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use SubscriptionConfig_OffsetType.Descriptor instead.
 func (SubscriptionConfig_OffsetType) EnumDescriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{13, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type VanusResourceName struct {
@@ -346,44 +331,21 @@ type VanusResourceName struct {
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (x *VanusResourceName) Reset() {
-	*x = VanusResourceName{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *VanusResourceName) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *VanusResourceName) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *VanusResourceName) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*VanusResourceName) ProtoMessage() {}
+func (*VanusResourceName) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *VanusResourceName) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use VanusResourceName.ProtoReflect.Descriptor instead.
-func (*VanusResourceName) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{0}
-}
+func (*VanusResourceName) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *VanusResourceName) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
+func (x *VanusResourceName) GetValue() string { _ = "STUB: not implemented"; return "" }
 
 type Namespace struct {
 	state         protoimpl.MessageState
@@ -397,72 +359,29 @@ type Namespace struct {
 	UpdatedAt   int64  `protobuf:"varint,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 }
 
-func (x *Namespace) Reset() {
-	*x = Namespace{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Namespace) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Namespace) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Namespace) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Namespace) ProtoMessage() {}
+func (*Namespace) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Namespace) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Namespace.ProtoReflect.Descriptor instead.
-func (*Namespace) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{1}
-}
+func (*Namespace) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Namespace) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Namespace) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Namespace) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *Namespace) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Namespace) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *Namespace) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Namespace) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *Namespace) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Namespace) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
+func (x *Namespace) GetUpdatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
 type Eventbus struct {
 	state         protoimpl.MessageState
@@ -479,93 +398,35 @@ type Eventbus struct {
 	NamespaceId uint64      `protobuf:"varint,8,opt,name=namespace_id,json=namespaceId,proto3" json:"namespace_id,omitempty"`
 }
 
-func (x *Eventbus) Reset() {
-	*x = Eventbus{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Eventbus) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Eventbus) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Eventbus) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Eventbus) ProtoMessage() {}
+func (*Eventbus) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Eventbus) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Eventbus.ProtoReflect.Descriptor instead.
-func (*Eventbus) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{2}
-}
+func (*Eventbus) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Eventbus) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *Eventbus) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Eventbus) GetLogNumber() int32 {
-	if x != nil {
-		return x.LogNumber
-	}
-	return 0
-}
+func (x *Eventbus) GetLogNumber() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventbus) GetLogs() []*Eventlog {
-	if x != nil {
-		return x.Logs
-	}
-	return nil
-}
+func (x *Eventbus) GetLogs() []*Eventlog { _ = "STUB: not implemented"; return nil }
 
-func (x *Eventbus) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Eventbus) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventbus) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *Eventbus) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Eventbus) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *Eventbus) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventbus) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
+func (x *Eventbus) GetUpdatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventbus) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *Eventbus) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Eventlog struct {
 	state         protoimpl.MessageState
@@ -578,65 +439,27 @@ type Eventlog struct {
 	EventbusId            uint64   `protobuf:"varint,5,opt,name=eventbus_id,json=eventbusId,proto3" json:"eventbus_id,omitempty"`
 }
 
-func (x *Eventlog) Reset() {
-	*x = Eventlog{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Eventlog) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Eventlog) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Eventlog) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Eventlog) ProtoMessage() {}
+func (*Eventlog) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Eventlog) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Eventlog.ProtoReflect.Descriptor instead.
-func (*Eventlog) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{3}
-}
+func (*Eventlog) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Eventlog) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *Eventlog) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventlog) GetCurrentSegmentNumbers() int32 {
-	if x != nil {
-		return x.CurrentSegmentNumbers
-	}
-	return 0
-}
+func (x *Eventlog) GetCurrentSegmentNumbers() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Eventlog) GetServerAddress() []string {
-	if x != nil {
-		return x.ServerAddress
-	}
-	return nil
-}
+func (x *Eventlog) GetServerAddress() []string { _ = "STUB: not implemented"; return nil }
 
-func (x *Eventlog) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *Eventlog) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Block struct {
 	state         protoimpl.MessageState
@@ -648,58 +471,25 @@ type Block struct {
 	VolumeID uint64 `protobuf:"varint,3,opt,name=volumeID,proto3" json:"volumeID,omitempty"`
 }
 
-func (x *Block) Reset() {
-	*x = Block{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Block) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Block) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Block) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Block) ProtoMessage() {}
+func (*Block) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Block) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Block.ProtoReflect.Descriptor instead.
-func (*Block) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{4}
-}
+func (*Block) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Block) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Block) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Block) GetEndpoint() string {
-	if x != nil {
-		return x.Endpoint
-	}
-	return ""
-}
+func (x *Block) GetEndpoint() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Block) GetVolumeID() uint64 {
-	if x != nil {
-		return x.VolumeID
-	}
-	return 0
-}
+func (x *Block) GetVolumeID() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Segment struct {
 	state         protoimpl.MessageState
@@ -723,142 +513,52 @@ type Segment struct {
 	LastEventBornAtByUnixMs  int64             `protobuf:"varint,15,opt,name=last_event_born_at_by_unix_ms,json=lastEventBornAtByUnixMs,proto3" json:"last_event_born_at_by_unix_ms,omitempty"`
 }
 
-func (x *Segment) Reset() {
-	*x = Segment{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Segment) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Segment) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Segment) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Segment) ProtoMessage() {}
+func (*Segment) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Segment) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Segment.ProtoReflect.Descriptor instead.
-func (*Segment) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{5}
-}
+func (*Segment) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Segment) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Segment) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetPreviousSegmentId() uint64 {
-	if x != nil {
-		return x.PreviousSegmentId
-	}
-	return 0
-}
+func (x *Segment) GetPreviousSegmentId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetNextSegmentId() uint64 {
-	if x != nil {
-		return x.NextSegmentId
-	}
-	return 0
-}
+func (x *Segment) GetNextSegmentId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *Segment) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetStartOffsetInLog() int64 {
-	if x != nil {
-		return x.StartOffsetInLog
-	}
-	return 0
-}
+func (x *Segment) GetStartOffsetInLog() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetEndOffsetInLog() int64 {
-	if x != nil {
-		return x.EndOffsetInLog
-	}
-	return 0
-}
+func (x *Segment) GetEndOffsetInLog() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetSize() int64 {
-	if x != nil {
-		return x.Size
-	}
-	return 0
-}
+func (x *Segment) GetSize() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetCapacity() int64 {
-	if x != nil {
-		return x.Capacity
-	}
-	return 0
-}
+func (x *Segment) GetCapacity() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetNumberEventStored() int32 {
-	if x != nil {
-		return x.NumberEventStored
-	}
-	return 0
-}
+func (x *Segment) GetNumberEventStored() int32 { _ = "STUB: not implemented"; return 0 }
 
 func (x *Segment) GetCompressed() CompressAlgorithm {
-	if x != nil {
-		return x.Compressed
-	}
-	return CompressAlgorithm_NONE
+	_ = "STUB: not implemented"
+	return *new(CompressAlgorithm)
 }
 
-func (x *Segment) GetState() string {
-	if x != nil {
-		return x.State
-	}
-	return ""
-}
+func (x *Segment) GetState() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Segment) GetReplicas() map[uint64]*Block {
-	if x != nil {
-		return x.Replicas
-	}
-	return nil
-}
+func (x *Segment) GetReplicas() map[uint64]*Block { _ = "STUB: not implemented"; return nil }
 
-func (x *Segment) GetLeaderBlockId() uint64 {
-	if x != nil {
-		return x.LeaderBlockId
-	}
-	return 0
-}
+func (x *Segment) GetLeaderBlockId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetFirstEventBornAtByUnixMs() int64 {
-	if x != nil {
-		return x.FirstEventBornAtByUnixMs
-	}
-	return 0
-}
+func (x *Segment) GetFirstEventBornAtByUnixMs() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Segment) GetLastEventBornAtByUnixMs() int64 {
-	if x != nil {
-		return x.LastEventBornAtByUnixMs
-	}
-	return 0
-}
+func (x *Segment) GetLastEventBornAtByUnixMs() int64 { _ = "STUB: not implemented"; return 0 }
 
 type SegmentHealthInfo struct {
 	state         protoimpl.MessageState
@@ -880,114 +580,41 @@ type SegmentHealthInfo struct {
 	LastEventBornTime int64 `protobuf:"varint,11,opt,name=last_event_born_time,json=lastEventBornTime,proto3" json:"last_event_born_time,omitempty"`
 }
 
-func (x *SegmentHealthInfo) Reset() {
-	*x = SegmentHealthInfo{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SegmentHealthInfo) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SegmentHealthInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SegmentHealthInfo) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SegmentHealthInfo) ProtoMessage() {}
+func (*SegmentHealthInfo) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SegmentHealthInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SegmentHealthInfo.ProtoReflect.Descriptor instead.
-func (*SegmentHealthInfo) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{6}
-}
+func (*SegmentHealthInfo) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *SegmentHealthInfo) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetCapacity() int64 {
-	if x != nil {
-		return x.Capacity
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetCapacity() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetSize() int64 {
-	if x != nil {
-		return x.Size
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetSize() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetEventNumber() int32 {
-	if x != nil {
-		return x.EventNumber
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetEventNumber() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetSerializationVersion() int32 {
-	if x != nil {
-		return x.SerializationVersion
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetSerializationVersion() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetIsFull() bool {
-	if x != nil {
-		return x.IsFull
-	}
-	return false
-}
+func (x *SegmentHealthInfo) GetIsFull() bool { _ = "STUB: not implemented"; return false }
 
-func (x *SegmentHealthInfo) GetLeader() uint64 {
-	if x != nil {
-		return x.Leader
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetLeader() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetTerm() uint64 {
-	if x != nil {
-		return x.Term
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetTerm() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetFirstEventBornTime() int64 {
-	if x != nil {
-		return x.FirstEventBornTime
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetFirstEventBornTime() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SegmentHealthInfo) GetLastEventBornTime() int64 {
-	if x != nil {
-		return x.LastEventBornTime
-	}
-	return 0
-}
+func (x *SegmentHealthInfo) GetLastEventBornTime() int64 { _ = "STUB: not implemented"; return 0 }
 
 type Subscription struct {
 	state         protoimpl.MessageState
@@ -1014,163 +641,58 @@ type Subscription struct {
 	Offsets          []*OffsetInfo       `protobuf:"bytes,101,rep,name=offsets,proto3" json:"offsets,omitempty"`
 }
 
-func (x *Subscription) Reset() {
-	*x = Subscription{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Subscription) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Subscription) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Subscription) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Subscription) ProtoMessage() {}
+func (*Subscription) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Subscription) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Subscription.ProtoReflect.Descriptor instead.
-func (*Subscription) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{7}
-}
+func (*Subscription) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Subscription) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
+func (x *Subscription) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subscription) GetTypes() []string {
-	if x != nil {
-		return x.Types
-	}
-	return nil
-}
+func (x *Subscription) GetTypes() []string { _ = "STUB: not implemented"; return nil }
 
-func (x *Subscription) GetConfig() *SubscriptionConfig {
-	if x != nil {
-		return x.Config
-	}
-	return nil
-}
+func (x *Subscription) GetConfig() *SubscriptionConfig { _ = "STUB: not implemented"; return nil }
 
-func (x *Subscription) GetFilters() []*Filter {
-	if x != nil {
-		return x.Filters
-	}
-	return nil
-}
+func (x *Subscription) GetFilters() []*Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *Subscription) GetSink() string {
-	if x != nil {
-		return x.Sink
-	}
-	return ""
-}
+func (x *Subscription) GetSink() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subscription) GetSinkCredential() *SinkCredential {
-	if x != nil {
-		return x.SinkCredential
-	}
-	return nil
-}
+func (x *Subscription) GetSinkCredential() *SinkCredential { _ = "STUB: not implemented"; return nil }
 
-func (x *Subscription) GetProtocol() Protocol {
-	if x != nil {
-		return x.Protocol
-	}
-	return Protocol_HTTP
-}
+func (x *Subscription) GetProtocol() Protocol { _ = "STUB: not implemented"; return *new(Protocol) }
 
 func (x *Subscription) GetProtocolSettings() *ProtocolSetting {
-	if x != nil {
-		return x.ProtocolSettings
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *Subscription) GetTransformer() *Transformer {
-	if x != nil {
-		return x.Transformer
-	}
-	return nil
-}
+func (x *Subscription) GetTransformer() *Transformer { _ = "STUB: not implemented"; return nil }
 
-func (x *Subscription) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *Subscription) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subscription) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *Subscription) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subscription) GetDisable() bool {
-	if x != nil {
-		return x.Disable
-	}
-	return false
-}
+func (x *Subscription) GetDisable() bool { _ = "STUB: not implemented"; return false }
 
-func (x *Subscription) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *Subscription) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Subscription) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
+func (x *Subscription) GetUpdatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Subscription) GetEventbusId() uint64 {
-	if x != nil {
-		return x.EventbusId
-	}
-	return 0
-}
+func (x *Subscription) GetEventbusId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Subscription) GetNamespaceId() uint64 {
-	if x != nil {
-		return x.NamespaceId
-	}
-	return 0
-}
+func (x *Subscription) GetNamespaceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Subscription) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Subscription) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Subscription) GetOffsets() []*OffsetInfo {
-	if x != nil {
-		return x.Offsets
-	}
-	return nil
-}
+func (x *Subscription) GetOffsets() []*OffsetInfo { _ = "STUB: not implemented"; return nil }
 
 type SinkCredential struct {
 	state         protoimpl.MessageState
@@ -1186,72 +708,35 @@ type SinkCredential struct {
 	Credential isSinkCredential_Credential `protobuf_oneof:"credential"`
 }
 
-func (x *SinkCredential) Reset() {
-	*x = SinkCredential{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SinkCredential) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SinkCredential) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SinkCredential) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SinkCredential) ProtoMessage() {}
+func (*SinkCredential) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SinkCredential) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SinkCredential.ProtoReflect.Descriptor instead.
-func (*SinkCredential) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{8}
-}
+func (*SinkCredential) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *SinkCredential) GetCredentialType() SinkCredential_CredentialType {
-	if x != nil {
-		return x.CredentialType
-	}
-	return SinkCredential_None
+	_ = "STUB: not implemented"
+	return *new(SinkCredential_CredentialType)
 }
 
 func (m *SinkCredential) GetCredential() isSinkCredential_Credential {
-	if m != nil {
-		return m.Credential
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isSinkCredential_Credential)
 }
 
-func (x *SinkCredential) GetPlain() *PlainCredential {
-	if x, ok := x.GetCredential().(*SinkCredential_Plain); ok {
-		return x.Plain
-	}
-	return nil
-}
+func (x *SinkCredential) GetPlain() *PlainCredential { _ = "STUB: not implemented"; return nil }
 
-func (x *SinkCredential) GetAws() *AKSKCredential {
-	if x, ok := x.GetCredential().(*SinkCredential_Aws); ok {
-		return x.Aws
-	}
-	return nil
-}
+func (x *SinkCredential) GetAws() *AKSKCredential { _ = "STUB: not implemented"; return nil }
 
-func (x *SinkCredential) GetGcloud() *GCloudCredential {
-	if x, ok := x.GetCredential().(*SinkCredential_Gcloud); ok {
-		return x.Gcloud
-	}
-	return nil
-}
+func (x *SinkCredential) GetGcloud() *GCloudCredential { _ = "STUB: not implemented"; return nil }
 
 type isSinkCredential_Credential interface {
 	isSinkCredential_Credential()
@@ -1269,11 +754,11 @@ type SinkCredential_Gcloud struct {
 	Gcloud *GCloudCredential `protobuf:"bytes,4,opt,name=gcloud,proto3,oneof"`
 }
 
-func (*SinkCredential_Plain) isSinkCredential_Credential() {}
+func (*SinkCredential_Plain) isSinkCredential_Credential() { _ = "STUB: not implemented"; return }
 
-func (*SinkCredential_Aws) isSinkCredential_Credential() {}
+func (*SinkCredential_Aws) isSinkCredential_Credential() { _ = "STUB: not implemented"; return }
 
-func (*SinkCredential_Gcloud) isSinkCredential_Credential() {}
+func (*SinkCredential_Gcloud) isSinkCredential_Credential() { _ = "STUB: not implemented"; return }
 
 type PlainCredential struct {
 	state         protoimpl.MessageState
@@ -1284,51 +769,23 @@ type PlainCredential struct {
 	Secret     string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 }
 
-func (x *PlainCredential) Reset() {
-	*x = PlainCredential{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *PlainCredential) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlainCredential) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlainCredential) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlainCredential) ProtoMessage() {}
+func (*PlainCredential) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlainCredential) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlainCredential.ProtoReflect.Descriptor instead.
-func (*PlainCredential) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{9}
-}
+func (*PlainCredential) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *PlainCredential) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
-	}
-	return ""
-}
+func (x *PlainCredential) GetIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PlainCredential) GetSecret() string {
-	if x != nil {
-		return x.Secret
-	}
-	return ""
-}
+func (x *PlainCredential) GetSecret() string { _ = "STUB: not implemented"; return "" }
 
 type AKSKCredential struct {
 	state         protoimpl.MessageState
@@ -1339,51 +796,23 @@ type AKSKCredential struct {
 	SecretAccessKey string `protobuf:"bytes,2,opt,name=secret_access_key,json=secretAccessKey,proto3" json:"secret_access_key,omitempty"`
 }
 
-func (x *AKSKCredential) Reset() {
-	*x = AKSKCredential{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *AKSKCredential) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AKSKCredential) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AKSKCredential) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AKSKCredential) ProtoMessage() {}
+func (*AKSKCredential) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AKSKCredential) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AKSKCredential.ProtoReflect.Descriptor instead.
-func (*AKSKCredential) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{10}
-}
+func (*AKSKCredential) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *AKSKCredential) GetAccessKeyId() string {
-	if x != nil {
-		return x.AccessKeyId
-	}
-	return ""
-}
+func (x *AKSKCredential) GetAccessKeyId() string { _ = "STUB: not implemented"; return "" }
 
-func (x *AKSKCredential) GetSecretAccessKey() string {
-	if x != nil {
-		return x.SecretAccessKey
-	}
-	return ""
-}
+func (x *AKSKCredential) GetSecretAccessKey() string { _ = "STUB: not implemented"; return "" }
 
 type GCloudCredential struct {
 	state         protoimpl.MessageState
@@ -1393,44 +822,21 @@ type GCloudCredential struct {
 	CredentialsJson string `protobuf:"bytes,1,opt,name=credentials_json,json=credentialsJson,proto3" json:"credentials_json,omitempty"`
 }
 
-func (x *GCloudCredential) Reset() {
-	*x = GCloudCredential{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *GCloudCredential) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GCloudCredential) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GCloudCredential) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GCloudCredential) ProtoMessage() {}
+func (*GCloudCredential) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GCloudCredential) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GCloudCredential.ProtoReflect.Descriptor instead.
-func (*GCloudCredential) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{11}
-}
+func (*GCloudCredential) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *GCloudCredential) GetCredentialsJson() string {
-	if x != nil {
-		return x.CredentialsJson
-	}
-	return ""
-}
+func (x *GCloudCredential) GetCredentialsJson() string { _ = "STUB: not implemented"; return "" }
 
 type ProtocolSetting struct {
 	state         protoimpl.MessageState
@@ -1440,44 +846,21 @@ type ProtocolSetting struct {
 	Headers map[string]string `protobuf:"bytes,1,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *ProtocolSetting) Reset() {
-	*x = ProtocolSetting{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[12]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ProtocolSetting) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ProtocolSetting) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ProtocolSetting) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ProtocolSetting) ProtoMessage() {}
+func (*ProtocolSetting) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ProtocolSetting) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[12]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ProtocolSetting.ProtoReflect.Descriptor instead.
-func (*ProtocolSetting) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{12}
-}
+func (*ProtocolSetting) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ProtocolSetting) GetHeaders() map[string]string {
-	if x != nil {
-		return x.Headers
-	}
-	return nil
-}
+func (x *ProtocolSetting) GetHeaders() map[string]string { _ = "STUB: not implemented"; return nil }
 
 type SubscriptionConfig struct {
 	state         protoimpl.MessageState
@@ -1495,86 +878,36 @@ type SubscriptionConfig struct {
 	OrderedEvent      bool    `protobuf:"varint,7,opt,name=ordered_event,json=orderedEvent,proto3" json:"ordered_event,omitempty"`
 }
 
-func (x *SubscriptionConfig) Reset() {
-	*x = SubscriptionConfig{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SubscriptionConfig) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SubscriptionConfig) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SubscriptionConfig) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SubscriptionConfig) ProtoMessage() {}
+func (*SubscriptionConfig) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SubscriptionConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SubscriptionConfig.ProtoReflect.Descriptor instead.
-func (*SubscriptionConfig) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{13}
-}
+func (*SubscriptionConfig) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *SubscriptionConfig) GetRateLimit() uint32 {
-	if x != nil {
-		return x.RateLimit
-	}
-	return 0
-}
+func (x *SubscriptionConfig) GetRateLimit() uint32 { _ = "STUB: not implemented"; return 0 }
 
 func (x *SubscriptionConfig) GetOffsetType() SubscriptionConfig_OffsetType {
-	if x != nil {
-		return x.OffsetType
-	}
-	return SubscriptionConfig_LATEST
+	_ = "STUB: not implemented"
+	return *new(SubscriptionConfig_OffsetType)
 }
 
-func (x *SubscriptionConfig) GetOffsetTimestamp() uint64 {
-	if x != nil && x.OffsetTimestamp != nil {
-		return *x.OffsetTimestamp
-	}
-	return 0
-}
+func (x *SubscriptionConfig) GetOffsetTimestamp() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SubscriptionConfig) GetDeliveryTimeout() uint32 {
-	if x != nil {
-		return x.DeliveryTimeout
-	}
-	return 0
-}
+func (x *SubscriptionConfig) GetDeliveryTimeout() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SubscriptionConfig) GetMaxRetryAttempts() uint32 {
-	if x != nil && x.MaxRetryAttempts != nil {
-		return *x.MaxRetryAttempts
-	}
-	return 0
-}
+func (x *SubscriptionConfig) GetMaxRetryAttempts() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SubscriptionConfig) GetDisableDeadLetter() bool {
-	if x != nil {
-		return x.DisableDeadLetter
-	}
-	return false
-}
+func (x *SubscriptionConfig) GetDisableDeadLetter() bool { _ = "STUB: not implemented"; return false }
 
-func (x *SubscriptionConfig) GetOrderedEvent() bool {
-	if x != nil {
-		return x.OrderedEvent
-	}
-	return false
-}
+func (x *SubscriptionConfig) GetOrderedEvent() bool { _ = "STUB: not implemented"; return false }
 
 type Filter struct {
 	state         protoimpl.MessageState
@@ -1591,93 +924,35 @@ type Filter struct {
 	Cel    string            `protobuf:"bytes,8,opt,name=cel,proto3" json:"cel,omitempty"`
 }
 
-func (x *Filter) Reset() {
-	*x = Filter{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Filter) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Filter) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Filter) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Filter) ProtoMessage() {}
+func (*Filter) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Filter.ProtoReflect.Descriptor instead.
-func (*Filter) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{14}
-}
+func (*Filter) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Filter) GetExact() map[string]string {
-	if x != nil {
-		return x.Exact
-	}
-	return nil
-}
+func (x *Filter) GetExact() map[string]string { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetPrefix() map[string]string {
-	if x != nil {
-		return x.Prefix
-	}
-	return nil
-}
+func (x *Filter) GetPrefix() map[string]string { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetSuffix() map[string]string {
-	if x != nil {
-		return x.Suffix
-	}
-	return nil
-}
+func (x *Filter) GetSuffix() map[string]string { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetNot() *Filter {
-	if x != nil {
-		return x.Not
-	}
-	return nil
-}
+func (x *Filter) GetNot() *Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetAll() []*Filter {
-	if x != nil {
-		return x.All
-	}
-	return nil
-}
+func (x *Filter) GetAll() []*Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetAny() []*Filter {
-	if x != nil {
-		return x.Any
-	}
-	return nil
-}
+func (x *Filter) GetAny() []*Filter { _ = "STUB: not implemented"; return nil }
 
-func (x *Filter) GetSql() string {
-	if x != nil {
-		return x.Sql
-	}
-	return ""
-}
+func (x *Filter) GetSql() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Filter) GetCel() string {
-	if x != nil {
-		return x.Cel
-	}
-	return ""
-}
+func (x *Filter) GetCel() string { _ = "STUB: not implemented"; return "" }
 
 type SubscriptionInfo struct {
 	state         protoimpl.MessageState
@@ -1688,51 +963,23 @@ type SubscriptionInfo struct {
 	Offsets        []*OffsetInfo `protobuf:"bytes,2,rep,name=offsets,proto3" json:"offsets,omitempty"`
 }
 
-func (x *SubscriptionInfo) Reset() {
-	*x = SubscriptionInfo{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[15]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *SubscriptionInfo) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SubscriptionInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SubscriptionInfo) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SubscriptionInfo) ProtoMessage() {}
+func (*SubscriptionInfo) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SubscriptionInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[15]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SubscriptionInfo.ProtoReflect.Descriptor instead.
-func (*SubscriptionInfo) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{15}
-}
+func (*SubscriptionInfo) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *SubscriptionInfo) GetSubscriptionId() uint64 {
-	if x != nil {
-		return x.SubscriptionId
-	}
-	return 0
-}
+func (x *SubscriptionInfo) GetSubscriptionId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *SubscriptionInfo) GetOffsets() []*OffsetInfo {
-	if x != nil {
-		return x.Offsets
-	}
-	return nil
-}
+func (x *SubscriptionInfo) GetOffsets() []*OffsetInfo { _ = "STUB: not implemented"; return nil }
 
 type OffsetInfo struct {
 	state         protoimpl.MessageState
@@ -1743,51 +990,23 @@ type OffsetInfo struct {
 	EventlogId uint64 `protobuf:"varint,2,opt,name=eventlog_id,json=eventlogId,proto3" json:"eventlog_id,omitempty"`
 }
 
-func (x *OffsetInfo) Reset() {
-	*x = OffsetInfo{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *OffsetInfo) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *OffsetInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *OffsetInfo) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*OffsetInfo) ProtoMessage() {}
+func (*OffsetInfo) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *OffsetInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use OffsetInfo.ProtoReflect.Descriptor instead.
-func (*OffsetInfo) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{16}
-}
+func (*OffsetInfo) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *OffsetInfo) GetOffset() uint64 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *OffsetInfo) GetOffset() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *OffsetInfo) GetEventlogId() uint64 {
-	if x != nil {
-		return x.EventlogId
-	}
-	return 0
-}
+func (x *OffsetInfo) GetEventlogId() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Transformer struct {
 	state         protoimpl.MessageState
@@ -1800,64 +1019,29 @@ type Transformer struct {
 	TemplateType TemplateType      `protobuf:"varint,4,opt,name=template_type,json=templateType,proto3,enum=vanus.core.meta.TemplateType" json:"template_type,omitempty"`
 }
 
-func (x *Transformer) Reset() {
-	*x = Transformer{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Transformer) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Transformer) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Transformer) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Transformer) ProtoMessage() {}
+func (*Transformer) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Transformer) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Transformer.ProtoReflect.Descriptor instead.
-func (*Transformer) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{17}
-}
+func (*Transformer) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Transformer) GetDefine() map[string]string {
-	if x != nil {
-		return x.Define
-	}
-	return nil
-}
+func (x *Transformer) GetDefine() map[string]string { _ = "STUB: not implemented"; return nil }
 
-func (x *Transformer) GetTemplate() string {
-	if x != nil {
-		return x.Template
-	}
-	return ""
-}
+func (x *Transformer) GetTemplate() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Transformer) GetPipeline() []*Action {
-	if x != nil {
-		return x.Pipeline
-	}
-	return nil
-}
+func (x *Transformer) GetPipeline() []*Action { _ = "STUB: not implemented"; return nil }
 
 func (x *Transformer) GetTemplateType() TemplateType {
-	if x != nil {
-		return x.TemplateType
-	}
-	return TemplateType_TEMPLATE_TYPE_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(TemplateType)
 }
 
 type Action struct {
@@ -1868,44 +1052,21 @@ type Action struct {
 	Command []*structpb.Value `protobuf:"bytes,1,rep,name=command,proto3" json:"command,omitempty"`
 }
 
-func (x *Action) Reset() {
-	*x = Action{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[18]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Action) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Action) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Action) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Action) ProtoMessage() {}
+func (*Action) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Action) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[18]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Action.ProtoReflect.Descriptor instead.
-func (*Action) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{18}
-}
+func (*Action) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Action) GetCommand() []*structpb.Value {
-	if x != nil {
-		return x.Command
-	}
-	return nil
-}
+func (x *Action) GetCommand() []*structpb.Value { _ = "STUB: not implemented"; return nil }
 
 type User struct {
 	state         protoimpl.MessageState
@@ -1918,65 +1079,27 @@ type User struct {
 	UpdatedAt   int64  `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 }
 
-func (x *User) Reset() {
-	*x = User{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[19]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *User) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *User) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *User) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*User) ProtoMessage() {}
+func (*User) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[19]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
-func (*User) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{19}
-}
+func (*User) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *User) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
-	}
-	return ""
-}
+func (x *User) GetIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *User) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *User) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *User) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *User) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *User) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
+func (x *User) GetUpdatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
 type Token struct {
 	state         protoimpl.MessageState
@@ -1990,72 +1113,29 @@ type Token struct {
 	UpdatedAt      int64  `protobuf:"varint,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 }
 
-func (x *Token) Reset() {
-	*x = Token{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[20]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *Token) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Token) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Token) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Token) ProtoMessage() {}
+func (*Token) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Token) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[20]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Token.ProtoReflect.Descriptor instead.
-func (*Token) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{20}
-}
+func (*Token) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Token) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *Token) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Token) GetToken() string {
-	if x != nil {
-		return x.Token
-	}
-	return ""
-}
+func (x *Token) GetToken() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Token) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *Token) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Token) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *Token) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Token) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
+func (x *Token) GetUpdatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
 type UserRole struct {
 	state         protoimpl.MessageState
@@ -2073,79 +1153,31 @@ type UserRole struct {
 	CreatedAt int64 `protobuf:"varint,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 }
 
-func (x *UserRole) Reset() {
-	*x = UserRole{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[21]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *UserRole) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *UserRole) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *UserRole) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*UserRole) ProtoMessage() {}
+func (*UserRole) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *UserRole) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[21]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use UserRole.ProtoReflect.Descriptor instead.
-func (*UserRole) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{21}
-}
+func (*UserRole) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *UserRole) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *UserRole) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *UserRole) GetRoleName() string {
-	if x != nil {
-		return x.RoleName
-	}
-	return ""
-}
+func (x *UserRole) GetRoleName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *UserRole) GetResourceId() uint64 {
-	if x != nil {
-		return x.ResourceId
-	}
-	return 0
-}
+func (x *UserRole) GetResourceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *UserRole) GetResourceKind() string {
-	if x != nil {
-		return x.ResourceKind
-	}
-	return ""
-}
+func (x *UserRole) GetResourceKind() string { _ = "STUB: not implemented"; return "" }
 
-func (x *UserRole) GetBuiltIn() bool {
-	if x != nil {
-		return x.BuiltIn
-	}
-	return false
-}
+func (x *UserRole) GetBuiltIn() bool { _ = "STUB: not implemented"; return false }
 
-func (x *UserRole) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *UserRole) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
 type ResourceRole struct {
 	state         protoimpl.MessageState
@@ -2163,79 +1195,31 @@ type ResourceRole struct {
 	CreatedAt int64 `protobuf:"varint,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 }
 
-func (x *ResourceRole) Reset() {
-	*x = ResourceRole{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_vanus_core_meta_meta_proto_msgTypes[22]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *ResourceRole) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ResourceRole) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ResourceRole) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ResourceRole) ProtoMessage() {}
+func (*ResourceRole) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ResourceRole) ProtoReflect() protoreflect.Message {
-	mi := &file_vanus_core_meta_meta_proto_msgTypes[22]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ResourceRole.ProtoReflect.Descriptor instead.
-func (*ResourceRole) Descriptor() ([]byte, []int) {
-	return file_vanus_core_meta_meta_proto_rawDescGZIP(), []int{22}
-}
+func (*ResourceRole) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ResourceRole) GetResourceId() uint64 {
-	if x != nil {
-		return x.ResourceId
-	}
-	return 0
-}
+func (x *ResourceRole) GetResourceId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ResourceRole) GetResourceKind() string {
-	if x != nil {
-		return x.ResourceKind
-	}
-	return ""
-}
+func (x *ResourceRole) GetResourceKind() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ResourceRole) GetRoleName() string {
-	if x != nil {
-		return x.RoleName
-	}
-	return ""
-}
+func (x *ResourceRole) GetRoleName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ResourceRole) GetUserIdentifier() string {
-	if x != nil {
-		return x.UserIdentifier
-	}
-	return ""
-}
+func (x *ResourceRole) GetUserIdentifier() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ResourceRole) GetBuiltIn() bool {
-	if x != nil {
-		return x.BuiltIn
-	}
-	return false
-}
+func (x *ResourceRole) GetBuiltIn() bool { _ = "STUB: not implemented"; return false }
 
-func (x *ResourceRole) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
+func (x *ResourceRole) GetCreatedAt() int64 { _ = "STUB: not implemented"; return 0 }
 
 var File_vanus_core_meta_meta_proto protoreflect.FileDescriptor
 
@@ -2621,12 +1605,7 @@ var (
 	file_vanus_core_meta_meta_proto_rawDescData = file_vanus_core_meta_meta_proto_rawDesc
 )
 
-func file_vanus_core_meta_meta_proto_rawDescGZIP() []byte {
-	file_vanus_core_meta_meta_proto_rawDescOnce.Do(func() {
-		file_vanus_core_meta_meta_proto_rawDescData = protoimpl.X.CompressGZIP(file_vanus_core_meta_meta_proto_rawDescData)
-	})
-	return file_vanus_core_meta_meta_proto_rawDescData
-}
+func file_vanus_core_meta_meta_proto_rawDescGZIP() []byte { _ = "STUB: not implemented"; return nil }
 
 var file_vanus_core_meta_meta_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
 var file_vanus_core_meta_meta_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
@@ -2704,312 +1683,5 @@ var file_vanus_core_meta_meta_proto_depIdxs = []int32{
 	0,  // [0:28] is the sub-list for field type_name
 }
 
-func init() { file_vanus_core_meta_meta_proto_init() }
-func file_vanus_core_meta_meta_proto_init() {
-	if File_vanus_core_meta_meta_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_vanus_core_meta_meta_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VanusResourceName); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Namespace); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Eventbus); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Eventlog); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Block); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Segment); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SegmentHealthInfo); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Subscription); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SinkCredential); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlainCredential); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AKSKCredential); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GCloudCredential); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProtocolSetting); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubscriptionConfig); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Filter); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubscriptionInfo); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OffsetInfo); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Transformer); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Action); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*User); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Token); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserRole); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_vanus_core_meta_meta_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResourceRole); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	file_vanus_core_meta_meta_proto_msgTypes[8].OneofWrappers = []interface{}{
-		(*SinkCredential_Plain)(nil),
-		(*SinkCredential_Aws)(nil),
-		(*SinkCredential_Gcloud)(nil),
-	}
-	file_vanus_core_meta_meta_proto_msgTypes[13].OneofWrappers = []interface{}{}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_vanus_core_meta_meta_proto_rawDesc,
-			NumEnums:      6,
-			NumMessages:   29,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_vanus_core_meta_meta_proto_goTypes,
-		DependencyIndexes: file_vanus_core_meta_meta_proto_depIdxs,
-		EnumInfos:         file_vanus_core_meta_meta_proto_enumTypes,
-		MessageInfos:      file_vanus_core_meta_meta_proto_msgTypes,
-	}.Build()
-	File_vanus_core_meta_meta_proto = out.File
-	file_vanus_core_meta_meta_proto_rawDesc = nil
-	file_vanus_core_meta_meta_proto_goTypes = nil
-	file_vanus_core_meta_meta_proto_depIdxs = nil
-}
+func init()                                 { file_vanus_core_meta_meta_proto_init() }
+func file_vanus_core_meta_meta_proto_init() { _ = "STUB: not implemented"; return }

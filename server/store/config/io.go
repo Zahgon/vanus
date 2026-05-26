@@ -17,7 +17,6 @@ package config
 import (
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/io/engine"
-	"github.com/vanus-labs/vanus/server/store/io/engine/psync"
 )
 
 type IOEngineType string
@@ -33,18 +32,11 @@ type IO struct {
 }
 
 func buildIOEngine(cfg IO) engine.Interface {
-	switch cfg.Engine {
-	case Psync:
-		return buildPsyncEngine(cfg)
-	default:
-		return buildIOEngineEx(cfg)
-	}
+	_ = "STUB: not implemented"
+	return *new(engine.Interface)
 }
 
 func buildPsyncEngine(cfg IO) engine.Interface {
-	var opts []psync.Option
-	if cfg.Parallel > 0 {
-		opts = append(opts, psync.WithParallel(cfg.Parallel))
-	}
-	return psync.New(opts...)
+	_ = "STUB: not implemented"
+	return *new(engine.Interface)
 }

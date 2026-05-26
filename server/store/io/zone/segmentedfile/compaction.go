@@ -14,45 +14,9 @@
 
 package segmentedfile
 
-import (
-	// standard libraries.
-	"os"
-)
+// standard libraries.
 
 // Compact compacts all segments whose end offset is not after off.
-func (sf *SegmentedFile) Compact(off int64) error {
-	var compacted []*Segment
-	defer func() {
-		if compacted != nil {
-			go doCompact(compacted)
-		}
-	}()
+func (sf *SegmentedFile) Compact(off int64) error { _ = "STUB: not implemented"; return nil }
 
-	sf.mu.Lock()
-	defer sf.mu.Unlock()
-
-	sz := len(sf.segments)
-	if sz <= 1 {
-		return nil
-	}
-
-	for i, s := range sf.segments[:sz-1] {
-		if s.eo > off {
-			if i > 0 {
-				compacted = sf.segments[:i]
-				sf.segments = sf.segments[i:]
-			}
-			return nil
-		}
-	}
-	compacted = sf.segments[:sz-1]
-	sf.segments = sf.segments[sz-1:]
-	return nil
-}
-
-func doCompact(segments []*Segment) {
-	for _, s := range segments {
-		_ = s.Close()
-		_ = os.Remove(s.path)
-	}
-}
+func doCompact(segments []*Segment) { _ = "STUB: not implemented"; return }

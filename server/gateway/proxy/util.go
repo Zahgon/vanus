@@ -20,19 +20,11 @@ import (
 )
 
 func containsEventbus(list []*metapb.Eventbus, id vanus.ID) bool {
-	for _, eb := range list {
-		if eb.Id == id.Uint64() {
-			return true
-		}
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
 func containsSubscription(list []*metapb.Subscription, id vanus.ID) bool {
-	for _, sub := range list {
-		if sub.Id == id.Uint64() {
-			return true
-		}
-	}
+	_ = "STUB: not implemented"
 	return false
 }

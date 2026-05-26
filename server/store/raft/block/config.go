@@ -49,98 +49,60 @@ type config struct {
 	appendLis EntryAppendedListener
 }
 
-func defaultConfig() config {
-	cfg := config{
-		executorCfg: executorConfig{
-			raftExecutorParallel:      defaultRaftExecutorParallel,
-			appendExecutorParallel:    defaultAppendExecutorParallel,
-			commitExecutorParallel:    defaultCommitExecutorParallel,
-			persistExecutorParallel:   defaultPersistExecutorParallel,
-			applyExecutorParallel:     defaultApplyExecutorParallel,
-			transportExecutorParallel: defaultTransportExecutorParallel,
-		},
-	}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	if cfg.stateStore == nil { //nolint:staticcheck,revive // todo
-		// TODO(james.yin)
-	}
-	if cfg.hintStore == nil { //nolint:staticcheck,revive // todo
-		// TODO(james.yin)
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
+
+//nolint:staticcheck,revive // todo
+// TODO(james.yin)
+
+//nolint:staticcheck,revive // todo
+// TODO(james.yin)
 
 func WithStateStore(stateStore *meta.SyncStore) Option {
-	return func(cfg *config) {
-		cfg.stateStore = stateStore
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 func WithHintStore(hintStore *meta.AsyncStore) Option {
-	return func(cfg *config) {
-		cfg.hintStore = hintStore
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
-func WithWALOptions(opts ...walog.Option) Option {
-	return func(cfg *config) {
-		cfg.walOpts = opts
-	}
-}
+func WithWALOptions(opts ...walog.Option) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithRaftExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.raftExecutorParallel = parallel
-	}
-}
+func WithRaftExecutorParallel(parallel int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 func WithAppendExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.appendExecutorParallel = parallel
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 func WithCommitExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.commitExecutorParallel = parallel
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 func WithPersistExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.persistExecutorParallel = parallel
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
-func WithApplyExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.applyExecutorParallel = parallel
-	}
-}
+func WithApplyExecutorParallel(parallel int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 func WithTransportExecutorParallel(parallel int) Option {
-	return func(cfg *config) {
-		cfg.executorCfg.transportExecutorParallel = parallel
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 func WithLeaderChangedListener(lis LeaderChangedListener) Option {
-	return func(cfg *config) {
-		cfg.leaderLis = lis
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 func WithEntryAppendedListener(lis EntryAppendedListener) Option {
-	return func(cfg *config) {
-		cfg.appendLis = lis
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }

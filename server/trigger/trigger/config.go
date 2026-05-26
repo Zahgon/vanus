@@ -16,10 +16,6 @@ package trigger
 
 import (
 	"time"
-
-	"go.uber.org/ratelimit"
-
-	primitive "github.com/vanus-labs/vanus/pkg"
 )
 
 const (
@@ -53,117 +49,30 @@ type TargetGateway struct {
 	TargetHeaderName string `yaml:"header_name"`
 }
 
-func defaultConfig() Config {
-	c := Config{
-		BufferSize:       defaultBufferSize,
-		MaxRetryAttempts: primitive.MaxRetryAttempts,
-		DeliveryTimeout:  defaultDeliveryTimeout,
-		MaxWriteAttempt:  defaultMaxWriteAttempt,
-		GoroutineSize:    defaultGoroutineSize,
-		SendBatchSize:    defaultBatchSize,
-		MaxUACKNumber:    defaultMaxUACKNumber,
-		PullBatchSize:    defaultBatchSize,
-	}
-	return c
-}
+func defaultConfig() Config { _ = "STUB: not implemented"; return *new(Config) }
 
 type Option func(t *trigger)
 
-func WithBufferSize(size int) Option {
-	return func(t *trigger) {
-		if size <= 0 {
-			return
-		}
-		t.config.BufferSize = size
-	}
-}
+func WithBufferSize(size int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithMaxRetryAttempts(attempts int32) Option {
-	return func(t *trigger) {
-		if attempts < 0 {
-			attempts = primitive.MaxRetryAttempts
-		}
-		t.config.MaxRetryAttempts = attempts
-	}
-}
+func WithMaxRetryAttempts(attempts int32) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithDeliveryTimeout(timeout uint32) Option {
-	return func(t *trigger) {
-		if timeout == 0 {
-			t.config.DeliveryTimeout = defaultDeliveryTimeout
-			return
-		}
-		t.config.DeliveryTimeout = time.Duration(timeout) * time.Millisecond
-	}
-}
+func WithDeliveryTimeout(timeout uint32) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithOrdered(ordered bool) Option {
-	return func(t *trigger) {
-		t.config.Ordered = ordered
-	}
-}
+func WithOrdered(ordered bool) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithRateLimit(rateLimit uint32) Option {
-	return func(t *trigger) {
-		t.config.RateLimit = rateLimit
-		if rateLimit == 0 {
-			t.rateLimiter = ratelimit.NewUnlimited()
-			return
-		}
-		t.rateLimiter = ratelimit.New(int(rateLimit))
-	}
-}
+func WithRateLimit(rateLimit uint32) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithControllers(controllers []string) Option {
-	return func(t *trigger) {
-		t.config.Controllers = controllers
-	}
-}
+func WithControllers(controllers []string) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithDisableDeadLetter(disable bool) Option {
-	return func(t *trigger) {
-		t.config.DisableDeadLetter = disable
-	}
-}
+func WithDisableDeadLetter(disable bool) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithGoroutineSize(size int) Option {
-	return func(t *trigger) {
-		if size <= 0 {
-			return
-		}
-		t.config.GoroutineSize = size
-	}
-}
+func WithGoroutineSize(size int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithSendBatchSize(batchSize int) Option {
-	return func(t *trigger) {
-		if batchSize <= 0 {
-			return
-		}
-		t.config.SendBatchSize = batchSize
-	}
-}
+func WithSendBatchSize(batchSize int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithPullBatchSize(batchSize int) Option {
-	return func(t *trigger) {
-		if batchSize <= 0 {
-			return
-		}
-		t.config.PullBatchSize = batchSize
-	}
-}
+func WithPullBatchSize(batchSize int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithMaxUACKNumber(maxUACKNumber int) Option {
-	return func(t *trigger) {
-		if maxUACKNumber <= 0 {
-			return
-		}
-		t.config.MaxUACKNumber = maxUACKNumber
-	}
-}
+func WithMaxUACKNumber(maxUACKNumber int) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithProxy(proxy *TargetGateway) Option {
-	return func(t *trigger) {
-		t.config.TargetGateway = proxy
-	}
-}
+func WithProxy(proxy *TargetGateway) Option { _ = "STUB: not implemented"; return *new(Option) }

@@ -11,7 +11,6 @@ package storage
 
 import (
 	context "context"
-	reflect "reflect"
 
 	metadata "github.com/vanus-labs/vanus/server/controller/trigger/metadata"
 	gomock "go.uber.org/mock/gomock"
@@ -30,70 +29,61 @@ type MockTriggerWorkerStorageMockRecorder struct {
 
 // NewMockTriggerWorkerStorage creates a new mock instance.
 func NewMockTriggerWorkerStorage(ctrl *gomock.Controller) *MockTriggerWorkerStorage {
-	mock := &MockTriggerWorkerStorage{ctrl: ctrl}
-	mock.recorder = &MockTriggerWorkerStorageMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTriggerWorkerStorage) EXPECT() *MockTriggerWorkerStorageMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// DeleteTriggerWorker mocks base method.
+	return nil
 }
 
-// DeleteTriggerWorker mocks base method.
 func (m *MockTriggerWorkerStorage) DeleteTriggerWorker(ctx context.Context, id string) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteTriggerWorker", ctx, id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteTriggerWorker indicates an expected call of DeleteTriggerWorker.
 func (mr *MockTriggerWorkerStorageMockRecorder) DeleteTriggerWorker(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteTriggerWorker", reflect.TypeOf((*MockTriggerWorkerStorage)(nil).DeleteTriggerWorker), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetTriggerWorker mocks base method.
 func (m *MockTriggerWorkerStorage) GetTriggerWorker(ctx context.Context, id string) (*metadata.TriggerWorkerInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTriggerWorker", ctx, id)
-	ret0, _ := ret[0].(*metadata.TriggerWorkerInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetTriggerWorker indicates an expected call of GetTriggerWorker.
 func (mr *MockTriggerWorkerStorageMockRecorder) GetTriggerWorker(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTriggerWorker", reflect.TypeOf((*MockTriggerWorkerStorage)(nil).GetTriggerWorker), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListTriggerWorker mocks base method.
 func (m *MockTriggerWorkerStorage) ListTriggerWorker(ctx context.Context) ([]*metadata.TriggerWorkerInfo, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListTriggerWorker", ctx)
-	ret0, _ := ret[0].([]*metadata.TriggerWorkerInfo)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ListTriggerWorker indicates an expected call of ListTriggerWorker.
 func (mr *MockTriggerWorkerStorageMockRecorder) ListTriggerWorker(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTriggerWorker", reflect.TypeOf((*MockTriggerWorkerStorage)(nil).ListTriggerWorker), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveTriggerWorker mocks base method.
 func (m *MockTriggerWorkerStorage) SaveTriggerWorker(arg0 context.Context, arg1 metadata.TriggerWorkerInfo) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SaveTriggerWorker", arg0, arg1)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveTriggerWorker indicates an expected call of SaveTriggerWorker.
 func (mr *MockTriggerWorkerStorageMockRecorder) SaveTriggerWorker(arg0, arg1 any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveTriggerWorker", reflect.TypeOf((*MockTriggerWorkerStorage)(nil).SaveTriggerWorker), arg0, arg1)
+	_ = "STUB: not implemented"
+	return nil
 }

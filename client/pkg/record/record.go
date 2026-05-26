@@ -26,61 +26,19 @@ type Eventlog struct {
 	Mode LogMode
 }
 
-func (l *Eventlog) Readable() bool {
-	return l.Mode.Readable()
-}
+func (l *Eventlog) Readable() bool { _ = "STUB: not implemented"; return false }
 
-func (l *Eventlog) Writable() bool {
-	return l.Mode.Writable()
-}
+func (l *Eventlog) Writable() bool { _ = "STUB: not implemented"; return false }
 
 // WritableLog return all writable logs.
-func (b *Eventbus) WritableLog() []*Eventlog {
-	if allWritable(b.Logs) {
-		return b.Logs
-	}
+func (b *Eventbus) WritableLog() []*Eventlog { _ = "STUB: not implemented"; return nil }
 
-	logs := make([]*Eventlog, 0, len(b.Logs))
-	for _, l := range b.Logs {
-		if l.Writable() {
-			logs = append(logs, l)
-		}
-	}
-	return logs
-}
-
-func allWritable(ls []*Eventlog) bool {
-	for _, l := range ls {
-		if !l.Writable() {
-			return false
-		}
-	}
-	return true
-}
+func allWritable(ls []*Eventlog) bool { _ = "STUB: not implemented"; return false }
 
 // ReadableLog return all readable logs.
-func (b *Eventbus) ReadableLog() []*Eventlog {
-	if allReadable(b.Logs) {
-		return b.Logs
-	}
+func (b *Eventbus) ReadableLog() []*Eventlog { _ = "STUB: not implemented"; return nil }
 
-	logs := make([]*Eventlog, 0, len(b.Logs))
-	for _, l := range b.Logs {
-		if l.Readable() {
-			logs = append(logs, l)
-		}
-	}
-	return logs
-}
-
-func allReadable(ls []*Eventlog) bool {
-	for _, l := range ls {
-		if !l.Readable() {
-			return false
-		}
-	}
-	return true
-}
+func allReadable(ls []*Eventlog) bool { _ = "STUB: not implemented"; return false }
 
 type Segment struct {
 	ID               uint64
@@ -99,6 +57,4 @@ type Block struct {
 	Endpoint string
 }
 
-func (s *Segment) GetLeaderEndpoint() string {
-	return s.Blocks[s.LeaderBlockID].Endpoint
-}
+func (s *Segment) GetLeaderEndpoint() string { _ = "STUB: not implemented"; return "" }

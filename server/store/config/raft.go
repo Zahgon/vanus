@@ -35,29 +35,6 @@ type Raft struct {
 	Parallel RaftExecutorParallel `yaml:"parallel"`
 }
 
-func (c *Raft) Validate() error {
-	return c.WAL.Validate(minRaftLogWALFileSize)
-}
+func (c *Raft) Validate() error { _ = "STUB: not implemented"; return nil }
 
-func (c *Raft) Options() (opts []block.Option) {
-	opts = append(opts, block.WithWALOptions(c.WAL.Options()...))
-	if c.Parallel.Raft != 0 {
-		opts = append(opts, block.WithRaftExecutorParallel(c.Parallel.Raft))
-	}
-	if c.Parallel.Append != 0 {
-		opts = append(opts, block.WithAppendExecutorParallel(c.Parallel.Append))
-	}
-	if c.Parallel.Commit != 0 {
-		opts = append(opts, block.WithCommitExecutorParallel(c.Parallel.Commit))
-	}
-	if c.Parallel.Persist != 0 {
-		opts = append(opts, block.WithPersistExecutorParallel(c.Parallel.Persist))
-	}
-	if c.Parallel.Apply != 0 {
-		opts = append(opts, block.WithApplyExecutorParallel(c.Parallel.Append))
-	}
-	if c.Parallel.Transport != 0 {
-		opts = append(opts, block.WithTransportExecutorParallel(c.Parallel.Transport))
-	}
-	return opts
-}
+func (c *Raft) Options() (opts []block.Option) { _ = "STUB: not implemented"; return nil }

@@ -14,13 +14,9 @@
 
 package codec
 
-import (
-	// standard libraries.
-	"encoding/binary"
-
+import ( // standard libraries.
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/block"
-	ceschema "github.com/vanus-labs/vanus/server/store/schema/ce"
 )
 
 const (
@@ -34,13 +30,13 @@ type endEntryEncoder struct{}
 // Make sure endEntryEncoder implements RecordDataEncoder.
 var _ RecordDataEncoder = (*endEntryEncoder)(nil)
 
-func (e *endEntryEncoder) Size(_ block.Entry) int {
-	return endEntrySize
-}
+func (e *endEntryEncoder) Size(_ block.Entry) int { _ = "STUB: not implemented"; return 0 }
 
 func (e *endEntryEncoder) MarshalTo(entry block.Entry, buf []byte) (int, int, error) {
-	binary.LittleEndian.PutUint64(buf[0:], endBitmap<<bitmapOffset)                // bitmap
-	binary.LittleEndian.PutUint64(buf[8:], uint64(ceschema.SequenceNumber(entry))) // seq num
-	binary.LittleEndian.PutUint64(buf[16:], uint64(ceschema.Stime(entry)))         // stime
-	return endEntrySize, 0, nil
+	_ = "STUB: not implemented"
+	return 0, 0, nil
 }
+
+// bitmap
+// seq num
+// stime

@@ -23,23 +23,13 @@ type EventbusOptions struct {
 	ID   uint64
 }
 
-func DefaultEventbusOptions() *EventbusOptions {
-	return &EventbusOptions{}
-}
+func DefaultEventbusOptions() *EventbusOptions { _ = "STUB: not implemented"; return nil }
 
 type EventbusOption func(opt *EventbusOptions)
 
-func WithName(name string) EventbusOption {
-	return func(opt *EventbusOptions) {
-		opt.Name = name
-	}
-}
+func WithName(name string) EventbusOption { _ = "STUB: not implemented"; return *new(EventbusOption) }
 
-func WithID(id uint64) EventbusOption {
-	return func(opt *EventbusOptions) {
-		opt.ID = id
-	}
-}
+func WithID(id uint64) EventbusOption { _ = "STUB: not implemented"; return *new(EventbusOption) }
 
 type WriteOption func(*WriteOptions)
 
@@ -48,18 +38,9 @@ type WriteOptions struct {
 	Oneway bool
 }
 
-func (wo *WriteOptions) Apply(opts ...WriteOption) {
-	for i := range opts {
-		opts[i](wo)
-	}
-}
+func (wo *WriteOptions) Apply(opts ...WriteOption) { _ = "STUB: not implemented"; return }
 
-func (wo *WriteOptions) Copy() *WriteOptions {
-	return &WriteOptions{
-		Oneway: wo.Oneway,
-		Policy: wo.Policy,
-	}
-}
+func (wo *WriteOptions) Copy() *WriteOptions { _ = "STUB: not implemented"; return nil }
 
 type ReadOption func(*ReadOptions)
 
@@ -69,23 +50,12 @@ type ReadOptions struct {
 	Policy         ReadPolicy
 }
 
-func (ro *ReadOptions) Apply(opts ...ReadOption) {
-	for i := range opts {
-		opts[i](ro)
-	}
-}
+func (ro *ReadOptions) Apply(opts ...ReadOption) { _ = "STUB: not implemented"; return }
 
-func (ro *ReadOptions) Copy() *ReadOptions {
-	return &ReadOptions{
-		BatchSize:      ro.BatchSize,
-		PollingTimeout: ro.PollingTimeout,
-		Policy:         ro.Policy,
-	}
-}
+func (ro *ReadOptions) Copy() *ReadOptions { _ = "STUB: not implemented"; return nil }
 
 type LogOption func(*LogOptions)
 
 type LogOptions struct {
 	Policy LogPolicy
 }
-

@@ -26,37 +26,26 @@ import (
 var _ io.Closer = (*eventlogClient)(nil)
 
 func NewEventlogClient(cc *Conn) ctrlpb.EventlogControllerClient {
-	return &eventlogClient{
-		cc: cc,
-	}
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.EventlogControllerClient)
 }
 
 type eventlogClient struct {
 	cc *Conn
 }
 
-func (elc *eventlogClient) Close() error {
-	return elc.cc.close()
-}
+func (elc *eventlogClient) Close() error { _ = "STUB: not implemented"; return nil }
 
 func (elc *eventlogClient) ListSegment(
 	ctx context.Context, in *ctrlpb.ListSegmentRequest, opts ...grpc.CallOption,
 ) (*ctrlpb.ListSegmentResponse, error) {
-	out := new(ctrlpb.ListSegmentResponse)
-	err := elc.cc.invoke(ctx, "/vanus.core.controller.EventlogController/ListSegment", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (elc *eventlogClient) GetAppendableSegment(
 	ctx context.Context, in *ctrlpb.GetAppendableSegmentRequest, opts ...grpc.CallOption,
 ) (*ctrlpb.GetAppendableSegmentResponse, error) {
-	out := new(ctrlpb.GetAppendableSegmentResponse)
-	err := elc.cc.invoke(ctx, "/vanus.core.controller.EventlogController/GetAppendableSegment", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

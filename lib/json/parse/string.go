@@ -25,51 +25,23 @@ var errInvalidString = errors.New("invalid string")
 const hicc = 0x1F // highest control characters.
 
 func ConsumeDoubleQuotedString(r io.ByteReader, w io.ByteWriter) error {
-	for {
-		c, err := r.ReadByte()
-		if err != nil {
-			return errInvalidString
-		}
-
-		switch c {
-		case '"': // double quotes, end of string
-			return nil
-		case '\\': // backslash
-			if err = ConsumeEscapedWithDoubleQuote(r, w); err != nil {
-				return errInvalidString
-			}
-		default:
-			if c <= hicc { // control characters
-				return errInvalidString
-			}
-			if err = w.WriteByte(c); err != nil {
-				return errInvalidString
-			}
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// double quotes, end of string
+
+// backslash
+
+// control characters
 
 func ConsumeSingleQuotedString(r io.ByteReader, w io.ByteWriter) error {
-	for {
-		c, err := r.ReadByte()
-		if err != nil {
-			return errInvalidString
-		}
-
-		switch c {
-		case '\'': // single quote, end of string
-			return nil
-		case '\\': // backslash
-			if err = ConsumeEscapedWithSingleQuote(r, w); err != nil {
-				return errInvalidString
-			}
-		default:
-			if c <= hicc { // control characters
-				return errInvalidString
-			}
-			if err = w.WriteByte(c); err != nil {
-				return errInvalidString
-			}
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// single quote, end of string
+
+// backslash
+
+// control characters

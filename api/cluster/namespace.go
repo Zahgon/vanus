@@ -18,8 +18,6 @@ import (
 	"context"
 	"sync"
 
-	"google.golang.org/protobuf/types/known/wrapperspb"
-
 	"github.com/vanus-labs/vanus/api/cluster/raw_client"
 	ctrlpb "github.com/vanus-labs/vanus/api/controller"
 	metapb "github.com/vanus-labs/vanus/api/meta"
@@ -36,43 +34,35 @@ type namespaceService struct {
 }
 
 func (ns *namespaceService) GetNamespace(ctx context.Context, id uint64) (*metapb.Namespace, error) {
-	v, exist := ns.cache.Load(id)
-	if exist {
-		return v.(*metapb.Namespace), nil
-	}
-	n, err := ns.client.GetNamespace(ctx, &ctrlpb.GetNamespaceRequest{Id: id})
-	if err != nil {
-		return nil, err
-	}
-	// ns.cache.Store(id, n) unmask when dirty cache is resolved
-	return n, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// ns.cache.Store(id, n) unmask when dirty cache is resolved
+
 func (ns *namespaceService) GetSystemNamespace(ctx context.Context) (*metapb.Namespace, error) {
-	return ns.GetNamespaceByName(ctx, systemNamespace)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ns *namespaceService) GetDefaultNamespace(ctx context.Context) (*metapb.Namespace, error) {
-	return ns.GetNamespaceByName(ctx, defaultNamespace)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ns *namespaceService) GetNamespaceByName(ctx context.Context, name string) (*metapb.Namespace, error) {
-	v, exist := ns.cache.Load(name)
-	if exist {
-		return v.(*metapb.Namespace), nil
-	}
-	n, err := ns.client.GetNamespaceWithHumanFriendly(ctx, wrapperspb.String(name))
-	if err != nil {
-		return nil, err
-	}
-	// ns.cache.Store(name, n) unmask when dirty cache is resolved
-	return n, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// ns.cache.Store(name, n) unmask when dirty cache is resolved
+
 func newNamespaceService(cc *raw_client.Conn) NamespaceService {
-	return &namespaceService{client: raw_client.NewNamespaceClient(cc)}
+	_ = "STUB: not implemented"
+	return *new(NamespaceService)
 }
 
 func (ns *namespaceService) RawClient() ctrlpb.NamespaceControllerClient {
-	return ns.client
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.NamespaceControllerClient)
 }

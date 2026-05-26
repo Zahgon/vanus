@@ -33,88 +33,57 @@ type eventbusClient struct {
 }
 
 func NewEventbusClient(cc *Conn) ctrlpb.EventbusControllerClient {
-	return &eventbusClient{
-		cc: cc,
-	}
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.EventbusControllerClient)
 }
 
-func (ec *eventbusClient) Close() error {
-	return ec.cc.close()
-}
+func (ec *eventbusClient) Close() error { _ = "STUB: not implemented"; return nil }
 
 func (ec *eventbusClient) CreateEventbus(
 	ctx context.Context, in *ctrlpb.CreateEventbusRequest, opts ...grpc.CallOption,
 ) (*metapb.Eventbus, error) {
-	out := new(metapb.Eventbus)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/CreateEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) CreateSystemEventbus(
 	ctx context.Context, in *ctrlpb.CreateEventbusRequest, opts ...grpc.CallOption,
 ) (*metapb.Eventbus, error) {
-	out := new(metapb.Eventbus)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/CreateSystemEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) DeleteEventbus(
 	ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption,
 ) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/DeleteEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) GetEventbus(
 	ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption,
 ) (*metapb.Eventbus, error) {
-	out := new(metapb.Eventbus)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/GetEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) ListEventbus(
 	ctx context.Context, in *ctrlpb.ListEventbusRequest, opts ...grpc.CallOption,
 ) (*ctrlpb.ListEventbusResponse, error) {
-	out := new(ctrlpb.ListEventbusResponse)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/ListEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) UpdateEventbus(
 	ctx context.Context, in *ctrlpb.UpdateEventbusRequest, opts ...grpc.CallOption,
 ) (*metapb.Eventbus, error) {
-	out := new(metapb.Eventbus)
-	err := ec.cc.invoke(ctx, "/vanus.core.controller.EventbusController/UpdateEventbus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (ec *eventbusClient) GetEventbusWithHumanFriendly(
 	ctx context.Context, in *ctrlpb.GetEventbusWithHumanFriendlyRequest, opts ...grpc.CallOption,
 ) (*metapb.Eventbus, error) {
-	out := new(metapb.Eventbus)
-	err := ec.cc.invoke(ctx, ctrlpb.EventbusController_GetEventbusWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

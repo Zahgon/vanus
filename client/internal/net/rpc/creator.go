@@ -26,5 +26,6 @@ type ClientCreator interface {
 type NewClientFunc func(conn *grpc.ClientConn) interface{}
 
 func (f NewClientFunc) Create(conn *grpc.ClientConn) (interface{}, error) {
-	return f(conn), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

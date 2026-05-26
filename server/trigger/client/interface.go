@@ -18,7 +18,6 @@ package client
 import (
 	"context"
 	"errors"
-	"fmt"
 	nethttp "net/http"
 
 	ce "github.com/cloudevents/sdk-go/v2"
@@ -37,25 +36,13 @@ type Result struct {
 	Err        error
 }
 
-func newInternalErr(err error) Result {
-	return Result{
-		StatusCode: nethttp.StatusInternalServerError,
-		Err:        err,
-	}
-}
+func newInternalErr(err error) Result { _ = "STUB: not implemented"; return *new(Result) }
 
-func newUnknownErr(err error) Result {
-	return Result{
-		StatusCode: errUnknown,
-		Err:        err,
-	}
-}
+func newUnknownErr(err error) Result { _ = "STUB: not implemented"; return *new(Result) }
 
 func convertHTTPResponse(statusCode int, desc string, body []byte) Result {
-	return Result{
-		StatusCode: statusCode,
-		Err:        fmt.Errorf("%s response statusCode: %d, body: %s", desc, statusCode, string(body)),
-	}
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
 var (

@@ -11,7 +11,6 @@ package block
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	kv "github.com/vanus-labs/vanus/pkg/kv"
@@ -32,68 +31,55 @@ type MockAllocatorMockRecorder struct {
 
 // NewMockAllocator creates a new mock instance.
 func NewMockAllocator(ctrl *gomock.Controller) *MockAllocator {
-	mock := &MockAllocator{ctrl: ctrl}
-	mock.recorder = &MockAllocatorMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockAllocator) EXPECT() *MockAllocatorMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Pick mocks base method.
+	return nil
 }
 
-// Pick mocks base method.
 func (m *MockAllocator) Pick(ctx context.Context, num int) ([]*metadata.Block, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Pick", ctx, num)
-	ret0, _ := ret[0].([]*metadata.Block)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Pick indicates an expected call of Pick.
 func (mr *MockAllocatorMockRecorder) Pick(ctx, num any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Pick", reflect.TypeOf((*MockAllocator)(nil).Pick), ctx, num)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PickByVolumes mocks base method.
 func (m *MockAllocator) PickByVolumes(ctx context.Context, volumes []vsr.ID) ([]*metadata.Block, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "PickByVolumes", ctx, volumes)
-	ret0, _ := ret[0].([]*metadata.Block)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // PickByVolumes indicates an expected call of PickByVolumes.
 func (mr *MockAllocatorMockRecorder) PickByVolumes(ctx, volumes any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PickByVolumes", reflect.TypeOf((*MockAllocator)(nil).PickByVolumes), ctx, volumes)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Run mocks base method.
 func (m *MockAllocator) Run(ctx context.Context, kvCli kv.Client, dynamicAllocate bool) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Run", ctx, kvCli, dynamicAllocate)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Run indicates an expected call of Run.
 func (mr *MockAllocatorMockRecorder) Run(ctx, kvCli, dynamicAllocate any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Run", reflect.TypeOf((*MockAllocator)(nil).Run), ctx, kvCli, dynamicAllocate)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
-func (m *MockAllocator) Stop() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Stop")
-}
+func (m *MockAllocator) Stop() { _ = "STUB: not implemented"; return }
 
 // Stop indicates an expected call of Stop.
-func (mr *MockAllocatorMockRecorder) Stop() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockAllocator)(nil).Stop))
-}
+func (mr *MockAllocatorMockRecorder) Stop() *gomock.Call { _ = "STUB: not implemented"; return nil }

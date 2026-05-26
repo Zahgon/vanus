@@ -34,64 +34,20 @@ type authorization struct {
 }
 
 func NewAuthorization(client RoleClient, cluster cluster.Cluster) Authorization {
-	return &authorization{
-		cluster: cluster,
-		client:  client,
-	}
+	_ = "STUB: not implemented"
+	return *new(Authorization)
 }
 
 func (a *authorization) Authorize(ctx context.Context, user string, attributes Attributes) (bool, error) {
-	isClusterAdmin, err := a.client.IsClusterAdmin(ctx, user)
-	if err != nil {
-		return false, err
-	}
-	if isClusterAdmin {
-		return true, nil
-	}
-	userRoles, err := a.client.GetUserRole(ctx, user)
-	if err != nil {
-		return false, err
-	}
-	if hasPermission(userRoles, attributes, attributes.GetResourceID()) {
-		return true, nil
-	}
-	if attributes.GetResourceID() == vanus.EmptyID() {
-		return false, nil
-	}
-	var resourceID vanus.ID
-	switch attributes.GetResourceKind() {
-	case ResourceEventbus:
-		eb, err := a.cluster.EventbusService().GetEventbus(ctx, attributes.GetResourceID().Uint64())
-		if err != nil || eb == nil {
-			return false, err
-		}
-		resourceID = vanus.NewIDFromUint64(eb.NamespaceId)
-	case ResourceSubscription:
-		sub, err := a.cluster.TriggerService().GetSubscription(ctx, attributes.GetResourceID().Uint64())
-		if err != nil || sub == nil {
-			return false, err
-		}
-		resourceID = vanus.NewIDFromUint64(sub.NamespaceId)
-	default:
-		return false, nil
-	}
-	return hasPermission(userRoles, attributes, resourceID), nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // hasPermission is loop all user role to check has permission
 // todo optimize use role compare with resource action role
 func hasPermission(roles []*UserRole, attributes Attributes, resourceID vanus.ID) bool {
-	for _, role := range roles {
-		if role.BuiltIn {
-			if role.ResourceID != resourceID {
-				continue
-			}
-			if hasAction(role.ResourceKind, role.Role, attributes.GetAction()) {
-				return true
-			}
-			continue
-		}
-		// todo custom role
-	}
+	_ = "STUB: not implemented"
 	return false
 }
+
+// todo custom role

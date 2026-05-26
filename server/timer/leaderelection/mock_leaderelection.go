@@ -11,7 +11,6 @@ package leaderelection
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -28,43 +27,34 @@ type MockManagerMockRecorder struct {
 }
 
 // NewMockManager creates a new mock instance.
-func NewMockManager(ctrl *gomock.Controller) *MockManager {
-	mock := &MockManager{ctrl: ctrl}
-	mock.recorder = &MockManagerMockRecorder{mock}
-	return mock
-}
+func NewMockManager(ctrl *gomock.Controller) *MockManager { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockManager) EXPECT() *MockManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Start mocks base method.
+	return nil
 }
 
-// Start mocks base method.
 func (m *MockManager) Start(ctx context.Context, callbacks LeaderCallbacks) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start", ctx, callbacks)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start indicates an expected call of Start.
 func (mr *MockManagerMockRecorder) Start(ctx, callbacks any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockManager)(nil).Start), ctx, callbacks)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
-func (m *MockManager) Stop(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Stop", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockManager) Stop(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Stop indicates an expected call of Stop.
 func (mr *MockManagerMockRecorder) Stop(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockManager)(nil).Stop), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockMutex is a mock of Mutex interface.
@@ -79,41 +69,29 @@ type MockMutexMockRecorder struct {
 }
 
 // NewMockMutex creates a new mock instance.
-func NewMockMutex(ctrl *gomock.Controller) *MockMutex {
-	mock := &MockMutex{ctrl: ctrl}
-	mock.recorder = &MockMutexMockRecorder{mock}
-	return mock
-}
+func NewMockMutex(ctrl *gomock.Controller) *MockMutex { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockMutex) EXPECT() *MockMutexMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// TryLock mocks base method.
+	return nil
 }
 
-// TryLock mocks base method.
-func (m *MockMutex) TryLock(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "TryLock", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockMutex) TryLock(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // TryLock indicates an expected call of TryLock.
 func (mr *MockMutexMockRecorder) TryLock(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TryLock", reflect.TypeOf((*MockMutex)(nil).TryLock), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Unlock mocks base method.
-func (m *MockMutex) Unlock(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Unlock", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockMutex) Unlock(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Unlock indicates an expected call of Unlock.
 func (mr *MockMutexMockRecorder) Unlock(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Unlock", reflect.TypeOf((*MockMutex)(nil).Unlock), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -32,11 +32,11 @@ type builtInClient struct {
 }
 
 func NewBuiltInClient(cluster cluster.Cluster) TokenClient {
-	return &builtInClient{
-		cluster: cluster,
-	}
+	_ = "STUB: not implemented"
+	return *new(TokenClient)
 }
 
 func (c *builtInClient) GetUser(ctx context.Context, token string) (string, error) {
-	return c.cluster.AuthService().GetUserByToken(ctx, token)
+	_ = "STUB: not implemented"
+	return "", nil
 }

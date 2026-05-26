@@ -42,8 +42,8 @@ type scheduler struct {
 var _ Scheduler = (*scheduler)(nil)
 
 func NewScheduler(e engine.Interface, opts ...Option) Scheduler {
-	cfg := makeConfig(opts...)
-	return new(scheduler).init(e, cfg)
+	_ = "STUB: not implemented"
+	return *new(Scheduler)
 }
 
 func (s *scheduler) init(e engine.Interface, cfg config) *scheduler {
@@ -54,72 +54,31 @@ func (s *scheduler) init(e engine.Interface, cfg config) *scheduler {
 	return s
 }
 
-func (s *scheduler) Close() {
-	s.pq.Close()
-	s.e.Close()
-	s.callbackExecutor.Close()
-}
+func (s *scheduler) Close() { _ = "STUB: not implemented"; return }
 
 func (s *scheduler) Register(z zone.Interface, wo int64, direct bool) Stream {
-	so := wo % int64(s.bp.BufferSize())
-	base := wo - so
-
-	var buf *block.Buffer
-	if so != 0 {
-		buf = s.getBuffer(base)
-		f, off := z.Raw(base)
-		if f == nil {
-			// TODO(james.yin)
-			panic("invalid zone")
-		}
-		if err := buf.RecoverFromFile(f, off, int(so), direct); err != nil {
-			panic(err)
-		}
-	}
-
-	ss := &stream{
-		s:                s,
-		z:                z,
-		buf:              buf,
-		off:              base,
-		pending:          make(map[int64]*flushTask, 4),
-		callbackExecutor: s.callbackExecutor.NewFlow(),
-	}
-	ss.pending[base] = &flushTask{
-		ready: true,
-	}
-
-	return ss
+	_ = "STUB: not implemented"
+	return *new(Stream)
 }
 
-func (s *scheduler) Unregister(ss Stream) {
-	sss, _ := ss.(*stream)
-	sss.mu.Lock()
-	sss.cancelFlushTimer()
-	sss.mu.Unlock()
-	sss.callbackExecutor.Close()
-}
+// TODO(james.yin)
+
+func (s *scheduler) Unregister(ss Stream) { _ = "STUB: not implemented"; return }
 
 func (s *scheduler) writeAt(z zone.Interface, b []byte, off int64, so, eo int, cb io.WriteCallback) {
-	s.e.WriteAt(z, b, off, so, eo, cb)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (s *scheduler) bufferSize() int {
-	return s.bp.BufferSize()
-}
+func (s *scheduler) bufferSize() int { _ = "STUB: not implemented"; return 0 }
 
-func (s *scheduler) getBuffer(base int64) *block.Buffer {
-	return s.bp.Get(base)
-}
+func (s *scheduler) getBuffer(base int64) *block.Buffer { _ = "STUB: not implemented"; return nil }
 
-func (s *scheduler) putBuffer(b *block.Buffer) {
-	s.bp.Put(b)
-}
+func (s *scheduler) putBuffer(b *block.Buffer) { _ = "STUB: not implemented"; return }
 
 func (s *scheduler) delayFlush(ss *stream) PendingID {
-	return s.pq.Push(ss)
+	_ = "STUB: not implemented"
+	return *new(PendingID)
 }
 
-func (s *scheduler) cancelFlushTask(pid PendingID) {
-	s.pq.Cancel(pid)
-}
+func (s *scheduler) cancelFlushTask(pid PendingID) { _ = "STUB: not implemented"; return }

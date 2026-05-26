@@ -14,45 +14,8 @@
 
 package pkg
 
-import (
-	"net"
-	"strconv"
-	"strings"
-)
+func GetLocalIP() string { _ = "STUB: not implemented"; return "" }
 
-func GetLocalIP() string {
-	return getInternalIP()
-}
+func getInternalIP() string { _ = "STUB: not implemented"; return "" }
 
-func getInternalIP() string {
-	addrs, err := net.InterfaceAddrs()
-	if err != nil {
-		panic(err)
-	}
-	for _, addr := range addrs {
-		if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-			if ipnet.IP.To4() != nil {
-				return ipnet.IP.String()
-			}
-		}
-	}
-	return ""
-}
-
-func IsValidIPV4Address(str string) bool {
-	strs := strings.Split(str, ":")
-	if len(strs) > 2 {
-		return false
-	}
-	ip := net.ParseIP(strs[0])
-	if ip == nil {
-		return false
-	}
-	if len(strs) == 2 {
-		_, err := strconv.Atoi(strs[1])
-		if err != nil {
-			return false
-		}
-	}
-	return true
-}
+func IsValidIPV4Address(str string) bool { _ = "STUB: not implemented"; return false }

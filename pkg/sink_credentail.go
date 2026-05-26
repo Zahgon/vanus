@@ -28,40 +28,7 @@ type SinkCredential interface {
 	GetType() CredentialType
 }
 
-func FillSinkCredential(dst, src SinkCredential) {
-	if dst == nil || src == nil {
-		return
-	}
-	if dst.GetType() != src.GetType() {
-		return
-	}
-	switch dst.GetType() {
-	case Plain:
-		_dst, _ := dst.(*PlainSinkCredential)
-		_src, _ := src.(*PlainSinkCredential)
-		if _dst.Identifier == SecretsMask {
-			_dst.Identifier = _src.Identifier
-		}
-		if _dst.Secret == SecretsMask {
-			_dst.Secret = _src.Secret
-		}
-	case AWS:
-		_dst, _ := src.(*AkSkSinkCredential)
-		_src, _ := dst.(*AkSkSinkCredential)
-		if _dst.AccessKeyID == SecretsMask {
-			_dst.AccessKeyID = _src.AccessKeyID
-		}
-		if _dst.SecretAccessKey == SecretsMask {
-			_dst.SecretAccessKey = _src.SecretAccessKey
-		}
-	case GCloud:
-		_dst, _ := src.(*GCloudSinkCredential)
-		_src, _ := dst.(*GCloudSinkCredential)
-		if _dst.CredentialJSON == SecretsMask {
-			_dst.CredentialJSON = _src.CredentialJSON
-		}
-	}
-}
+func FillSinkCredential(dst, src SinkCredential) { _ = "STUB: not implemented"; return }
 
 type PlainSinkCredential struct {
 	Identifier string `json:"identifier"`
@@ -69,14 +36,13 @@ type PlainSinkCredential struct {
 }
 
 func NewPlainSinkCredential(identifier, secret string) SinkCredential {
-	return &PlainSinkCredential{
-		Identifier: identifier,
-		Secret:     secret,
-	}
+	_ = "STUB: not implemented"
+	return *new(SinkCredential)
 }
 
 func (c *PlainSinkCredential) GetType() CredentialType {
-	return Plain
+	_ = "STUB: not implemented"
+	return *new(CredentialType)
 }
 
 type AkSkSinkCredential struct {
@@ -85,14 +51,13 @@ type AkSkSinkCredential struct {
 }
 
 func NewAkSkSinkCredential(accessKeyID, secretAccessKey string) SinkCredential {
-	return &AkSkSinkCredential{
-		AccessKeyID:     accessKeyID,
-		SecretAccessKey: secretAccessKey,
-	}
+	_ = "STUB: not implemented"
+	return *new(SinkCredential)
 }
 
 func (c *AkSkSinkCredential) GetType() CredentialType {
-	return AWS
+	_ = "STUB: not implemented"
+	return *new(CredentialType)
 }
 
 type GCloudSinkCredential struct {
@@ -100,11 +65,11 @@ type GCloudSinkCredential struct {
 }
 
 func NewGCloudSinkCredential(credentialJSON string) SinkCredential {
-	return &GCloudSinkCredential{
-		CredentialJSON: credentialJSON,
-	}
+	_ = "STUB: not implemented"
+	return *new(SinkCredential)
 }
 
 func (c *GCloudSinkCredential) GetType() CredentialType {
-	return GCloud
+	_ = "STUB: not implemented"
+	return *new(CredentialType)
 }

@@ -15,10 +15,6 @@
 package trigger
 
 import (
-	"fmt"
-	"math"
-	"net/http"
-	"strconv"
 	"time"
 
 	primitive "github.com/vanus-labs/vanus/pkg"
@@ -33,22 +29,8 @@ type clientConfig struct {
 }
 
 func newEventClient(cfg clientConfig) client.EventClient {
-	sink := string(cfg.sink)
-	switch cfg.protocol {
-	case primitive.AwsLambdaProtocol:
-		_credential, _ := cfg.credential.(*primitive.AkSkSinkCredential)
-		return client.NewAwsLambdaClient(_credential.AccessKeyID, _credential.SecretAccessKey, sink)
-	case primitive.GCloudFunctions:
-		_credential, _ := cfg.credential.(*primitive.GCloudSinkCredential)
-		return client.NewGCloudFunctionClient(sink, _credential.CredentialJSON)
-	case primitive.GRPC:
-		return client.NewGRPCClient(sink)
-	default:
-		if cfg.gateway != nil {
-			return client.NewHTTPClientWithGateway(sink, cfg.gateway.Address, cfg.gateway.TargetHeaderName)
-		}
-		return client.NewHTTPClient(sink)
-	}
+	_ = "STUB: not implemented"
+	return *new(client.EventClient)
 }
 
 const (
@@ -56,48 +38,14 @@ const (
 	ErrTransformCode = 1
 )
 
-func isShouldRetry(statusCode int) (bool, string) {
-	switch {
-	case statusCode == ErrTransformCode:
-		return false, "TransformError"
-	case statusCode == OrderEventCode:
-		return false, "OrderEvent"
-	case statusCode >= http.StatusBadRequest && statusCode < http.StatusInternalServerError:
-		if statusCode == http.StatusTooManyRequests {
-			return true, ""
-		}
-		return false, fmt.Sprintf("Response%d", statusCode)
-	default:
-		return true, ""
-	}
-}
+func isShouldRetry(statusCode int) (bool, string) { _ = "STUB: not implemented"; return false, "" }
 
 func calDeliveryTime(attempts int32) time.Duration {
-	var v int
-	switch {
-	case attempts >= 10:
-		v = 3600
-	case attempts >= 4:
-		v = int(30 * math.Pow(2, float64(attempts-4)))
-	case attempts >= 2:
-		v = int(5 * (attempts - 1))
-	default:
-		v = 1
-	}
-	return time.Duration(v) * time.Second
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }
 
 func getRetryAttempts(attempts interface{}) (int32, error) {
-	switch v := attempts.(type) {
-	case int32:
-		return v, nil
-	case string:
-		intV, err := strconv.ParseInt(v, 10, 64)
-		if err == nil {
-			return int32(intV), nil
-		}
-		return 0, fmt.Errorf("parse int error: %w", err)
-	default:
-		return 0, fmt.Errorf("attempts type %v not support", v)
-	}
+	_ = "STUB: not implemented"
+	return 0, nil
 }

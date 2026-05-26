@@ -24,6 +24,7 @@ import (
 // b) another slice that, when applied to the config resulted from 1), represents the
 // ConfState.
 func toConfChangeSingle(cs pb.ConfState) (out []pb.ConfChangeSingle, in []pb.ConfChangeSingle) {
+	_ = "STUB: not implemented"
 	// Example to follow along this code:
 	// voters=(1 2 3) learners=(5) outgoing=(1 2 4 6) learners_next=(4)
 	//
@@ -51,61 +52,25 @@ func toConfChangeSingle(cs pb.ConfState) (out []pb.ConfChangeSingle, in []pb.Con
 	//   quorum=(1 2 3)&&(1 2 4 6) learners=(5) learners_next=(4)
 	//
 	// as desired.
-
-	for _, id := range cs.VotersOutgoing {
-		// If there are outgoing voters, first add them one by one so that the
-		// (non-joint) config has them all.
-		out = append(out, pb.ConfChangeSingle{
-			Type:   pb.ConfChangeAddNode,
-			NodeID: id,
-		})
-
-	}
-
-	// We're done constructing the outgoing slice, now on to the incoming one
-	// (which will apply on top of the config created by the outgoing slice).
-
-	// First, we'll remove all of the outgoing voters.
-	for _, id := range cs.VotersOutgoing {
-		in = append(in, pb.ConfChangeSingle{
-			Type:   pb.ConfChangeRemoveNode,
-			NodeID: id,
-		})
-	}
-	// Then we'll add the incoming voters and learners.
-	for _, id := range cs.Voters {
-		in = append(in, pb.ConfChangeSingle{
-			Type:   pb.ConfChangeAddNode,
-			NodeID: id,
-		})
-	}
-	for _, id := range cs.Learners {
-		in = append(in, pb.ConfChangeSingle{
-			Type:   pb.ConfChangeAddLearnerNode,
-			NodeID: id,
-		})
-	}
-	// Same for LearnersNext; these are nodes we want to be learners but which
-	// are currently voters in the outgoing config.
-	for _, id := range cs.LearnersNext {
-		in = append(in, pb.ConfChangeSingle{
-			Type:   pb.ConfChangeAddLearnerNode,
-			NodeID: id,
-		})
-	}
-	return out, in
+	return nil, nil
 }
 
+// If there are outgoing voters, first add them one by one so that the
+// (non-joint) config has them all.
+
+// We're done constructing the outgoing slice, now on to the incoming one
+// (which will apply on top of the config created by the outgoing slice).
+
+// First, we'll remove all of the outgoing voters.
+
+// Then we'll add the incoming voters and learners.
+
+// Same for LearnersNext; these are nodes we want to be learners but which
+// are currently voters in the outgoing config.
+
 func chain(chg Changer, ops ...func(Changer) (tracker.Config, tracker.ProgressMap, error)) (tracker.Config, tracker.ProgressMap, error) {
-	for _, op := range ops {
-		cfg, prs, err := op(chg)
-		if err != nil {
-			return tracker.Config{}, nil, err
-		}
-		chg.Tracker.Config = cfg
-		chg.Tracker.Progress = prs
-	}
-	return chg.Tracker.Config, chg.Tracker.Progress, nil
+	_ = "STUB: not implemented"
+	return *new(tracker.Config), *new(tracker.ProgressMap), nil
 }
 
 // Restore takes a Changer (which must represent an empty configuration), and
@@ -117,39 +82,24 @@ func chain(chg Changer, ops ...func(Changer) (tracker.Config, tracker.ProgressMa
 // this can just take LastIndex and MaxInflight directly instead and cook up
 // the results from that alone.
 func Restore(chg Changer, cs pb.ConfState) (tracker.Config, tracker.ProgressMap, error) {
-	outgoing, incoming := toConfChangeSingle(cs)
-
-	var ops []func(Changer) (tracker.Config, tracker.ProgressMap, error)
-
-	if len(outgoing) == 0 {
-		// No outgoing config, so just apply the incoming changes one by one.
-		for _, cc := range incoming {
-			cc := cc // loop-local copy
-			ops = append(ops, func(chg Changer) (tracker.Config, tracker.ProgressMap, error) {
-				return chg.Simple(cc)
-			})
-		}
-	} else {
-		// The ConfState describes a joint configuration.
-		//
-		// First, apply all of the changes of the outgoing config one by one, so
-		// that it temporarily becomes the incoming active config. For example,
-		// if the config is (1 2 3)&(2 3 4), this will establish (2 3 4)&().
-		for _, cc := range outgoing {
-			cc := cc // loop-local copy
-			ops = append(ops, func(chg Changer) (tracker.Config, tracker.ProgressMap, error) {
-				return chg.Simple(cc)
-			})
-		}
-		// Now enter the joint state, which rotates the above additions into the
-		// outgoing config, and adds the incoming config in. Continuing the
-		// example above, we'd get (1 2 3)&(2 3 4), i.e. the incoming operations
-		// would be removing 2,3,4 and then adding in 1,2,3 while transitioning
-		// into a joint state.
-		ops = append(ops, func(chg Changer) (tracker.Config, tracker.ProgressMap, error) {
-			return chg.EnterJoint(cs.AutoLeave, incoming...)
-		})
-	}
-
-	return chain(chg, ops...)
+	_ = "STUB: not implemented"
+	return *new(tracker.Config), *new(tracker.ProgressMap), nil
 }
+
+// No outgoing config, so just apply the incoming changes one by one.
+
+// loop-local copy
+
+// The ConfState describes a joint configuration.
+//
+// First, apply all of the changes of the outgoing config one by one, so
+// that it temporarily becomes the incoming active config. For example,
+// if the config is (1 2 3)&(2 3 4), this will establish (2 3 4)&().
+
+// loop-local copy
+
+// Now enter the joint state, which rotates the above additions into the
+// outgoing config, and adds the incoming config in. Continuing the
+// example above, we'd get (1 2 3)&(2 3 4), i.e. the incoming operations
+// would be removing 2,3,4 and then adding in 1,2,3 while transitioning
+// into a joint state.

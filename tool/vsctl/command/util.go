@@ -15,24 +15,10 @@
 package command
 
 import (
-	"bytes"
-	"context"
-	"encoding/json"
-	"fmt"
-	"net/http"
-	"os"
-	"os/exec"
 	"regexp"
-	"strings"
 
-	"github.com/fatih/color"
 	"github.com/jedib0t/go-pretty/v6/table"
-	"github.com/jedib0t/go-pretty/v6/text"
 	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
-
-	"github.com/vanus-labs/vanus/api/errors"
-	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
 
 const (
@@ -47,116 +33,27 @@ const (
 var dns1123SubdomainRegexp = regexp.MustCompile("^" + dns1123SubdomainFmt + "$")
 
 func cmdFailedf(cmd *cobra.Command, format string, a ...interface{}) {
-	errStr := format
-	if a != nil {
-		errStr = fmt.Sprintf(format, a...)
-	}
-	if IsFormatJSON(cmd) {
-		m := map[string]string{"ERROR": errStr}
-		data, _ := json.Marshal(m)
-		color.Red(string(data))
-	} else {
-		t := table.NewWriter()
-		t.AppendHeader(table.Row{"ERROR"})
-		t.AppendRow(table.Row{errStr})
-		t.SetColumnConfigs([]table.ColumnConfig{
-			{Number: 1, VAlign: text.VAlignMiddle, Align: text.AlignCenter, AlignHeader: text.AlignCenter},
-			{Number: 2, VAlign: text.VAlignMiddle, Align: text.AlignCenter, AlignHeader: text.AlignCenter},
-		})
-		t.SetOutputMirror(os.Stdout)
-		t.Render()
-	}
-
-	os.Exit(-1)
+	_ = "STUB: not implemented"
+	return
 }
 
-func cmdFailedWithHelpNotice(cmd *cobra.Command, format string) {
-	color.White(format)
-	color.Cyan("\n============ see below for right usage ============\n\n")
-	_ = cmd.Help()
-	os.Exit(-1)
-}
+func cmdFailedWithHelpNotice(cmd *cobra.Command, format string) { _ = "STUB: not implemented"; return }
 
 func operatorIsDeployed(_ *cobra.Command, endpoint string) bool {
-	client := &http.Client{}
-	url := fmt.Sprintf("%s%s%s/healthz", HttpPrefix, endpoint, BaseUrl)
-	req, err := http.NewRequestWithContext(context.Background(), "GET", url, &bytes.Reader{})
-	if err != nil {
-		return false
-	}
-
-	req.Header.Set("Content-Type", "application/json")
-	resp, err := client.Do(req)
-	if err != nil {
-		return false
-	}
-	defer resp.Body.Close()
-	return true
+	_ = "STUB: not implemented"
+	return false
 }
 
-func getOperatorEndpoint() (string, error) {
-	nodeip, err := exec.Command(
-		"bash", "-c", "kubectl get no --no-headers -o wide | awk '{print $6}' | head -n 1").Output()
-	if err != nil {
-		return "", err
-	}
-	return fmt.Sprintf("%s:%d", strings.Trim(string(nodeip), "\n"), DefaultOperatorPort), nil
-}
+func getOperatorEndpoint() (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func LoadConfig(filename string, config interface{}) error {
-	b, err := os.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-	str := os.ExpandEnv(string(b))
-	err = yaml.Unmarshal([]byte(str), config)
-	if err != nil {
-		return err
-	}
-	return nil
-}
+func LoadConfig(filename string, config interface{}) error { _ = "STUB: not implemented"; return nil }
 
 // IsDNS1123Subdomain tests for a string that conforms to the definition of a
 // subdomain in DNS (RFC 1123).
-func IsDNS1123Subdomain(value string) bool {
-	if len(value) > DNS1123SubdomainMaxLength {
-		return false
-	}
-	if !dns1123SubdomainRegexp.MatchString(value) {
-		return false
-	}
-	return true
-}
+func IsDNS1123Subdomain(value string) bool { _ = "STUB: not implemented"; return false }
 
-func Error(err error) string {
-	if err == nil {
-		return ""
-	}
-	if et, ok := errors.FromError(err); ok && et != nil {
-		if et.Message == "" {
-			return et.Description
-		}
-		return et.Message
-	}
-	return err.Error()
-}
+func Error(err error) string { _ = "STUB: not implemented"; return "" }
 
-func formatID(id uint64) string {
-	if id == 0 {
-		return ""
-	}
-	return vanus.NewIDFromUint64(id).String()
-}
+func formatID(id uint64) string { _ = "STUB: not implemented"; return "" }
 
-func getColumnConfig(header table.Row) []table.ColumnConfig {
-	var columnConfigs []table.ColumnConfig
-	for i := 0; i < len(header); i++ {
-		columnConfigs = append(columnConfigs, table.ColumnConfig{
-			Number:      i + 1,
-			VAlign:      text.VAlignMiddle,
-			Align:       text.AlignCenter,
-			AlignHeader: text.AlignCenter,
-		})
-	}
-	return columnConfigs
-}
+func getColumnConfig(header table.Row) []table.ColumnConfig { _ = "STUB: not implemented"; return nil }

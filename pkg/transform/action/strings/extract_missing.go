@@ -17,7 +17,6 @@ package strings
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -27,39 +26,11 @@ type extractMissingAction struct {
 
 // NewExtractMissingAction ["extract_missing", "sourceJSONPath", "targetJSONPath",
 // "trueFlagReplacement", "falseFlagReplacement"].
-func NewExtractMissingAction() action.Action {
-	return &extractMissingAction{
-		CommonAction: action.CommonAction{
-			ActionName: "EXTRACT_MISSING_ACTION",
-			FixedArgs: []arg.TypeList{
-				arg.EventList,
-				arg.EventList,
-				[]arg.Type{arg.Constant},
-				[]arg.Type{arg.Constant},
-			},
-		},
-	}
-}
+func NewExtractMissingAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *extractMissingAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[1]
-	a.Args = []arg.Arg{args[0]}
-	a.Args = append(a.Args, args[2:]...)
-	a.ArgTypes = []common.Type{common.String, common.Any, common.Any}
-	return nil
-}
+func (a *extractMissingAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *extractMissingAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	sourceJSONPath, _ := args[0].(string)
-	trueFlagReplacement := args[1]
-	falseFlagReplacement := args[2]
-
-	if sourceJSONPath == "" {
-		return a.TargetArg.SetValue(ceCtx, trueFlagReplacement)
-	}
-	return a.TargetArg.SetValue(ceCtx, falseFlagReplacement)
+	_ = "STUB: not implemented"
+	return nil
 }

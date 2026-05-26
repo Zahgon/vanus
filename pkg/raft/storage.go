@@ -99,188 +99,74 @@ type MemoryStorage struct {
 var _ Storage = (*MemoryStorage)(nil)
 
 // NewMemoryStorage creates an empty MemoryStorage.
-func NewMemoryStorage() *MemoryStorage {
-	return &MemoryStorage{
-		// When starting from scratch populate the list with a dummy entry at term zero.
-		ents: make([]pb.Entry, 1),
-	}
-}
+func NewMemoryStorage() *MemoryStorage { _ = "STUB: not implemented"; return nil }
+
+// When starting from scratch populate the list with a dummy entry at term zero.
 
 // InitialState implements the Storage interface.
 func (ms *MemoryStorage) InitialState() (pb.HardState, pb.ConfState, error) {
-	return ms.hardState, ms.snapshot.Metadata.ConfState, nil
+	_ = "STUB: not implemented"
+	return *new(pb.HardState), *new(pb.ConfState), nil
 }
 
 // SetHardState saves the current HardState.
-func (ms *MemoryStorage) SetHardState(st pb.HardState) error {
-	ms.Lock()
-	defer ms.Unlock()
-	ms.hardState = st
-	return nil
-}
+func (ms *MemoryStorage) SetHardState(st pb.HardState) error { _ = "STUB: not implemented"; return nil }
 
 // Entries implements the Storage interface.
 func (ms *MemoryStorage) Entries(lo, hi, maxSize uint64) ([]pb.Entry, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	offset := ms.ents[0].Index
-	if lo <= offset {
-		return nil, ErrCompacted
-	}
-	if hi > ms.lastIndex()+1 {
-		getLogger().Panicf("entries' hi(%d) is out of bound lastindex(%d)", hi, ms.lastIndex())
-	}
-	// only contains dummy entries.
-	if len(ms.ents) == 1 {
-		return nil, ErrUnavailable
-	}
-
-	ents := ms.ents[lo-offset : hi-offset]
-	return limitSize(ents, maxSize), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// only contains dummy entries.
 
 // Term implements the Storage interface.
-func (ms *MemoryStorage) Term(i uint64) (uint64, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	offset := ms.ents[0].Index
-	if i < offset {
-		return 0, ErrCompacted
-	}
-	if int(i-offset) >= len(ms.ents) {
-		return 0, ErrUnavailable
-	}
-	return ms.ents[i-offset].Term, nil
-}
+func (ms *MemoryStorage) Term(i uint64) (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
 // LastIndex implements the Storage interface.
-func (ms *MemoryStorage) LastIndex() (uint64, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	return ms.lastIndex(), nil
-}
+func (ms *MemoryStorage) LastIndex() (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (ms *MemoryStorage) lastIndex() uint64 {
-	return ms.ents[0].Index + uint64(len(ms.ents)) - 1
-}
+func (ms *MemoryStorage) lastIndex() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // FirstIndex implements the Storage interface.
-func (ms *MemoryStorage) FirstIndex() (uint64, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	return ms.firstIndex(), nil
-}
+func (ms *MemoryStorage) FirstIndex() (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (ms *MemoryStorage) firstIndex() uint64 {
-	return ms.ents[0].Index + 1
-}
+func (ms *MemoryStorage) firstIndex() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // Snapshot implements the Storage interface.
 func (ms *MemoryStorage) Snapshot() (pb.Snapshot, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	return ms.snapshot, nil
+	_ = "STUB: not implemented"
+	return *new(pb.Snapshot), nil
 }
 
 // ApplySnapshot overwrites the contents of this Storage object with
 // those of the given snapshot.
 func (ms *MemoryStorage) ApplySnapshot(snap pb.Snapshot) error {
-	ms.Lock()
-	defer ms.Unlock()
-
-	// handle check for old snapshot being applied
-	msIndex := ms.snapshot.Metadata.Index
-	snapIndex := snap.Metadata.Index
-	if msIndex >= snapIndex {
-		return ErrSnapOutOfDate
-	}
-
-	ms.snapshot = snap
-	ms.ents = []pb.Entry{{Term: snap.Metadata.Term, Index: snap.Metadata.Index}}
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// handle check for old snapshot being applied
 
 // CreateSnapshot makes a snapshot which can be retrieved with Snapshot() and
 // can be used to reconstruct the state at that point.
 // If any configuration changes have been made since the last compaction,
 // the result of the last ApplyConfChange must be passed in.
 func (ms *MemoryStorage) CreateSnapshot(i uint64, cs *pb.ConfState, data []byte) (pb.Snapshot, error) {
-	ms.Lock()
-	defer ms.Unlock()
-	if i <= ms.snapshot.Metadata.Index {
-		return pb.Snapshot{}, ErrSnapOutOfDate
-	}
-
-	offset := ms.ents[0].Index
-	if i > ms.lastIndex() {
-		getLogger().Panicf("snapshot %d is out of bound lastindex(%d)", i, ms.lastIndex())
-	}
-
-	ms.snapshot.Metadata.Index = i
-	ms.snapshot.Metadata.Term = ms.ents[i-offset].Term
-	if cs != nil {
-		ms.snapshot.Metadata.ConfState = *cs
-	}
-	ms.snapshot.Data = data
-	return ms.snapshot, nil
+	_ = "STUB: not implemented"
+	return *new(pb.Snapshot), nil
 }
 
 // Compact discards all log entries prior to compactIndex.
 // It is the application's responsibility to not attempt to compact an index
 // greater than raftLog.applied.
-func (ms *MemoryStorage) Compact(compactIndex uint64) error {
-	ms.Lock()
-	defer ms.Unlock()
-	offset := ms.ents[0].Index
-	if compactIndex <= offset {
-		return ErrCompacted
-	}
-	if compactIndex > ms.lastIndex() {
-		getLogger().Panicf("compact %d is out of bound lastindex(%d)", compactIndex, ms.lastIndex())
-	}
-
-	i := compactIndex - offset
-	ents := make([]pb.Entry, 1, 1+uint64(len(ms.ents))-i)
-	ents[0].Index = ms.ents[i].Index
-	ents[0].Term = ms.ents[i].Term
-	ents = append(ents, ms.ents[i+1:]...)
-	ms.ents = ents
-	return nil
-}
+func (ms *MemoryStorage) Compact(compactIndex uint64) error { _ = "STUB: not implemented"; return nil }
 
 // Append the new entries to storage.
 // TODO (xiangli): ensure the entries are continuous and
 // entries[0].Index > ms.entries[0].Index
-func (ms *MemoryStorage) Append(entries []pb.Entry) error {
-	if len(entries) == 0 {
-		return nil
-	}
+func (ms *MemoryStorage) Append(entries []pb.Entry) error { _ = "STUB: not implemented"; return nil }
 
-	ms.Lock()
-	defer ms.Unlock()
+// shortcut if there is no new entry.
 
-	first := ms.firstIndex()
-	last := entries[0].Index + uint64(len(entries)) - 1
-
-	// shortcut if there is no new entry.
-	if last < first {
-		return nil
-	}
-	// truncate compacted entries
-	if first > entries[0].Index {
-		entries = entries[first-entries[0].Index:]
-	}
-
-	offset := entries[0].Index - ms.ents[0].Index
-	switch {
-	case uint64(len(ms.ents)) > offset:
-		ms.ents = append([]pb.Entry{}, ms.ents[:offset]...)
-		ms.ents = append(ms.ents, entries...)
-	case uint64(len(ms.ents)) == offset:
-		ms.ents = append(ms.ents, entries...)
-	default:
-		getLogger().Panicf("missing log entry [last: %d, append at: %d]",
-			ms.lastIndex(), entries[0].Index)
-	}
-	return nil
-}
+// truncate compacted entries

@@ -20,14 +20,11 @@ import (
 	"context"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/pkg/raft"
-	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 
+	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 	// this project.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type SnapshotOperator interface {
@@ -40,67 +37,25 @@ type snapshotStorage struct {
 }
 
 func (ss *snapshotStorage) SetSnapshotOperator(op SnapshotOperator) {
-	ss.snapOp = op
+	_ = "STUB: not implemented"
+
+	// Snapshot returns the most recent snapshot.
+	// If snapshot is temporarily unavailable, it should return ErrSnapshotTemporarilyUnavailable,
+	// so raft state machine could know that Storage needs some time to prepare
+	// snapshot and call Snapshot later.
+	return
 }
 
-// Snapshot returns the most recent snapshot.
-// If snapshot is temporarily unavailable, it should return ErrSnapshotTemporarilyUnavailable,
-// so raft state machine could know that Storage needs some time to prepare
-// snapshot and call Snapshot later.
 func (s *Storage) Snapshot() (raftpb.Snapshot, error) {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-
-	if s.snapOp == nil {
-		return raftpb.Snapshot{}, raft.ErrSnapshotTemporarilyUnavailable
-	}
-
-	term, err := s.term(s.prevApply)
-	if err != nil {
-		return raftpb.Snapshot{}, raft.ErrSnapshotTemporarilyUnavailable
-	}
-
-	data, err := s.snapOp.GetSnapshot(s.prevApply)
-	if err != nil {
-		return raftpb.Snapshot{}, err
-	}
-
-	snap := raftpb.Snapshot{
-		Metadata: raftpb.SnapshotMetadata{
-			ConfState: s.prevConfSt,
-			Index:     s.prevApply,
-			Term:      term,
-		},
-		Data: data,
-	}
-	return snap, nil
+	_ = "STUB: not implemented"
+	return *new(raftpb.Snapshot), nil
 }
 
 // ApplySnapshot overwrites the contents of this Storage object with
 // those of the given snapshot.
 func (s *Storage) ApplySnapshot(ctx context.Context, snap raftpb.Snapshot) error {
-	span := trace.SpanFromContext(ctx)
-	span.AddEvent("raft.log.Log.ApplySnapshot() Start")
-	defer span.AddEvent("raft.log.Log.ApplySnapshot() End")
-
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	// Handle check for old snapshot being applied.
-	if s.lastIndex() >= snap.Metadata.Index {
-		log.Warn().Msg("snapshot is out of date")
-		return nil
-	}
-
-	if err := s.snapOp.ApplySnapshot(snap.Data); err != nil {
-		return err
-	}
-
-	last := s.offs[0]
-	s.ents = []raftpb.Entry{{Term: snap.Metadata.Term, Index: snap.Metadata.Index}}
-	s.offs = []int64{0}
-	_ = s.wal.tryCompact(ctx, s.nodeID, 0, last, 0, snap.Metadata.Index, snap.Metadata.Term)
-	s.SetApplied(ctx, snap.Metadata.Index)
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// Handle check for old snapshot being applied.

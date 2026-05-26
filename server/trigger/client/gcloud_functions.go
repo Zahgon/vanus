@@ -15,9 +15,7 @@
 package client
 
 import (
-	"bytes"
 	"context"
-	"errors"
 	nethttp "net/http"
 	"sync"
 
@@ -34,10 +32,8 @@ type gcloudFunctions struct {
 }
 
 func NewGCloudFunctionClient(url, credentialJSON string) EventClient {
-	return &gcloudFunctions{
-		url:            url,
-		credentialJSON: credentialJSON,
-	}
+	_ = "STUB: not implemented"
+	return *new(EventClient)
 }
 
 func (c *gcloudFunctions) init(ctx context.Context) error {
@@ -55,34 +51,6 @@ func (c *gcloudFunctions) init(ctx context.Context) error {
 }
 
 func (c *gcloudFunctions) Send(ctx context.Context, events ...*ce.Event) Result {
-	event := events[0]
-	if c.client == nil {
-		err := c.init(ctx)
-		if err != nil {
-			return newUnknownErr(err)
-		}
-	}
-	payload, err := event.MarshalJSON()
-	if err != nil {
-		return newInternalErr(err)
-	}
-	req, err := nethttp.NewRequestWithContext(ctx, nethttp.MethodPost, c.url, bytes.NewReader(payload))
-	if err != nil {
-		return newUnknownErr(err)
-	}
-	req.Header.Set("Content-Type", "application/json")
-	resp, err := c.client.Do(req)
-	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			return DeliveryTimeout
-		}
-		return newUnknownErr(err)
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode >= errStatusCode {
-		buf := new(bytes.Buffer)
-		_, _ = buf.ReadFrom(resp.Body)
-		return convertHTTPResponse(resp.StatusCode, "gcloud functions invoke", buf.Bytes())
-	}
-	return Success
+	_ = "STUB: not implemented"
+	return *new(Result)
 }

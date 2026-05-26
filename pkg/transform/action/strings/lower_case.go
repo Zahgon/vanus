@@ -16,17 +16,7 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewLowerAction ["lower_case", "key"].
-func NewLowerAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "LOWER_CASE",
-		FixedArgs:  []arg.TypeList{arg.EventList},
-		Fn:         function.LowerFunction,
-	}
-	return a
-}
+func NewLowerAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

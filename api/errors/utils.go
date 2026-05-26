@@ -14,13 +14,6 @@
 
 package errors
 
-import (
-	stderr "errors"
-
-	"github.com/pkg/errors"
-	"google.golang.org/grpc/status"
-)
-
 // Chain method can group many errors as a single error. this is a helpful method if there are many errors
 // will be occurred in one method.
 //
@@ -30,75 +23,13 @@ import (
 //
 // Notice: this method is not CONCURRENCY SAFETY. you can see somewhere call this function to know more
 // details about how to use this method.
-func Chain(errs ...error) error {
-	if len(errs) == 0 {
-		return nil
-	}
-	var err error
-	var idx = 0
-	for ; idx < len(errs); idx++ {
-		if errs[idx] != nil {
-			err = errs[idx]
-			break
-		}
-	}
-	for _idx := idx + 1; _idx < len(errs); _idx++ {
-		if errs[_idx] == nil {
-			continue
-		}
-		err = errors.Wrap(err, errs[_idx].Error())
-	}
-	return err
-}
+func Chain(errs ...error) error { _ = "STUB: not implemented"; return nil }
 
-func Is(err error, target error) bool {
-	targetType, ok := target.(*ErrorType)
-	if !ok {
-		return false
-	}
+func Is(err error, target error) bool { _ = "STUB: not implemented"; return false }
 
-	errType, ok := err.(*ErrorType)
-	if !ok {
-		if errStatus, ok := status.FromError(err); ok {
-			if errType, ok := Convert(errStatus.Message()); ok {
-				return errType.Code == targetType.Code
-			}
-		}
-	}
-	return errType != nil && errType.Code == targetType.Code
-}
+func UnwrapOrUnknown(err error) error { _ = "STUB: not implemented"; return nil }
 
-func UnwrapOrUnknown(err error) error {
-	if err == nil {
-		return nil
-	}
-	et, _ := FromError(err)
-	return et
-}
-
-func FromError(err error) (*ErrorType, bool) {
-	if err == nil {
-		return nil, true
-	}
-	if errType, ok := err.(*ErrorType); ok {
-		return errType, true
-	}
-	if errStatus, ok := status.FromError(err); ok {
-		if errType, ok := Convert(errStatus.Message()); ok {
-			return errType, true
-		}
-	}
-	return ErrUnknown.WithMessage(err.Error()), false
-}
+func FromError(err error) (*ErrorType, bool) { _ = "STUB: not implemented"; return nil, false }
 
 // ConvertToGRPCError convert an internal error to an exported error defined in gRPC.
-func ConvertToGRPCError(err error) error {
-	if err == nil {
-		return nil
-	}
-	e, ok := err.(*ErrorType)
-	if ok {
-		return stderr.New(e.JSON())
-	}
-	return err
-}
+func ConvertToGRPCError(err error) error { _ = "STUB: not implemented"; return nil }

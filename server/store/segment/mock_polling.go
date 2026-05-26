@@ -11,7 +11,6 @@ package segment
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	gomock "go.uber.org/mock/gomock"
@@ -30,50 +29,43 @@ type MockpollingManagerMockRecorder struct {
 
 // NewMockpollingManager creates a new mock instance.
 func NewMockpollingManager(ctrl *gomock.Controller) *MockpollingManager {
-	mock := &MockpollingManager{ctrl: ctrl}
-	mock.recorder = &MockpollingManagerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockpollingManager) EXPECT() *MockpollingManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Add mocks base method.
+	return nil
 }
 
-// Add mocks base method.
 func (m *MockpollingManager) Add(ctx context.Context, blockID vsr.ID) <-chan struct{} {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Add", ctx, blockID)
-	ret0, _ := ret[0].(<-chan struct{})
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Add indicates an expected call of Add.
 func (mr *MockpollingManagerMockRecorder) Add(ctx, blockID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Add", reflect.TypeOf((*MockpollingManager)(nil).Add), ctx, blockID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Destroy mocks base method.
-func (m *MockpollingManager) Destroy() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Destroy")
-}
+func (m *MockpollingManager) Destroy() { _ = "STUB: not implemented"; return }
 
 // Destroy indicates an expected call of Destroy.
 func (mr *MockpollingManagerMockRecorder) Destroy() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Destroy", reflect.TypeOf((*MockpollingManager)(nil).Destroy))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // NewMessageArrived mocks base method.
-func (m *MockpollingManager) NewMessageArrived(blockID vsr.ID) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "NewMessageArrived", blockID)
-}
+func (m *MockpollingManager) NewMessageArrived(blockID vsr.ID) { _ = "STUB: not implemented"; return }
 
 // NewMessageArrived indicates an expected call of NewMessageArrived.
 func (mr *MockpollingManagerMockRecorder) NewMessageArrived(blockID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NewMessageArrived", reflect.TypeOf((*MockpollingManager)(nil).NewMessageArrived), blockID)
+	_ = "STUB: not implemented"
+	return nil
 }

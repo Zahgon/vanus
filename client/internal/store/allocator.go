@@ -20,20 +20,13 @@ import (
 	"sync"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
 
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/api/errors"
+
 	"github.com/vanus-labs/vanus/pkg/observability/tracing"
 )
 
-func NewAllocator() *Allocator {
-	return &Allocator{
-		stores: make(map[string]*BlockStore),
-		mu:     sync.RWMutex{},
-		tracer: tracing.NewTracer("internal.store.allocator", trace.SpanKindClient),
-	}
-}
+func NewAllocator() *Allocator { _ = "STUB: not implemented"; return nil }
 
 type Allocator struct {
 	stores map[string]*BlockStore
@@ -43,59 +36,13 @@ type Allocator struct {
 
 // Get acquire BlockStore.
 func (a *Allocator) Get(ctx context.Context, endpoint string) (*BlockStore, error) {
-	if endpoint == "" {
-		return nil, errors.ErrNoEndpoint
-	}
-
-	_, span := a.tracer.Start(ctx, "Get")
-	defer span.End()
-
-	bs := func() *BlockStore {
-		a.mu.RLock()
-		defer a.mu.RUnlock()
-		bs := a.stores[endpoint]
-		if bs != nil {
-			bs.Acquire()
-		}
-		return bs
-	}()
-
-	if bs == nil {
-		a.mu.Lock()
-		defer a.mu.Unlock()
-
-		bs = a.stores[endpoint]
-		if bs == nil { // double check
-			var err error
-			bs, err = newBlockStore(endpoint)
-			if err != nil {
-				return nil, err
-			}
-			a.stores[endpoint] = bs
-		}
-		bs.Acquire()
-	}
-
-	return bs, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// double check
 
 // Put release BlockStore.
-func (a *Allocator) Put(ctx context.Context, bs *BlockStore) {
-	_, span := a.tracer.Start(ctx, "Get")
-	defer span.End()
+func (a *Allocator) Put(ctx context.Context, bs *BlockStore) { _ = "STUB: not implemented"; return }
 
-	d := false
-	if bs.Release() {
-		func() {
-			a.mu.Lock()
-			defer a.mu.Unlock()
-			if bs.UseCount() == 0 { // double check
-				delete(a.stores, bs.Endpoint())
-				d = true
-			}
-		}()
-	}
-	if d {
-		bs.Close()
-	}
-}
+// double check

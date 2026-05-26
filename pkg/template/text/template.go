@@ -15,23 +15,16 @@
 package text
 
 import (
-	// standard libraries.
-	"bytes"
-
 	// this project.
 	"github.com/vanus-labs/vanus/pkg/template"
 )
 
 func Compile(text string) (template.Template, error) {
-	segments, err := parse(text)
-	if err != nil {
-		return nil, err
-	}
-
-	// TODO(james.yin): check segments
-
-	return &textTemplate{segments: segments}, nil
+	_ = "STUB: not implemented"
+	return *new(template.Template), nil
 }
+
+// TODO(james.yin): check segments
 
 type textTemplate struct {
 	segments []templateSegment
@@ -40,16 +33,9 @@ type textTemplate struct {
 // Make sure textTemplate implements template.Template.
 var _ template.Template = (*textTemplate)(nil)
 
-func (t *textTemplate) ContentType() string {
-	return "text/plain"
-}
+func (t *textTemplate) ContentType() string { _ = "STUB: not implemented"; return "" }
 
 func (t *textTemplate) Execute(model interface{}, variables map[string]interface{}) ([]byte, error) {
-	var buf bytes.Buffer
-	for _, segment := range t.segments {
-		if err := segment.RenderTo(&buf, model, variables); err != nil {
-			return nil, err
-		}
-	}
-	return buf.Bytes(), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

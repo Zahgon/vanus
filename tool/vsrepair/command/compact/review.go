@@ -16,9 +16,6 @@ package compact
 
 import (
 	// standard libraries.
-	"encoding/json"
-	"fmt"
-	"strconv"
 
 	// third-party libraries.
 	"github.com/spf13/cobra"
@@ -27,40 +24,11 @@ import (
 	"github.com/vanus-labs/vanus/tool/vsrepair/meta"
 )
 
-func ReviewCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "compact ID",
-		Short: "Review compact history of a specific Block",
-		Run:   review,
-	}
-	cmd.Flags().StringVar(&volumePath, "volume", "", "volume path")
-	return cmd
-}
+func ReviewCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 type reviewResult struct {
 	Version int64             `json:"version"`
 	Compact *meta.CompactInfo `json:"Compact"`
 }
 
-func review(_ *cobra.Command, args []string) {
-	for _, arg := range args {
-		id, err := strconv.ParseUint(arg, 0, 64)
-		if err != nil {
-			panic(err)
-		}
-
-		err = meta.ReviewCompact(volumePath, id, func(compact *meta.CompactInfo, version int64) {
-			jsonResult, err2 := json.MarshalIndent(reviewResult{
-				Version: version,
-				Compact: compact,
-			}, "", "  ")
-			if err2 != nil {
-				panic(err2)
-			}
-			fmt.Println(string(jsonResult))
-		})
-		if err != nil {
-			panic(err)
-		}
-	}
-}
+func review(_ *cobra.Command, args []string) { _ = "STUB: not implemented"; return }

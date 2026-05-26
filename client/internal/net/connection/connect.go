@@ -19,12 +19,9 @@ import (
 	"context"
 
 	// third-party libraries.
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 
+	"google.golang.org/grpc"
 	// first-party libraries.
-	errinterceptor "github.com/vanus-labs/vanus/api/grpc/interceptor/errors"
 )
 
 const (
@@ -32,17 +29,6 @@ const (
 )
 
 func Connect(ctx context.Context, endpoint string) (*grpc.ClientConn, error) {
-	opts := []grpc.DialOption{
-		grpc.WithBlock(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
-		grpc.WithUnaryInterceptor(errinterceptor.UnaryClientInterceptor()),
-		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(maxRecvMsgSize)),
-	}
-	conn, err := grpc.DialContext(ctx, endpoint, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return conn, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

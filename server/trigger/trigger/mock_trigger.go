@@ -11,7 +11,6 @@ package trigger
 
 import (
 	context "context"
-	reflect "reflect"
 
 	pkg "github.com/vanus-labs/vanus/pkg"
 	info "github.com/vanus-labs/vanus/pkg/info"
@@ -30,83 +29,62 @@ type MockTriggerMockRecorder struct {
 }
 
 // NewMockTrigger creates a new mock instance.
-func NewMockTrigger(ctrl *gomock.Controller) *MockTrigger {
-	mock := &MockTrigger{ctrl: ctrl}
-	mock.recorder = &MockTriggerMockRecorder{mock}
-	return mock
-}
+func NewMockTrigger(ctrl *gomock.Controller) *MockTrigger { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTrigger) EXPECT() *MockTriggerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Change mocks base method.
+	return nil
 }
 
-// Change mocks base method.
 func (m *MockTrigger) Change(ctx context.Context, subscription *pkg.Subscription) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Change", ctx, subscription)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Change indicates an expected call of Change.
 func (mr *MockTriggerMockRecorder) Change(ctx, subscription any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Change", reflect.TypeOf((*MockTrigger)(nil).Change), ctx, subscription)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetOffsets mocks base method.
 func (m *MockTrigger) GetOffsets(ctx context.Context) info.ListOffsetInfo {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetOffsets", ctx)
-	ret0, _ := ret[0].(info.ListOffsetInfo)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(info.ListOffsetInfo)
 }
 
 // GetOffsets indicates an expected call of GetOffsets.
 func (mr *MockTriggerMockRecorder) GetOffsets(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOffsets", reflect.TypeOf((*MockTrigger)(nil).GetOffsets), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
-func (m *MockTrigger) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTrigger) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockTriggerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockTrigger)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
-func (m *MockTrigger) Start(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTrigger) Start(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Start indicates an expected call of Start.
 func (mr *MockTriggerMockRecorder) Start(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockTrigger)(nil).Start), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
-func (m *MockTrigger) Stop(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Stop", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTrigger) Stop(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Stop indicates an expected call of Stop.
 func (mr *MockTriggerMockRecorder) Stop(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockTrigger)(nil).Stop), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }

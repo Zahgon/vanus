@@ -20,11 +20,9 @@ type userKeyType struct{}
 
 var userKey userKeyType
 
-func GetUser(ctx context.Context) string {
-	user, _ := ctx.Value(userKey).(string)
-	return user
-}
+func GetUser(ctx context.Context) string { _ = "STUB: not implemented"; return "" }
 
 func SetUser(ctx context.Context, user string) context.Context {
-	return context.WithValue(ctx, userKey, user)
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }

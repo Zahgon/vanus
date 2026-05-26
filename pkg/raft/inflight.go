@@ -14,8 +14,6 @@
 
 package raft
 
-import "sort"
-
 type waiter struct {
 	index uint64
 	cb    ProposeCallback
@@ -25,43 +23,12 @@ type inflight struct {
 	waiters []waiter
 }
 
-func (in *inflight) append(index uint64, cb ProposeCallback) {
-	in.waiters = append(in.waiters, waiter{
-		index: index,
-		cb:    cb,
-	})
-}
+func (in *inflight) append(index uint64, cb ProposeCallback) { _ = "STUB: not implemented"; return }
 
-func (in *inflight) commitTo(index uint64) {
-	size := len(in.waiters)
-	if size == 0 {
-		return
-	}
-	n := sort.Search(size, func(i int) bool {
-		return in.waiters[i].index > index
-	})
-	committed := in.waiters[:n]
-	in.waiters = in.waiters[n:]
-	// TODO(james.yin): invoke callbacks in other goroutine
-	for _, w := range committed {
-		w.cb(nil)
-	}
-}
+func (in *inflight) commitTo(index uint64) { _ = "STUB: not implemented"; return }
 
-func (in *inflight) truncateFrom(index uint64) {
-	size := len(in.waiters)
-	if size == 0 {
-		return
-	}
-	n := sort.Search(size, func(i int) bool {
-		return in.waiters[i].index >= index
-	})
-	if n < size {
-		dropped := append([]waiter{}, in.waiters[n:]...)
-		in.waiters = in.waiters[:n]
-		// TODO(james.yin): invoke callbacks in other goroutine
-		for _, w := range dropped {
-			w.cb(ErrProposalDropped)
-		}
-	}
-}
+// TODO(james.yin): invoke callbacks in other goroutine
+
+func (in *inflight) truncateFrom(index uint64) { _ = "STUB: not implemented"; return }
+
+// TODO(james.yin): invoke callbacks in other goroutine

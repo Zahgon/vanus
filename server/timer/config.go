@@ -16,7 +16,6 @@ package timer
 
 import (
 	// standard libraries.
-	"time"
 
 	// first-party libraries.
 	"github.com/vanus-labs/vanus/pkg/observability"
@@ -44,24 +43,11 @@ const (
 )
 
 func (c *Config) GetLeaderElectionConfig() *leaderelection.Config {
-	return &leaderelection.Config{
-		LeaseDuration: c.LeaderElectionConfig.LeaseDuration,
-		Name:          resourceLockName,
-		KeyPrefix:     c.MetadataConfig.KeyPrefix,
-		EtcdEndpoints: c.EtcdEndpoints,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (c *Config) GetTimingWheelConfig() *timingwheel.Config {
-	return &timingwheel.Config{
-		Tick:          time.Duration(c.TimingWheelConfig.Tick) * time.Second,
-		WheelSize:     c.TimingWheelConfig.WheelSize,
-		Layers:        c.TimingWheelConfig.Layers,
-		KeyPrefix:     c.MetadataConfig.KeyPrefix,
-		EtcdEndpoints: c.EtcdEndpoints,
-		CtrlEndpoints: c.CtrlEndpoints,
-	}
-}
+func (c *Config) GetTimingWheelConfig() *timingwheel.Config { _ = "STUB: not implemented"; return nil }
 
 type MetadataConfig struct {
 	KeyPrefix string `yaml:"key_prefix"`
@@ -77,17 +63,4 @@ type TimingWheelConfig struct {
 	Layers    int64 `yaml:"layers"`
 }
 
-func Default(c *Config) {
-	if c.LeaderElectionConfig.LeaseDuration == 0 {
-		c.LeaderElectionConfig.LeaseDuration = 15
-	}
-	if c.TimingWheelConfig.Tick == 0 {
-		c.TimingWheelConfig.Tick = 1
-	}
-	if c.TimingWheelConfig.WheelSize == 0 {
-		c.TimingWheelConfig.WheelSize = 32
-	}
-	if c.TimingWheelConfig.Layers == 0 {
-		c.TimingWheelConfig.Layers = 4
-	}
-}
+func Default(c *Config) { _ = "STUB: not implemented"; return }

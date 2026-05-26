@@ -54,45 +54,16 @@ type Eventlog interface {
 }
 
 func Append(ctx context.Context, w BusWriter, events []*ce.Event, opts ...WriteOption) (eids []string, err error) {
-	eventpbs := make([]*cepb.CloudEvent, len(events))
-	for idx := range events {
-		eventpb, err := cepb.ToProto(events[idx])
-		if err != nil {
-			return nil, err
-		}
-		eventpbs[idx] = eventpb
-	}
-	return w.Append(ctx, &cepb.CloudEventBatch{
-		Events: eventpbs,
-	}, opts...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func AppendOne(ctx context.Context, w BusWriter, event *ce.Event, opts ...WriteOption) (eid string, err error) {
-	eventpb, err := cepb.ToProto(event)
-	if err != nil {
-		return "", err
-	}
-	eids, err := w.Append(ctx, &cepb.CloudEventBatch{
-		Events: []*cepb.CloudEvent{eventpb},
-	}, opts...)
-	if err != nil {
-		return "", err
-	}
-	return eids[0], nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 func Read(ctx context.Context, r BusReader, opts ...ReadOption) (events []*ce.Event, off int64, logid uint64, err error) {
-	batch, off, logid, err := r.Read(ctx, opts...)
-	if err != nil {
-		return nil, off, logid, err
-	}
-	es := make([]*ce.Event, len(batch.Events))
-	for idx := range batch.Events {
-		e, err := cepb.FromProto(batch.Events[idx])
-		if err != nil {
-			return nil, 0, 0, err
-		}
-		es[idx] = e
-	}
-	return es, off, logid, nil
+	_ = "STUB: not implemented"
+	return nil, 0, 0, nil
 }

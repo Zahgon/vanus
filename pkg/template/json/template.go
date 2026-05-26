@@ -21,19 +21,11 @@ import (
 )
 
 func Compile(text string) (template.Template, error) {
-	var parser templateParser
-	root, err := parser.parse(text)
-	if err != nil {
-		return nil, err
-	}
-
-	var generator templateGenerator
-	segments := generator.generate(root)
-
-	// TODO(james.yin): check segments
-
-	return &jsonTemplate{segments: segments}, nil
+	_ = "STUB: not implemented"
+	return *new(template.Template), nil
 }
+
+// TODO(james.yin): check segments
 
 type jsonTemplate struct {
 	segments []templateSegment
@@ -42,18 +34,11 @@ type jsonTemplate struct {
 // Make sure jsonTemplate implements template.Template.
 var _ template.Template = (*jsonTemplate)(nil)
 
-func (t *jsonTemplate) ContentType() string {
-	return "application/json"
-}
+func (t *jsonTemplate) ContentType() string { _ = "STUB: not implemented"; return "" }
 
 func (t *jsonTemplate) Execute(model interface{}, variables map[string]interface{}) ([]byte, error) {
-	var buf executeBuffer
-	for _, segment := range t.segments {
-		if err := segment.RenderTo(&buf, model, variables); err != nil {
-			return nil, err
-		}
-	}
-	return buf.buf, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type executeBuffer struct {
@@ -64,21 +49,10 @@ type executeBuffer struct {
 var _ bytes.LastByteWriter = (*executeBuffer)(nil)
 
 func (b *executeBuffer) Write(p []byte) (n int, err error) {
-	b.buf = append(b.buf, p...)
-	return len(p), nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (b *executeBuffer) LastByte() (byte, bool) {
-	n := len(b.buf)
-	if n == 0 {
-		return 0, false
-	}
-	return b.buf[n-1], true
-}
+func (b *executeBuffer) LastByte() (byte, bool) { _ = "STUB: not implemented"; return 0, false }
 
-func (b *executeBuffer) TruncateLastByte() {
-	n := len(b.buf)
-	if n != 0 {
-		b.buf = b.buf[:n-1]
-	}
-}
+func (b *executeBuffer) TruncateLastByte() { _ = "STUB: not implemented"; return }

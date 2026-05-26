@@ -15,8 +15,6 @@
 package rafttest
 
 import (
-	"fmt"
-	"strconv"
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
@@ -25,59 +23,12 @@ import (
 )
 
 func (env *InteractionEnv) handleProposeConfChange(t *testing.T, d datadriven.TestData) error {
-	idx := firstAsNodeIdx(t, d)
-	var v1 bool
-	transition := raftpb.ConfChangeTransitionAuto
-	for _, arg := range d.CmdArgs[1:] {
-		for _, val := range arg.Vals {
-			switch arg.Key {
-			case "v1":
-				var err error
-				v1, err = strconv.ParseBool(val)
-				if err != nil {
-					return err
-				}
-			case "transition":
-				switch val {
-				case "auto":
-					transition = raftpb.ConfChangeTransitionAuto
-				case "implicit":
-					transition = raftpb.ConfChangeTransitionJointImplicit
-				case "explicit":
-					transition = raftpb.ConfChangeTransitionJointExplicit
-				default:
-					return fmt.Errorf("unknown transition %s", val)
-				}
-			default:
-				return fmt.Errorf("unknown command %s", arg.Key)
-			}
-		}
-	}
-
-	ccs, err := raftpb.ConfChangesFromString(d.Input)
-	if err != nil {
-		return err
-	}
-
-	var c raftpb.ConfChangeI
-	if v1 {
-		if len(ccs) > 1 || transition != raftpb.ConfChangeTransitionAuto {
-			return fmt.Errorf("v1 conf change can only have one operation and no transition")
-		}
-		c = raftpb.ConfChange{
-			Type:   ccs[0].Type,
-			NodeID: ccs[0].NodeID,
-		}
-	} else {
-		c = raftpb.ConfChangeV2{
-			Transition: transition,
-			Changes:    ccs,
-		}
-	}
-	return env.ProposeConfChange(idx, c)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ProposeConfChange proposes a configuration change on the node with the given index.
 func (env *InteractionEnv) ProposeConfChange(idx int, c raftpb.ConfChangeI) error {
-	return env.Nodes[idx].ProposeConfChange(c)
+	_ = "STUB: not implemented"
+	return nil
 }

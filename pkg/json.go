@@ -14,31 +14,9 @@
 
 package pkg
 
-import (
-	"fmt"
-
-	"github.com/ohler55/ojg/jp"
-	"github.com/ohler55/ojg/oj"
-
-	"github.com/vanus-labs/vanus/api/errors"
-)
-
-func ParseJSON(b []byte) (interface{}, error) {
-	return oj.Parse(b)
-}
+func ParseJSON(b []byte) (interface{}, error) { _ = "STUB: not implemented"; return nil, nil }
 
 func GetJSONValue(data interface{}, path string) (interface{}, error) {
-	p, err := jp.ParseString(path)
-	if err != nil {
-		return nil, errors.ErrInvalidJSONPath.WithMessage(fmt.Sprintf("json path %s invalid", path)).Wrap(err)
-	}
-	res := p.Get(data)
-	switch len(res) {
-	case 0:
-		return nil, errors.ErrJSONPathNotExist
-	case 1:
-		return res[0], nil
-	default:
-		return res, nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }

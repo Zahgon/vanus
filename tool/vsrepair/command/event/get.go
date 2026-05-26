@@ -14,79 +14,12 @@
 
 package event
 
-import (
-	// standard libraries.
-	"context"
-	"encoding/json"
-	"fmt"
-	"strconv"
-	"time"
-
+import ( // standard libraries.
 	// third-party libraries.
 	"github.com/spf13/cobra"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-
 	// first-party libraries.
-	segmentpb "github.com/vanus-labs/vanus/api/segment"
 )
 
-func GetCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "event",
-		Short: "get events",
-		Run:   get,
-	}
-	cmd.Flags().StringVar(&storeEndpoint, "store", "", "store endpoint")
-	cmd.Flags().StringVar(&blockID, "block", "", "block id")
-	cmd.Flags().Uint64Var(&offset, "offset", 0, "the start offset")
-	cmd.Flags().Uint64Var(&number, "num", 1, "the number of events")
-	return cmd
-}
+func GetCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
-func get(_ *cobra.Command, _ []string) {
-	id, err := strconv.ParseUint(blockID, 0, 0)
-	if err != nil {
-		panic(err)
-	}
-
-	if number == 0 {
-		number = 1
-	}
-
-	req := &segmentpb.ReadFromBlockRequest{
-		BlockId: id,
-		Offset:  int64(offset),
-		Number:  int64(number),
-	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	opts := []grpc.DialOption{
-		grpc.WithBlock(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	}
-	conn, err := grpc.DialContext(ctx, storeEndpoint, opts...)
-	if err != nil {
-		panic(err)
-	}
-	defer func() {
-		_ = conn.Close()
-	}()
-
-	cli := segmentpb.NewSegmentServerClient(conn)
-	resp, err := cli.ReadFromBlock(ctx, req)
-	if err != nil {
-		panic(err)
-	}
-
-	for _, e := range resp.GetEvents().GetEvents() {
-		jsonEvent, err := json.MarshalIndent(e, "", "  ")
-		if err != nil {
-			panic(err)
-		}
-
-		fmt.Println(string(jsonEvent))
-	}
-}
+func get(_ *cobra.Command, _ []string) { _ = "STUB: not implemented"; return }

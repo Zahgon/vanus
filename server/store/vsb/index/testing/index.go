@@ -20,43 +20,14 @@ import (
 	. "go.uber.org/mock/gomock"
 
 	// this project.
-	cetest "github.com/vanus-labs/vanus/server/store/schema/ce/testing"
+
 	"github.com/vanus-labs/vanus/server/store/vsb/index"
-	vsbtest "github.com/vanus-labs/vanus/server/store/vsb/testing"
 )
 
-func MakeIndex0(ctrl *Controller) index.Index {
-	i := NewMockIndex(ctrl)
-	i.EXPECT().StartOffset().AnyTimes().Return(vsbtest.EntryOffset0)
-	i.EXPECT().EndOffset().AnyTimes().Return(vsbtest.EntryOffset0 + vsbtest.EntrySize0)
-	i.EXPECT().Length().AnyTimes().Return(int32(vsbtest.EntrySize0))
-	i.EXPECT().Stime().AnyTimes().Return(cetest.Stime)
-	return i
-}
+func MakeIndex0(ctrl *Controller) index.Index { _ = "STUB: not implemented"; return *new(index.Index) }
 
-func MakeIndex1(ctrl *Controller) index.Index {
-	i := NewMockIndex(ctrl)
-	i.EXPECT().StartOffset().AnyTimes().Return(vsbtest.EntryOffset1)
-	i.EXPECT().EndOffset().AnyTimes().Return(vsbtest.EntryOffset1 + vsbtest.EntrySize1)
-	i.EXPECT().Length().AnyTimes().Return(int32(vsbtest.EntrySize1))
-	i.EXPECT().Stime().AnyTimes().Return(cetest.Stime)
-	return i
-}
+func MakeIndex1(ctrl *Controller) index.Index { _ = "STUB: not implemented"; return *new(index.Index) }
 
-func CheckIndex0(i index.Index, ignoreStime bool) {
-	So(i.StartOffset(), ShouldEqual, vsbtest.EntryOffset0)
-	So(i.EndOffset(), ShouldEqual, vsbtest.EntryOffset0+vsbtest.EntrySize0)
-	So(i.Length(), ShouldEqual, vsbtest.EntrySize0)
-	if !ignoreStime {
-		So(i.Stime(), ShouldEqual, cetest.Stime)
-	}
-}
+func CheckIndex0(i index.Index, ignoreStime bool) { _ = "STUB: not implemented"; return }
 
-func CheckIndex1(i index.Index, ignoreStime bool) {
-	So(i.StartOffset(), ShouldEqual, vsbtest.EntryOffset1)
-	So(i.EndOffset(), ShouldEqual, vsbtest.EntryOffset1+vsbtest.EntrySize1)
-	So(i.Length(), ShouldEqual, vsbtest.EntrySize1)
-	if !ignoreStime {
-		So(i.Stime(), ShouldEqual, cetest.Stime)
-	}
-}
+func CheckIndex1(i index.Index, ignoreStime bool) { _ = "STUB: not implemented"; return }

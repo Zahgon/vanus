@@ -16,17 +16,7 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewAddPrefixAction ["add_prefix", "key", "value"].
-func NewAddPrefixAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "ADD_PREFIX",
-		FixedArgs:  []arg.TypeList{arg.EventList, arg.All},
-		Fn:         function.AddPrefixFunction,
-	}
-	return a
-}
+func NewAddPrefixAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

@@ -15,23 +15,14 @@
 package rafttest
 
 import (
-	"fmt"
-	"strings"
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
 )
 
 func (env *InteractionEnv) handleLogLevel(t *testing.T, d datadriven.TestData) error {
-	return env.LogLevel(d.CmdArgs[0].Key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (env *InteractionEnv) LogLevel(name string) error {
-	for i, s := range lvlNames {
-		if strings.EqualFold(s, name) {
-			env.Output.Lvl = i
-			return nil
-		}
-	}
-	return fmt.Errorf("log levels must be either of %v", lvlNames)
-}
+func (env *InteractionEnv) LogLevel(name string) error { _ = "STUB: not implemented"; return nil }

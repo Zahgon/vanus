@@ -17,8 +17,6 @@ package vsr
 
 import (
 	"errors"
-	"fmt"
-	"strconv"
 )
 
 const (
@@ -31,48 +29,20 @@ var ErrEmptyID = errors.New("id: empty")
 
 type ID uint64
 
-func EmptyID() ID {
-	return emptyID
-}
+func EmptyID() ID { _ = "STUB: not implemented"; return *new(ID) }
 
-func NewIDFromUint64(id uint64) ID {
-	return ID(id)
-}
+func NewIDFromUint64(id uint64) ID { _ = "STUB: not implemented"; return *new(ID) }
 
-func NewIDFromString(id string) (ID, error) {
-	if id == "" {
-		return emptyID, ErrEmptyID
-	}
-	i, err := strconv.ParseUint(id, base, bitSize)
-	if err != nil {
-		return emptyID, err
-	}
-	return ID(i), nil
-}
+func NewIDFromString(id string) (ID, error) { _ = "STUB: not implemented"; return *new(ID), nil }
 
-func (id ID) String() string {
-	return fmt.Sprintf("%016X", uint64(id))
-}
+func (id ID) String() string { _ = "STUB: not implemented"; return "" }
 
-func (id ID) Uint64() uint64 {
-	return uint64(id)
-}
+func (id ID) Uint64() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (id ID) Key() string {
-	return id.String()
-}
+func (id ID) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (id ID) Equals(cID ID) bool {
-	return id.Uint64() == cID.Uint64()
-}
+func (id ID) Equals(cID ID) bool { _ = "STUB: not implemented"; return false }
 
 type IDList []ID
 
-func (l IDList) Contains(id ID) bool {
-	for i := range l {
-		if id.Equals(l[i]) {
-			return true
-		}
-	}
-	return false
-}
+func (l IDList) Contains(id ID) bool { _ = "STUB: not implemented"; return false }

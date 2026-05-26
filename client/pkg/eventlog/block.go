@@ -21,7 +21,6 @@ import (
 
 	// first-party libraries.
 	"github.com/vanus-labs/vanus/api/cloudevents"
-	"github.com/vanus-labs/vanus/api/errors"
 	metapb "github.com/vanus-labs/vanus/api/meta"
 
 	// this project.
@@ -30,15 +29,8 @@ import (
 )
 
 func newBlock(ctx context.Context, r *record.Block) (*block, error) {
-	store, err := store.Get(ctx, r.Endpoint)
-	if err != nil {
-		return nil, err
-	}
-	block := block{
-		id:    r.ID,
-		store: store,
-	}
-	return &block, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type block struct {
@@ -46,34 +38,26 @@ type block struct {
 	store *store.BlockStore
 }
 
-func (b *block) Close(ctx context.Context) {
-	store.Put(ctx, b.store)
-}
+func (b *block) Close(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 func (b *block) LookupOffset(ctx context.Context, t time.Time) (int64, error) {
-	return b.store.LookupOffset(ctx, b.id, t)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (b *block) Append(ctx context.Context, event *cloudevents.CloudEventBatch) ([]int64, error) {
-	return b.store.Append(ctx, b.id, event)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (b *block) Read(ctx context.Context, offset int64, size int16, pollingTimeout uint32) (*cloudevents.CloudEventBatch, error) {
-	if offset < 0 {
-		return nil, errors.ErrOffsetUnderflow
-	}
-	if size > 0 {
-		// doRead
-	} else if size == 0 {
-		return &cloudevents.CloudEventBatch{
-			Events: []*cloudevents.CloudEvent{},
-		}, nil
-	} else if size < 0 {
-		return nil, errors.ErrInvalidArgument
-	}
-	return b.store.Read(ctx, b.id, offset, size, pollingTimeout)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// doRead
+
 func (b *block) Describe(ctx context.Context) (*metapb.SegmentHealthInfo, error) {
-	return b.store.Describe(ctx, b.id)
+	_ = "STUB: not implemented"
+	return nil, nil
 }

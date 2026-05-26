@@ -17,12 +17,9 @@ package manager
 
 import (
 	"context"
-	"encoding/json"
 	"sync"
 
-	"github.com/vanus-labs/vanus/api/errors"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	primitive "github.com/vanus-labs/vanus/pkg"
 	"github.com/vanus-labs/vanus/pkg/kv"
 	"github.com/vanus-labs/vanus/server/controller/tenant/metadata"
 )
@@ -48,126 +45,38 @@ type tokenManager struct {
 }
 
 func NewTokenManager(kvClient kv.Client) TokenManager {
-	return &tokenManager{
-		tokens:     map[vanus.ID]*metadata.Token{},
-		users:      map[string]map[vanus.ID]struct{}{},
-		tokenUsers: map[string]string{},
-		kvClient:   kvClient,
-	}
+	_ = "STUB: not implemented"
+	return *new(TokenManager)
 }
 
-func (m *tokenManager) Init(ctx context.Context) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	pairs, err := m.kvClient.List(ctx, kv.UserTokenAllKey())
-	if err != nil {
-		return err
-	}
-	m.tokens = make(map[vanus.ID]*metadata.Token, len(pairs))
-	for _, pair := range pairs {
-		var token metadata.Token
-		err = json.Unmarshal(pair.Value, &token)
-		if err != nil {
-			return err
-		}
-		m.tokens[token.ID] = &token
-		m.tokenUsers[token.Token] = token.UserIdentifier
-		ids, exist := m.users[token.UserIdentifier]
-		if !exist {
-			ids = map[vanus.ID]struct{}{}
-			m.users[token.UserIdentifier] = ids
-		}
-		ids[token.ID] = struct{}{}
-	}
-	return nil
-}
+func (m *tokenManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (m *tokenManager) GetUser(_ context.Context, token string) (string, error) {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	user, exist := m.tokenUsers[token]
-	if !exist {
-		return "", errors.ErrResourceNotFound
-	}
-	return user, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 func (m *tokenManager) AddToken(ctx context.Context, token *metadata.Token) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	v, err := json.Marshal(token)
-	if err != nil {
-		return err
-	}
-	err = m.kvClient.Set(ctx, kv.UserTokenKey(token.ID), v)
-	if err != nil {
-		return err
-	}
-	m.tokens[token.ID] = token
-	m.tokenUsers[token.Token] = token.UserIdentifier
-	ids, exist := m.users[token.UserIdentifier]
-	if !exist {
-		ids = map[vanus.ID]struct{}{}
-		m.users[token.UserIdentifier] = ids
-	}
-	ids[token.ID] = struct{}{}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *tokenManager) DeleteToken(ctx context.Context, id vanus.ID) error {
-	m.lock.Lock()
-	defer m.lock.Unlock()
-	token, exist := m.tokens[id]
-	if !exist {
-		return nil
-	}
-	if token.UserIdentifier == primitive.DefaultUser && len(m.users[token.UserIdentifier]) == 1 {
-		return errors.ErrResourceCanNotOp.WithMessage("can't remove default user all token")
-	}
-	err := m.kvClient.Delete(ctx, kv.UserTokenKey(id))
-	if err != nil {
-		return err
-	}
-	delete(m.tokens, id)
-	delete(m.tokenUsers, token.Token)
-	delete(m.users[token.UserIdentifier], id)
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (m *tokenManager) GetToken(_ context.Context, id vanus.ID) (*metadata.Token, error) {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	token, exist := m.tokens[id]
-	if !exist {
-		return nil, errors.ErrResourceNotFound
-	}
-	return token, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *tokenManager) GetUserToken(_ context.Context, identifier string) []*metadata.Token {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	ids, exist := m.users[identifier]
-	if !exist {
-		return nil
-	}
-	list := make([]*metadata.Token, len(ids))
-	i := 0
-	for id := range ids {
-		list[i] = m.tokens[id]
-		i++
-	}
-	return list
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (m *tokenManager) ListToken(_ context.Context) []*metadata.Token {
-	m.lock.RLock()
-	defer m.lock.RUnlock()
-	list := make([]*metadata.Token, len(m.tokens))
-	i := 0
-	for id := range m.tokens {
-		list[i] = m.tokens[id]
-		i++
-	}
-	return list
+	_ = "STUB: not implemented"
+	return nil
 }

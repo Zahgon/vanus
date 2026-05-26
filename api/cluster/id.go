@@ -10,10 +10,9 @@ type idService struct {
 	client ctrlpb.SnowflakeControllerClient
 }
 
-func newIDService(cc *raw_client.Conn) IDService {
-	return &idService{client: raw_client.NewSnowflakeController(cc)}
-}
+func newIDService(cc *raw_client.Conn) IDService { _ = "STUB: not implemented"; return *new(IDService) }
 
 func (es *idService) RawClient() ctrlpb.SnowflakeControllerClient {
-	return es.client
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.SnowflakeControllerClient)
 }

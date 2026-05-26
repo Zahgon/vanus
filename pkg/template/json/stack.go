@@ -23,20 +23,16 @@ type parserStack struct {
 	stack []parserContext
 }
 
-func (ps *parserStack) push(n templateNode, s parserState) {
-	ps.stack = append(ps.stack, parserContext{node: n, state: s})
-}
+func (ps *parserStack) push(n templateNode, s parserState) { _ = "STUB: not implemented"; return }
 
 func (ps *parserStack) pop() (templateNode, parserState) {
-	i := len(ps.stack) - 1
-	pc := ps.stack[i]
-	ps.stack = ps.stack[:i]
-	return pc.node, pc.state
+	_ = "STUB: not implemented"
+	return *new(templateNode), *new(parserState)
 }
 
 func (ps *parserStack) peek() (templateNode, parserState) {
-	pc := ps.stack[len(ps.stack)-1]
-	return pc.node, pc.state
+	_ = "STUB: not implemented"
+	return *new(templateNode), *new(parserState)
 }
 
 type generatorContext struct {
@@ -48,26 +44,15 @@ type generatorStack struct {
 	stack []generatorContext
 }
 
-func (gs *generatorStack) push(n templateNode) {
-	gs.stack = append(gs.stack, generatorContext{node: n, iter: 0})
-}
+func (gs *generatorStack) push(n templateNode) { _ = "STUB: not implemented"; return }
 
-func (gs *generatorStack) advance() {
-	gs.stack[len(gs.stack)-1].iter++
-}
+func (gs *generatorStack) advance() { _ = "STUB: not implemented"; return }
 
-func (gs *generatorStack) advanceThenPush(n templateNode) {
-	gs.advance()
-	gs.push(n)
-}
+func (gs *generatorStack) advanceThenPush(n templateNode) { _ = "STUB: not implemented"; return }
 
-func (gs *generatorStack) pop() bool {
-	i := len(gs.stack) - 1
-	gs.stack = gs.stack[:i]
-	return i == 0
-}
+func (gs *generatorStack) pop() bool { _ = "STUB: not implemented"; return false }
 
 func (gs *generatorStack) peek() (templateNode, int) {
-	gc := &gs.stack[len(gs.stack)-1]
-	return gc.node, gc.iter
+	_ = "STUB: not implemented"
+	return *new(templateNode), 0
 }

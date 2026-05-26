@@ -15,13 +15,7 @@
 package arg
 
 import (
-	"strings"
-
-	"github.com/vanus-labs/vanus/api/errors"
-	pkgUtil "github.com/vanus-labs/vanus/pkg"
-
 	"github.com/vanus-labs/vanus/pkg/transform/context"
-	"github.com/vanus-labs/vanus/server/trigger/util"
 )
 
 type eventAttribute struct {
@@ -30,44 +24,27 @@ type eventAttribute struct {
 }
 
 // newEventAttribute name format is $.source .
-func newEventAttribute(name string) (Arg, error) {
-	attr := strings.ToLower(name[2:])
-	err := pkgUtil.ValidateEventAttrName(attr)
-	if err != nil {
-		return nil, err
-	}
-	return eventAttribute{
-		attr:     attr,
-		original: name,
-	}, nil
-}
+func newEventAttribute(name string) (Arg, error) { _ = "STUB: not implemented"; return *new(Arg), nil }
 
-func (arg eventAttribute) Type() Type {
-	return EventAttribute
-}
+func (arg eventAttribute) Type() Type { _ = "STUB: not implemented"; return *new(Type) }
 
-func (arg eventAttribute) Name() string {
-	return arg.attr
-}
+func (arg eventAttribute) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (arg eventAttribute) Original() string {
-	return arg.original
-}
+func (arg eventAttribute) Original() string { _ = "STUB: not implemented"; return "" }
 
 func (arg eventAttribute) Evaluate(ceCtx *context.EventContext) (interface{}, error) {
-	v, exist := util.LookupAttribute(*ceCtx.Event, arg.attr)
-	if !exist {
-		return nil, ErrArgValueNil
-	}
-	return v, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (arg eventAttribute) SetValue(ceCtx *context.EventContext, value interface{}) error {
-	return util.SetAttribute(ceCtx.Event, arg.attr, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (arg eventAttribute) DeleteValue(ceCtx *context.EventContext) error {
-	return util.DeleteAttribute(ceCtx.Event, arg.attr)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type eventData struct {
@@ -76,53 +53,27 @@ type eventData struct {
 }
 
 // newEventData name format is $.data.key .
-func newEventData(name string) Arg {
-	if name == EventDataArgPrefix {
-		return eventDataAll{
-			eventData{
-				path:     "",
-				original: name,
-			},
-		}
-	}
-	return eventData{
-		path:     name[7:],
-		original: name,
-	}
-}
+func newEventData(name string) Arg { _ = "STUB: not implemented"; return *new(Arg) }
 
-func (arg eventData) Type() Type {
-	return EventData
-}
+func (arg eventData) Type() Type { _ = "STUB: not implemented"; return *new(Type) }
 
-func (arg eventData) Name() string {
-	return arg.path
-}
+func (arg eventData) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (arg eventData) Original() string {
-	return arg.original
-}
+func (arg eventData) Original() string { _ = "STUB: not implemented"; return "" }
 
 func (arg eventData) Evaluate(ceCtx *context.EventContext) (interface{}, error) {
-	v, err := util.LookupData(ceCtx.Data, EventArgPrefix+arg.path)
-	if err != nil {
-		if errors.Is(err, errors.ErrJSONPathNotExist) {
-			return nil, ErrArgValueNil
-		}
-		return nil, err
-	}
-	if v == nil {
-		return nil, ErrArgValueNil
-	}
-	return v, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (arg eventData) SetValue(ceCtx *context.EventContext, value interface{}) error {
-	return util.SetData(ceCtx.Data, arg.path, value)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (arg eventData) DeleteValue(ceCtx *context.EventContext) error {
-	return util.DeleteData(ceCtx.Data, arg.path)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type eventDataAll struct {
@@ -130,15 +81,16 @@ type eventDataAll struct {
 }
 
 func (arg eventDataAll) Evaluate(ceCtx *context.EventContext) (interface{}, error) {
-	return ceCtx.Data, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (arg eventDataAll) SetValue(ceCtx *context.EventContext, value interface{}) error {
-	ceCtx.Data = value
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (arg eventDataAll) DeleteValue(ceCtx *context.EventContext) error {
-	ceCtx.Data = map[string]interface{}{}
+	_ = "STUB: not implemented"
 	return nil
 }

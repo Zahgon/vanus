@@ -15,8 +15,6 @@
 package raft
 
 import (
-	"fmt"
-
 	pb "github.com/vanus-labs/vanus/pkg/raft/raftpb"
 	"github.com/vanus-labs/vanus/pkg/raft/tracker"
 )
@@ -41,65 +39,17 @@ type BasicStatus struct {
 	LeadTransferee uint64
 }
 
-func getProgressCopy(r *raft) map[uint64]tracker.Progress {
-	m := make(map[uint64]tracker.Progress)
-	r.prs.Visit(func(id uint64, pr *tracker.Progress) {
-		p := *pr
-		p.Inflights = pr.Inflights.Clone()
-		pr = nil
+func getProgressCopy(r *raft) map[uint64]tracker.Progress { _ = "STUB: not implemented"; return nil }
 
-		m[id] = p
-	})
-	return m
-}
-
-func getBasicStatus(r *raft) BasicStatus {
-	s := BasicStatus{
-		ID:             r.id,
-		LeadTransferee: r.leadTransferee,
-	}
-	s.HardState = r.hardState()
-	s.SoftState = r.softState()
-	s.Applied = r.raftLog.applied
-	return s
-}
+func getBasicStatus(r *raft) BasicStatus { _ = "STUB: not implemented"; return *new(BasicStatus) }
 
 // getStatus gets a copy of the current raft status.
-func getStatus(r *raft) Status {
-	var s Status
-	s.BasicStatus = getBasicStatus(r)
-	if s.RaftState == StateLeader {
-		s.Progress = getProgressCopy(r)
-	}
-	s.Config = r.prs.Config.Clone()
-	return s
-}
+func getStatus(r *raft) Status { _ = "STUB: not implemented"; return *new(Status) }
 
 // MarshalJSON translates the raft status into JSON.
 // TODO: try to simplify this by introducing ID type into raft
-func (s Status) MarshalJSON() ([]byte, error) {
-	j := fmt.Sprintf(`{"id":"%x","term":%d,"vote":"%x","commit":%d,"lead":"%x","raftState":%q,"applied":%d,"progress":{`,
-		s.ID, s.Term, s.Vote, s.Commit, s.Lead, s.RaftState, s.Applied)
+func (s Status) MarshalJSON() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	if len(s.Progress) == 0 {
-		j += "},"
-	} else {
-		for k, v := range s.Progress {
-			subj := fmt.Sprintf(`"%x":{"match":%d,"next":%d,"state":%q},`, k, v.Match, v.Next, v.State)
-			j += subj
-		}
-		// remove the trailing ","
-		j = j[:len(j)-1] + "},"
-	}
+// remove the trailing ","
 
-	j += fmt.Sprintf(`"leadtransferee":"%x"}`, s.LeadTransferee)
-	return []byte(j), nil
-}
-
-func (s Status) String() string {
-	b, err := s.MarshalJSON()
-	if err != nil {
-		getLogger().Panicf("unexpected error: %v", err)
-	}
-	return string(b)
-}
+func (s Status) String() string { _ = "STUB: not implemented"; return "" }

@@ -27,52 +27,10 @@ const (
 	Any
 )
 
-func (t Type) String() string {
-	switch t {
-	case String:
-		return "string"
-	case Float:
-		return "float"
-	case Int:
-		return "int"
-	case Bool:
-		return "bool"
-	case Object:
-		return "map"
-	case Array:
-		return "array"
-	case Any:
-		return "any"
-	case StringArray:
-		return "stringArray"
-	}
-	return "unknown"
-}
+func (t Type) String() string { _ = "STUB: not implemented"; return "" }
 
-func TypePtr(t Type) *Type {
-	return &t
-}
+func TypePtr(t Type) *Type { _ = "STUB: not implemented"; return nil }
 
-func (t Type) IsSameType(val interface{}) bool {
-	return TypeFromVal(val) == t
-}
+func (t Type) IsSameType(val interface{}) bool { _ = "STUB: not implemented"; return false }
 
-func TypeFromVal(val interface{}) Type {
-	switch val.(type) {
-	case string:
-		return String
-	case float64:
-		return Float
-	case int:
-		return Int
-	case bool:
-		return Bool
-	case map[string]interface{}:
-		return Object
-	case []string:
-		return StringArray
-	case []interface{}:
-		return Array
-	}
-	return Any
-}
+func TypeFromVal(val interface{}) Type { _ = "STUB: not implemented"; return *new(Type) }

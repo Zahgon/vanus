@@ -29,17 +29,6 @@ type UserRole struct {
 	BuiltIn        bool
 }
 
-func FromPbUserRole(from *metapb.UserRole) *UserRole {
-	to := &UserRole{
-		UserIdentifier: from.UserIdentifier,
-		Role:           Role(from.RoleName),
-		ResourceKind:   ResourceKind(from.ResourceKind),
-		ResourceID:     vanus.NewIDFromUint64(from.ResourceId),
-		BuiltIn:        from.BuiltIn,
-	}
-	return to
-}
+func FromPbUserRole(from *metapb.UserRole) *UserRole { _ = "STUB: not implemented"; return nil }
 
-func (ur *UserRole) IsClusterAdmin() bool {
-	return ur.Role == RoleClusterAdmin
-}
+func (ur *UserRole) IsClusterAdmin() bool { _ = "STUB: not implemented"; return false }

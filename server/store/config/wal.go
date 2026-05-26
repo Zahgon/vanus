@@ -16,7 +16,7 @@ package config
 
 import (
 	// standard libraries.
-	"fmt"
+
 	"time"
 
 	// this project.
@@ -37,41 +37,8 @@ type WAL struct {
 	IO           `yaml:"io"`
 }
 
-func (c *WAL) Validate(minFileSize uint64) error {
-	if c.BlockSize != 0 && c.BlockSize%baseWALBlockSize != 0 {
-		return fmt.Errorf("wal block size must be a multiple of %dKB", baseWALBlockSize/baseKB)
-	}
-	if c.FileSize != 0 && c.FileSize < minFileSize {
-		return fmt.Errorf("wal file size must not less than %dMB", minFileSize/baseMB)
-	}
-	if c.FlushTimeout != "" {
-		d, err := time.ParseDuration(c.FlushTimeout)
-		if err != nil {
-			return err
-		}
-		if d < minWALFlushTimeout {
-			return fmt.Errorf("wal flush timeout must not less than %v", minWALFlushTimeout)
-		}
-	}
-	return nil
-}
+func (c *WAL) Validate(minFileSize uint64) error { _ = "STUB: not implemented"; return nil }
 
-func (c *WAL) Options() (opts []wal.Option) {
-	if c.BlockSize != 0 {
-		opts = append(opts, wal.WithBlockSize(c.BlockSize))
-	}
-	if c.FileSize != 0 {
-		opts = append(opts, wal.WithFileSize(int64(c.FileSize)))
-	}
-	if c.FlushTimeout != "" {
-		d, err := time.ParseDuration(c.FlushTimeout)
-		if err != nil {
-			panic(err) // unreachable
-		}
-		opts = append(opts, wal.WithFlushDelayTime(d))
-	}
-	if c.IO.Engine != "" {
-		opts = append(opts, wal.WithIOEngine(buildIOEngine(c.IO)))
-	}
-	return opts
-}
+func (c *WAL) Options() (opts []wal.Option) { _ = "STUB: not implemented"; return nil }
+
+// unreachable

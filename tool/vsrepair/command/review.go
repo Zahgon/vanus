@@ -17,16 +17,6 @@ package command
 import (
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
-	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/compact"
 )
 
-func ReviewCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "review TYPE ID",
-		Short: "Review history of a specific resource.",
-	}
-	cmd.AddCommand(compact.ReviewCommand())
-	return cmd
-}
+func ReviewCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }

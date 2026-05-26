@@ -16,17 +16,7 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewUpperAction ["upper_case", "key"].
-func NewUpperAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "UPPER_CASE",
-		FixedArgs:  []arg.TypeList{arg.EventList},
-		Fn:         function.UpperFunction,
-	}
-	return a
-}
+func NewUpperAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

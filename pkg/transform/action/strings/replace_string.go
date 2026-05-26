@@ -15,11 +15,8 @@
 package strings
 
 import (
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/transform/action"
 	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/common"
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -28,30 +25,11 @@ type replaceStringAction struct {
 }
 
 // NewReplaceStringAction ["path", "subValue", "targetValue"].
-func NewReplaceStringAction() action.Action {
-	return &replaceStringAction{
-		CommonAction: action.CommonAction{
-			ActionName: "REPLACE_STRING",
-			FixedArgs:  []arg.TypeList{arg.EventList, arg.All, arg.All},
-		},
-	}
-}
+func NewReplaceStringAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }
 
-func (a *replaceStringAction) Init(args []arg.Arg) error {
-	a.TargetArg = args[0]
-	a.Args = args
-	a.ArgTypes = []common.Type{common.String, common.String, common.String}
-	return nil
-}
+func (a *replaceStringAction) Init(args []arg.Arg) error { _ = "STUB: not implemented"; return nil }
 
 func (a *replaceStringAction) Execute(ceCtx *context.EventContext) error {
-	args, err := a.RunArgs(ceCtx)
-	if err != nil {
-		return err
-	}
-	originalString, _ := args[0].(string)
-	subVal, _ := args[1].(string)
-	targetVal, _ := args[2].(string)
-	newString := strings.ReplaceAll(originalString, subVal, targetVal)
-	return a.TargetArg.SetValue(ceCtx, newString)
+	_ = "STUB: not implemented"
+	return nil
 }

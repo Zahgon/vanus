@@ -14,28 +14,13 @@
 
 package block
 
-import (
-	// standard libraries.
-	"os"
-	"path/filepath"
-
+import ( // standard libraries.
 	// first-party libraries.
-	vanus "github.com/vanus-labs/vanus/api/vsr"
-
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/vsb"
 )
 
 func VSBDetail(volumeDir string, id uint64) (vsb.Header, error) {
-	blockID := vanus.NewIDFromUint64(id)
-	blockPath := vsb.BlockPath(filepath.Join(volumeDir, "block"), blockID)
-
-	f, err := os.OpenFile(blockPath, os.O_RDONLY, 0)
-	if err != nil {
-		return vsb.Header{}, err
-	}
-
-	defer f.Close()
-
-	return vsb.LoadHeader(f)
+	_ = "STUB: not implemented"
+	return *new(vsb.Header), nil
 }

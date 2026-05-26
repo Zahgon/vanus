@@ -17,9 +17,6 @@ package transport
 import (
 	// standard libraries.
 	"sync"
-
-	// first-party project.
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type Resolver interface {
@@ -31,31 +28,10 @@ type SimpleResolver struct {
 	nodes map[uint64]string
 }
 
-func NewSimpleResolver() *SimpleResolver {
-	return &SimpleResolver{
-		nodes: make(map[uint64]string),
-	}
-}
+func NewSimpleResolver() *SimpleResolver { _ = "STUB: not implemented"; return nil }
 
-func (r *SimpleResolver) Resolve(node uint64) string {
-	r.RLock()
-	defer r.RUnlock()
-	return r.nodes[node]
-}
+func (r *SimpleResolver) Resolve(node uint64) string { _ = "STUB: not implemented"; return "" }
 
-func (r *SimpleResolver) Register(node uint64, endpoint string) {
-	log.Info().
-		Uint64("node_id", node).
-		Str("endpoint", endpoint).
-		Msg("Register raft node route.")
+func (r *SimpleResolver) Register(node uint64, endpoint string) { _ = "STUB: not implemented"; return }
 
-	r.Lock()
-	defer r.Unlock()
-	r.nodes[node] = endpoint
-}
-
-func (r *SimpleResolver) Unregister(node uint64) {
-	r.Lock()
-	defer r.Unlock()
-	delete(r.nodes, node)
-}
+func (r *SimpleResolver) Unregister(node uint64) { _ = "STUB: not implemented"; return }

@@ -16,18 +16,7 @@ package datetime
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewUnixTimeFormatAction ["unix_time_format", "path", "format","timeZone"].
-func NewUnixTimeFormatAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName:  "UNIX_TIME_FORMAT",
-		FixedArgs:   []arg.TypeList{arg.EventList, arg.All},
-		VariadicArg: arg.All,
-		Fn:          function.UnixTimeFormatFunction,
-	}
-	return a
-}
+func NewUnixTimeFormatAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

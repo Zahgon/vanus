@@ -11,7 +11,6 @@ package manager
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	metadata "github.com/vanus-labs/vanus/server/controller/tenant/metadata"
@@ -31,112 +30,94 @@ type MockTokenManagerMockRecorder struct {
 
 // NewMockTokenManager creates a new mock instance.
 func NewMockTokenManager(ctrl *gomock.Controller) *MockTokenManager {
-	mock := &MockTokenManager{ctrl: ctrl}
-	mock.recorder = &MockTokenManagerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTokenManager) EXPECT() *MockTokenManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddToken mocks base method.
+	return nil
 }
 
-// AddToken mocks base method.
 func (m *MockTokenManager) AddToken(ctx context.Context, user *metadata.Token) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddToken", ctx, user)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AddToken indicates an expected call of AddToken.
 func (mr *MockTokenManagerMockRecorder) AddToken(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddToken", reflect.TypeOf((*MockTokenManager)(nil).AddToken), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteToken mocks base method.
 func (m *MockTokenManager) DeleteToken(ctx context.Context, id vsr.ID) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteToken", ctx, id)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteToken indicates an expected call of DeleteToken.
 func (mr *MockTokenManagerMockRecorder) DeleteToken(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteToken", reflect.TypeOf((*MockTokenManager)(nil).DeleteToken), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetToken mocks base method.
 func (m *MockTokenManager) GetToken(ctx context.Context, id vsr.ID) (*metadata.Token, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetToken", ctx, id)
-	ret0, _ := ret[0].(*metadata.Token)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetToken indicates an expected call of GetToken.
 func (mr *MockTokenManagerMockRecorder) GetToken(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetToken", reflect.TypeOf((*MockTokenManager)(nil).GetToken), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUser mocks base method.
 func (m *MockTokenManager) GetUser(ctx context.Context, token string) (string, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUser", ctx, token)
-	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // GetUser indicates an expected call of GetUser.
 func (mr *MockTokenManagerMockRecorder) GetUser(ctx, token any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockTokenManager)(nil).GetUser), ctx, token)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserToken mocks base method.
 func (m *MockTokenManager) GetUserToken(ctx context.Context, identifier string) []*metadata.Token {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserToken", ctx, identifier)
-	ret0, _ := ret[0].([]*metadata.Token)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserToken indicates an expected call of GetUserToken.
 func (mr *MockTokenManagerMockRecorder) GetUserToken(ctx, identifier any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserToken", reflect.TypeOf((*MockTokenManager)(nil).GetUserToken), ctx, identifier)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Init mocks base method.
-func (m *MockTokenManager) Init(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Init", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockTokenManager) Init(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Init indicates an expected call of Init.
 func (mr *MockTokenManagerMockRecorder) Init(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockTokenManager)(nil).Init), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListToken mocks base method.
 func (m *MockTokenManager) ListToken(ctx context.Context) []*metadata.Token {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListToken", ctx)
-	ret0, _ := ret[0].([]*metadata.Token)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ListToken indicates an expected call of ListToken.
 func (mr *MockTokenManagerMockRecorder) ListToken(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListToken", reflect.TypeOf((*MockTokenManager)(nil).ListToken), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }

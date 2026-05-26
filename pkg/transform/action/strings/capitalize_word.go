@@ -16,17 +16,7 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewCapitalizeWord ["capitalize_word", "key"].
-func NewCapitalizeWordAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "CAPITALIZE_WORD",
-		FixedArgs:  []arg.TypeList{arg.EventList},
-		Fn:         function.CapitalizeWord,
-	}
-	return a
-}
+func NewCapitalizeWordAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

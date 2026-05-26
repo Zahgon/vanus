@@ -18,7 +18,6 @@ import (
 	// standard libraries.
 	"context"
 	"os"
-	"path/filepath"
 
 	// first-party libraries.
 	vanus "github.com/vanus-labs/vanus/api/vsr"
@@ -28,56 +27,10 @@ import (
 )
 
 func (e *engine) Recover(ctx context.Context) (map[vanus.ID]block.Raw, error) {
-	files, err := os.ReadDir(e.dir)
-	if err != nil {
-		return nil, err
-	}
-	files = filterRegularBlock(files)
-
-	blocks := make(map[vanus.ID]block.Raw, len(files))
-	for _, file := range files {
-		filename := file.Name()
-		blockID, err2 := vanus.NewIDFromString(filename[:len(filename)-len(vsbExt)])
-		if err2 != nil {
-			// TODO(james.yin): skip this file?
-			err = err2
-			break
-		}
-
-		block, err2 := e.Open(ctx, blockID)
-		if err2 != nil {
-			err = err2
-			break
-		}
-		blocks[blockID] = block
-	}
-
-	if err != nil {
-		for _, block := range blocks {
-			_ = block.Close(ctx)
-		}
-		return nil, err
-	}
-
-	return blocks, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func filterRegularBlock(entries []os.DirEntry) []os.DirEntry {
-	if len(entries) == 0 {
-		return entries
-	}
+// TODO(james.yin): skip this file?
 
-	n := 0
-	for _, entry := range entries {
-		if !entry.Type().IsRegular() {
-			continue
-		}
-		if filepath.Ext(entry.Name()) != vsbExt {
-			continue
-		}
-		entries[n] = entry
-		n++
-	}
-	entries = entries[:n]
-	return entries
-}
+func filterRegularBlock(entries []os.DirEntry) []os.DirEntry { _ = "STUB: not implemented"; return nil }

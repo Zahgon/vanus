@@ -23,5 +23,6 @@ import (
 )
 
 func buildIOEngineEx(_ IO) engine.Interface {
-	panic("io engine is not supported")
+	_ = "STUB: not implemented"
+	return *new(engine.Interface)
 }

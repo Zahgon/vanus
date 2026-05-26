@@ -15,9 +15,6 @@
 package config
 
 import (
-	// standard libraries.
-	"time"
-
 	// this project.
 	"github.com/vanus-labs/vanus/server/store/vsb"
 )
@@ -33,26 +30,6 @@ type VSB struct {
 	IO             IO                  `yaml:"io"`
 }
 
-func (c *VSB) Validate() error {
-	return nil
-}
+func (c *VSB) Validate() error { _ = "STUB: not implemented"; return nil }
 
-func (c *VSB) Options() (opts []vsb.Option) {
-	if c.FlushBatchSize != 0 {
-		opts = append(opts, vsb.WithFlushBatchSize(c.FlushBatchSize))
-	}
-	if c.FlushDelayTime != "" {
-		d, err := time.ParseDuration(c.FlushDelayTime)
-		if err != nil {
-			panic(err)
-		}
-		opts = append(opts, vsb.WithFlushDelayTime(d))
-	}
-	if c.Parallel.Callback != 0 {
-		opts = append(opts, vsb.WithCallbackParallel(c.Parallel.Callback))
-	}
-	if c.IO.Engine != "" {
-		opts = append(opts, vsb.WithIOEngine(buildIOEngine(c.IO)))
-	}
-	return opts
-}
+func (c *VSB) Options() (opts []vsb.Option) { _ = "STUB: not implemented"; return nil }

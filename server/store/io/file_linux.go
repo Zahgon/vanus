@@ -30,12 +30,8 @@ const (
 )
 
 func createFile(path string, size int64, flag int, sync bool, direct bool) (*os.File, error) {
-	if size > 0 && sync {
-		return doCreateFileAndWarm(path, size, flag, sync, direct)
-	}
-	return doCreateFile(path, size, flag, sync, direct)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func resizeFile(f *os.File, size int64) error {
-	return syscall.Fallocate(int(f.Fd()), 0, 0, size)
-}
+func resizeFile(f *os.File, size int64) error { _ = "STUB: not implemented"; return nil }

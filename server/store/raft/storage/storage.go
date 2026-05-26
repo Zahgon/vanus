@@ -22,7 +22,6 @@ import (
 	// first-party libraries.
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 	"github.com/vanus-labs/vanus/pkg/raft"
-	"github.com/vanus-labs/vanus/pkg/raft/raftpb"
 
 	// this project.
 	"github.com/vanus-labs/vanus/lib/executor"
@@ -51,47 +50,23 @@ func NewStorage(
 	ctx context.Context, nodeID vanus.ID, wal *WAL, stateStore *meta.SyncStore, hintStore *meta.AsyncStore,
 	snapOp SnapshotOperator,
 ) (*Storage, error) {
-	if err := wal.addNode(ctx, nodeID); err != nil {
-		return nil, err
-	}
-	return newStorage(nodeID, wal, stateStore, hintStore, snapOp), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func newStorage(
 	nodeID vanus.ID, wal *WAL, stateStore *meta.SyncStore, hintStore *meta.AsyncStore, snapOp SnapshotOperator,
 ) *Storage {
-	s := &Storage{
-		nodeID: nodeID,
-		logStorage: logStorage{
-			// When starting from scratch populate the list with a dummy entry at term zero.
-			ents: make([]raftpb.Entry, 1),
-			offs: make([]int64, 1),
-			wal:  wal,
-		},
-		stateStorage: stateStorage{
-			stateStore: stateStore,
-			hintStore:  hintStore,
-			hsKey:      []byte(HardStateKey(nodeID.Uint64())),
-			offKey:     []byte(CommitKey(nodeID.Uint64())),
-			csKey:      []byte(ConfStateKey(nodeID.Uint64())),
-			appKey:     []byte(ApplyKey(nodeID.Uint64())),
-		},
-		snapshotStorage: snapshotStorage{
-			snapOp: snapOp,
-		},
-	}
-	return s
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// When starting from scratch populate the list with a dummy entry at term zero.
 
 // Delete discards all data of Storage.
 // NOTE: waiting for inflight append calls is the responsibility of the caller.
-func (s *Storage) Delete(ctx context.Context) {
-	if err := s.wal.removeNode(ctx, s.nodeID); err != nil {
-		// TODO(james.yin): handle error.
-		panic(err)
-	}
+func (s *Storage) Delete(ctx context.Context) { _ = "STUB: not implemented"; return }
 
-	// Clean metadata in stateStore and hintStore.
-	s.stateStore.BatchDelete(ctx, [][]byte{s.hsKey, s.csKey}, func(err error) {})
-	s.hintStore.BatchDelete([][]byte{s.offKey, s.appKey})
-}
+// TODO(james.yin): handle error.
+
+// Clean metadata in stateStore and hintStore.

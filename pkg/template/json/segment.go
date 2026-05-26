@@ -34,22 +34,11 @@ type literalSegment struct {
 var _ templateSegment = (*literalSegment)(nil)
 
 func (s *literalSegment) RenderTo(w bytes.LastByteWriter, _ any, _ map[string]any) error {
-	b, ok := w.LastByte()
-	if !ok {
-		return ignoreCount(w.Write(s.val))
-	}
-	if b == ',' && (s.val[0] == '}' || s.val[0] == ']') {
-		w.TruncateLastByte()
-	}
-	// skip leading comma
-	if s.val[0] == ',' && (b == ',' || b == '{' || b == '[') {
-		if len(s.val) <= 1 {
-			return nil
-		}
-		return ignoreCount(w.Write(s.val[1:]))
-	}
-	return ignoreCount(w.Write(s.val))
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// skip leading comma
 
 type variableSegment struct {
 	name string
@@ -59,9 +48,9 @@ type variableSegment struct {
 var _ templateSegment = (*variableSegment)(nil)
 
 func (s *variableSegment) RenderTo(w bytes.LastByteWriter, _ any, variables map[string]any) error {
+	_ = "STUB: not implemented"
 	// Variables MUST be defined. But to prevent corner cases, write a "null".
-	v := variables[s.name]
-	return writeJSON(w, v)
+	return nil
 }
 
 type variableStringSegment struct {
@@ -72,12 +61,9 @@ type variableStringSegment struct {
 var _ templateSegment = (*variableStringSegment)(nil)
 
 func (s *variableStringSegment) RenderTo(w bytes.LastByteWriter, _ any, variables map[string]any) error {
+	_ = "STUB: not implemented"
 	// Variables MUST be defined. But to prevent corner cases, keep it empty.
-	v, ok := variables[s.name]
-	if !ok {
-		return nil
-	}
-	return writeInJSONString(w, v)
+	return nil
 }
 
 type memberSegment struct {
@@ -89,26 +75,8 @@ type memberSegment struct {
 var _ templateSegment = (*memberSegment)(nil)
 
 func (s *memberSegment) RenderTo(w bytes.LastByteWriter, model any, _ map[string]any) error {
-	results := s.value.Get(model)
-	if len(results) == 0 {
-		return nil
-	}
-
-	b, _ := w.LastByte()
-	if b != ',' && b != '{' {
-		if _, err := w.Write([]byte{','}); err != nil {
-			return err
-		}
-	}
-
-	if _, err := w.Write(s.key); err != nil {
-		return err
-	}
-
-	if len(results) == 1 {
-		return writeJSON(w, results[0])
-	}
-	return writeJSON(w, results)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type elementSegment struct {
@@ -119,22 +87,8 @@ type elementSegment struct {
 var _ templateSegment = (*elementSegment)(nil)
 
 func (s *elementSegment) RenderTo(w bytes.LastByteWriter, model any, _ map[string]any) error {
-	results := s.value.Get(model)
-	if len(results) == 0 {
-		return nil
-	}
-
-	b, _ := w.LastByte()
-	if b != ',' && b != '[' {
-		if _, err := w.Write([]byte{','}); err != nil {
-			return err
-		}
-	}
-
-	if len(results) == 1 {
-		return writeJSON(w, results[0])
-	}
-	return writeJSON(w, results)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type jsonPathStringSegment struct {
@@ -145,12 +99,6 @@ type jsonPathStringSegment struct {
 var _ templateSegment = (*jsonPathStringSegment)(nil)
 
 func (s *jsonPathStringSegment) RenderTo(w bytes.LastByteWriter, model any, _ map[string]any) error {
-	results := s.path.Get(model)
-	if len(results) == 0 {
-		return nil
-	}
-	if len(results) == 1 {
-		return writeInJSONString(w, results[0])
-	}
-	return writeJSONInJSONString(w, results)
+	_ = "STUB: not implemented"
+	return nil
 }

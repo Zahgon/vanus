@@ -17,20 +17,7 @@ package command
 import (
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
 	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/apply"
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/compact"
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/hs"
 )
 
-func ModifyCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "modify SUB-COMMAND",
-		Short: "modify metadata",
-	}
-	cmd.AddCommand(hs.ModifyCommand())
-	cmd.AddCommand(apply.ModifyCommand())
-	cmd.AddCommand(compact.ModifyCommand())
-	return cmd
-}
+func ModifyCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }

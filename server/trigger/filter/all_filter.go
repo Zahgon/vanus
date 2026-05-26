@@ -20,21 +20,11 @@ import (
 
 type allFilter []Filter
 
-func NewAllFilter(filters ...Filter) Filter {
-	if len(filters) == 0 {
-		return nil
-	}
-	return append(allFilter{}, filters...)
-}
+func NewAllFilter(filters ...Filter) Filter { _ = "STUB: not implemented"; return *new(Filter) }
 
 func (filter allFilter) Filter(event ce.Event) Result {
-	for _, f := range filter {
-		res := f.Filter(event)
-		if res == FailFilter {
-			return FailFilter
-		}
-	}
-	return PassFilter
+	_ = "STUB: not implemented"
+	return *new(Result)
 }
 
 var _ Filter = (*allFilter)(nil)

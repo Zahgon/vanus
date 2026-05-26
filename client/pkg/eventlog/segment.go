@@ -17,19 +17,14 @@ package eventlog
 import (
 	// standard libraries.
 	"context"
-	"encoding/binary"
-	"math"
 	"sync"
 	"sync/atomic"
 	"time"
 
 	// third-party libraries.
-	"go.opentelemetry.io/otel/trace"
 
 	// first-party libraries.
 	"github.com/vanus-labs/vanus/api/cloudevents"
-	"github.com/vanus-labs/vanus/api/errors"
-	segpb "github.com/vanus-labs/vanus/api/segment"
 	"github.com/vanus-labs/vanus/pkg/observability/tracing"
 
 	// this project.
@@ -37,49 +32,13 @@ import (
 )
 
 func newSegment(ctx context.Context, r *record.Segment, towrite bool) (*segment, error) {
-	prefer, err := newBlockExt(ctx, r, towrite)
-	if err != nil {
-		return nil, err
-	}
-
-	segment := &segment{
-		id:               r.ID,
-		startOffset:      r.StartOffset,
-		endOffset:        atomic.Int64{},
-		writable:         atomic.Bool{},
-		firstEventBornAt: r.FirstEventBornAt,
-		lastEventBornAt:  r.LastEventBornAt,
-		prefer:           prefer,
-		tracer:           tracing.NewTracer("internal.eventlog.segment", trace.SpanKindClient),
-	}
-
-	if !r.Writable {
-		segment.endOffset.Store(r.EndOffset)
-	} else {
-		segment.endOffset.Store(math.MaxInt64)
-		segment.writable.Store(true)
-	}
-	return segment, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func newBlockExt(ctx context.Context, r *record.Segment, leaderOnly bool) (*block, error) {
-	id := r.LeaderBlockID
-	if id == 0 {
-		if leaderOnly {
-			return nil, errors.ErrNotLeader
-		}
-		for _, b := range r.Blocks {
-			if b.Endpoint != "" {
-				id = b.ID
-				break
-			}
-		}
-	}
-	b, ok := r.Blocks[id]
-	if !ok {
-		return nil, errors.ErrBlockNotFound
-	}
-	return newBlock(ctx, b)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type segment struct {
@@ -95,162 +54,48 @@ type segment struct {
 	tracer *tracing.Tracer
 }
 
-func (s *segment) ID() uint64 {
-	return s.id
-}
+func (s *segment) ID() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *segment) StartOffset() int64 {
-	return s.startOffset
-}
+func (s *segment) StartOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *segment) EndOffset() int64 {
-	return s.endOffset.Load()
-}
+func (s *segment) EndOffset() int64 { _ = "STUB: not implemented"; return 0 }
 
-func (s *segment) Writable() bool {
-	return s.writable.Load()
-}
+func (s *segment) Writable() bool { _ = "STUB: not implemented"; return false }
 
-func (s *segment) SetNotWritable() {
-	s.writable.Store(false)
-}
+func (s *segment) SetNotWritable() { _ = "STUB: not implemented"; return }
 
-func (s *segment) Close(ctx context.Context) {
-	s.prefer.Close(ctx)
-}
+func (s *segment) Close(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 func (s *segment) Update(ctx context.Context, r *record.Segment, towrite bool) error {
+	_ = "STUB: not implemented"
 	// When a segment become read-only, the end offset needs to be set to the real value.
 	// TODO(wenfeng) data race?
-	s.lastEventBornAt = r.LastEventBornAt
-	if s.Writable() && !r.Writable && s.writable.CompareAndSwap(true, false) {
-		s.endOffset.Store(r.EndOffset)
-		return nil
-	}
-
-	_, span := s.tracer.Start(ctx, "Update")
-	defer span.End()
-
-	switchBlock := func() bool {
-		if towrite {
-			if s.prefer.id != r.LeaderBlockID {
-				return true
-			}
-		} else {
-			if _, ok := r.Blocks[s.prefer.id]; !ok {
-				return true
-			}
-		}
-		return false
-	}()
-	if switchBlock {
-		prefer, err := newBlockExt(ctx, r, true)
-		if err != nil {
-			return err
-		}
-		s.setPreferSegmentBlock(prefer)
-	}
-
 	return nil
 }
 
 func (s *segment) Append(ctx context.Context, event *cloudevents.CloudEventBatch) ([]int64, error) {
-	_ctx, span := s.tracer.Start(ctx, "Append")
-	defer span.End()
-
-	b := s.preferSegmentBlock()
-	if b == nil {
-		return nil, errors.ErrNotLeader
-	}
-	offs, err := b.Append(_ctx, event)
-	if err != nil {
-		return nil, err
-	}
-	for idx := range offs {
-		offs[idx] += s.startOffset
-	}
-	return offs, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *segment) Read(ctx context.Context, from int64, size int16, pollingTimeout uint32) (*cloudevents.CloudEventBatch, error) {
-	if from < s.startOffset {
-		return nil, errors.ErrOffsetUnderflow
-	}
-	ctx, span := s.tracer.Start(ctx, "Read")
-	defer span.End()
-
-	if eo := s.endOffset.Load(); eo >= 0 {
-		if from > eo {
-			return nil, errors.ErrOffsetOverflow
-		}
-		if int64(size) > eo-from {
-			size = int16(eo - from)
-		}
-	}
-	// TODO: cached read
-	b := s.preferSegmentBlock()
-	if b == nil {
-		return nil, errors.ErrBlockNotFound
-	}
-	events, err := b.Read(ctx, from-s.startOffset, size, pollingTimeout)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, e := range events.Events {
-		v, ok := e.Attributes[segpb.XVanusBlockOffset]
-		if !ok {
-			continue
-		}
-
-		_, ok = v.GetAttr().(*cloudevents.CloudEvent_CloudEventAttributeValue_CeInteger)
-		if !ok {
-			return events, errors.ErrCorruptedEvent
-		}
-		offset := s.startOffset + int64(v.GetCeInteger())
-		buf := make([]byte, 8)
-		binary.BigEndian.PutUint64(buf, uint64(offset))
-		e.Attributes[XVanusLogOffset] = &cloudevents.CloudEvent_CloudEventAttributeValue{
-			Attr: &cloudevents.CloudEvent_CloudEventAttributeValue_CeBytes{CeBytes: buf},
-		}
-		delete(e.Attributes, segpb.XVanusBlockOffset)
-	}
-
-	return events, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (s *segment) preferSegmentBlock() *block {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
-	return s.prefer
-}
+// TODO: cached read
 
-func (s *segment) setPreferSegmentBlock(prefer *block) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	s.prefer = prefer
-}
+func (s *segment) preferSegmentBlock() *block { _ = "STUB: not implemented"; return nil }
+
+func (s *segment) setPreferSegmentBlock(prefer *block) { _ = "STUB: not implemented"; return }
 
 func (s *segment) LookupOffset(ctx context.Context, t time.Time) (int64, error) {
-	return s.preferSegmentBlock().LookupOffset(ctx, t)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (s *segment) CheckHealth(ctx context.Context) error {
-	b := s.preferSegmentBlock()
-	if b == nil {
-		// FIXME: no leader
-		return errors.ErrNotLeader
-	}
+func (s *segment) CheckHealth(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	status, err := b.Describe(ctx)
-	if err != nil {
-		return err
-	}
+// FIXME: no leader
 
-	if status.Leader != b.id {
-		// TODO: maybe corrupted metadata
-		return errors.ErrUnknown
-	}
-
-	return nil
-}
+// TODO: maybe corrupted metadata

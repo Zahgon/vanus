@@ -22,11 +22,10 @@ package proxy
 
 import (
 	context "context"
+
 	controller "github.com/vanus-labs/vanus/api/controller"
 	meta "github.com/vanus-labs/vanus/api/meta"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
@@ -137,376 +136,213 @@ type controllerProxyClient struct {
 }
 
 func NewControllerProxyClient(cc grpc.ClientConnInterface) ControllerProxyClient {
-	return &controllerProxyClient{cc}
+	_ = "STUB: not implemented"
+	return *new(ControllerProxyClient)
 }
 
 func (c *controllerProxyClient) CreateEventbus(ctx context.Context, in *controller.CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) CreateSystemEventbus(ctx context.Context, in *controller.CreateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateSystemEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DeleteEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DeleteEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetEventbus(ctx context.Context, in *wrapperspb.UInt64Value, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListEventbus(ctx context.Context, in *controller.ListEventbusRequest, opts ...grpc.CallOption) (*controller.ListEventbusResponse, error) {
-	out := new(controller.ListEventbusResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) UpdateEventbus(ctx context.Context, in *controller.UpdateEventbusRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, ControllerProxy_UpdateEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetEventbusWithHumanFriendly(ctx context.Context, in *controller.GetEventbusWithHumanFriendlyRequest, opts ...grpc.CallOption) (*meta.Eventbus, error) {
-	out := new(meta.Eventbus)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetEventbusWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListSegment(ctx context.Context, in *controller.ListSegmentRequest, opts ...grpc.CallOption) (*controller.ListSegmentResponse, error) {
-	out := new(controller.ListSegmentResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListSegment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ValidateEventbus(ctx context.Context, in *ValidateEventbusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_ValidateEventbus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) CreateSubscription(ctx context.Context, in *controller.CreateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) UpdateSubscription(ctx context.Context, in *controller.UpdateSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, ControllerProxy_UpdateSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DeleteSubscription(ctx context.Context, in *controller.DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DeleteSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetSubscription(ctx context.Context, in *controller.GetSubscriptionRequest, opts ...grpc.CallOption) (*meta.Subscription, error) {
-	out := new(meta.Subscription)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListSubscription(ctx context.Context, in *controller.ListSubscriptionRequest, opts ...grpc.CallOption) (*controller.ListSubscriptionResponse, error) {
-	out := new(controller.ListSubscriptionResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DisableSubscription(ctx context.Context, in *controller.DisableSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DisableSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ResumeSubscription(ctx context.Context, in *controller.ResumeSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_ResumeSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ResetOffsetToTimestamp(ctx context.Context, in *controller.ResetOffsetToTimestampRequest, opts ...grpc.CallOption) (*controller.ResetOffsetToTimestampResponse, error) {
-	out := new(controller.ResetOffsetToTimestampResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ResetOffsetToTimestamp_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ClusterInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ClusterInfoResponse, error) {
-	out := new(ClusterInfoResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ClusterInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) LookupOffset(ctx context.Context, in *LookupOffsetRequest, opts ...grpc.CallOption) (*LookupOffsetResponse, error) {
-	out := new(LookupOffsetResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_LookupOffset_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetEvent(ctx context.Context, in *GetEventRequest, opts ...grpc.CallOption) (*GetEventResponse, error) {
-	out := new(GetEventResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetEvent_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ValidateSubscription(ctx context.Context, in *ValidateSubscriptionRequest, opts ...grpc.CallOption) (*ValidateSubscriptionResponse, error) {
-	out := new(ValidateSubscriptionResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ValidateSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetDeadLetterEvent(ctx context.Context, in *GetDeadLetterEventRequest, opts ...grpc.CallOption) (*GetDeadLetterEventResponse, error) {
-	out := new(GetDeadLetterEventResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetDeadLetterEvent_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ResendDeadLetterEvent(ctx context.Context, in *ResendDeadLetterEventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_ResendDeadLetterEvent_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) SetDeadLetterEventOffset(ctx context.Context, in *controller.SetDeadLetterEventOffsetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_SetDeadLetterEventOffset_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetNamespaceWithHumanFriendly(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetNamespaceWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) CreateNamespace(ctx context.Context, in *controller.CreateNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListNamespace(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListNamespaceResponse, error) {
-	out := new(controller.ListNamespaceResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetNamespace(ctx context.Context, in *controller.GetNamespaceRequest, opts ...grpc.CallOption) (*meta.Namespace, error) {
-	out := new(meta.Namespace)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DeleteNamespace(ctx context.Context, in *controller.DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DeleteNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) CreateUser(ctx context.Context, in *controller.CreateUserRequest, opts ...grpc.CallOption) (*meta.User, error) {
-	out := new(meta.User)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DeleteUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DeleteUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetUser(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*meta.User, error) {
-	out := new(meta.User)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListUserResponse, error) {
-	out := new(controller.ListUserResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) CreateToken(ctx context.Context, in *controller.CreateTokenRequest, opts ...grpc.CallOption) (*meta.Token, error) {
-	out := new(meta.Token)
-	err := c.cc.Invoke(ctx, ControllerProxy_CreateToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) DeleteToken(ctx context.Context, in *controller.DeleteTokenRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_DeleteToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetUserToken(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*controller.GetTokenResponse, error) {
-	out := new(controller.GetTokenResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetUserToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) ListToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*controller.ListTokenResponse, error) {
-	out := new(controller.ListTokenResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_ListToken_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GrantRole(ctx context.Context, in *controller.RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_GrantRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) RevokeRole(ctx context.Context, in *controller.RoleRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ControllerProxy_RevokeRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetUserRole(ctx context.Context, in *controller.GetUserRoleRequest, opts ...grpc.CallOption) (*controller.GetUserRoleResponse, error) {
-	out := new(controller.GetUserRoleResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetUserRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *controllerProxyClient) GetResourceRole(ctx context.Context, in *controller.GetResourceRoleRequest, opts ...grpc.CallOption) (*controller.GetResourceRoleResponse, error) {
-	out := new(controller.GetResourceRoleResponse)
-	err := c.cc.Invoke(ctx, ControllerProxy_GetResourceRole_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ControllerProxyServer is the server API for ControllerProxy service.
@@ -566,127 +402,208 @@ type UnimplementedControllerProxyServer struct {
 }
 
 func (UnimplementedControllerProxyServer) CreateEventbus(context.Context, *controller.CreateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) CreateSystemEventbus(context.Context, *controller.CreateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSystemEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DeleteEventbus(context.Context, *wrapperspb.UInt64Value) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetEventbus(context.Context, *wrapperspb.UInt64Value) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListEventbus(context.Context, *controller.ListEventbusRequest) (*controller.ListEventbusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) UpdateEventbus(context.Context, *controller.UpdateEventbusRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetEventbusWithHumanFriendly(context.Context, *controller.GetEventbusWithHumanFriendlyRequest) (*meta.Eventbus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventbusWithHumanFriendly not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListSegment(context.Context, *controller.ListSegmentRequest) (*controller.ListSegmentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSegment not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ValidateEventbus(context.Context, *ValidateEventbusRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ValidateEventbus not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) CreateSubscription(context.Context, *controller.CreateSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) UpdateSubscription(context.Context, *controller.UpdateSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DeleteSubscription(context.Context, *controller.DeleteSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetSubscription(context.Context, *controller.GetSubscriptionRequest) (*meta.Subscription, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListSubscription(context.Context, *controller.ListSubscriptionRequest) (*controller.ListSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DisableSubscription(context.Context, *controller.DisableSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ResumeSubscription(context.Context, *controller.ResumeSubscriptionRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResumeSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ResetOffsetToTimestamp(context.Context, *controller.ResetOffsetToTimestampRequest) (*controller.ResetOffsetToTimestampResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetOffsetToTimestamp not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ClusterInfo(context.Context, *emptypb.Empty) (*ClusterInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ClusterInfo not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) LookupOffset(context.Context, *LookupOffsetRequest) (*LookupOffsetResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LookupOffset not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetEvent(context.Context, *GetEventRequest) (*GetEventResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEvent not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ValidateSubscription(context.Context, *ValidateSubscriptionRequest) (*ValidateSubscriptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ValidateSubscription not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetDeadLetterEvent(context.Context, *GetDeadLetterEventRequest) (*GetDeadLetterEventResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetDeadLetterEvent not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ResendDeadLetterEvent(context.Context, *ResendDeadLetterEventRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResendDeadLetterEvent not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) SetDeadLetterEventOffset(context.Context, *controller.SetDeadLetterEventOffsetRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetDeadLetterEventOffset not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetNamespaceWithHumanFriendly(context.Context, *wrapperspb.StringValue) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNamespaceWithHumanFriendly not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) CreateNamespace(context.Context, *controller.CreateNamespaceRequest) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListNamespace(context.Context, *emptypb.Empty) (*controller.ListNamespaceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetNamespace(context.Context, *controller.GetNamespaceRequest) (*meta.Namespace, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DeleteNamespace(context.Context, *controller.DeleteNamespaceRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNamespace not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) CreateUser(context.Context, *controller.CreateUserRequest) (*meta.User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DeleteUser(context.Context, *wrapperspb.StringValue) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetUser(context.Context, *wrapperspb.StringValue) (*meta.User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListUser(context.Context, *emptypb.Empty) (*controller.ListUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUser not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) CreateToken(context.Context, *controller.CreateTokenRequest) (*meta.Token, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) DeleteToken(context.Context, *controller.DeleteTokenRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetUserToken(context.Context, *wrapperspb.StringValue) (*controller.GetTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) ListToken(context.Context, *emptypb.Empty) (*controller.ListTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListToken not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GrantRole(context.Context, *controller.RoleRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GrantRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) RevokeRole(context.Context, *controller.RoleRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevokeRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetUserRole(context.Context, *controller.GetUserRoleRequest) (*controller.GetUserRoleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedControllerProxyServer) GetResourceRole(context.Context, *controller.GetResourceRoleRequest) (*controller.GetResourceRoleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetResourceRole not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // UnsafeControllerProxyServer may be embedded to opt out of forward compatibility for this service.
@@ -697,745 +614,213 @@ type UnsafeControllerProxyServer interface {
 }
 
 func RegisterControllerProxyServer(s grpc.ServiceRegistrar, srv ControllerProxyServer) {
-	s.RegisterService(&ControllerProxy_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _ControllerProxy_CreateEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateEventbus(ctx, req.(*controller.CreateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_CreateSystemEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateSystemEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateSystemEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateSystemEventbus(ctx, req.(*controller.CreateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DeleteEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt64Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DeleteEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DeleteEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DeleteEventbus(ctx, req.(*wrapperspb.UInt64Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.UInt64Value)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetEventbus(ctx, req.(*wrapperspb.UInt64Value))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.ListEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListEventbus(ctx, req.(*controller.ListEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_UpdateEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.UpdateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).UpdateEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_UpdateEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).UpdateEventbus(ctx, req.(*controller.UpdateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetEventbusWithHumanFriendly_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.GetEventbusWithHumanFriendlyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetEventbusWithHumanFriendly(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetEventbusWithHumanFriendly_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetEventbusWithHumanFriendly(ctx, req.(*controller.GetEventbusWithHumanFriendlyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListSegment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.ListSegmentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListSegment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListSegment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListSegment(ctx, req.(*controller.ListSegmentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ValidateEventbus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ValidateEventbusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ValidateEventbus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ValidateEventbus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ValidateEventbus(ctx, req.(*ValidateEventbusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_CreateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateSubscription(ctx, req.(*controller.CreateSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_UpdateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.UpdateSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).UpdateSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_UpdateSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).UpdateSubscription(ctx, req.(*controller.UpdateSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DeleteSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.DeleteSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DeleteSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DeleteSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DeleteSubscription(ctx, req.(*controller.DeleteSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.GetSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetSubscription(ctx, req.(*controller.GetSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.ListSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListSubscription(ctx, req.(*controller.ListSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DisableSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.DisableSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DisableSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DisableSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DisableSubscription(ctx, req.(*controller.DisableSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ResumeSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.ResumeSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ResumeSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ResumeSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ResumeSubscription(ctx, req.(*controller.ResumeSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ResetOffsetToTimestamp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.ResetOffsetToTimestampRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ResetOffsetToTimestamp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ResetOffsetToTimestamp_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ResetOffsetToTimestamp(ctx, req.(*controller.ResetOffsetToTimestampRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ClusterInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ClusterInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ClusterInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ClusterInfo(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_LookupOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LookupOffsetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).LookupOffset(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_LookupOffset_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).LookupOffset(ctx, req.(*LookupOffsetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetEvent(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetEvent_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetEvent(ctx, req.(*GetEventRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ValidateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ValidateSubscriptionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ValidateSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ValidateSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ValidateSubscription(ctx, req.(*ValidateSubscriptionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetDeadLetterEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetDeadLetterEventRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetDeadLetterEvent(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetDeadLetterEvent_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetDeadLetterEvent(ctx, req.(*GetDeadLetterEventRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ResendDeadLetterEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResendDeadLetterEventRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ResendDeadLetterEvent(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ResendDeadLetterEvent_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ResendDeadLetterEvent(ctx, req.(*ResendDeadLetterEventRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_SetDeadLetterEventOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.SetDeadLetterEventOffsetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).SetDeadLetterEventOffset(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_SetDeadLetterEventOffset_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).SetDeadLetterEventOffset(ctx, req.(*controller.SetDeadLetterEventOffsetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetNamespaceWithHumanFriendly_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetNamespaceWithHumanFriendly(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetNamespaceWithHumanFriendly_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetNamespaceWithHumanFriendly(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_CreateNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateNamespace(ctx, req.(*controller.CreateNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListNamespace(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.GetNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetNamespace(ctx, req.(*controller.GetNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DeleteNamespace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.DeleteNamespaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DeleteNamespace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DeleteNamespace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DeleteNamespace(ctx, req.(*controller.DeleteNamespaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateUser(ctx, req.(*controller.CreateUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DeleteUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DeleteUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DeleteUser(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetUser(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListUser(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_CreateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.CreateTokenRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).CreateToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_CreateToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).CreateToken(ctx, req.(*controller.CreateTokenRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_DeleteToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.DeleteTokenRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).DeleteToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_DeleteToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).DeleteToken(ctx, req.(*controller.DeleteTokenRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetUserToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetUserToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetUserToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetUserToken(ctx, req.(*wrapperspb.StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_ListToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).ListToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_ListToken_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).ListToken(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GrantRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.RoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GrantRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GrantRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GrantRole(ctx, req.(*controller.RoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_RevokeRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.RoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).RevokeRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_RevokeRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).RevokeRole(ctx, req.(*controller.RoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.GetUserRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetUserRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetUserRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetUserRole(ctx, req.(*controller.GetUserRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ControllerProxy_GetResourceRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(controller.GetResourceRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerProxyServer).GetResourceRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ControllerProxy_GetResourceRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerProxyServer).GetResourceRole(ctx, req.(*controller.GetResourceRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ControllerProxy_ServiceDesc is the grpc.ServiceDesc for ControllerProxy service.
@@ -1634,31 +1019,18 @@ type storeProxyClient struct {
 }
 
 func NewStoreProxyClient(cc grpc.ClientConnInterface) StoreProxyClient {
-	return &storeProxyClient{cc}
+	_ = "STUB: not implemented"
+	return *new(StoreProxyClient)
 }
 
 func (c *storeProxyClient) Publish(ctx context.Context, in *PublishRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, StoreProxy_Publish_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *storeProxyClient) Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (StoreProxy_SubscribeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StoreProxy_ServiceDesc.Streams[0], StoreProxy_Subscribe_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &storeProxySubscribeClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
+	_ = "STUB: not implemented"
+	return *new(StoreProxy_SubscribeClient), nil
 }
 
 type StoreProxy_SubscribeClient interface {
@@ -1671,20 +1043,13 @@ type storeProxySubscribeClient struct {
 }
 
 func (x *storeProxySubscribeClient) Recv() (*SubscribeResponse, error) {
-	m := new(SubscribeResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *storeProxyClient) Ack(ctx context.Context, opts ...grpc.CallOption) (StoreProxy_AckClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StoreProxy_ServiceDesc.Streams[1], StoreProxy_Ack_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &storeProxyAckClient{stream}
-	return x, nil
+	_ = "STUB: not implemented"
+	return *new(StoreProxy_AckClient), nil
 }
 
 type StoreProxy_AckClient interface {
@@ -1697,19 +1062,11 @@ type storeProxyAckClient struct {
 	grpc.ClientStream
 }
 
-func (x *storeProxyAckClient) Send(m *AckRequest) error {
-	return x.ClientStream.SendMsg(m)
-}
+func (x *storeProxyAckClient) Send(m *AckRequest) error { _ = "STUB: not implemented"; return nil }
 
 func (x *storeProxyAckClient) CloseAndRecv() (*emptypb.Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(emptypb.Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // StoreProxyServer is the server API for StoreProxy service.
@@ -1726,13 +1083,18 @@ type UnimplementedStoreProxyServer struct {
 }
 
 func (UnimplementedStoreProxyServer) Publish(context.Context, *PublishRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Publish not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedStoreProxyServer) Subscribe(*SubscribeRequest, StoreProxy_SubscribeServer) error {
-	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (UnimplementedStoreProxyServer) Ack(StoreProxy_AckServer) error {
-	return status.Errorf(codes.Unimplemented, "method Ack not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnsafeStoreProxyServer may be embedded to opt out of forward compatibility for this service.
@@ -1743,33 +1105,18 @@ type UnsafeStoreProxyServer interface {
 }
 
 func RegisterStoreProxyServer(s grpc.ServiceRegistrar, srv StoreProxyServer) {
-	s.RegisterService(&StoreProxy_ServiceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _StoreProxy_Publish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PublishRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StoreProxyServer).Publish(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StoreProxy_Publish_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreProxyServer).Publish(ctx, req.(*PublishRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _StoreProxy_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SubscribeRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(StoreProxyServer).Subscribe(m, &storeProxySubscribeServer{stream})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type StoreProxy_SubscribeServer interface {
@@ -1782,11 +1129,13 @@ type storeProxySubscribeServer struct {
 }
 
 func (x *storeProxySubscribeServer) Send(m *SubscribeResponse) error {
-	return x.ServerStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func _StoreProxy_Ack_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(StoreProxyServer).Ack(&storeProxyAckServer{stream})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type StoreProxy_AckServer interface {
@@ -1800,15 +1149,13 @@ type storeProxyAckServer struct {
 }
 
 func (x *storeProxyAckServer) SendAndClose(m *emptypb.Empty) error {
-	return x.ServerStream.SendMsg(m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x *storeProxyAckServer) Recv() (*AckRequest, error) {
-	m := new(AckRequest)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // StoreProxy_ServiceDesc is the grpc.ServiceDesc for StoreProxy service.

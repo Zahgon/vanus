@@ -17,12 +17,9 @@ package vsb
 import (
 	// standard libraries.
 	"context"
-	"encoding/binary"
 	"hash/crc32"
 	"os"
-
 	// this project.
-	"github.com/vanus-labs/vanus/server/store/block/raw"
 )
 
 const (
@@ -63,82 +60,27 @@ type Header struct {
 }
 
 func LoadHeader(f *os.File) (hdr Header, err error) {
-	var buf [headerSize]byte
-	if _, err = f.ReadAt(buf[:], 0); err != nil {
-		return
-	}
-
-	magic := binary.LittleEndian.Uint32(buf[magicOffset:])
-	if magic != FormatMagic {
-		return hdr, raw.ErrInvalidFormat
-	}
-
-	breakFlags := binary.LittleEndian.Uint32(buf[breakFlagsOffset:])
-	if breakFlags != 0 {
-		return hdr, errIncomplete
-	}
-
-	hdr.DataOffset = binary.LittleEndian.Uint32(buf[dataOffsetOffset:])
-	hdr.State = buf[stateOffset]
-	hdr.IndexSize = binary.LittleEndian.Uint16(buf[indexSizeOffset:])
-	hdr.Capacity = binary.LittleEndian.Uint64(buf[capacityOffset:])
-	hdr.EntryLength = binary.LittleEndian.Uint64(buf[entryLengthOffset:])
-	hdr.EntryNum = binary.LittleEndian.Uint32(buf[entryNumOffset:])
-
-	origin := binary.LittleEndian.Uint32(buf[crcOffset:])
-	crc := crc32.Checksum(buf[flagsOffset:], crc32q)
-	crc = crc32.Update(crc, crc32q, emptyHeader[headerSize:])
-	if origin != crc {
-		return hdr, errCorrupted
-	}
-
-	return hdr, nil
+	_ = "STUB: not implemented"
+	return *new(Header), nil
 }
 
 func (b *vsBlock) persistHeader(_ context.Context, m meta) error {
-	var buf [headerSize]byte
-	binary.LittleEndian.PutUint32(buf[magicOffset:], FormatMagic)               // magic
-	binary.LittleEndian.PutUint32(buf[flagsOffset:], 0)                         // flags
-	binary.LittleEndian.PutUint32(buf[breakFlagsOffset:], 0)                    // break flags
-	binary.LittleEndian.PutUint32(buf[dataOffsetOffset:], uint32(b.dataOffset)) // data offset
-	if m.archived {                                                             // state
-		buf[stateOffset] = 1
-	}
-	binary.LittleEndian.PutUint16(buf[indexSizeOffset:], b.indexSize)             // index size
-	binary.LittleEndian.PutUint64(buf[capacityOffset:], uint64(b.capacity))       // capacity
-	binary.LittleEndian.PutUint64(buf[entryLengthOffset:], uint64(m.entryLength)) // entry length
-	binary.LittleEndian.PutUint32(buf[entryNumOffset:], uint32(m.entryNum))       // entry number
-	if eo := b.dataOffset + m.entryLength; b.indexOffset > eo {                   // index offset
-		off := b.indexOffset - eo
-		binary.LittleEndian.PutUint16(buf[indexOffsetOffset:], uint16(off))
-	}
-	crc := crc32.Checksum(buf[flagsOffset:], crc32q)
-	crc = crc32.Update(crc, crc32q, emptyHeader[headerSize:])
-	binary.LittleEndian.PutUint32(buf[crcOffset:], crc) // crc
-
-	if _, err := b.f.WriteAt(buf[:], 0); err != nil {
-		return err
-	}
-
-	b.mu.Lock()
-	b.fm = m
-	b.mu.Unlock()
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (b *vsBlock) loadHeader(_ context.Context) error {
-	hdr, err := LoadHeader(b.f)
-	if err != nil {
-		return err
-	}
+// magic
+// flags
+// break flags
+// data offset
+// state
 
-	b.dataOffset = int64(hdr.DataOffset)
-	b.fm.archived = hdr.State != 0
-	b.indexSize = hdr.IndexSize
-	b.capacity = int64(hdr.Capacity)
-	b.fm.entryLength = int64(hdr.EntryLength)
-	b.fm.entryNum = int64(hdr.EntryNum)
+// index size
+// capacity
+// entry length
+// entry number
+// index offset
 
-	return nil
-}
+// crc
+
+func (b *vsBlock) loadHeader(_ context.Context) error { _ = "STUB: not implemented"; return nil }

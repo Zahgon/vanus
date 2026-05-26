@@ -19,9 +19,6 @@ import (
 	"context"
 	"sync"
 	"time"
-
-	"github.com/vanus-labs/vanus/api/errors"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type Authentication interface {
@@ -41,59 +38,22 @@ type authentication struct {
 }
 
 func NewAuthentication(client TokenClient) Authentication {
-	return &authentication{
-		client: client,
-	}
+	_ = "STUB: not implemented"
+	return *new(Authentication)
 }
 
-func (a *authentication) Start(ctx context.Context) error {
-	a.ctx, a.cancelFunc = context.WithCancel(ctx)
-	go a.checkTokenExpired()
+func (a *authentication) Start(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
+
+func (a *authentication) Stop(ctx context.Context) error {
+	_ = "STUB: not implemented" //nolint:revive // ignore
 	return nil
 }
 
-func (a *authentication) Stop(ctx context.Context) error { //nolint:revive // ignore
-	a.cancelFunc()
-	return nil
-}
-
-func (a *authentication) checkTokenExpired() {
-	ticker := time.NewTicker(checkExpireTime)
-	defer ticker.Stop()
-	for {
-		select {
-		case <-a.ctx.Done():
-			return
-		case <-ticker.C:
-			a.tokens.Range(func(key, value any) bool {
-				token, _ := key.(string)
-				v, err := a.client.GetUser(a.ctx, token)
-				if err != nil {
-					log.Warn(a.ctx).Msg("get token has error")
-					return true
-				}
-				if v == "" {
-					a.tokens.Delete(token)
-				}
-				return true
-			})
-		}
-	}
-}
+func (a *authentication) checkTokenExpired() { _ = "STUB: not implemented"; return }
 
 func (a *authentication) Authenticate(ctx context.Context, token string) (string, error) {
-	v, exist := a.tokens.Load(token)
-	if exist {
-		return v.(string), nil
-	}
-	// todo breakdown cache
-	user, err := a.client.GetUser(ctx, token)
-	if err != nil {
-		return "", err
-	}
-	if user == "" {
-		return "", errors.ErrResourceNotFound.WithMessage("token is invalid")
-	}
-	a.tokens.Store(token, user)
-	return user, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
+
+// todo breakdown cache

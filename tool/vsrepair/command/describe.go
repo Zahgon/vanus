@@ -17,16 +17,6 @@ package command
 import (
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
-	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/command/block"
 )
 
-func DescribeCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "describe TYPE ID",
-		Short: "Show details of a specific resource.",
-	}
-	cmd.AddCommand(block.DescribeCommand())
-	return cmd
-}
+func DescribeCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }

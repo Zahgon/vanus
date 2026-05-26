@@ -15,8 +15,6 @@
 package kv
 
 import (
-	"path"
-
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 )
 
@@ -44,42 +42,22 @@ const (
 	userToken = "/vanus/core/tenant/tokens" //nolint:gosec // ok
 )
 
-func DistributedLockKey(component string) string {
-	return path.Join(leaderLock, component)
-}
+func DistributedLockKey(component string) string { _ = "STUB: not implemented"; return "" }
 
-func ComponentLeaderKey(component string) string {
-	return path.Join(leaderInfo, component)
-}
+func ComponentLeaderKey(component string) string { _ = "STUB: not implemented"; return "" }
 
-func NamespaceAllKey() string {
-	return namespace
-}
+func NamespaceAllKey() string { _ = "STUB: not implemented"; return "" }
 
-func NamespaceKey(id vanus.ID) string {
-	return path.Join(namespace, id.Key())
-}
+func NamespaceKey(id vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
-func UserAllKey() string {
-	return user
-}
+func UserAllKey() string { _ = "STUB: not implemented"; return "" }
 
-func UserKey(identifier string) string {
-	return path.Join(user, identifier)
-}
+func UserKey(identifier string) string { _ = "STUB: not implemented"; return "" }
 
-func UserTokenAllKey() string {
-	return userToken
-}
+func UserTokenAllKey() string { _ = "STUB: not implemented"; return "" }
 
-func UserTokenKey(id vanus.ID) string {
-	return path.Join(userToken, id.Key())
-}
+func UserTokenKey(id vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
-func UserRoleAllKey() string {
-	return userRole
-}
+func UserRoleAllKey() string { _ = "STUB: not implemented"; return "" }
 
-func UserRoleKey(identifier, role string) string {
-	return path.Join(userRole, identifier, role)
-}
+func UserRoleKey(identifier, role string) string { _ = "STUB: not implemented"; return "" }

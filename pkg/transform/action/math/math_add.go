@@ -16,18 +16,7 @@ package math
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewMathAddAction ["math_add", "toKey","key1","key2"].
-func NewMathAddAction() action.Action {
-	a := &action.FunctionAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName:  "MATH_ADD",
-		FixedArgs:   []arg.TypeList{arg.EventList, arg.All, arg.All},
-		VariadicArg: arg.All,
-		Fn:          function.MathAddFunction,
-	}
-	return a
-}
+func NewMathAddAction() action.Action { _ = "STUB: not implemented"; return *new(action.Action) }

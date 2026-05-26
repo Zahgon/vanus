@@ -16,46 +16,22 @@ package client
 
 import (
 	"context"
-	"errors"
 
 	ce "github.com/cloudevents/sdk-go/v2"
-	cehttp "github.com/cloudevents/sdk-go/v2/protocol/http"
 )
 
 type http struct {
 	client ce.Client
 }
 
-func NewHTTPClient(url string) EventClient {
-	c, _ := ce.NewClientHTTP(ce.WithTarget(url))
-	return &http{
-		client: c,
-	}
-}
+func NewHTTPClient(url string) EventClient { _ = "STUB: not implemented"; return *new(EventClient) }
 
 func NewHTTPClientWithGateway(url, gateway, headerKey string) EventClient {
-	c, _ := ce.NewClientHTTP(ce.WithTarget(gateway), ce.WithHeader(headerKey, url))
-	return &http{
-		client: c,
-	}
+	_ = "STUB: not implemented"
+	return *new(EventClient)
 }
 
 func (c *http) Send(ctx context.Context, events ...*ce.Event) Result {
-	event := events[0]
-	res := c.client.Send(ctx, *event)
-	if ce.IsACK(res) {
-		return Success
-	}
-	if errors.Is(res, context.DeadlineExceeded) {
-		return DeliveryTimeout
-	}
-	r := Result{Err: res}
-	var httpResult *cehttp.Result
-	if ce.ResultAs(res, &httpResult) {
-		r.StatusCode = httpResult.StatusCode
-	} else {
-		r.StatusCode = errUnknown
-	}
-
-	return r
+	_ = "STUB: not implemented"
+	return *new(Result)
 }

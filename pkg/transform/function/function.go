@@ -36,25 +36,15 @@ type function struct {
 	fn           func(args []interface{}) (interface{}, error)
 }
 
-func (f function) Name() string {
-	return f.name
-}
+func (f function) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (f function) Arity() int {
-	return len(f.fixedArgs)
-}
+func (f function) Arity() int { _ = "STUB: not implemented"; return 0 }
 
-func (f function) ArgType(index int) *common.Type {
-	if index < len(f.fixedArgs) {
-		return &f.fixedArgs[index]
-	}
-	return f.variadicArgs
-}
+func (f function) ArgType(index int) *common.Type { _ = "STUB: not implemented"; return nil }
 
-func (f function) IsVariadic() bool {
-	return f.variadicArgs != nil
-}
+func (f function) IsVariadic() bool { _ = "STUB: not implemented"; return false }
 
 func (f function) Execute(args []interface{}) (interface{}, error) {
-	return f.fn(args)
+	_ = "STUB: not implemented"
+	return nil, nil
 }

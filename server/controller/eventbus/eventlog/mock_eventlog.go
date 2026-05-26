@@ -11,7 +11,6 @@ package eventlog
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	kv "github.com/vanus-labs/vanus/pkg/kv"
@@ -31,164 +30,134 @@ type MockManagerMockRecorder struct {
 }
 
 // NewMockManager creates a new mock instance.
-func NewMockManager(ctrl *gomock.Controller) *MockManager {
-	mock := &MockManager{ctrl: ctrl}
-	mock.recorder = &MockManagerMockRecorder{mock}
-	return mock
-}
+func NewMockManager(ctrl *gomock.Controller) *MockManager { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockManager) EXPECT() *MockManagerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AcquireEventlog mocks base method.
+	return nil
 }
 
-// AcquireEventlog mocks base method.
 func (m *MockManager) AcquireEventlog(ctx context.Context, eventbusID vsr.ID, eventbusName string) (*metadata.Eventlog, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AcquireEventlog", ctx, eventbusID, eventbusName)
-	ret0, _ := ret[0].(*metadata.Eventlog)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AcquireEventlog indicates an expected call of AcquireEventlog.
 func (mr *MockManagerMockRecorder) AcquireEventlog(ctx, eventbusID, eventbusName any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AcquireEventlog", reflect.TypeOf((*MockManager)(nil).AcquireEventlog), ctx, eventbusID, eventbusName)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DeleteEventlog mocks base method.
 func (m *MockManager) DeleteEventlog(ctx context.Context, id vsr.ID) {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "DeleteEventlog", ctx, id)
+	_ = "STUB: not implemented"
+	return
 }
 
 // DeleteEventlog indicates an expected call of DeleteEventlog.
 func (mr *MockManagerMockRecorder) DeleteEventlog(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteEventlog", reflect.TypeOf((*MockManager)(nil).DeleteEventlog), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAppendableSegment mocks base method.
 func (m *MockManager) GetAppendableSegment(ctx context.Context, eli *metadata.Eventlog, num int) ([]Segment, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAppendableSegment", ctx, eli, num)
-	ret0, _ := ret[0].([]Segment)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetAppendableSegment indicates an expected call of GetAppendableSegment.
 func (mr *MockManagerMockRecorder) GetAppendableSegment(ctx, eli, num any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAppendableSegment", reflect.TypeOf((*MockManager)(nil).GetAppendableSegment), ctx, eli, num)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetBlock mocks base method.
-func (m *MockManager) GetBlock(id vsr.ID) *metadata.Block {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetBlock", id)
-	ret0, _ := ret[0].(*metadata.Block)
-	return ret0
-}
+func (m *MockManager) GetBlock(id vsr.ID) *metadata.Block { _ = "STUB: not implemented"; return nil }
 
 // GetBlock indicates an expected call of GetBlock.
 func (mr *MockManagerMockRecorder) GetBlock(id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBlock", reflect.TypeOf((*MockManager)(nil).GetBlock), id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventlog mocks base method.
 func (m *MockManager) GetEventlog(ctx context.Context, id vsr.ID) *metadata.Eventlog {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEventlog", ctx, id)
-	ret0, _ := ret[0].(*metadata.Eventlog)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventlog indicates an expected call of GetEventlog.
 func (mr *MockManagerMockRecorder) GetEventlog(ctx, id any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventlog", reflect.TypeOf((*MockManager)(nil).GetEventlog), ctx, id)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventlogSegmentList mocks base method.
 func (m *MockManager) GetEventlogSegmentList(elID vsr.ID) []Segment {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEventlogSegmentList", elID)
-	ret0, _ := ret[0].([]Segment)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetEventlogSegmentList indicates an expected call of GetEventlogSegmentList.
 func (mr *MockManagerMockRecorder) GetEventlogSegmentList(elID any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventlogSegmentList", reflect.TypeOf((*MockManager)(nil).GetEventlogSegmentList), elID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetSegmentByBlockID mocks base method.
 func (m *MockManager) GetSegmentByBlockID(block *metadata.Block) (Segment, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSegmentByBlockID", block)
-	ret0, _ := ret[0].(Segment)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(Segment), nil
 }
 
 // GetSegmentByBlockID indicates an expected call of GetSegmentByBlockID.
 func (mr *MockManagerMockRecorder) GetSegmentByBlockID(block any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSegmentByBlockID", reflect.TypeOf((*MockManager)(nil).GetSegmentByBlockID), block)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Run mocks base method.
 func (m *MockManager) Run(ctx context.Context, kvClient kv.Client, startTask bool) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Run", ctx, kvClient, startTask)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Run indicates an expected call of Run.
 func (mr *MockManagerMockRecorder) Run(ctx, kvClient, startTask any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Run", reflect.TypeOf((*MockManager)(nil).Run), ctx, kvClient, startTask)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
-func (m *MockManager) Stop() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Stop")
-}
+func (m *MockManager) Stop() { _ = "STUB: not implemented"; return }
 
 // Stop indicates an expected call of Stop.
-func (mr *MockManagerMockRecorder) Stop() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockManager)(nil).Stop))
-}
+func (mr *MockManagerMockRecorder) Stop() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // UpdateSegment mocks base method.
 func (m_2 *MockManager) UpdateSegment(ctx context.Context, m map[string][]Segment) {
-	m_2.ctrl.T.Helper()
-	m_2.ctrl.Call(m_2, "UpdateSegment", ctx, m)
+	_ = "STUB: not implemented"
+	return
 }
 
 // UpdateSegment indicates an expected call of UpdateSegment.
 func (mr *MockManagerMockRecorder) UpdateSegment(ctx, m any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSegment", reflect.TypeOf((*MockManager)(nil).UpdateSegment), ctx, m)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSegmentReplicas mocks base method.
 func (m *MockManager) UpdateSegmentReplicas(ctx context.Context, segID vsr.ID, term uint64) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateSegmentReplicas", ctx, segID, term)
-	ret0, _ := ret[0].(error)
-	return ret0
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateSegmentReplicas indicates an expected call of UpdateSegmentReplicas.
 func (mr *MockManagerMockRecorder) UpdateSegmentReplicas(ctx, segID, term any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateSegmentReplicas", reflect.TypeOf((*MockManager)(nil).UpdateSegmentReplicas), ctx, segID, term)
+	_ = "STUB: not implemented"
+	return nil
 }

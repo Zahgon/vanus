@@ -16,17 +16,10 @@ package strings
 
 import (
 	"github.com/vanus-labs/vanus/pkg/transform/action"
-	"github.com/vanus-labs/vanus/pkg/transform/arg"
-	"github.com/vanus-labs/vanus/pkg/transform/function"
 )
 
 // NewReplaceBetweenDelimitersAction ["path","startDelimiter","endDelimiter","newValue"].
 func NewReplaceBetweenDelimitersAction() action.Action {
-	a := &action.SourceTargetSameAction{}
-	a.CommonAction = action.CommonAction{
-		ActionName: "REPLACE_BETWEEN_DELIMITERS",
-		FixedArgs:  []arg.TypeList{arg.EventList, arg.All, arg.All, arg.All},
-		Fn:         function.ReplaceBetweenDelimitersFunction,
-	}
-	return a
+	_ = "STUB: not implemented"
+	return *new(action.Action)
 }

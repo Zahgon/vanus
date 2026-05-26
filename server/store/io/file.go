@@ -20,9 +20,7 @@ import (
 
 	// third-party libraries.
 	"github.com/ncw/directio"
-
 	// first-party libraries.
-	"github.com/vanus-labs/vanus/api/errors"
 )
 
 const (
@@ -52,97 +50,44 @@ type fastFillTemplate struct {
 }
 
 func OpenFile(path string, flag int, sync bool, direct bool) (*os.File, error) {
-	return openFile(path, openFileFlag|flag, sync, direct)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func CreateFile(path string, size int64, flag int, sync bool, direct bool) (*os.File, error) {
-	return createFile(path, size, flag, sync, direct)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func ResizeFile(f *os.File, size int64) error {
-	return resizeFile(f, size)
-}
+func ResizeFile(f *os.File, size int64) error { _ = "STUB: not implemented"; return nil }
 
 func doCreateFile(path string, size int64, flag int, sync bool, direct bool) (*os.File, error) {
-	f, err := openFile(path, createFileFlag|flag, sync, direct)
-	if err != nil {
-		return nil, err
-	}
-
-	if size <= 0 {
-		return f, nil
-	}
-
-	// Resize file.
-	if err = resizeFile(f, size); err != nil {
-		if err2 := f.Close(); err2 != nil {
-			return f, errors.Chain(err, err2)
-		}
-		return nil, err
-	}
-
-	return f, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// Resize file.
 
 func doCreateFileAndWarm( //nolint:unused,nolintlint // use in linux.
 	path string, size int64, flag int, sync bool, direct bool,
 ) (*os.File, error) {
+	_ = "STUB: not implemented"
 	// Create file.
-	f, err := openFile(path, createFileFlag|os.O_WRONLY, false, true)
-	if err != nil {
-		return nil, err
-	}
-
-	// Resize file.
-	if err = resizeFile(f, size); err != nil {
-		if err2 := f.Close(); err2 != nil {
-			return f, errors.Chain(err, err2)
-		}
-		return nil, err
-	}
-
-	// Warm file.
-	if err = warmFile(f, size); err != nil {
-		if err2 := f.Close(); err2 != nil {
-			return f, errors.Chain(err, err2)
-		}
-		return nil, err
-	}
-
-	if err = f.Close(); err != nil {
-		return f, err
-	}
-
-	f, err = openFile(path, openFileFlag|flag, sync, direct)
-	if err != nil {
-		return nil, err
-	}
-
-	return f, nil
+	return nil, nil
 }
+
+// Resize file.
+
+// Warm file.
 
 func openFile(path string, flag int, sync bool, direct bool) (*os.File, error) {
-	if direct {
-		return directio.OpenFile(path, makeFlag(flag, sync), defaultFilePerm)
-	}
-	return os.OpenFile(path, makeFlag(flag, sync), defaultFilePerm)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func makeFlag(flag int, sync bool) int {
-	if sync {
-		flag |= syncFlag
-	}
-	return flag
-}
+func makeFlag(flag int, sync bool) int { _ = "STUB: not implemented"; return 0 }
 
-func warmFile(f *os.File, size int64) error { //nolint:unused,nolintlint // use in linux.
-	for i, off := 0, int64(0); i < len(fastFillVec); i++ {
-		for fill := &fastFillVec[i]; off+fill.size <= size; off += fill.size {
-			if _, err := f.WriteAt(fill.data, off); err != nil {
-				return err
-			}
-		}
-	}
-
-	return f.Sync()
+func warmFile(f *os.File, size int64) error {
+	_ = "STUB: not implemented" //nolint:unused,nolintlint // use in linux.
+	return nil
 }

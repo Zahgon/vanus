@@ -11,7 +11,6 @@ package authorization
 
 import (
 	context "context"
-	reflect "reflect"
 
 	vsr "github.com/vanus-labs/vanus/api/vsr"
 	gomock "go.uber.org/mock/gomock"
@@ -30,87 +29,73 @@ type MockRoleClientMockRecorder struct {
 
 // NewMockRoleClient creates a new mock instance.
 func NewMockRoleClient(ctrl *gomock.Controller) *MockRoleClient {
-	mock := &MockRoleClient{ctrl: ctrl}
-	mock.recorder = &MockRoleClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockRoleClient) EXPECT() *MockRoleClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// GetUserEventbusID mocks base method.
+	return nil
 }
 
-// GetUserEventbusID mocks base method.
 func (m *MockRoleClient) GetUserEventbusID(ctx context.Context, user string) (vsr.IDList, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserEventbusID", ctx, user)
-	ret0, _ := ret[0].(vsr.IDList)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(vsr.IDList), nil
 }
 
 // GetUserEventbusID indicates an expected call of GetUserEventbusID.
 func (mr *MockRoleClientMockRecorder) GetUserEventbusID(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserEventbusID", reflect.TypeOf((*MockRoleClient)(nil).GetUserEventbusID), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserNamespaceID mocks base method.
 func (m *MockRoleClient) GetUserNamespaceID(ctx context.Context, user string) (vsr.IDList, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserNamespaceID", ctx, user)
-	ret0, _ := ret[0].(vsr.IDList)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(vsr.IDList), nil
 }
 
 // GetUserNamespaceID indicates an expected call of GetUserNamespaceID.
 func (mr *MockRoleClientMockRecorder) GetUserNamespaceID(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserNamespaceID", reflect.TypeOf((*MockRoleClient)(nil).GetUserNamespaceID), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserRole mocks base method.
 func (m *MockRoleClient) GetUserRole(ctx context.Context, user string) ([]*UserRole, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserRole", ctx, user)
-	ret0, _ := ret[0].([]*UserRole)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // GetUserRole indicates an expected call of GetUserRole.
 func (mr *MockRoleClientMockRecorder) GetUserRole(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserRole", reflect.TypeOf((*MockRoleClient)(nil).GetUserRole), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetUserSubscriptionID mocks base method.
 func (m *MockRoleClient) GetUserSubscriptionID(ctx context.Context, user string) (vsr.IDList, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetUserSubscriptionID", ctx, user)
-	ret0, _ := ret[0].(vsr.IDList)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(vsr.IDList), nil
 }
 
 // GetUserSubscriptionID indicates an expected call of GetUserSubscriptionID.
 func (mr *MockRoleClientMockRecorder) GetUserSubscriptionID(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserSubscriptionID", reflect.TypeOf((*MockRoleClient)(nil).GetUserSubscriptionID), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IsClusterAdmin mocks base method.
 func (m *MockRoleClient) IsClusterAdmin(ctx context.Context, user string) (bool, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsClusterAdmin", ctx, user)
-	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // IsClusterAdmin indicates an expected call of IsClusterAdmin.
 func (mr *MockRoleClientMockRecorder) IsClusterAdmin(ctx, user any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsClusterAdmin", reflect.TypeOf((*MockRoleClient)(nil).IsClusterAdmin), ctx, user)
+	_ = "STUB: not implemented"
+	return nil
 }

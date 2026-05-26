@@ -15,52 +15,11 @@
 package hs
 
 import (
-	// standard libraries.
-	"strconv"
-
 	// third-party libraries.
 	"github.com/spf13/cobra"
-
 	// this project.
-	"github.com/vanus-labs/vanus/tool/vsrepair/meta"
 )
 
-func ModifyCommand() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "hs [--volume <volume path>] nodeID [--commit offset]",
-		Short: "modify HardState",
-		Run:   modify,
-	}
-	cmd.Flags().Uint64Var(&commit, "commit", 0, "commit offset")
-	return cmd
-}
+func ModifyCommand() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
-func modify(_ *cobra.Command, args []string) {
-	if len(args) != 1 {
-		panic("invalid args")
-	}
-
-	db, err := meta.Open(volumePath)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-
-	node, err := strconv.ParseUint(args[0], 0, 0)
-	if err != nil {
-		panic(err)
-	}
-
-	hs, err := db.GetHardState(node)
-	if err != nil {
-		panic(err)
-	}
-
-	if commit != 0 {
-		hs.Commit = commit
-	}
-
-	if err := db.PutHardState(node, hs); err != nil {
-		panic(err)
-	}
-}
+func modify(_ *cobra.Command, args []string) { _ = "STUB: not implemented"; return }

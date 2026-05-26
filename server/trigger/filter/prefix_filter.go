@@ -14,20 +14,13 @@
 
 package filter
 
-import (
-	"strings"
-)
-
 type prefixFilter struct {
 	commonFilter
 }
 
 func NewPrefixFilter(prefix map[string]string) Filter {
-	f := newCommonFilter(prefix, strings.HasPrefix)
-	if f == nil {
-		return nil
-	}
-	return &prefixFilter{commonFilter: *f}
+	_ = "STUB: not implemented"
+	return *new(Filter)
 }
 
 var _ Filter = (*prefixFilter)(nil)

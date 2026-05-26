@@ -17,9 +17,6 @@ package raw_client
 import (
 	"context"
 	"time"
-
-	"github.com/vanus-labs/vanus/api/errors"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 )
 
 type Heartbeat interface {
@@ -29,24 +26,8 @@ type Heartbeat interface {
 func RegisterHeartbeat(ctx context.Context, interval time.Duration,
 	i interface{}, reqFunc func() interface{},
 ) error {
-	hb, ok := i.(Heartbeat)
-	if !ok {
-		return errors.ErrInvalidHeartBeat
-	}
-	go func() {
-		ticker := time.NewTicker(interval)
-		defer ticker.Stop()
-		for {
-			select {
-			case <-ctx.Done():
-				// TODO log
-				return
-			case <-ticker.C:
-				if err := hb.Beat(ctx, reqFunc()); err != nil {
-					log.Warn().Err(err).Msg("heartbeat error")
-				}
-			}
-		}
-	}()
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// TODO log

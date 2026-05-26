@@ -5,7 +5,6 @@ package trigger
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 	grpc "google.golang.org/grpc"
@@ -24,134 +23,87 @@ type MockTriggerWorkerClientMockRecorder struct {
 
 // NewMockTriggerWorkerClient creates a new mock instance.
 func NewMockTriggerWorkerClient(ctrl *gomock.Controller) *MockTriggerWorkerClient {
-	mock := &MockTriggerWorkerClient{ctrl: ctrl}
-	mock.recorder = &MockTriggerWorkerClientMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTriggerWorkerClient) EXPECT() *MockTriggerWorkerClientMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddSubscription mocks base method.
+	return nil
 }
 
-// AddSubscription mocks base method.
 func (m *MockTriggerWorkerClient) AddSubscription(ctx context.Context, in *AddSubscriptionRequest, opts ...grpc.CallOption) (*AddSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "AddSubscription", varargs...)
-	ret0, _ := ret[0].(*AddSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AddSubscription indicates an expected call of AddSubscription.
 func (mr *MockTriggerWorkerClientMockRecorder) AddSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddSubscription", reflect.TypeOf((*MockTriggerWorkerClient)(nil).AddSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PauseSubscription mocks base method.
 func (m *MockTriggerWorkerClient) PauseSubscription(ctx context.Context, in *PauseSubscriptionRequest, opts ...grpc.CallOption) (*PauseSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "PauseSubscription", varargs...)
-	ret0, _ := ret[0].(*PauseSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // PauseSubscription indicates an expected call of PauseSubscription.
 func (mr *MockTriggerWorkerClientMockRecorder) PauseSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PauseSubscription", reflect.TypeOf((*MockTriggerWorkerClient)(nil).PauseSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoveSubscription mocks base method.
 func (m *MockTriggerWorkerClient) RemoveSubscription(ctx context.Context, in *RemoveSubscriptionRequest, opts ...grpc.CallOption) (*RemoveSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "RemoveSubscription", varargs...)
-	ret0, _ := ret[0].(*RemoveSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RemoveSubscription indicates an expected call of RemoveSubscription.
 func (mr *MockTriggerWorkerClientMockRecorder) RemoveSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveSubscription", reflect.TypeOf((*MockTriggerWorkerClient)(nil).RemoveSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResumeSubscription mocks base method.
 func (m *MockTriggerWorkerClient) ResumeSubscription(ctx context.Context, in *ResumeSubscriptionRequest, opts ...grpc.CallOption) (*ResumeSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "ResumeSubscription", varargs...)
-	ret0, _ := ret[0].(*ResumeSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResumeSubscription indicates an expected call of ResumeSubscription.
 func (mr *MockTriggerWorkerClientMockRecorder) ResumeSubscription(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSubscription", reflect.TypeOf((*MockTriggerWorkerClient)(nil).ResumeSubscription), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
 func (m *MockTriggerWorkerClient) Start(ctx context.Context, in *StartTriggerWorkerRequest, opts ...grpc.CallOption) (*StartTriggerWorkerResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Start", varargs...)
-	ret0, _ := ret[0].(*StartTriggerWorkerResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Start indicates an expected call of Start.
 func (mr *MockTriggerWorkerClientMockRecorder) Start(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockTriggerWorkerClient)(nil).Start), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
 func (m *MockTriggerWorkerClient) Stop(ctx context.Context, in *StopTriggerWorkerRequest, opts ...grpc.CallOption) (*StopTriggerWorkerResponse, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Stop", varargs...)
-	ret0, _ := ret[0].(*StopTriggerWorkerResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Stop indicates an expected call of Stop.
 func (mr *MockTriggerWorkerClientMockRecorder) Stop(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockTriggerWorkerClient)(nil).Stop), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockTriggerWorkerServer is a mock of TriggerWorkerServer interface.
@@ -167,102 +119,85 @@ type MockTriggerWorkerServerMockRecorder struct {
 
 // NewMockTriggerWorkerServer creates a new mock instance.
 func NewMockTriggerWorkerServer(ctrl *gomock.Controller) *MockTriggerWorkerServer {
-	mock := &MockTriggerWorkerServer{ctrl: ctrl}
-	mock.recorder = &MockTriggerWorkerServerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTriggerWorkerServer) EXPECT() *MockTriggerWorkerServerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddSubscription mocks base method.
+	return nil
 }
 
-// AddSubscription mocks base method.
 func (m *MockTriggerWorkerServer) AddSubscription(ctx context.Context, in *AddSubscriptionRequest) (*AddSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddSubscription", ctx, in)
-	ret0, _ := ret[0].(*AddSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AddSubscription indicates an expected call of AddSubscription.
 func (mr *MockTriggerWorkerServerMockRecorder) AddSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddSubscription", reflect.TypeOf((*MockTriggerWorkerServer)(nil).AddSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PauseSubscription mocks base method.
 func (m *MockTriggerWorkerServer) PauseSubscription(ctx context.Context, in *PauseSubscriptionRequest) (*PauseSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "PauseSubscription", ctx, in)
-	ret0, _ := ret[0].(*PauseSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // PauseSubscription indicates an expected call of PauseSubscription.
 func (mr *MockTriggerWorkerServerMockRecorder) PauseSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PauseSubscription", reflect.TypeOf((*MockTriggerWorkerServer)(nil).PauseSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RemoveSubscription mocks base method.
 func (m *MockTriggerWorkerServer) RemoveSubscription(ctx context.Context, in *RemoveSubscriptionRequest) (*RemoveSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RemoveSubscription", ctx, in)
-	ret0, _ := ret[0].(*RemoveSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // RemoveSubscription indicates an expected call of RemoveSubscription.
 func (mr *MockTriggerWorkerServerMockRecorder) RemoveSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveSubscription", reflect.TypeOf((*MockTriggerWorkerServer)(nil).RemoveSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ResumeSubscription mocks base method.
 func (m *MockTriggerWorkerServer) ResumeSubscription(ctx context.Context, in *ResumeSubscriptionRequest) (*ResumeSubscriptionResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ResumeSubscription", ctx, in)
-	ret0, _ := ret[0].(*ResumeSubscriptionResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ResumeSubscription indicates an expected call of ResumeSubscription.
 func (mr *MockTriggerWorkerServerMockRecorder) ResumeSubscription(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSubscription", reflect.TypeOf((*MockTriggerWorkerServer)(nil).ResumeSubscription), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Start mocks base method.
 func (m *MockTriggerWorkerServer) Start(ctx context.Context, in *StartTriggerWorkerRequest) (*StartTriggerWorkerResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Start", ctx, in)
-	ret0, _ := ret[0].(*StartTriggerWorkerResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Start indicates an expected call of Start.
 func (mr *MockTriggerWorkerServerMockRecorder) Start(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Start", reflect.TypeOf((*MockTriggerWorkerServer)(nil).Start), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Stop mocks base method.
 func (m *MockTriggerWorkerServer) Stop(ctx context.Context, in *StopTriggerWorkerRequest) (*StopTriggerWorkerResponse, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Stop", ctx, in)
-	ret0, _ := ret[0].(*StopTriggerWorkerResponse)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Stop indicates an expected call of Stop.
 func (mr *MockTriggerWorkerServerMockRecorder) Stop(ctx, in interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stop", reflect.TypeOf((*MockTriggerWorkerServer)(nil).Stop), ctx, in)
+	_ = "STUB: not implemented"
+	return nil
 }

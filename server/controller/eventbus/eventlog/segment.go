@@ -16,12 +16,10 @@ package eventlog
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	metapb "github.com/vanus-labs/vanus/api/meta"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
-	"github.com/vanus-labs/vanus/pkg/observability/log"
 
 	"github.com/vanus-labs/vanus/server/controller/eventbus/metadata"
 )
@@ -51,86 +49,22 @@ type Segment struct {
 	LastEventBornTime  time.Time     `json:"last_event_born_time"`
 }
 
-func (seg *Segment) IsAppendable() bool {
-	return seg.isReady() && seg.State == StateWorking
-}
+func (seg *Segment) IsAppendable() bool { _ = "STUB: not implemented"; return false }
 
-func (seg *Segment) GetLeaderBlock() *metadata.Block {
-	if !seg.isReady() {
-		return nil
-	}
-	return seg.Replicas.Peers[seg.Replicas.Leader]
-}
+func (seg *Segment) GetLeaderBlock() *metadata.Block { _ = "STUB: not implemented"; return nil }
 
-func (seg *Segment) String() string {
-	data, _ := json.Marshal(seg)
-	return string(data)
-}
+func (seg *Segment) String() string { _ = "STUB: not implemented"; return "" }
 
 // TODO Don't update field in here
-func (seg *Segment) isNeedUpdate(newSeg Segment) bool {
-	if seg.isFull() {
-		return false
-	}
-	if seg.ID != newSeg.ID {
-		return false
-	}
-	needed := false
-	if seg.Size < newSeg.Size {
-		seg.Size = newSeg.Size
-		needed = true
-	}
-	if seg.Number < newSeg.Number {
-		seg.Number = newSeg.Number
-		needed = true
-	}
-	// TODO(wenfeng): follow state shift
-	if newSeg.State != "" && seg.State != newSeg.State {
-		log.Info().
-			Interface(log.KeySegmentID, newSeg.ID).
-			Int32("event_num", newSeg.Number).
-			Int64("event_size", newSeg.Size).
-			Interface("state", newSeg.State).
-			Msg("Update segment by state")
-		seg.State = newSeg.State
-		needed = true
-	}
+func (seg *Segment) isNeedUpdate(newSeg Segment) bool { _ = "STUB: not implemented"; return false }
 
-	if newSeg.FirstEventBornTime.After(seg.FirstEventBornTime) {
-		seg.FirstEventBornTime = newSeg.FirstEventBornTime
-		needed = true
-	}
-	if newSeg.LastEventBornTime.After(seg.LastEventBornTime) {
-		seg.LastEventBornTime = newSeg.LastEventBornTime
-		needed = true
-	}
-	return needed
-}
+// TODO(wenfeng): follow state shift
 
-func (seg *Segment) isFull() bool {
-	return seg.State == StateFrozen
-}
+func (seg *Segment) isFull() bool { _ = "STUB: not implemented"; return false }
 
-func (seg *Segment) isReady() bool {
-	return seg.Replicas != nil && seg.Replicas.Leader > 0
-}
+func (seg *Segment) isReady() bool { _ = "STUB: not implemented"; return false }
 
-func (seg *Segment) Copy() Segment {
-	return Segment{
-		ID:                 seg.ID,
-		Capacity:           seg.Capacity,
-		EventlogID:         seg.EventlogID,
-		PreviousSegmentID:  seg.PreviousSegmentID,
-		NextSegmentID:      seg.NextSegmentID,
-		StartOffsetInLog:   seg.StartOffsetInLog,
-		Replicas:           seg.Replicas,
-		State:              seg.State,
-		Size:               seg.Size,
-		Number:             seg.Number,
-		FirstEventBornTime: seg.FirstEventBornTime,
-		LastEventBornTime:  seg.LastEventBornTime,
-	}
-}
+func (seg *Segment) Copy() Segment { _ = "STUB: not implemented"; return *new(Segment) }
 
 type ReplicaGroup struct {
 	ID vanus.ID `json:"id"`
@@ -144,42 +78,6 @@ type ReplicaGroup struct {
 }
 
 func Convert2ProtoSegment(ctx context.Context, ins ...Segment) []*metapb.Segment {
-	segs := make([]*metapb.Segment, len(ins))
-	for idx := 0; idx < len(ins); idx++ {
-		seg := ins[idx]
-		blocks := map[uint64]*metapb.Block{}
-		if seg.isReady() {
-			topo := mgr.getSegmentTopology(ctx, seg)
-			for _, v := range seg.Replicas.Peers {
-				blocks[v.ID.Uint64()] = &metapb.Block{
-					Id:       v.ID.Uint64(),
-					Endpoint: topo[v.ID.Uint64()],
-					VolumeID: v.VolumeID.Uint64(),
-				}
-			}
-		}
-		segs[idx] = &metapb.Segment{
-			Id:                       seg.ID.Uint64(),
-			PreviousSegmentId:        seg.PreviousSegmentID.Uint64(),
-			NextSegmentId:            seg.NextSegmentID.Uint64(),
-			EventlogId:               seg.EventlogID.Uint64(),
-			StartOffsetInLog:         seg.StartOffsetInLog,
-			EndOffsetInLog:           seg.StartOffsetInLog + int64(seg.Number),
-			Size:                     seg.Size,
-			Capacity:                 seg.Capacity,
-			NumberEventStored:        seg.Number,
-			Replicas:                 blocks,
-			State:                    string(seg.State),
-			FirstEventBornAtByUnixMs: seg.FirstEventBornTime.UnixMilli(),
-			LastEventBornAtByUnixMs:  seg.LastEventBornTime.UnixMilli(),
-		}
-		if seg.GetLeaderBlock() != nil {
-			segs[idx].LeaderBlockId = seg.GetLeaderBlock().ID.Uint64()
-		}
-
-		if segs[idx].NumberEventStored == 0 {
-			segs[idx].EndOffsetInLog = -1
-		}
-	}
-	return segs
+	_ = "STUB: not implemented"
+	return nil
 }

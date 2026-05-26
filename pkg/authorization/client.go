@@ -44,60 +44,36 @@ type builtInClient struct {
 }
 
 func NewBuiltInClient(cluster cluster.Cluster) RoleClient {
-	return &builtInClient{
-		cluster: cluster,
-	}
+	_ = "STUB: not implemented"
+	return *new(RoleClient)
 }
 
 func (c *builtInClient) GetUserRole(ctx context.Context, user string) ([]*UserRole, error) {
-	userRoles, err := c.cluster.AuthService().GetUserRole(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	list := make([]*UserRole, len(userRoles))
-	for i := range userRoles {
-		list[i] = FromPbUserRole(userRoles[i])
-	}
-	return list, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *builtInClient) IsClusterAdmin(ctx context.Context, user string) (bool, error) {
-	userRoles, err := c.cluster.AuthService().GetUserRole(ctx, user)
-	if err != nil {
-		return false, err
-	}
-	for _, userRole := range userRoles {
-		role := FromPbUserRole(userRole)
-		if role.IsClusterAdmin() {
-			return true, nil
-		}
-	}
+	_ = "STUB: not implemented"
 	return false, nil
 }
 
 func (c *builtInClient) GetUserNamespaceID(ctx context.Context, user string) (vanus.IDList, error) {
-	return c.getUserResourceID(ctx, user, ResourceNamespace)
+	_ = "STUB: not implemented"
+	return *new(vanus.IDList), nil
 }
 
 func (c *builtInClient) GetUserEventbusID(ctx context.Context, user string) (vanus.IDList, error) {
-	return c.getUserResourceID(ctx, user, ResourceEventbus)
+	_ = "STUB: not implemented"
+	return *new(vanus.IDList), nil
 }
 
 func (c *builtInClient) GetUserSubscriptionID(ctx context.Context, user string) (vanus.IDList, error) {
-	return c.getUserResourceID(ctx, user, ResourceSubscription)
+	_ = "STUB: not implemented"
+	return *new(vanus.IDList), nil
 }
 
 func (c *builtInClient) getUserResourceID(ctx context.Context, user string, kind ResourceKind) (vanus.IDList, error) {
-	userRoles, err := c.cluster.AuthService().GetUserRole(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	var ids vanus.IDList
-	for _, userRole := range userRoles {
-		role := FromPbUserRole(userRole)
-		if role.ResourceKind == kind {
-			ids = append(ids, role.ResourceID)
-		}
-	}
-	return ids, nil
+	_ = "STUB: not implemented"
+	return *new(vanus.IDList), nil
 }

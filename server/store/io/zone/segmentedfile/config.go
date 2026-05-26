@@ -24,32 +24,12 @@ type config struct {
 	segmentSize int64
 }
 
-func defaultConfig() config {
-	cfg := config{
-		ext:         defaultExt,
-		segmentSize: defaultSegmentSize,
-	}
-	return cfg
-}
+func defaultConfig() config { _ = "STUB: not implemented"; return *new(config) }
 
 type Option func(*config)
 
-func makeConfig(opts ...Option) config {
-	cfg := defaultConfig()
-	for _, opt := range opts {
-		opt(&cfg)
-	}
-	return cfg
-}
+func makeConfig(opts ...Option) config { _ = "STUB: not implemented"; return *new(config) }
 
-func WithSegmentSize(size int64) Option {
-	return func(cfg *config) {
-		cfg.segmentSize = size
-	}
-}
+func WithSegmentSize(size int64) Option { _ = "STUB: not implemented"; return *new(Option) }
 
-func WithExtension(ext string) Option {
-	return func(cfg *config) {
-		cfg.ext = ext
-	}
-}
+func WithExtension(ext string) Option { _ = "STUB: not implemented"; return *new(Option) }

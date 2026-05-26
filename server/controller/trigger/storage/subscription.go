@@ -17,10 +17,7 @@ package storage
 
 import (
 	"context"
-	"encoding/json"
-	"path"
 
-	"github.com/vanus-labs/vanus/api/errors"
 	vanus "github.com/vanus-labs/vanus/api/vsr"
 
 	"github.com/vanus-labs/vanus/pkg/kv"
@@ -40,69 +37,33 @@ type subscriptionStorage struct {
 }
 
 func NewSubscriptionStorage(client kv.Client) SubscriptionStorage {
-	return &subscriptionStorage{
-		client: client,
-	}
+	_ = "STUB: not implemented"
+	return *new(SubscriptionStorage)
 }
 
-func (s *subscriptionStorage) getKey(subID vanus.ID) string {
-	return path.Join(kv.ResourceSubscription, subID.Key())
-}
+func (s *subscriptionStorage) getKey(subID vanus.ID) string { _ = "STUB: not implemented"; return "" }
 
 func (s *subscriptionStorage) CreateSubscription(ctx context.Context, sub *metadata.Subscription) error {
-	v, err := json.Marshal(sub)
-	if err != nil {
-		return errors.ErrJSONMarshal
-	}
-	err = s.client.Create(ctx, s.getKey(sub.ID), v)
-	if err != nil {
-		return err
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (s *subscriptionStorage) UpdateSubscription(ctx context.Context, sub *metadata.Subscription) error {
-	v, err := json.Marshal(sub)
-	if err != nil {
-		return errors.ErrJSONMarshal
-	}
-	err = s.client.Update(ctx, s.getKey(sub.ID), v)
-	if err != nil {
-		return err
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (s *subscriptionStorage) DeleteSubscription(ctx context.Context, id vanus.ID) error {
-	return s.client.Delete(ctx, s.getKey(id))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *subscriptionStorage) GetSubscription(ctx context.Context, id vanus.ID) (*metadata.Subscription, error) {
-	v, err := s.client.Get(ctx, s.getKey(id))
-	if err != nil {
-		return nil, err
-	}
-	sub := &metadata.Subscription{}
-	err = json.Unmarshal(v, sub)
-	if err != nil {
-		return nil, errors.ErrJSONUnMarshal
-	}
-	return sub, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *subscriptionStorage) ListSubscription(ctx context.Context) ([]*metadata.Subscription, error) {
-	l, err := s.client.List(ctx, kv.ResourceSubscription)
-	if err != nil {
-		return nil, err
-	}
-	list := make([]*metadata.Subscription, 0)
-	for _, v := range l {
-		sub := &metadata.Subscription{}
-		err = json.Unmarshal(v.Value, sub)
-		if err != nil {
-			return nil, errors.ErrJSONUnMarshal
-		}
-		list = append(list, sub)
-	}
-	return list, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

@@ -15,8 +15,6 @@
 package arg
 
 import (
-	"strings"
-
 	"github.com/vanus-labs/vanus/pkg/transform/context"
 )
 
@@ -30,33 +28,11 @@ const (
 	Any
 )
 
-func (t Type) String() string {
-	switch t {
-	case Constant:
-		return "Constant"
-	case EventAttribute:
-		return "EventAttribute"
-	case EventData:
-		return "EventData"
-	case Define:
-		return "Define"
-	}
-	return "unknown"
-}
+func (t Type) String() string { _ = "STUB: not implemented"; return "" }
 
 type TypeList []Type
 
-func (list TypeList) Contains(arg Arg) bool {
-	if len(list) == 0 {
-		return false
-	}
-	for _, t := range list {
-		if arg.Type() == t {
-			return true
-		}
-	}
-	return false
-}
+func (list TypeList) Contains(arg Arg) bool { _ = "STUB: not implemented"; return false }
 
 var (
 	EventList = []Type{EventAttribute, EventData}
@@ -73,25 +49,7 @@ type Arg interface {
 	DeleteValue(ceCtx *context.EventContext) error
 }
 
-func NewArg(arg interface{}) (Arg, error) {
-	if argName, ok := arg.(string); ok {
-		argName = strings.TrimSpace(argName)
-		argLen := len(argName)
-		if argName == EventDataArgPrefix || (argLen > 6 && argName[:7] == EventDataArgPrefix+".") {
-			return newEventData(argName), nil
-		}
-		if argLen >= 2 && argName[:2] == EventArgPrefix {
-			return newEventAttribute(argName)
-		}
-		if argLen >= 2 && argName[:2] == EventDataSubArgPrefix {
-			return newEventData(EventDataArgPrefix + "." + argName[2:]), nil
-		}
-		if argLen >= 3 && argName[0] == '<' && argName[argLen-1] == '>' && argName[1] != '@' {
-			return newDefine(argName), nil
-		}
-	}
-	return newConstant(arg), nil
-}
+func NewArg(arg interface{}) (Arg, error) { _ = "STUB: not implemented"; return *new(Arg), nil }
 
 const (
 	EventArgPrefix        = "$."

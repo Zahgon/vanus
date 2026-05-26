@@ -11,7 +11,6 @@ package authentication
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -29,27 +28,25 @@ type MockAuthenticationMockRecorder struct {
 
 // NewMockAuthentication creates a new mock instance.
 func NewMockAuthentication(ctrl *gomock.Controller) *MockAuthentication {
-	mock := &MockAuthentication{ctrl: ctrl}
-	mock.recorder = &MockAuthenticationMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockAuthentication) EXPECT() *MockAuthenticationMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Authenticate mocks base method.
+	return nil
 }
 
-// Authenticate mocks base method.
 func (m *MockAuthentication) Authenticate(ctx context.Context, token string) (string, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Authenticate", ctx, token)
-	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // Authenticate indicates an expected call of Authenticate.
 func (mr *MockAuthenticationMockRecorder) Authenticate(ctx, token any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Authenticate", reflect.TypeOf((*MockAuthentication)(nil).Authenticate), ctx, token)
+	_ = "STUB: not implemented"
+	return nil
 }

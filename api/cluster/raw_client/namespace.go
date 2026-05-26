@@ -29,9 +29,8 @@ import (
 var _ io.Closer = (*namespaceClient)(nil)
 
 func NewNamespaceClient(cc *Conn) ctrlpb.NamespaceControllerClient {
-	return &namespaceClient{
-		cc: cc,
-	}
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.NamespaceControllerClient)
 }
 
 type namespaceClient struct {
@@ -39,50 +38,28 @@ type namespaceClient struct {
 }
 
 func (elc *namespaceClient) CreateNamespace(ctx context.Context, in *ctrlpb.CreateNamespaceRequest, opts ...grpc.CallOption) (*metapb.Namespace, error) {
-	out := new(metapb.Namespace)
-	err := elc.cc.invoke(ctx, ctrlpb.NamespaceController_CreateNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (elc *namespaceClient) ListNamespace(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ctrlpb.ListNamespaceResponse, error) {
-	out := new(ctrlpb.ListNamespaceResponse)
-	err := elc.cc.invoke(ctx, ctrlpb.NamespaceController_ListNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (elc *namespaceClient) GetNamespace(ctx context.Context, in *ctrlpb.GetNamespaceRequest, opts ...grpc.CallOption) (*metapb.Namespace, error) {
-	out := new(metapb.Namespace)
-	err := elc.cc.invoke(ctx, ctrlpb.NamespaceController_GetNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (elc *namespaceClient) DeleteNamespace(ctx context.Context, in *ctrlpb.DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := elc.cc.invoke(ctx, ctrlpb.NamespaceController_DeleteNamespace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (elc *namespaceClient) GetNamespaceWithHumanFriendly(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*metapb.Namespace, error) {
-	out := new(metapb.Namespace)
-	err := elc.cc.invoke(ctx, ctrlpb.NamespaceController_GetNamespaceWithHumanFriendly_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (elc *namespaceClient) Close() error {
-	return elc.cc.close()
-}
+func (elc *namespaceClient) Close() error { _ = "STUB: not implemented"; return nil }

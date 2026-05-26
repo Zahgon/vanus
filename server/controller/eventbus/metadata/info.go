@@ -15,7 +15,6 @@
 package metadata
 
 import (
-	"encoding/json"
 	"time"
 
 	"github.com/vanus-labs/vanus/api/meta"
@@ -34,21 +33,8 @@ type Eventbus struct {
 }
 
 func Convert2ProtoEventbus(ins ...*Eventbus) []*meta.Eventbus {
-	pebs := make([]*meta.Eventbus, len(ins))
-	for idx := 0; idx < len(ins); idx++ {
-		eb := ins[idx]
-		pebs[idx] = &meta.Eventbus{
-			Name:        eb.Name,
-			LogNumber:   int32(eb.LogNumber),
-			Logs:        Convert2ProtoEventlog(eb.Eventlogs...),
-			Id:          eb.ID.Uint64(),
-			Description: eb.Description,
-			CreatedAt:   eb.CreatedAt.UnixMilli(),
-			UpdatedAt:   eb.UpdatedAt.UnixMilli(),
-			NamespaceId: eb.NamespaceID,
-		}
-	}
-	return pebs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type Eventlog struct {
@@ -59,24 +45,11 @@ type Eventlog struct {
 	SegmentNumber int      `json:"segment_number"`
 }
 
-func (el *Eventlog) Eventbus() string {
-	if el.EventbusName != "" {
-		return el.EventbusName
-	}
-	return el.EventbusID.String()
-}
+func (el *Eventlog) Eventbus() string { _ = "STUB: not implemented"; return "" }
 
 func Convert2ProtoEventlog(ins ...*Eventlog) []*meta.Eventlog {
-	pels := make([]*meta.Eventlog, len(ins))
-	for idx := 0; idx < len(ins); idx++ {
-		eli := ins[idx]
-
-		pels[idx] = &meta.Eventlog{
-			EventlogId:            eli.ID.Uint64(),
-			CurrentSegmentNumbers: int32(eli.SegmentNumber),
-		}
-	}
-	return pels
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type VolumeMetadata struct {
@@ -95,7 +68,4 @@ type Block struct {
 	SegmentID  vanus.ID `json:"segment_id"`
 }
 
-func (bl *Block) String() string {
-	data, _ := json.Marshal(bl)
-	return string(data)
-}
+func (bl *Block) String() string { _ = "STUB: not implemented"; return "" }

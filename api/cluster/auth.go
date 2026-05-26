@@ -17,8 +17,6 @@ package cluster
 import (
 	"context"
 
-	"google.golang.org/protobuf/types/known/wrapperspb"
-
 	"github.com/vanus-labs/vanus/api/cluster/raw_client"
 	ctrlpb "github.com/vanus-labs/vanus/api/controller"
 	metapb "github.com/vanus-labs/vanus/api/meta"
@@ -29,27 +27,21 @@ type authService struct {
 }
 
 func (a *authService) GetUserRole(ctx context.Context, user string) ([]*metapb.UserRole, error) {
-	resp, err := a.client.GetUserRole(ctx, &ctrlpb.GetUserRoleRequest{UserIdentifier: user})
-	if err != nil {
-		return nil, err
-	}
-	return resp.GetUserRole(), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (a *authService) GetUserByToken(ctx context.Context, token string) (string, error) {
-	user, err := a.client.GetUserByToken(ctx, wrapperspb.String(token))
-	if err != nil {
-		return "", err
-	}
-	return user.GetValue(), nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 func (a *authService) RawClient() ctrlpb.AuthControllerClient {
-	return a.client
+	_ = "STUB: not implemented"
+	return *new(ctrlpb.AuthControllerClient)
 }
 
 func newAuthService(cc *raw_client.Conn) AuthService {
-	return &authService{
-		client: raw_client.NewAuthClient(cc),
-	}
+	_ = "STUB: not implemented"
+	return *new(AuthService)
 }
